@@ -25,3 +25,4 @@
 /.nb-gradle/
 
 src/main/resources/application-pro.properties
+src/main/resources/rebel.xml
