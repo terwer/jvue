@@ -24,4 +24,28 @@
 /nbdist/
 /.nb-gradle/
 
+### Dev Tools && Production ###
 src/main/resources/application-pro.properties
+src/main/resources/rebel.xml
+
+### Vue ###
+src/main/webapp/.DS_Store
+src/main/webapp/node_modules
+src/main/webapp/dist
+# local env files
+src/main/webapp/.env.local
+src/main/webapp/.env.*.local
+# Log files
+src/main/webapp/npm-debug.log*
+src/main/webapp/yarn-debug.log*
+src/main/webapp/yarn-error.log*
+# Editor directories and files
+src/main/webapp/.idea
+src/main/webapp/.vscode
+src/main/webapp/*.suo
+src/main/webapp/*.ntvs*
+src/main/webapp/*.njsproj
+src/main/webapp/*.sln
+src/main/webapp/*.sw*
+src/main/webapp/package-lock.json
+
