@@ -13,13 +13,13 @@ public class VueRenderer {
     private Object renderServerFunction;
 
     public VueRenderer() {
-        NashornScriptEngine engine = (NashornScriptEngine) new ScriptEngineManager().getEngineByName("nashorn");
-        try {
-            CompiledScript compiled = engine.compile(read(""));
-            this.renderServerFunction = compiled.eval();
-        } catch (ScriptException e) {
-            throw new RuntimeException(e);
-        }
+//        NashornScriptEngine engine = (NashornScriptEngine) new ScriptEngineManager().getEngineByName("nashorn");
+//        try {
+//            CompiledScript compiled = engine.compile(read("META-INF/resources/dist/js/app.8756476b.js"));
+//            this.renderServerFunction = compiled.eval();
+//        } catch (ScriptException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     private Reader read(String path) {
