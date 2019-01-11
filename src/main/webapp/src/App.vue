@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <img alt="spring-boot-icon" src="https://spring.io/img/homepage/icon-spring-boot.svg">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Next Spring boot with Vue.js App"/>
   </div>
