@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div id="content" th:utext="${content}"></div>
+<!--<script src="client.js"></script>-->
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    const data = /*[[${data}]]*/{};
+    /*]]>*/
+
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('DOMContentLoaded')
+        // renderClient(data);
+    });
+</script>
+</body>
+</html>
