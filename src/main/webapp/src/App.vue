@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <img alt="spring-boot-icon" src="https://spring.io/img/homepage/icon-spring-boot.svg">
+    <img alt="Spring Boot Logo" src="./assets/icon-spring-boot.svg">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Next Spring boot with Vue.js App"/>
+    <Main msg="Welcome to Next Spring boot with Vue.js App"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Main from './components/Main'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Main
   }
 }
 </script>

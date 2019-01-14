@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-Vue.config.productionTip = false
+// 生产部署时候需要设置为false
+Vue.config.productionTip = true
 
 new Vue({
-  render: h => h(App),
+    render: h => h(App),
 }).$mount('#app')
