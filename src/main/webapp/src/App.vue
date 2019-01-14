@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="main">
     <img alt="Spring Boot Logo" src="./assets/icon-spring-boot.svg">
     <img alt="Vue logo" src="./assets/logo.png">
     <Main msg="Welcome to Next Spring boot with Vue.js App"/>
@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Main from './components/Main'
+import Main from './components/Main.vue'
 
 export default {
   name: 'app',
