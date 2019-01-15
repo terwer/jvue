@@ -30,7 +30,7 @@ public class VueUtil {
     /**
      * Vue资源文件目录
      */
-    private static final String VUE_RESOURCE_PATH = "/META-INF/resources/dist/js/";
+    private static final String VUE_RESOURCE_PATH = "/META-INF/resources/ssr-dist/";
 
     /**
      * 读取资源文件

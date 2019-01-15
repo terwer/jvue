@@ -23,8 +23,8 @@ public class VueRenderer {
             NashornScriptEngineFactory factory = new NashornScriptEngineFactory();
             NashornScriptEngine engine = (NashornScriptEngine) factory.getScriptEngine(new String[]{"--language=es6"});
             // 编译
-            // CompiledScript compiled = engine.compile(VueUtil.readVueFile("server-bundle.js"));
-            CompiledScript   compiled = engine.compile(VueUtil.readVueFile("app.*.js"));
+            CompiledScript compiled = engine.compile(VueUtil.readVueFile("server-bundle.js"));
+            // CompiledScript   compiled = engine.compile(VueUtil.readVueFile("app.*.js"));
             logger.info("Vue app.js编译成功，编译引擎为Nashorn");
             this.renderServerFunction = compiled.eval();
         } catch (ScriptException e) {
