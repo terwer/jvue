@@ -7,14 +7,16 @@
     "build": "npm run build:vue & npm run build:client & npm run build:server",
     "build:vue": "vue-cli-service build",
     "build:client": "browserify -t vueify -e src/ssr/client.js -t babelify -t [ envify --NODE_ENV production --VUE_ENV client ] -o ssr-dist/client.js",
-    "build:server": "browserify js/server.js -t babelify -t [ envify --NODE_ENV production --VUE_ENV server ] -o src/main/resources/static/server.js && cat src/main/resources/static/event-loop.js src/main/resources/static/nashorn-polyfill.js src/main/resources/static/server.js src/main/resources/static/return-render-function.js > src/main/resources/static/server-bundle.js",
+    "build:server": "browserify -t vueify -e src/ssr/server.js -t babelify -t [ envify --NODE_ENV production --VUE_ENV server ] -o ssr-dist/server.js && cat ssr-dist/event-loop.js ssr-dist/nashorn-polyfill.js ssr-dist/server.js ssr-dist/return-render-function.js > ssr-dist/server-bundle.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "vue": "^2.5.21"
+    "vue": "^2.5.21",
+    "vue-server-renderer": "^2.5.22"
   },
   "devDependencies": {
+    "nashorn-polyfill": "^0.2.4",
     "@vue/cli-plugin-babel": "^3.3.0",
     "@vue/cli-plugin-eslint": "^3.3.0",
     "@vue/cli-service": "^3.3.0",
@@ -22,7 +24,6 @@
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
     "babelify": "^7.3.0",
     "browserify": "^16.2.3",
     "envify": "^4.1.0",

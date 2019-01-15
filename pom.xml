@@ -65,6 +65,7 @@
                 <targetPath>META-INF/resources</targetPath>
                 <includes>
                     <include>dist/**</include>
+                    <include>ssr-dist/**</include>
                 </includes>
             </resource>
         </resources>
