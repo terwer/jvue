@@ -2,15 +2,11 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <body>
 <div id="content" th:utext="${content}"></div>
-<!--<script src="client.js"></script>-->
-<script th:inline="javascript">
-    /*<![CDATA[*/
-    const data = /*[[${data}]]*/{};
-    /*]]>*/
-
+<script src="client.js" th:src="'client.js?rnd='+${rnd}"></script>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
         console.log('DOMContentLoaded')
-        // renderClient(data);
+        renderClient();
     });
 </script>
 </body>

@@ -1,6 +1,5 @@
 package com.terwergreen.next.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.terwergreen.next.vue.VueRenderer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,9 +24,9 @@ public class MainController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        model.addAttribute("content", "content");
-        String data = JSON.toJSONString(new Object());
-        model.addAttribute("data", data);
+        String app = vueRenderer.renderContent();
+        model.addAttribute("content", app);
+        model.addAttribute("rnd", System.currentTimeMillis());
         return "index";
     }
 }
