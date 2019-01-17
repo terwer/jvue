@@ -33,7 +33,7 @@ module.exports = (env, argv) => {
         entry: entryFile,
         output: {
             filename: renderMode === 'client'
-                ? '[name].[chunkhash:6].js' :
+                ? '[name].[hash:6].js' :
                 (renderMode === 'server:client'
                     ? 'client.js' :
                     'server.js'),
@@ -65,7 +65,7 @@ module.exports = (env, argv) => {
             ]
         },
         devServer: {
-            open: false,
+            open: true,
             hot: true,
             port: 8000
         },
@@ -78,7 +78,7 @@ module.exports = (env, argv) => {
                     }),
                     // CSS剥离
                     new MiniCssExtractPlugin({
-                        filename: renderMode === 'client' ? 'common.[chunkhash:6].css' : 'common.css'
+                        filename: renderMode === 'client' ? 'common.[hash:6].css' : 'common.css'
                     })
                 ]
                 : [
