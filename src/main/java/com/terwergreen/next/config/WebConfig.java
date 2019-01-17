@@ -29,5 +29,6 @@ public class WebConfig implements WebMvcConfigurer {
         logger.info("添加静态资源映射");
         // 静态资源映射
         registry.addResourceHandler("/**").addResourceLocations("classpath:/META-INF/resources/dist/");
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/META-INF/resources/ssrdist/");
     }
 }

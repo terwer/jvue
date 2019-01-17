@@ -2,15 +2,43 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path')
 
 module.exports = (env, argv) => {
     // CSS提取应该只用于生产环境
     // 这样我们在开发过程中仍然可以热重载
-    console.log("mode:" + argv.mode)
     const isProduction = argv.mode === 'production';
+    console.log("mode:" + argv.mode)
+    const renderMode = argv.renderMode ? argv.renderMode : 'client'
+    console.log("renderMode:" + renderMode)
+    const buildPath = renderMode === 'client'
+        ? path.resolve('dist') :
+        (renderMode === 'server:client'
+                ? path.resolve('ssrclientdist')
+                : path.resolve('ssrdist')
+        )
+    console.log("buildPath:" + buildPath)
+    const entryFile = renderMode === 'client'
+        ? './src/main.js' :
+        (renderMode === 'server:client'
+            ? './ssr/client.js'
+            : './ssr/server.js')
+    console.log("entryFile:" + entryFile)
     return {
         // All your other custom config...
-        entry: './src/main.js',
+        node: {
+            fs: "empty",
+            module: "empty"
+        },
+        entry: entryFile,
+        output: {
+            filename: renderMode === 'client'
+                ? '[name].[chunkhash:6].js' :
+                (renderMode === 'server:client'
+                    ? 'client.js' :
+                    'server.js'),
+            path: buildPath
+        },
         module: {
             rules: [
                 {
@@ -39,6 +67,7 @@ module.exports = (env, argv) => {
         devServer: {
             open: false,
             hot: true,
+            port: 8000
         },
         plugins:
             isProduction
@@ -49,7 +78,7 @@ module.exports = (env, argv) => {
                     }),
                     // CSS剥离
                     new MiniCssExtractPlugin({
-                        filename: 'common.[chunkhash].css'
+                        filename: renderMode === 'client' ? 'common.[chunkhash:6].css' : 'common.css'
                     })
                 ]
                 : [

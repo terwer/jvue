@@ -2,6 +2,7 @@
     <div id="app">
         <input v-model="message"
                type="text"/>
+        <button @click="showMessage">显示信息</button>
         <h2 class="message">{{ message }}</h2>
     </div>
 </template>
@@ -13,6 +14,11 @@
             return {
                 message: 'Hello World',
             };
+        },
+        methods: {
+            showMessage() {
+                alert(this.message)
+            }
         }
     }
 </script>
