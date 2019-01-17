@@ -13,6 +13,9 @@ $ npm run serve
 
 # build for production and launch server
 $ npm run build
+
+# build for server-side-render
+$ npm run build:ssr
 ```
 
 For detailed explanation on how things work, please visit [author's blog](https://www.terwergreen.com).
