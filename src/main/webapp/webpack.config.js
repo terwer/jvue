@@ -9,14 +9,35 @@ module.exports = (env, argv) => {
     // 这样我们在开发过程中仍然可以热重载
     const isProduction = argv.mode === 'production';
     console.log("mode:" + argv.mode)
-    const buildPath = argv.buildPath || path.resolve('/dist')
+    const renderMode = argv.renderMode ? argv.renderMode : 'client'
+    console.log("renderMode:" + renderMode)
+    const buildPath = renderMode === 'client'
+        ? path.resolve('dist') :
+        (renderMode === 'server:client'
+                ? path.resolve('ssrclientdist')
+                : path.resolve('ssrdist')
+        )
     console.log("buildPath:" + buildPath)
+    const entryFile = renderMode === 'client'
+        ? './src/main.js' :
+        (renderMode === 'server:client'
+            ? './ssr/client.js'
+            : './ssr/server.js')
+    console.log("entryFile:" + entryFile)
     return {
         // All your other custom config...
-        entry: './src/main.js',
+        node: {
+            fs: "empty",
+            module: "empty"
+        },
+        entry: entryFile,
         output: {
-            filename: '[name].[chunkhash:6].js',
-            // path: buildPath
+            filename: renderMode === 'client'
+                ? '[name].[chunkhash:6].js' :
+                (renderMode === 'server:client'
+                    ? 'client.js' :
+                    'server.js'),
+            path: buildPath
         },
         module: {
             rules: [
@@ -57,7 +78,7 @@ module.exports = (env, argv) => {
                     }),
                     // CSS剥离
                     new MiniCssExtractPlugin({
-                        filename: 'common.[chunkhash:6].css'
+                        filename: renderMode === 'client' ? 'common.[chunkhash:6].css' : 'common.css'
                     })
                 ]
                 : [

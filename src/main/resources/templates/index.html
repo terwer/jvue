@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Next Vue Project</title>
+    <link th:href="'common.css?rnd='+${rnd}" rel="stylesheet">
+</head>
 <body>
-<div id="content" th:utext="${content}"></div>
-<script src="client.js" th:src="'client.js?rnd='+${rnd}"></script>
+<div id="main" th:utext="${content}"></div>
+<script type="text/javascript" th:src="'client.js?rnd='+${rnd}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         console.log('DOMContentLoaded')

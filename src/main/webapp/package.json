@@ -4,9 +4,13 @@
   "description": "next vue project",
   "main": "src/main.js",
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf dist && rimraf ssrdist",
     "serve": "webpack-dev-server --mode development",
-    "build": "npm run clean && webpack --mode production"
+    "build": "rimraf dist && webpack --mode production",
+    "build:client": "rimraf ssrclientdist && webpack --mode production --renderMode server:client",
+    "build:server": "rimraf ssrdist && webpack --mode production --renderMode server:server",
+    "build:server-bundle": "mv ssrclientdist/client.js ssrdist/client.js && cat ssr/event-loop.js ssr/nashorn-polyfill.js ssrdist/server.js ssr/return-render-function.js > ssrdist/server-bundle.js",
+    "build:ssr":"npm run build:client && npm run build:server && npm run build:server-bundle"
   },
   "author": "Terwer",
   "license": "Apache V2",
@@ -25,5 +29,10 @@
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "vue": "^2.5.22",
+    "vue-server-renderer": "^2.5.22"
   }
 }
