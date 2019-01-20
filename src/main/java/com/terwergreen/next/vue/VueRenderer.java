@@ -35,13 +35,14 @@ public class VueRenderer {
             ScriptObjectMirror promise = (ScriptObjectMirror) engine.callRender("renderServer");
             promise.callMember("then", fnResolve);
             ScriptObjectMirror nashornEventLoop = engine.getGlobalGlobalMirrorObject("nashornEventLoop");
+
             int i = 0;
             int jsWaitTimeout = 1000 * 60;
             int interval = 200; // 等待时间间隔
             int totalWaitTime = 0; // 实际等待时间
             while (!promiseResolved && totalWaitTime < jsWaitTimeout) {
                 // 执行nashornEventLoops.process()使主线程执行回调函数
-                // nashornEventLoop.callMember("process");
+                nashornEventLoop.callMember("process");
                 try {
                     Thread.sleep(interval);
                 } catch (InterruptedException e) {

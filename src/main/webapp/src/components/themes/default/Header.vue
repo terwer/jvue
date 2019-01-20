@@ -82,7 +82,7 @@
         </div>
 
         <!--<b-modal ref="searchModalRef" hide-footer title="全站搜索">-->
-        <!-- 搜索弹窗 -->
+        <!-- 搜索弹窗
         <div id="seacherModal" tabindex="-1">
             <div>
                 <div class="next-seacher">
@@ -92,20 +92,14 @@
                             <input id="searchsubmit" class="sb-search-submit" type="submit" value="搜索">
                         </form>
                     </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal -->
+                </div>
+            </div>
         </div>
+        -->
         <!--
         <b-btn variant="outline-danger" block @click="hideModal">关闭</b-btn>
         -->
         <!--</b-modal>-->
-
-        <div>
-            <div>
-                <button @click="clickTest">点击</button>
-            </div>
-            <div>{{ title }}</div>
-        </div>
     </div>
 </template>
 

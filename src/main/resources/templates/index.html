@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-cmn-Hans" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Next Vue Project</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Next Vue Project In Server</title>
+    <meta name="keywords" content="keywords">
+    <meta name="description" content="description">
     <link th:href="'common.css?rnd='+${rnd}" rel="stylesheet">
 </head>
 <body>
-<div id="main" th:utext="${content}"></div>
+<render th:utext="${content}" th:remove="tag"></render>
 <script type="text/javascript" th:src="'client.js?rnd='+${rnd}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {

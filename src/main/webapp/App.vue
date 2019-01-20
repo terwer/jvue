@@ -1,9 +1,5 @@
 <template>
     <div id="app">
-        <input v-model="message"
-               type="text"/>
-        <button @click="showMessage">显示信息</button>
-        <h2 class="message">{{ message }}</h2>
         <Index/>
     </div>
 </template>
@@ -17,16 +13,6 @@
         name: "App",
         components: {
             Index
-        },
-        data() {
-            return {
-                message: 'Hello World',
-            };
-        },
-        methods: {
-            showMessage() {
-                alert(this.message)
-            }
         }
     }
 </script>
@@ -34,7 +20,7 @@
 <style scoped>
     #app {
         font-family: 'Microsoft YaHei', sans-serif;
-        /*background: red;*/
-        /*height: 768px;*/
+        background: red;
+        height: 1080px;
     }
 </style>
