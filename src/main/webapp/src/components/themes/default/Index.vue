@@ -1,12 +1,12 @@
 <template>
     <div id="index">
         Index
-        <!--<Header :title="title"/>-->
+        <Header :title="title"/>
     </div>
 </template>
 
 <script>
-    // import Header from './Header.vue'
+    import Header from './Header.vue'
 
     export default {
         name: "Index",
@@ -15,12 +15,12 @@
                 title: 'Index page'
             }
         },
-        // components: {
-        //     Header
-        // }
+        components: {
+            Header
+        }
     }
 </script>
 
 <style scoped>
-     @import 'style.css';
+    @import 'style.css';
 </style>

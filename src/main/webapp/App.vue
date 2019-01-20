@@ -9,7 +9,9 @@
 </template>
 
 <script>
-    import Index from "./src/components/themes/default/Index.vue"
+    import 'bootstrap/dist/css/bootstrap.css'
+    import 'bootstrap-vue/dist/bootstrap-vue.css'
+    import Index from './src/components/themes/default/Index.vue'
 
     export default {
         name: "App",
@@ -31,14 +33,8 @@
 
 <style scoped>
     #app {
-        font-size: 18px;
-        font-family: 'Roboto', sans-serif;
-        color: blue;
-    }
-
-    .message {
-        font-size: 18px;
-        font-family: 'Roboto', sans-serif;
-        color: red;
+        font-family: 'Microsoft YaHei', sans-serif;
+        /*background: red;*/
+        /*height: 768px;*/
     }
 </style>

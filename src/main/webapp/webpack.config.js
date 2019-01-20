@@ -12,10 +12,10 @@ module.exports = (env, argv) => {
     const renderMode = argv.renderMode ? argv.renderMode : 'client'
     console.log("renderMode:" + renderMode)
     const buildPath = renderMode === 'client'
-        ? path.resolve('dist') :
+        ? path.resolve(__dirname, 'dist') :
         (renderMode === 'server:client'
-                ? path.resolve('ssrclientdist')
-                : path.resolve('ssrdist')
+                ? path.resolve(__dirname, 'ssrclientdist')
+                : path.resolve(__dirname, 'ssrdist')
         )
     console.log("buildPath:" + buildPath)
     const entryFile = renderMode === 'client'
@@ -60,6 +60,12 @@ module.exports = (env, argv) => {
                             ? 'vue-style-loader'
                             : MiniCssExtractPlugin.loader,
                         'css-loader'
+                    ]
+                },
+                {
+                    test: /\.(png|svg|jpg|gif)$/,
+                    use: [
+                        'file-loader'
                     ]
                 }
             ]
