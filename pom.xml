@@ -64,12 +64,12 @@
                 <!--注意此次必须要放在此目录下才能被访问到 -->
                 <targetPath>META-INF/resources</targetPath>
                 <includes>
-                    <!-- 客户端渲染 -->
+                    <!-- 客户端渲染
                     <include>dist/*.css</include>
                     <include>dist/*.js</include>
+                    -->
                     <!-- 服务端渲染 -->
-                    <include>ssrdist/*.css</include>
-                    <include>ssrdist/*.js</include>
+                    <include>ssrdist/**</include>
                 </includes>
             </resource>
         </resources>
