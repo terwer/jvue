@@ -9,8 +9,8 @@
 </template>
 
 <script>
-    import 'bootstrap/dist/css/bootstrap.css'
-    import 'bootstrap-vue/dist/bootstrap-vue.css'
+    // import 'bootstrap/dist/css/bootstrap.css'
+    // import 'bootstrap-vue/dist/bootstrap-vue.css'
     import Index from './src/components/themes/default/Index.vue'
 
     export default {
