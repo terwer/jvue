@@ -81,24 +81,24 @@
             <div class="clearfix"></div>
         </div>
 
-        <b-modal ref="searchModalRef" hide-footer title="全站搜索">
-            <!-- 搜索弹窗 -->
-            <div id="seacherModal" tabindex="-1">
-                <div>
-                    <div class="next-seacher">
-                        <div class="modal-body">
-                            <form id="searchform" class="" role="search" method="get" action="/">
-                                <input class="sb-search-input" placeholder="输入关键词查找..." type="text" value="" name="s" id="s" autofocus>
-                                <input id="searchsubmit" class="sb-search-submit" type="submit" value="搜索">
-                            </form>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal -->
-            </div>
-            <!--
-            <b-btn variant="outline-danger" block @click="hideModal">关闭</b-btn>
-            -->
-        </b-modal>
+        <!--<b-modal ref="searchModalRef" hide-footer title="全站搜索">-->
+        <!-- 搜索弹窗 -->
+        <div id="seacherModal" tabindex="-1">
+            <div>
+                <div class="next-seacher">
+                    <div class="modal-body">
+                        <form id="searchform" class="" role="search" method="get" action="/">
+                            <input class="sb-search-input" placeholder="输入关键词查找..." type="text" value="" name="s" id="s" autofocus>
+                            <input id="searchsubmit" class="sb-search-submit" type="submit" value="搜索">
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+        <!--
+        <b-btn variant="outline-danger" block @click="hideModal">关闭</b-btn>
+        -->
+        <!--</b-modal>-->
 
         <div>
             <div>
@@ -138,11 +138,11 @@
             },
             showModal() {
                 alert("showModal")
-                this.$refs.searchModalRef.show()
+                // this.$refs.searchModalRef.show()
             },
             hideModal() {
                 alert("hideModal")
-                this.$refs.searchModalRef.hide()
+                // this.$refs.searchModalRef.hide()
             }
         }
     }
