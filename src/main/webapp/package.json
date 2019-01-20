@@ -10,7 +10,7 @@
     "build:client": "rimraf ssrclientdist && webpack --mode production --renderMode server:client",
     "build:server": "rimraf ssrdist && webpack --mode production --renderMode server:server",
     "build:server-bundle": "rm ssrdist/index.html && mv ssrclientdist/client.js ssrdist/client.js && cat ssr/event-loop.js ssr/nashorn-polyfill.js ssrdist/server.js ssr/return-render-function.js > ssrdist/server-bundle.js && rm ssrdist/server.js",
-    "build:ssr":"npm run build:client && npm run build:server && npm run build:server-bundle"
+    "build:ssr": "npm run build:client && npm run build:server && npm run build:server-bundle"
   },
   "author": "Terwer",
   "license": "Apache V2",
@@ -19,6 +19,7 @@
     "@babel/preset-env": "^7.2.3",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
+    "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.0.7",
     "mini-css-extract-plugin": "^0.5.0",
     "rimraf": "^2.6.3",
