@@ -4,12 +4,18 @@
                type="text"/>
         <button @click="showMessage">显示信息</button>
         <h2 class="message">{{ message }}</h2>
+        <Index/>
     </div>
 </template>
 
 <script>
+    import Index from "./src/components/themes/default/Index.vue"
+
     export default {
         name: "App",
+        components: {
+            Index
+        },
         data() {
             return {
                 message: 'Hello World',
