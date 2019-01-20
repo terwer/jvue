@@ -4,12 +4,12 @@
   "description": "next vue project",
   "main": "src/main.js",
   "scripts": {
-    "clean": "rimraf dist && rimraf ssrdist",
+    "clean": "rimraf dist && rimraf ssrdist && rimraf ssrclientdist",
     "serve": "webpack-dev-server --mode development",
     "build": "rimraf dist && webpack --mode production",
     "build:client": "rimraf ssrclientdist && webpack --mode production --renderMode server:client",
     "build:server": "rimraf ssrdist && webpack --mode production --renderMode server:server",
-    "build:server-bundle": "mv ssrclientdist/client.js ssrdist/client.js && cat ssr/event-loop.js ssr/nashorn-polyfill.js ssrdist/server.js ssr/return-render-function.js > ssrdist/server-bundle.js",
+    "build:server-bundle": "rm ssrdist/index.html && mv ssrclientdist/client.js ssrdist/client.js && cat ssr/event-loop.js ssr/nashorn-polyfill.js ssrdist/server.js ssr/return-render-function.js > ssrdist/server-bundle.js && rm ssrdist/server.js",
     "build:ssr":"npm run build:client && npm run build:server && npm run build:server-bundle"
   },
   "author": "Terwer",
