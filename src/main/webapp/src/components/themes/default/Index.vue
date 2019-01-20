@@ -1,6 +1,5 @@
 <template>
     <div id="index">
-        Index
         <Header :title="title"/>
     </div>
 </template>
