@@ -17,12 +17,21 @@ public class VueRenderer {
 
     private final Object promiseLock = new Object();
     private volatile boolean promiseResolved = false;
+    private volatile boolean promiseRejected = false;
+
     private String html = null;
 
     private Consumer<Object> fnResolve = object -> {
         synchronized (promiseLock) {
             html = (String) object;
             promiseResolved = true;
+        }
+    };
+
+    private Consumer<Object> fnRejected = object -> {
+        synchronized (promiseLock) {
+            html = (String) object;
+            promiseRejected= true;
         }
     };
 
@@ -41,13 +50,17 @@ public class VueRenderer {
     public String renderContent() {
         try {
             ScriptObjectMirror promise = (ScriptObjectMirror) engine.callRender("renderServer");
-            promise.callMember("then", fnResolve);
+            promise.callMember("then", fnResolve, fnRejected);
 
             int i = 0;
             int jsWaitTimeout = 1000 * 60;
             int interval = 200; // 等待时间间隔
             int totalWaitTime = 0; // 实际等待时间
             while (!promiseResolved && totalWaitTime < jsWaitTimeout) {
+                logger.info("rejected status: " + promiseRejected);
+                if (promiseRejected) {
+                    break;
+                }
                 // 执行nashornEventLoops.process()使主线程执行回调函数
                 engine.eval("global.nashornEventLoop.process();");
                 // ScriptObjectMirror nashornEventLoop = engine.getGlobalGlobalMirrorObject("nashornEventLoop");
