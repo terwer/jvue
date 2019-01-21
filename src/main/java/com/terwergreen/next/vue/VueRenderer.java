@@ -42,7 +42,6 @@ public class VueRenderer {
         try {
             ScriptObjectMirror promise = (ScriptObjectMirror) engine.callRender("renderServer");
             promise.callMember("then", fnResolve);
-            ScriptObjectMirror nashornEventLoop = engine.getGlobalGlobalMirrorObject("nashornEventLoop");
 
             int i = 0;
             int jsWaitTimeout = 1000 * 60;
@@ -50,7 +49,9 @@ public class VueRenderer {
             int totalWaitTime = 0; // 实际等待时间
             while (!promiseResolved && totalWaitTime < jsWaitTimeout) {
                 // 执行nashornEventLoops.process()使主线程执行回调函数
-                nashornEventLoop.callMember("process");
+                engine.eval("global.nashornEventLoop.process();");
+                // ScriptObjectMirror nashornEventLoop = engine.getGlobalGlobalMirrorObject("nashornEventLoop");
+                // nashornEventLoop.callMember("process");
                 try {
                     Thread.sleep(interval);
                 } catch (InterruptedException e) {
@@ -60,6 +61,7 @@ public class VueRenderer {
                 if (interval < 500) interval = interval * 2;
                 i = i + 1;
             }
+            engine.eval("global.nashornEventLoop.reset();");
             return html;
         } catch (Exception e) {
             throw new IllegalStateException("failed to render vue component", e);
