@@ -31,7 +31,7 @@ public class VueRenderer {
     private Consumer<Object> fnRejected = object -> {
         synchronized (promiseLock) {
             html = (String) object;
-            promiseRejected= true;
+            promiseRejected = true;
         }
     };
 
@@ -51,28 +51,29 @@ public class VueRenderer {
         try {
             ScriptObjectMirror promise = (ScriptObjectMirror) engine.callRender("renderServer");
             promise.callMember("then", fnResolve, fnRejected);
+            promise.callMember("catch", fnRejected);
 
             int i = 0;
             int jsWaitTimeout = 1000 * 60;
             int interval = 200; // 等待时间间隔
             int totalWaitTime = 0; // 实际等待时间
-            while (!promiseResolved && totalWaitTime < jsWaitTimeout) {
-                logger.info("rejected status: " + promiseRejected);
-                if (promiseRejected) {
-                    break;
+
+            logger.info("rejected status:" + promiseRejected);
+            if (!promiseRejected) {
+                while (!promiseResolved && totalWaitTime < jsWaitTimeout) {
+                    // 执行nashornEventLoops.process()使主线程执行回调函数
+                    engine.eval("global.nashornEventLoop.process();");
+                    // ScriptObjectMirror nashornEventLoop = engine.getGlobalGlobalMirrorObject("nashornEventLoop");
+                    // nashornEventLoop.callMember("process");
+                    try {
+                        Thread.sleep(interval);
+                    } catch (InterruptedException e) {
+                        logger.error("Thread error:", e);
+                    }
+                    totalWaitTime = totalWaitTime + interval;
+                    if (interval < 500) interval = interval * 2;
+                    i = i + 1;
                 }
-                // 执行nashornEventLoops.process()使主线程执行回调函数
-                engine.eval("global.nashornEventLoop.process();");
-                // ScriptObjectMirror nashornEventLoop = engine.getGlobalGlobalMirrorObject("nashornEventLoop");
-                // nashornEventLoop.callMember("process");
-                try {
-                    Thread.sleep(interval);
-                } catch (InterruptedException e) {
-                    logger.error("Thread error:", e);
-                }
-                totalWaitTime = totalWaitTime + interval;
-                if (interval < 500) interval = interval * 2;
-                i = i + 1;
             }
             engine.eval("global.nashornEventLoop.reset();");
             return html;
