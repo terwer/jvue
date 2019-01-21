@@ -1,6 +1,7 @@
 package com.terwergreen.next.vue;
 
 import com.terwergreen.next.utils.NashornUtil;
+import com.terwergreen.next.utils.VueUtil;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -28,6 +29,13 @@ public class VueRenderer {
     public VueRenderer() {
         // 获取Javascript引擎
         engine = NashornUtil.getInstance();
+        // 编译Vue server
+//        for (String fileName : NashornUtil.VENDOR_FILE_NAME) {
+//            engine.eval(read(SRC_DIR + File.separator + fileName));
+//        }
+//        engine.eval(read(SRC_DIR + File.separator + "app.js"));
+        engine.eval(VueUtil.readVueFile("server.js"));
+        logger.info("Vue server编译成功，编译引擎为Nashorn");
     }
 
     public String renderContent() {
