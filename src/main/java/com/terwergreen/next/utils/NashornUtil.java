@@ -41,7 +41,7 @@ public class NashornUtil {
             long start = System.currentTimeMillis();
             nashornUtil = new NashornUtil();
             long end = System.currentTimeMillis();
-            logger.info("init nashornHelper cost time {}ms", (end - start));
+            logger.info("Init NashornScriptEngine cost time {} ms", (end - start));
         }
 
         return nashornUtil;
@@ -59,20 +59,28 @@ public class NashornUtil {
         try {
             // 编译nashorn-polyfill
             engine.eval(read(LIB_DIR + File.separator + POLYFILL_FILE_NAME));
-//            for (String fileName : NashornUtil.VENDOR_FILE_NAME) {
-//                engine.eval(read(SRC_DIR + File.separator + fileName));
-//            }
-//            engine.eval(read(SRC_DIR + File.separator + "app.js"));
-            // 编译server
-            engine.eval(VueUtil.readVueFile("server.js"));
-            logger.info("Vue app.js编译成功，编译引擎为Nashorn");
+            logger.info("nashorn-polyfill编译成功，编译引擎为Nashorn");
         } catch (ScriptException e) {
-            logger.error("Nashorn引擎Javascript解析错误", e);
+            logger.error("nashorn-polyfill解析错误", e);
         }
     }
 
-    public NashornScriptEngine getNashornScriptEngine() {
-        return engine;
+    public Object eval(Reader reader) {
+        try {
+            return engine.eval(reader);
+        } catch (ScriptException e) {
+            logger.error("script compiled error", e);
+            return null;
+        }
+    }
+
+    public Object eval(String script) {
+        try {
+            return engine.eval(script);
+        } catch (ScriptException e) {
+            logger.error("script compiled error", e);
+            return null;
+        }
     }
 
     public ScriptObjectMirror getGlobalGlobalMirrorObject(String objectName) {
@@ -94,5 +102,12 @@ public class NashornUtil {
     private Reader read(String path) {
         InputStream in = getClass().getClassLoader().getResourceAsStream(path);
         return new InputStreamReader(in);
+    }
+
+    public static void main(String[] args) {
+        NashornUtil engine = NashornUtil.getInstance();
+        engine.eval("function test(){let num=2;console.log(\"num is:\"+num);return num;}");
+        Object result = engine.callRender("test");
+        logger.info("result = " + result);
     }
 }

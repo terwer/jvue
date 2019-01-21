@@ -1,3 +1,9 @@
+/**
+ * poli-fill the following
+ * self,global,process,console,Object.assign
+ * setTimeout,clearTimeout,setImmediate,clearImmediate,setInterval,clearInterval
+ * XMLHttpRequest
+ */
 var self = this;
 // 模拟global
 var global = this;
@@ -34,7 +40,7 @@ Object.assign = function (t) {
 };
 
 /*
- Source is originated from https://github.com/morungos/java-xmlhttprequest
+ Source is originated from https://github.com/sabren/java-XmlHttpRequest
  Articles about Nashorn:
  - https://blog.codecentric.de/en/2014/06/project-nashorn-javascript-jvm-polyglott/
  How it work:
@@ -60,7 +66,6 @@ Object.assign = function (t) {
     var TimeUnit = Java.type("java.util.concurrent.TimeUnit");
     var Runnable = Java.type('java.lang.Runnable');
 
-
     var globalTimerId;
     var timerMap;
     var eventLoop;
@@ -71,7 +76,7 @@ Object.assign = function (t) {
 
     resetEventLoop();
 
-    console.log('main javasript thread ' + Thread.currentThread().getName());
+    // console.log('main javasript thread ' + Thread.currentThread().getName());
 
     function resetEventLoop() {
         globalTimerId = 1;
@@ -190,10 +195,123 @@ Object.assign = function (t) {
         clearTimeout(timerId);
     };
 
+    var XMLHttpRequest = function () {
+        var method, url, async, user, password, headers = {};
+
+        var that = this;
+
+        this.onreadystatechange = function () {
+        };
+
+        this.readyState = 0;
+        this.response = null;
+        this.responseText = null;
+        this.responseType = '';
+        this.status = null;
+        this.statusText = null;
+        this.timeout = 0; // no timeout by default
+        this.ontimeout = function () {
+        };
+        this.withCredentials = false;
+        this.requestBuilder = null;
+
+        this.abort = function () {
+
+        };
+
+        this.getAllResponseHeaders = function () {
+
+        };
+
+        this.getResponseHeader = function (key) {
+
+        };
+
+        this.setRequestHeader = function (key, value) {
+            headers[key] = value;
+        };
+
+        this.open = function (_method, _url, _async, _user, _password) {
+            this.readyState = 1;
+
+            method = _method;
+            url = _url;
+
+            async = _async === false ? false : true;
+
+            user = _user || '';
+            password = _password || '';
+
+            this.requestBuilder = RequestBuilder.create(_method);
+            this.requestBuilder.setUri(_url);
+
+            setTimeout(this.onreadystatechange, 0);
+        };
+
+        this.send = function (data) {
+            phaser.register();
+            var that = this;
+
+            var clientBuilder = HttpAsyncClientBuilder.create();
+            var httpclient = clientBuilder.build();
+            httpclient.start();
+
+            var callback = new FutureCallback({
+                completed: function (response) {
+
+                    that.readyState = 4;
+
+                    var body = org.apache.http.util.EntityUtils.toString(response.getEntity(), 'UTF-8');
+                    that.responseText = that.response = body;
+
+                    if (that.responseType === 'json') {
+                        try {
+                            that.response = JSON.parse(that.response);
+                        } catch (e) {
+
+                            // Store the error
+                            finalException = e;
+
+                            context.shutdown();
+                        }
+                    }
+
+                    if (finalException) {
+                        return;
+                    }
+
+                    var statusLine = response.getStatusLine();
+                    that.status = statusLine.getStatusCode();
+                    that.statusText = statusLine.getReasonPhrase();
+
+                    context.setTimeout(that.onreadystatechange, 0);
+
+                    phaser.arriveAndDeregister();
+                },
+                cancelled: function () {
+                    System.err.println("Cancelled");
+                },
+                failed: function (e) {
+
+                    that.readyState = 4;
+                    that.status = 0;
+                    that.statusText = e.getMessage();
+                    context.setTimeout(that.onreadystatechange, 0);
+
+                    phaser.arriveAndDeregister();
+                }
+            });
+
+            httpclient.execute(this.requestBuilder.build(), null, callback);
+        }
+    };
+
     context.setTimeout = setTimeout;
     context.clearTimeout = clearTimeout;
     context.setImmediate = setImmediate;
     context.clearImmediate = clearImmediate;
     context.setInterval = setInterval;
     context.clearInterval = clearInterval;
+    context.XMLHttpRequest = XMLHttpRequest;
+
 })(typeof global !== "undefined" && global || typeof self !== "undefined" && self || this);
