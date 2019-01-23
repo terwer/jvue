@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
+    "bootstrap-vue": "^2.0.0-rc.11",
     "vue": "^2.5.22",
     "vue-server-renderer": "^2.5.22"
   },
