@@ -1,25 +1,25 @@
 <template>
-    <div id="index">
-        <Header :title="title"/>
-    </div>
+  <div id="index">
+    <Header :title="title" />
+  </div>
 </template>
 
 <script>
-    import Header from './Header.vue'
+import Header from "./Header.vue";
 
-    export default {
-        name: "Index",
-        data: function () {
-            return {
-                title: 'Index page'
-            }
-        },
-        components: {
-            Header
-        }
-    }
+export default {
+  name: "Index",
+  data: function() {
+    return {
+      title: "Index page"
+    };
+  },
+  components: {
+    Header
+  }
+};
 </script>
 
 <style scoped>
-    @import 'style.css';
+@import "style.css";
 </style>
