@@ -1,3 +1,11 @@
+<!--
+  _______
+ |__   __|
+    | |  ___  _ __ __      __ ___  _ __
+    | | / _ \| '__|\ \ /\ / // _ \| '__|
+    | ||  __/| |    \ V  V /|  __/| |
+    |_| \___||_|     \_/\_/  \___||_|
+-->
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -6,12 +14,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Next Vue Project In Server</title>
+    <title>Next Vue SSR Project for Java Nashorn Script engine</title>
     <meta name="keywords" content="keywords">
     <meta name="description" content="description">
-    <link th:href="'common.css?rnd='+${rnd}" rel="stylesheet">
+    <link rel="icon" th:href="'favicon.ico?rnd='+${rnd}" type="image/x-icon" />
+    <link rel="shortcut icon" th:href="'favicon.ico?rnd='+${rnd}" type="image/x-icon" />
+    <link th:href="'css/common.css?rnd='+${rnd}" rel="stylesheet">
 </head>
 <body>
+<noscript>
+    <strong>We're sorry but this page doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+</noscript>
 <render th:utext="${content}" th:remove="tag"></render>
 <script type="text/javascript" th:src="'js/client.js?rnd='+${rnd}"></script>
 <script>
