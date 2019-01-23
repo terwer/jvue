@@ -7,7 +7,26 @@ Vue.config.productionTip = true;
 
 // Vue.use(BootstrapVue);
 
-const vm = new Vue({
-  render: h => h(App)
-});
-vm.$mount("#app");
+export default () => {
+  console.log("Main is starting");
+  return new Vue({
+    render: h => h(App)
+  });
+};
+
+// ======================
+// With store and router
+// ======================
+//
+// import Vue from "vue";
+// import App from "./App.vue";
+//
+// Vue.config.productionTip = false;
+//
+// export default ({ router, store }) => {
+//     return new Vue({
+//         store,
+//         router,
+//         render: h => h(App)
+//     });
+// };

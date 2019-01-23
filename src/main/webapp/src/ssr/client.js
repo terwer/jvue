@@ -1,16 +1,7 @@
 import "@babel/polyfill";
-import Vue from "vue";
-// import BootstrapVue from 'bootstrap-vue'
-import App from "../App.vue";
-
-// 生产部署时候需要设置为false
-Vue.config.productionTip = false;
-
-// Vue.use(BootstrapVue);
+import Main from "../main";
 
 global.renderClient = () => {
-  const vm = new Vue({
-    render: h => h(App)
-  });
-  vm.$mount("#app");
+    const vm = Main();
+    vm.$mount("#app");
 };

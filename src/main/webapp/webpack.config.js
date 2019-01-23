@@ -14,26 +14,31 @@ module.exports = (env, argv) => {
 
   let entryFile;
   let buildPath;
+  let outputFilename;
   switch (renderMode) {
     case "ssr_client": {
       entryFile = "./src/ssr/client.js";
       buildPath = path.resolve(__dirname, "ssrclientdist");
+      outputFilename = "js/client.js";
       break;
     }
     case "ssr_server": {
       entryFile = "./src/ssr/server.js";
       buildPath = path.resolve(__dirname, "ssrdist");
+      outputFilename = "js/server-bundle.js";
       break;
     }
     default: {
-      entryFile = "./src/main.js";
+      entryFile = "./src/app.js";
       buildPath = path.resolve(__dirname, "dist");
+      outputFilename = "js/[name].[hash:6].js";
       break;
     }
   }
 
   console.log("buildPath:" + buildPath);
   console.log("entryFile:" + entryFile);
+  console.log("outputFilename:" + outputFilename);
 
   return {
     // All your other custom config...
@@ -43,12 +48,7 @@ module.exports = (env, argv) => {
     },
     entry: entryFile,
     output: {
-      filename:
-        renderMode === "client"
-          ? "[name].[hash:6].js"
-          : renderMode === "ssr_client"
-            ? "client.js"
-            : "server-bundle.js",
+      filename: outputFilename,
       path: buildPath
     },
     module: {

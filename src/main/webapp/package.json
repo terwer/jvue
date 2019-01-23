@@ -12,8 +12,8 @@
     "ssr:build-client": "webpack --mode production --renderMode ssr_client",
     "ssr:build-server-dev": "webpack --mode development --renderMode ssr_server",
     "ssr:build-server": "webpack --mode production --renderMode ssr_server",
-    "ssr:build-dev": "npm run clean && npm run ssr:build-client-dev && npm run ssr:build-server-dev && mv ssrclientdist/client.js ssrdist/client.js && rimraf ssrclientdist",
-    "ssr:build": "npm run clean && npm run ssr:build-client && npm run ssr:build-server && mv ssrclientdist/client.js ssrdist/client.js && rimraf ssrclientdist"
+    "ssr:build-dev": "npm run clean && npm run ssr:build-client-dev && npm run ssr:build-server-dev && mv ssrclientdist/js/client.js ssrdist/js/client.js && rimraf ssrclientdist && rimraf ssrdist/index.html",
+    "ssr:build": "npm run clean && npm run ssr:build-client && npm run ssr:build-server && mv ssrclientdist/js/client.js ssrdist/js/client.js && rimraf ssrclientdist && rimraf ssrdist/index.html"
   },
   "author": "Terwer",
   "license": "Apache V2",
