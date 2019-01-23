@@ -56,4 +56,6 @@ $RECYCLE.BIN/
 out
 gen
 dist/
+ssrdist/
+ssrclientdist/
 node_modules/

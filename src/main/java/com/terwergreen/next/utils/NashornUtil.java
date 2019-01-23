@@ -10,6 +10,8 @@ import javax.script.ScriptContext;
 import javax.script.ScriptException;
 import javax.script.SimpleScriptContext;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -99,15 +101,26 @@ public class NashornUtil {
         }
     }
 
-    private Reader read(String path) {
-        InputStream in = getClass().getClassLoader().getResourceAsStream(path);
+    private static Reader read(String path) {
+        InputStream in = NashornUtil.class.getClassLoader().getResourceAsStream(path);
         return new InputStreamReader(in);
     }
 
     public static void main(String[] args) {
         NashornUtil engine = NashornUtil.getInstance();
-        engine.eval("function test(){let num=2;console.log(\"num is:\"+num);return num;}");
-        Object result = engine.callRender("test");
-        logger.info("result = " + result);
+
+        // engine.eval("function test(){let num=2;console.log(\"num is:\"+num);return num;}");
+        // Object result = engine.callRender("test");
+
+        try {
+            InputStreamReader reader = new FileReader("C:\\Users\\Terwer\\IdeaProjects\\next\\src\\main\\webapp\\ssrdist\\js\\server-bundle.js");
+            Object call = engine.eval(reader);
+            logger.info("call = " + call);
+            Object result = engine.callRender("renderServer");
+            logger.info("result = " + result);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 }
