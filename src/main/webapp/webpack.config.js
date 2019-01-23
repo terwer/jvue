@@ -35,7 +35,7 @@ module.exports = (env, argv) => {
     default: {
       entryFile = "./src/app.js";
       buildPath = path.resolve(__dirname, "dist");
-      outputFilename = "js/[name].[hash:6].js";
+      outputFilename = "[name].[hash:6].js";
       break;
     }
   }
@@ -47,7 +47,10 @@ module.exports = (env, argv) => {
   webpackPlugins = [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: "./src/index.html"
+      template: "./src/index.ejs",
+      title: "Next Vue SSR Project for Java Nashorn Script engine",
+      favicon: "./public/favicon.ico",
+      inject: true
     }),
     // CSS剥离
     new MiniCssExtractPlugin({
@@ -97,6 +100,15 @@ module.exports = (env, argv) => {
     },
     module: {
       rules: [
+        {
+          test: /\.(html)$/,
+          use: {
+            loader: "html-loader",
+            options: {
+              attrs: [":data-src"]
+            }
+          }
+        },
         {
           test: /\.vue$/,
           exclude: /node_modules/,
