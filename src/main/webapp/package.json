@@ -6,19 +6,27 @@
   "scripts": {
     "clean": "rimraf dist && rimraf ssrclientdist && rimraf ssrdist",
     "serve": "webpack-dev-server --mode development",
-    "build": "rimraf dist && webpack --mode production",
-    "build:client": "rimraf ssrclientdist && webpack --mode production --renderMode server:client",
-    "build:server": "rimraf ssrdist && webpack --mode production --renderMode server:server",
-    "build:server-bundle": "mv ssrclientdist/client.js ssrdist/client.js && rimraf ssrclientdist",
-    "build:ssr": "npm run build:client && npm run build:server && npm run build:server-bundle"
+    "build": "npm run clean && webpack --mode production",
+    "lint": "eslint . --ext .js --fix --color",
+    "ssr:build-client-dev": "webpack --mode development --renderMode ssr_client",
+    "ssr:build-client": "webpack --mode production --renderMode ssr_client",
+    "ssr:build-server-dev": "webpack --mode development --renderMode ssr_server",
+    "ssr:build-server": "webpack --mode production --renderMode ssr_server",
+    "ssr:build-dev": "npm run clean && npm run ssr:build-client-dev && npm run ssr:build-server-dev && mv ssrclientdist/client.js ssrdist/client.js && rimraf ssrclientdist",
+    "ssr:build": "npm run clean && npm run ssr:build-client && npm run ssr:build-server && mv ssrclientdist/client.js ssrdist/client.js && rimraf ssrclientdist"
   },
   "author": "Terwer",
   "license": "Apache V2",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
+    "@vue/eslint-config-prettier": "^4.0.1",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
+    "eslint": "^5.12.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-vue": "^5.1.0",
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.0.7",
     "mini-css-extract-plugin": "^0.5.0",
@@ -35,5 +43,33 @@
     "@babel/polyfill": "^7.2.5",
     "vue": "^2.5.22",
     "vue-server-renderer": "^2.5.22"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended",
+      "@vue/prettier"
+    ],
+    "rules": {
+      "no-console": "off",
+      "no-unused-vars": [
+        2,
+        {
+          "vars": "local",
+          "args": "none"
+        }
+      ],
+      "semi": [
+        "error",
+        "always"
+      ]
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
   }
 }

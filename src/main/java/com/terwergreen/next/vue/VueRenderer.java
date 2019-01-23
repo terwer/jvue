@@ -19,18 +19,18 @@ public class VueRenderer {
     private volatile boolean promiseResolved = false;
     private volatile boolean promiseRejected = false;
 
-    private String html = null;
+    private Object html = null;
 
     private Consumer<Object> fnResolve = object -> {
         synchronized (promiseLock) {
-            html = (String) object;
+            html = object;
             promiseResolved = true;
         }
     };
 
     private Consumer<Object> fnRejected = object -> {
         synchronized (promiseLock) {
-            html = (String) object;
+            html = object;
             promiseRejected = true;
         }
     };
@@ -39,22 +39,18 @@ public class VueRenderer {
         // 获取Javascript引擎
         engine = NashornUtil.getInstance();
         // 编译Vue server
-//        for (String fileName : NashornUtil.VENDOR_FILE_NAME) {
-//            engine.eval(read(SRC_DIR + File.separator + fileName));
-//        }
-//        engine.eval(read(SRC_DIR + File.separator + "app.js"));
-        engine.eval(VueUtil.readVueFile("server.js"));
+        engine.eval(VueUtil.readVueFile("server-bundle.js"));
         logger.info("Vue server编译成功，编译引擎为Nashorn");
     }
 
     public String renderContent() {
         try {
-            ScriptObjectMirror promise = (ScriptObjectMirror) engine.callRender("renderServer");
+            ScriptObjectMirror promise = (ScriptObjectMirror) engine.callRender("renderServer", "{url:\"/\"}");
             promise.callMember("then", fnResolve, fnRejected);
             promise.callMember("catch", fnRejected);
 
             int i = 0;
-            int jsWaitTimeout = 1000 * 60;
+            int jsWaitTimeout = 1000 * 6;
             int interval = 200; // 等待时间间隔
             int totalWaitTime = 0; // 实际等待时间
 
@@ -76,7 +72,7 @@ public class VueRenderer {
                 }
             }
             engine.eval("global.nashornEventLoop.reset();");
-            return html;
+            return String.valueOf(html);
         } catch (Exception e) {
             throw new IllegalStateException("failed to render vue component", e);
         }
