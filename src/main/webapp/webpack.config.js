@@ -2,6 +2,7 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const path = require("path");
 
 module.exports = (env, argv) => {
@@ -11,10 +12,13 @@ module.exports = (env, argv) => {
   console.log("mode:" + argv.mode);
   const renderMode = argv.renderMode ? argv.renderMode : "client";
   console.log("renderMode:" + renderMode);
+  const isClientServe = renderMode === "client" && !isProduction;
+  console.log("isClientServe:" + isClientServe);
 
   let entryFile;
   let buildPath;
   let outputFilename;
+  let webpackPlugins;
   switch (renderMode) {
     case "ssr_client": {
       entryFile = "./src/ssr/client.js";
@@ -39,6 +43,46 @@ module.exports = (env, argv) => {
   console.log("buildPath:" + buildPath);
   console.log("entryFile:" + entryFile);
   console.log("outputFilename:" + outputFilename);
+
+  webpackPlugins = [
+    new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./src/index.html"
+    }),
+    // CSS剥离
+    new MiniCssExtractPlugin({
+      filename:
+        renderMode === "client" ? "css/common.[hash:6].css" : "css/common.css"
+    })
+  ];
+
+  if (isClientServe) {
+    // 热加载
+    console.log("Hot reload is open");
+    const HotModuleReplacementPlugin = new webpack.HotModuleReplacementPlugin();
+    webpackPlugins.push(HotModuleReplacementPlugin);
+  } else {
+    if (isProduction) {
+      // 压缩css
+      console.log("OptimizeCSSAssets is open");
+      const cssAssetsPlugin = new OptimizeCSSAssetsPlugin({
+        assetNameRegExp: /\.css$/g,
+        cssProcessor: require("cssnano"),
+        cssProcessorPluginOptions: {
+          preset: [
+            "default",
+            {
+              discardComments: {
+                removeAll: true
+              }
+            }
+          ]
+        },
+        canPrint: true
+      });
+      webpackPlugins.push(cssAssetsPlugin);
+    }
+  }
 
   return {
     // All your other custom config...
@@ -68,7 +112,7 @@ module.exports = (env, argv) => {
         {
           test: /\.css$/,
           use: [
-            !isProduction ? "vue-style-loader" : MiniCssExtractPlugin.loader,
+            isClientServe ? "vue-style-loader" : MiniCssExtractPlugin.loader,
             "css-loader"
           ]
         },
@@ -83,25 +127,6 @@ module.exports = (env, argv) => {
       hot: true,
       port: 8000
     },
-    plugins: isProduction
-      ? [
-          new VueLoaderPlugin(),
-          new HtmlWebpackPlugin({
-            template: "./src/index.html"
-          }),
-          // CSS剥离
-          new MiniCssExtractPlugin({
-            filename:
-              renderMode === "client" ? "common.[hash:6].css" : "common.css"
-          })
-        ]
-      : [
-          new VueLoaderPlugin(),
-          new HtmlWebpackPlugin({
-            template: "./src/index.html"
-          }),
-          // 热加载
-          new webpack.HotModuleReplacementPlugin()
-        ]
+    plugins: webpackPlugins
   };
 };
