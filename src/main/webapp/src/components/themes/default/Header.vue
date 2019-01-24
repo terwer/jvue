@@ -14,26 +14,37 @@
         <b-nav>
           <b-nav-item to="/" active>首页</b-nav-item>
           <b-nav-item>随笔</b-nav-item>
-          <b-nav-item-dropdown
-            id="page"
-            text="页面"
-            extra-toggle-classes="nav-link-custom"
-            variant="success"
-            offset="0"
-          >
-            <b-dropdown-item>页面默认模板</b-dropdown-item>
-            <b-dropdown-item>页面模板01</b-dropdown-item>
-            <b-dropdown-item>页面模板02</b-dropdown-item>
-            <b-dropdown-divider></b-dropdown-divider>
-            <b-dropdown-item>用户列表页</b-dropdown-item>
-            <b-dropdown-item>标签页面2</b-dropdown-item>
-          </b-nav-item-dropdown>
-          <ul class="navbar-nav">
+          <ul class="nav">
+            <li class="nav-item dropdown">
+              <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      id="page"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+              >
+                页面
+              </a>
+              <div
+                      class="dropdown-menu"
+                      aria-labelledby="page"
+              >
+                <a class="dropdown-item" href="#">页面默认模板</a>
+                <div role="separator" class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">页面模板01</a>
+                <a class="dropdown-item" href="#">页面模板02</a>
+                <a class="dropdown-item" href="#">用户列表页</a>
+                <a class="dropdown-item" href="#">标签页面</a>
+              </div>
+            </li>
+          </ul>
+          <ul class="nav">
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
-                id="navbarDropdownMenuLink"
+                id="tool"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
@@ -42,7 +53,7 @@
               </a>
               <div
                 class="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
+                aria-labelledby="tool"
               >
                 <a class="dropdown-item" href="#">图集</a>
                 <a class="dropdown-item" href="#">下载</a>
@@ -161,6 +172,10 @@ export default {
 #header .imgWrap .logo {
   display: inline-block;
   max-height: 40px;
+}
+
+.nav li .dropdown-menu{
+  min-width: 0 !important;
 }
 
 .nav li:hover > .dropdown-menu {
