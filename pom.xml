@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.terwergreen</groupId>
-    <artifactId>next</artifactId>
+    <artifactId>jvue</artifactId>
     <version>0.0.1.SNAPSHOT</version>
-    <name>next</name>
-    <description>Next light-weight project</description>
+    <name>jvue</name>
+    <description>Next light-weight,responsive project With Vue,Spring Boot and Java Nashorn Script engine</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -65,8 +65,7 @@
                 <targetPath>META-INF/resources</targetPath>
                 <includes>
                     <!-- 客户端渲染
-                    <include>dist/*.css</include>
-                    <include>dist/*.js</include>
+                    <include>dist/**</include>
                     -->
                     <!-- 服务端渲染 -->
                     <include>ssrdist/**</include>
