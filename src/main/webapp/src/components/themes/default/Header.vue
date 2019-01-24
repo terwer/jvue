@@ -1,4 +1,34 @@
 <template>
+  <b-container id="header">
+    <b-row>
+      <b-col cols="*">
+        <div class="imgWrap">
+          <div class="align-middle">
+            <a href="/"><img class="logo" src="./images/logo.png" alt="Terwer"/></a>
+          </div>
+        </div>
+      </b-col>
+      <b-col cols="*" class="justify-content-center align-self-center">
+        <b-nav pills>
+          <b-nav-item active>Active</b-nav-item>
+          <b-nav-item>Link</b-nav-item>
+          <b-nav-item-dropdown
+            id="nav7_ddown"
+            text="Dropdown"
+            extra-toggle-classes="nav-link-custom"
+            right
+          >
+            <b-dropdown-item>one</b-dropdown-item>
+            <b-dropdown-item>two</b-dropdown-item>
+            <b-dropdown-divider></b-dropdown-divider>
+            <b-dropdown-item>three</b-dropdown-item>
+          </b-nav-item-dropdown>
+        </b-nav>
+      </b-col>
+    </b-row>
+  </b-container>
+
+  <!--
   <el-container id="header">
     <el-aside class="logo">
       <a href="/" title="terwer">
@@ -9,6 +39,7 @@
       menu
     </el-main>
   </el-container>
+  -->
 </template>
 
 <script>
@@ -23,48 +54,29 @@ export default {
     }
   },
   data() {
-    return {
-      activeIndex: "1",
-      activeIndex2: "1"
-    };
+    return {};
   },
-  methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-    }
-  }
+  methods: {}
 };
 </script>
 
 <style scoped>
-#header {
-  background: #fff;
+/**
+* 图片居中
+*/
+#header .imgWrap .align-middle {
   height: 75px;
-  padding: 0 !important;
-  color: #666;
-  margin: 0 auto;
-  overflow-x: hidden;
+  text-align: center;
+}
+#header .imgWrap .align-middle:before {
+  content: " ";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
 }
 
-@media (min-width: 1200px) {
-  #header {
-    width: 1200px !important;
-  }
-}
-
-#header .logo {
-  width: 175px !important;
-  margin-right: 15px;
-}
-
-#header .logo img {
-  padding: 0;
+#header .imgWrap .logo {
+  display: inline-block;
   max-height: 40px;
-  margin-top: 20px;
-}
-
-#header .header-main {
-  padding: 0;
-  line-height: 75px;
 }
 </style>
