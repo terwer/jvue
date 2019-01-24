@@ -1,8 +1,8 @@
 {
-  "name": "next-vue",
+  "name": "jvue",
   "version": "1.0.0",
-  "description": "next vue project",
-  "main": "src/main.js",
+  "description": "Next light-weight,responsive project With Vue,Spring Boot and Java Nashorn Script engine for server-side-rendering",
+  "main": "src/app.js",
   "scripts": {
     "clean": "rimraf dist && rimraf ssrclientdist && rimraf ssrdist",
     "serve": "webpack-dev-server --mode development",
@@ -16,7 +16,7 @@
     "ssr:build": "npm run clean && npm run ssr:build-client && npm run ssr:build-server && mv ssrclientdist/js/client.js ssrdist/js/client.js && rimraf ssrclientdist && rimraf ssrdist/index.html"
   },
   "author": "Terwer",
-  "license": "Apache V2",
+  "license": "MIT license",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",

@@ -1,7 +1,7 @@
-package com.terwergreen.next.vue;
+package com.terwergreen.jvue.vue;
 
-import com.terwergreen.next.utils.NashornUtil;
-import com.terwergreen.next.utils.VueUtil;
+import com.terwergreen.jvue.utils.NashornUtil;
+import com.terwergreen.jvue.utils.VueUtil;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

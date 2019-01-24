@@ -1,4 +1,4 @@
-package com.terwergreen.next.config;
+package com.terwergreen.jvue.config;
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;

@@ -1,4 +1,4 @@
-package com.terwergreen.next.utils;
+package com.terwergreen.jvue.utils;
 
 import jdk.nashorn.api.scripting.NashornScriptEngine;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
