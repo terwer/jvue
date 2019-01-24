@@ -1,119 +1,122 @@
 <template>
-  <b-container id="header">
-    <b-row>
-      <b-col cols="3">
-        <div class="imgWrap">
-          <div class="align-middle">
-            <a href="/"
-              ><img class="logo" src="./images/logo.png" alt="Terwer"
-            /></a>
+  <b-row class="shadow-sm p-0 mb-0 bg-white rounded">
+    <b-col cols="2"></b-col>
+    <b-col>
+      <b-row>
+        <b-col cols="2">
+          <div class="imgWrap">
+            <div class="align-middle">
+              <a href="/"
+                ><img
+                  class="logo"
+                  src="./images/logo.png"
+                  v-bind:alt="title"
+                  v-bind:title="title"
+              /></a>
+            </div>
           </div>
-        </div>
-      </b-col>
-      <b-col cols="6" class="justify-content-center align-self-center">
-        <b-nav>
-          <b-nav-item to="/" active>首页</b-nav-item>
-          <b-nav-item>随笔</b-nav-item>
-          <ul class="nav">
-            <li class="nav-item dropdown">
-              <a
-                      class="nav-link dropdown-toggle"
-                      href="#"
-                      id="page"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
+        </b-col>
+        <b-col class="justify-content-center align-self-center">
+          <b-nav>
+            <b-nav-item to="/" active>首页</b-nav-item>
+            <b-nav-item>随笔</b-nav-item>
+            <ul class="nav">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="page"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  页面
+                </a>
+                <div class="dropdown-menu" aria-labelledby="page">
+                  <a class="dropdown-item" href="#">页面默认模板</a>
+                  <div role="separator" class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">页面模板01</a>
+                  <a class="dropdown-item" href="#">页面模板02</a>
+                  <a class="dropdown-item" href="#">用户列表页</a>
+                  <a class="dropdown-item" href="#">标签页面</a>
+                </div>
+              </li>
+            </ul>
+            <ul class="nav">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="tool"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  工具
+                </a>
+                <div class="dropdown-menu" aria-labelledby="tool">
+                  <a class="dropdown-item" href="#">图集</a>
+                  <a class="dropdown-item" href="#">下载</a>
+                  <a class="dropdown-item" href="#">视频</a>
+                </div>
+              </li>
+            </ul>
+            <b-nav-item>专题</b-nav-item>
+          </b-nav>
+        </b-col>
+        <b-col cols="2" class="justify-content-center align-self-center">
+          <div class="header-right">
+            <div class="loginlink">
+              <a href="javascript:void(0);" @click="showModal"
+                ><i class="fa fa-search"></i><span>搜索</span></a
               >
-                页面
-              </a>
-              <div
-                      class="dropdown-menu"
-                      aria-labelledby="page"
+              <a href="/auth/login"><i class="fa fa-user-circle"></i>登录</a>
+              <a href="/auth/register"
+                ><i class="fa fa-pencil-square-o"></i>注册</a
               >
-                <a class="dropdown-item" href="#">页面默认模板</a>
-                <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">页面模板01</a>
-                <a class="dropdown-item" href="#">页面模板02</a>
-                <a class="dropdown-item" href="#">用户列表页</a>
-                <a class="dropdown-item" href="#">标签页面</a>
-              </div>
-            </li>
-          </ul>
-          <ul class="nav">
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="tool"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                工具
-              </a>
-              <div
-                class="dropdown-menu"
-                aria-labelledby="tool"
-              >
-                <a class="dropdown-item" href="#">图集</a>
-                <a class="dropdown-item" href="#">下载</a>
-                <a class="dropdown-item" href="#">视频</a>
-              </div>
-            </li>
-          </ul>
-          <b-nav-item>专题</b-nav-item>
-        </b-nav>
-      </b-col>
-      <b-col cols="3" class="justify-content-center align-self-center">
-        <div class="header-right">
-          <div class="loginlink">
-            <a href="javascript:void(0);" @click="showModal"
-              ><i class="fa fa-search"></i><span>搜索</span></a
-            >
-            <a href="/auth/login"><i class="fa fa-user-circle"></i>登录</a>
-            <a href="/auth/register"
-              ><i class="fa fa-pencil-square-o"></i>注册</a
-            >
+            </div>
           </div>
-        </div>
-      </b-col>
-    </b-row>
-    <!--搜索遮罩层-->
-    <b-modal
-      ref="searchModalRef"
-      v-model="modalShow"
-      hide-footer
-      title="全站搜索"
-    >
-      <!-- 搜索弹窗 -->
-      <div id="seacherModal">
-        <div>
-          <div class="next-seacher">
-            <div class="modal-body">
-              <b-form id="searchform" method="get" action="/">
-                <!-- Using components -->
-                <b-input-group prepend="">
-                  <b-form-input
-                    id="s"
-                    v-model="s"
-                    name="s"
-                    ref="s"
-                    type="text"
-                    placeholder="输入关键词查找..."
-                  ></b-form-input>
-                  <b-input-group-append>
-                    <b-btn id="searchsubmit" type="submit" variant="primary"
-                      >搜索</b-btn
-                    >
-                  </b-input-group-append>
-                </b-input-group>
-              </b-form>
+        </b-col>
+      </b-row>
+
+      <!--搜索遮罩层-->
+      <b-modal
+        ref="searchModalRef"
+        v-model="modalShow"
+        hide-footer
+        title="全站搜索"
+      >
+        <!-- 搜索弹窗 -->
+        <div id="seacherModal">
+          <div>
+            <div class="next-seacher">
+              <div class="modal-body">
+                <b-form id="searchform" method="get" action="/">
+                  <!-- Using components -->
+                  <b-input-group prepend="">
+                    <b-form-input
+                      id="s"
+                      v-model="s"
+                      name="s"
+                      ref="s"
+                      type="text"
+                      placeholder="输入关键词查找..."
+                    ></b-form-input>
+                    <b-input-group-append>
+                      <b-btn id="searchsubmit" type="submit" variant="primary"
+                        >搜索</b-btn
+                      >
+                    </b-input-group-append>
+                  </b-input-group>
+                </b-form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </b-modal>
-  </b-container>
+      </b-modal>
+    </b-col>
+    <b-col cols="2"></b-col>
+  </b-row>
 </template>
 
 <script>
@@ -158,23 +161,22 @@ export default {
 /**
 * 图片居中
 */
-#header .imgWrap .align-middle {
+.imgWrap .align-middle {
   height: 75px;
-  text-align: center;
 }
-#header .imgWrap .align-middle:before {
+.imgWrap .align-middle:before {
   content: " ";
   display: inline-block;
   vertical-align: middle;
   height: 100%;
 }
 
-#header .imgWrap .logo {
+.imgWrap .logo {
   display: inline-block;
   max-height: 40px;
 }
 
-.nav li .dropdown-menu{
+.nav li .dropdown-menu {
   min-width: 0 !important;
 }
 
@@ -186,5 +188,9 @@ export default {
 .dropdown-menu a:hover {
   background: #007bff;
   color: #fff;
+}
+
+.loginlink a {
+  padding: 0.5rem;
 }
 </style>

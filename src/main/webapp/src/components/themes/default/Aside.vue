@@ -1,6 +1,8 @@
 <template>
-  <b-container>
-    Right Aside
+  <b-container id="aside">
+    <b-row>
+      Right Aside
+    </b-row>
   </b-container>
 </template>
 
@@ -10,4 +12,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#aside {
+  background: #6f42c1;
+  color: #fff;
+  height: 300px;
+}
+</style>

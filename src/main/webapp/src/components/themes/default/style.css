@@ -9,8 +9,5 @@ Version: 1.0
 */
 body {
   font-family: "Microsoft Yahei", Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
-  padding: 0 !important;
   color: #666 !important;
-  margin: 0 auto !important;
-  overflow-x: hidden !important;
 }
