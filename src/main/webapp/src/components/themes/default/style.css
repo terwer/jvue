@@ -92,6 +92,13 @@ button[disabled], html input[disabled] {
     margin-left: -10px !important;
 }
 
+/* 底部阴影 */
+
 .boxshadow{
     box-shadow: 0 2px 6px 0 rgba(63,74,105,.16);
+}
+
+/* 清除浮动 */
+.clearfix{
+    clear:both;
 }

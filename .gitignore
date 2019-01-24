@@ -51,3 +51,4 @@ src/main/webapp/*.sln
 src/main/webapp/*.sw*
 src/main/webapp/package-lock.json
 
+yarn.lock
