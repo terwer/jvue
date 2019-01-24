@@ -20,6 +20,5 @@ export default {
 <style scoped>
 #app {
   font-family: "Microsoft YaHei", sans-serif;
-  height: 1080px;
 }
 </style>
