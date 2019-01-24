@@ -1,8 +1,5 @@
 import Vue from "vue";
 import App from "./App.vue";
-import Element from "element-ui";
-
-Vue.use(Element, { size: "small", zIndex: 3000 });
 
 // 生产部署时候需要设置为false
 Vue.config.productionTip = true;

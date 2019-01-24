@@ -88,7 +88,6 @@ module.exports = (env, argv) => {
   }
 
   return {
-    // All your other custom config...
     node: {
       fs: "empty",
       module: "empty"
