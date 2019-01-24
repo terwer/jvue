@@ -1,9 +1,9 @@
 <template>
   <el-container id="header">
     <el-aside class="logo">
-        <a href="/" title="terwer">
-          <img src="./images/logo.png" alt="terwer" />
-        </a>
+      <a href="/" title="terwer">
+        <img src="./images/logo.png" alt="terwer" />
+      </a>
     </el-aside>
     <el-main class="header-main">
       menu
@@ -57,7 +57,7 @@ export default {
   margin-right: 15px;
 }
 
-#header .logo img{
+#header .logo img {
   padding: 0;
   max-height: 40px;
   margin-top: 20px;
