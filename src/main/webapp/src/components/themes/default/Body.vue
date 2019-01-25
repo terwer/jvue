@@ -1,5 +1,5 @@
 <template>
-  <b-row>
+  <b-row id="body">
     <b-col cols="2"></b-col>
     <b-col cols="8">
       <b-row>
@@ -28,4 +28,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#body {
+  padding-top: 10px;
+}
+</style>

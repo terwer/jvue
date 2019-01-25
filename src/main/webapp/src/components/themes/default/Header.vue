@@ -1,11 +1,11 @@
 <template>
-  <b-row class="shadow-sm p-0 mb-0 bg-white rounded">
-    <b-col cols="2"></b-col>
+  <b-row id="header" class="shadow-sm p-0 mb-0 bg-white rounded">
+    <b-col sm="0" md="2"></b-col>
     <b-col>
       <b-row>
-        <b-col cols="2">
-          <div class="imgWrap">
-            <div class="align-middle">
+        <b-col sm="10" md="2">
+          <div class="img-wrap">
+            <div class="img-align-middle">
               <a href="/"
                 ><img
                   class="logo"
@@ -13,67 +13,6 @@
                   v-bind:alt="title"
                   v-bind:title="title"
               /></a>
-            </div>
-          </div>
-        </b-col>
-        <b-col class="justify-content-center align-self-center">
-          <b-nav>
-            <b-nav-item to="/" active>首页</b-nav-item>
-            <b-nav-item>随笔</b-nav-item>
-            <ul class="nav">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="page"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  页面
-                </a>
-                <div class="dropdown-menu" aria-labelledby="page">
-                  <a class="dropdown-item" href="#">页面默认模板</a>
-                  <div role="separator" class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">页面模板01</a>
-                  <a class="dropdown-item" href="#">页面模板02</a>
-                  <a class="dropdown-item" href="#">用户列表页</a>
-                  <a class="dropdown-item" href="#">标签页面</a>
-                </div>
-              </li>
-            </ul>
-            <ul class="nav">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="tool"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  工具
-                </a>
-                <div class="dropdown-menu" aria-labelledby="tool">
-                  <a class="dropdown-item" href="#">图集</a>
-                  <a class="dropdown-item" href="#">下载</a>
-                  <a class="dropdown-item" href="#">视频</a>
-                </div>
-              </li>
-            </ul>
-            <b-nav-item>专题</b-nav-item>
-          </b-nav>
-        </b-col>
-        <b-col cols="2" class="justify-content-center align-self-center">
-          <div class="header-right">
-            <div class="loginlink">
-              <a href="javascript:void(0);" @click="showModal"
-                ><i class="fa fa-search"></i><span>搜索</span></a
-              >
-              <a href="/auth/login"><i class="fa fa-user-circle"></i>登录</a>
-              <a href="/auth/register"
-                ><i class="fa fa-pencil-square-o"></i>注册</a
-              >
             </div>
           </div>
         </b-col>
@@ -115,7 +54,7 @@
         </div>
       </b-modal>
     </b-col>
-    <b-col cols="2"></b-col>
+    <b-col sm="0" md="2"></b-col>
   </b-row>
 </template>
 
@@ -158,22 +97,65 @@ export default {
 </script>
 
 <style scoped>
+#header {
+  padding-bottom: 10px !important;
+}
 /**
 * 图片居中
 */
-.imgWrap .align-middle {
-  height: 75px;
+.img-wrap {
+  /*background: #fff;*/
+  background: deepskyblue;
 }
-.imgWrap .align-middle:before {
+.img-wrap .img-align-middle:before {
   content: " ";
   display: inline-block;
   vertical-align: middle;
   height: 100%;
 }
-
-.imgWrap .logo {
-  display: inline-block;
-  max-height: 40px;
+/*
+  ##Device = Mobile
+  ##Screen = B/w 1366px
+*/
+@media (min-width: 320px) and (max-width: 767px) {
+  .img-wrap .img-align-middle {
+    height: 60px;
+  }
+  .img-wrap .logo {
+    display: inline-block;
+    max-height: 30px;
+  }
+}
+/*
+  ##Device = iPad
+  ##Screen = B/w 1366px
+*/
+@media (min-width: 768px) and (max-width: 1023px) {
+  .img-wrap .img-align-middle {
+  }
+}
+/*
+  ##Device = iPad Pro
+  ##Screen = B/w 1366px
+*/
+@media (min-width: 1024px) and (max-width: 1365px) {
+  .img-wrap .img-align-middle {
+  }
+  .img-wrap .logo {
+  }
+}
+/*
+  ##Device = PC
+  ##Screen = B/w 1366px
+*/
+@media (min-width: 1366px) {
+  .img-wrap .img-align-middle {
+    height: 75px;
+  }
+  .img-wrap .logo {
+    display: inline-block;
+    max-height: 40px;
+  }
 }
 
 .nav li .dropdown-menu {

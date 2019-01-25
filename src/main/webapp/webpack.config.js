@@ -147,6 +147,7 @@ module.exports = (env, argv) => {
     devServer: {
       open: false,
       hot: true,
+      host: "0.0.0.0",
       port: 8000
     },
     plugins: webpackPlugins

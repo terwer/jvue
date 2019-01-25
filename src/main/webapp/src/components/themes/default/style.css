@@ -11,3 +11,7 @@ body {
   font-family: "Microsoft Yahei", Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
   color: #666 !important;
 }
+
+.hide{
+  display: none;
+}

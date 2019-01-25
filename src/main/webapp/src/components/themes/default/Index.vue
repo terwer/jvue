@@ -1,5 +1,6 @@
 <template>
   <b-container fluid>
+    <HeaderTime />
     <Header />
     <Body />
     <Footer />
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+import HeaderTime from "./HeaderTime.vue";
 import Header from "./Header.vue";
 import Body from "./Body.vue";
 import Footer from "./Footer.vue";
@@ -21,6 +23,7 @@ export default {
     };
   },
   components: {
+    HeaderTime,
     Header,
     Body,
     Footer,
