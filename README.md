@@ -35,6 +35,10 @@ mvn clean package -DskipTests
 
 3、Copy ``target/ROOT.war`` to ``${TOMCAT_HOME}/webapps``
 
+# Run
+
+You beed set ``-Djava.awt.headless=false`` in order to get screen info
+
 # Structure
 
 The whole project is a Java Spring Boot Maven structure,the ``src/main/webapp`` is a complete Vue Project With webpack structure

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.awt.*;
+
 /**
  * 入口
  *
@@ -24,6 +26,10 @@ public class MainController {
 
     @RequestMapping("/")
     public String index(Model model) {
+//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//        double width = screenSize.getWidth();
+//        double height = screenSize.getHeight();
+
         String app = vueRenderer.renderContent();
         model.addAttribute("content", app);
         model.addAttribute("rnd", System.currentTimeMillis());

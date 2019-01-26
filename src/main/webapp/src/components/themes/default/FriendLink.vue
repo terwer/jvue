@@ -15,7 +15,7 @@
           <a href="http://lusongsong.com/" target="_blank">卢松松博客</a>
         </li>
         <li>
-          <a th:href="/guestbook.html" class="fly-link">申请友链</a>
+          <a href="/guestbook.html">申请友链</a>
         </li>
       </ul>
     </b-col>
@@ -41,7 +41,6 @@ export default {
 .footerbottom a {
   color: #666 !important;
 }
-
 .footerbottom h2 {
   font-size: 15px;
   color: rgba(255, 255, 255, 0.42);

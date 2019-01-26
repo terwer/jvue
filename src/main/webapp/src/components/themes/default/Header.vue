@@ -151,27 +151,27 @@ export default {
   },
   watch: {},
   // 钩子函数
-  mounted() {
-    const that = this;
-    window.onresize = () => {
-      return (() => {
-        window.screenWidth = document.body.clientWidth;
-        that.screenWidth = window.screenWidth;
-      })();
-    };
-
-    console.log("screenWidth:" + that.screenWidth);
-    // 手机才展开菜单
-    if (that.screenWidth < 768) {
-      that.isMobile = true;
-      that.showPhoneMenuCollapse = false;
-    }
-  },
+  // mounted() {
+  //   const that = this;
+  //   // window.onresize = () => {
+  //   //   return (() => {
+  //   //     window.screenWidth = document.body.clientWidth;
+  //   //     that.screenWidth = window.screenWidth;
+  //   //   })();
+  //   // };
+  //
+  //   console.log("screenWidth:" + that.screenWidth);
+  //   // 手机才展开菜单
+  //   if (that.screenWidth < 768) {
+  //     that.isMobile = true;
+  //     that.showPhoneMenuCollapse = false;
+  //   }
+  // },
   data() {
     return {
       s: "",
       isMobile: false,
-      screenWidth: document.body.clientWidth, // 屏幕尺寸
+      // screenWidth: 1400,// document.body.clientWidth, // 屏幕尺寸
       showSearchCollapse: false,
       showPhoneMenuCollapse: true
     };
