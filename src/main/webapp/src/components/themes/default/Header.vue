@@ -1,19 +1,20 @@
 <template>
   <b-row id="header" class="shadow-sm p-0 mb-0 bg-white rounded">
-    <b-col sm="0" md="2"></b-col>
+    <b-col sm="0" md="0" lg="0" xl="2"></b-col>
     <b-col>
       <b-row>
-        <b-col sm="10" md="2">
+        <b-col sm="10">
           <div class="img-wrap">
-            <div class="img-align-middle">
-              <a href="/"
-                ><img
+            <a href="/">
+              <div class="img-align-middle">
+                <img
                   class="logo"
                   src="./images/logo.png"
                   v-bind:alt="title"
                   v-bind:title="title"
-              /></a>
-            </div>
+                />
+              </div>
+            </a>
           </div>
         </b-col>
       </b-row>
@@ -97,15 +98,11 @@ export default {
 </script>
 
 <style scoped>
-#header {
-  padding-bottom: 10px !important;
-}
 /**
 * 图片居中
 */
 .img-wrap {
-  /*background: #fff;*/
-  background: deepskyblue;
+  background: #fff;
 }
 .img-wrap .img-align-middle:before {
   content: " ";
@@ -115,7 +112,7 @@ export default {
 }
 /*
   ##Device = Mobile
-  ##Screen = B/w 1366px
+  ##Screen = B/w 320px - 767px
 */
 @media (min-width: 320px) and (max-width: 767px) {
   .img-wrap .img-align-middle {
@@ -128,20 +125,28 @@ export default {
 }
 /*
   ##Device = iPad
-  ##Screen = B/w 1366px
+  ##Screen = B/w 768px - 1023px
 */
 @media (min-width: 768px) and (max-width: 1023px) {
   .img-wrap .img-align-middle {
+    height: 60px;
+  }
+  .img-wrap .logo {
+    display: inline-block;
+    max-height: 30px;
   }
 }
 /*
   ##Device = iPad Pro
-  ##Screen = B/w 1366px
+  ##Screen = B/w 1024px - 1365px
 */
 @media (min-width: 1024px) and (max-width: 1365px) {
   .img-wrap .img-align-middle {
+    height: 60px;
   }
   .img-wrap .logo {
+    display: inline-block;
+    max-height: 30px;
   }
 }
 /*

@@ -6,19 +6,19 @@
 
 ``` bash
 # install dependencies
-$ npm install
+$ yarn
 
 # serve with hot reload at localhost:8080
-$ npm run serve
+$ yarn run serve
 
 # build for production and launch server
-$ npm run build
+$ yarn run build
 
 # build for server-side-render decelopment
-$ npm run ssr:build-dev
+$ yarn run ssr:build-dev
 
 # build for server-side-render production
-$ npm run ssr:build
+$ yarn run ssr:build
 ```
 
 For detailed explanation on how things work, please visit [author's blog](https://www.terwergreen.com).
