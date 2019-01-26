@@ -1,19 +1,25 @@
 <template>
   <!-- 友情链接 -->
   <b-row id="friendLink">
-    <b-col cols="2"></b-col>
+    <b-col xl="2"></b-col>
     <b-col>
       <ul class="footerbottom">
-        <li><h2>友情链接：</h2></li>
+        <li><h2>友情链接</h2></li>
         <li>
           <a href="/" target="_blank">远方的灯塔</a>
         </li>
-        <li><a href="https://www.pengjiandry.com/" target="_blank">彭涧</a></li>
-        <li><a href="http://lusongsong.com/" target="_blank">卢松松博客</a></li>
-        <li><a th:href="/guestbook.html" class="fly-link">申请友链</a></li>
+        <li>
+          <a href="https://www.pengjiandry.com/" target="_blank">彭涧</a>
+        </li>
+        <li>
+          <a href="http://lusongsong.com/" target="_blank">卢松松博客</a>
+        </li>
+        <li>
+          <a th:href="/guestbook.html" class="fly-link">申请友链</a>
+        </li>
       </ul>
     </b-col>
-    <b-col cols="2"></b-col>
+    <b-col xl="2"></b-col>
   </b-row>
 </template>
 
@@ -47,5 +53,14 @@ export default {
   display: inline-block;
   margin-right: 15px;
   margin-bottom: 5px;
+}
+/*
+##Device = Mobile
+##Screen = B/w 320px - 767px
+*/
+@media (min-width: 320px) and (max-width: 767px) {
+  .footerbottom li {
+    display: block;
+  }
 }
 </style>

@@ -1,83 +1,7 @@
 <template>
   <b-row id="footer">
-    <b-col cols="2"></b-col>
-    <b-col>
-      <div class="contact">
-        <div class="footertit">
-          <h2>联系作者</h2>
-        </div>
-        <div class="contactcon">
-          <p style="line-height: 24px;">
-            如果您有想过合作事宜，可以通过以下方式联系我们<br />
-            邮箱：youweics@sina.com<br />
-            QQ：1035136784（倚楼听雨）<br />
-            微信：15986685029（hiterwer）
-          </p>
-          <p class="copyright">
-            Copyright © 2011-2018 <a href="/" target="_blank">webname</a> ·
-            保留所有权益
-          </p>
-          <p id="cnzz">
-            <a target="_blank" href="http://www.miitbeian.gov.cn/">
-              <span>beianinfo</span>
-            </a>
-            <!--  cnzz数据统计 -->
-            <!-- <script type="text/javascript">
-                                  var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-                                  document.write(unescape("%3Cspan id='cnzz_stat_icon_4445524'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/stat.php%3Fid%3D4445524%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
-                              </script> -->
-            <span id="cnzz_stat_icon_4445524">
-              <a
-                href="http://www.cnzz.com/stat/website.php?web_id=4445524"
-                target="_blank"
-                title="站长统计"
-              >
-                <img
-                  border="0"
-                  hspace="0"
-                  vspace="0"
-                  src="http://icon.cnzz.com/img/pic.gif"
-                  alt="cnzz"
-                />
-              </a>
-            </span>
-            <!-- 改为异步代码，防止警告
-                              <script type="text/javascript">
-                                  var cnzz_s_tag = document.createElement('script');
-                                  cnzz_s_tag.type = 'text/javascript';
-                                  cnzz_s_tag.async = true;
-                                  cnzz_s_tag.charset = 'utf-8';
-                                  cnzz_s_tag.src = 'https://w.cnzz.com/c.php?id=4445524&async=1';
-                                  var root_s = document.getElementsByTagName('script')[0];
-                                  root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
-                              </script>
-                               -->
-          </p>
-        </div>
-      </div>
-    </b-col>
-    <b-col>
-      <div class="guanzhu">
-        <div class="footertit">
-          <h2>关注&amp;交流</h2>
-        </div>
-        <div class="ewm">
-          <div class="row">
-            <div class="col-xs-12">
-              <p class="text-venter">
-                技术之路，路漫漫其修远兮，吾将上下而求索。欢迎关注公众号"架构设计漫谈"，一起分享技术，探讨人生。
-              </p>
-              <p></p>
-              <div class="ewmimg">
-                <img src="./images/mp-qrcode.png" alt="Terwer" />
-                <p class="text-center">微信公众号</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </b-col>
-    <b-col>
+    <b-col sm="0" md="0" lg="0" xl="2"></b-col>
+    <b-col sm="12" md="12" lg="12" xl="2" class="footer-item">
       <div class="dingyue">
         <div class="footertit">
           <h2>订阅本站</h2>
@@ -116,7 +40,85 @@
         </div>
       </div>
     </b-col>
-    <b-col cols="2"></b-col>
+    <b-col sm="12" md="12" lg="12" xl="2" class="footer-item">
+      <div class="guanzhu">
+        <div class="footertit">
+          <h2>关注&amp;交流</h2>
+        </div>
+        <div class="ewm">
+          <div>
+            <div>
+              <p>
+                技术之路，路漫漫其修远兮，吾将上下而求索。欢迎关注公众号"架构设计漫谈"，一起分享技术，探讨人生。
+              </p>
+              <p></p>
+              <div class="ewmimg">
+                <img src="./images/mp-qrcode.png" alt="Terwer" />
+                <p>微信公众号</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </b-col>
+    <b-col sm="12" md="12" lg="12" xl="4" class="footer-item">
+      <div class="contact">
+        <div class="footertit">
+          <h2>联系作者</h2>
+        </div>
+        <div class="contactcon">
+          <p>
+            如果您有想过合作事宜，可以通过以下方式联系我们<br /><br />
+            邮箱：youweics@sina.com<br />
+            微博：<a href="https://weibo.com/youweics" target="_blank"
+              >youweics</a
+            ><br />
+            QQ：1035136784（倚楼听雨）<br />
+            微信：15986685029（hiterwer）
+          </p>
+          <p class="copyright">
+            Copyright © 2011-2018 <a href="/" target="_blank">webname</a> ·
+            保留所有权益
+            <span id="cnzz">
+              <a target="_blank" href="http://www.miitbeian.gov.cn/">
+                <span>beianinfo</span>
+              </a>
+              <!--  cnzz数据统计 -->
+              <!-- <script type="text/javascript">
+                                    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                                    document.write(unescape("%3Cspan id='cnzz_stat_icon_4445524'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/stat.php%3Fid%3D4445524%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
+                                </script> -->
+              <span id="cnzz_stat_icon_4445524">
+                <a
+                  href="http://www.cnzz.com/stat/website.php?web_id=4445524"
+                  target="_blank"
+                  title="站长统计"
+                >
+                  <img
+                    border="0"
+                    hspace="0"
+                    vspace="0"
+                    src="http://icon.cnzz.com/img/pic.gif"
+                    alt="cnzz"
+                  />
+                </a>
+              </span>
+              <!-- 改为异步代码，防止警告
+                                <script type="text/javascript">
+                                    var cnzz_s_tag = document.createElement('script');
+                                    cnzz_s_tag.type = 'text/javascript';
+                                    cnzz_s_tag.async = true;
+                                    cnzz_s_tag.charset = 'utf-8';
+                                    cnzz_s_tag.src = 'https://w.cnzz.com/c.php?id=4445524&async=1';
+                                    var root_s = document.getElementsByTagName('script')[0];
+                                    root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
+                                </script>
+                                 -->
+            </span>
+          </p>
+        </div>
+      </div>
+    </b-col>
   </b-row>
 </template>
 
@@ -128,10 +130,14 @@ export default {
 
 <style scoped>
 #footer {
-  padding-top: 30px;
+  padding: 0;
   background: #2e3033;
   color: rgba(255, 255, 255, 0.42);
-  margin-top: 30px;
+  margin-top: 10px;
+}
+#footer p {
+  margin-bottom: 5px;
+  font-size: 14px;
 }
 .footertop {
   padding-bottom: 30px;
@@ -142,20 +148,17 @@ export default {
   margin-bottom: 20px;
   margin-top: 20px;
 }
-#footer p {
-  margin-bottom: 5px;
-  font-size: 13px;
-}
 .copyright {
   margin-top: 15px;
 }
 .guanzhu {
-  padding: 0 52px;
+  padding: 0;
 }
 
 .guanzhu .row {
   margin-left: 0;
 }
+
 .ewmimg img {
   width: 100%;
   height: auto;
