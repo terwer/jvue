@@ -7,22 +7,6 @@
 var self = this;
 // 模拟global
 var global = this;
-// 模拟window
-// var window = {
-//     navigator: {
-//         userAgent: "Chrome"
-//     }
-// };
-// global.window = window;
-
-// 模拟document
-// document.body.clientWidth
-// var document = {
-//     body: {
-//         clientWidth: 1400
-//     }
-// };
-// global.document = document;
 
 // 模拟process
 var process = {

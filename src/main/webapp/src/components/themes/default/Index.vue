@@ -1,7 +1,7 @@
 <template>
   <b-container fluid>
     <HeaderTime />
-    <!--<Header title="jvue" />-->
+    <Header title="jvue" />
     <Body />
     <Footer />
     <FriendLink />

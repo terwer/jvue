@@ -2,7 +2,7 @@
   <b-row id="header" class="shadow-sm p-0 mb-0 bg-white rounded">
     <b-col sm="0" md="0" lg="0" xl="2"></b-col>
     <b-col sm="12" md="12" lg="12" xl="8">
-      <b-row>
+      <b-row class="header-content">
         <b-col sm="2" md="2" xl="2">
           <div class="img-wrap">
             <a href="/" class="float-left">
@@ -10,134 +10,46 @@
                 <img
                   class="logo"
                   src="./images/logo.png"
-                  v-bind:alt="title"
-                  v-bind:title="title"
+                  :alt="title"
+                  :title="title"
                 />
               </div>
             </a>
             <a
               v-if="isMobile"
               href="javascript:void(0);"
-              @click="showPhoneMenuCollapse = !showPhoneMenuCollapse"
               class="phone-nav-trigger float-right"
               ><span class="phone-nav-icon"></span
             ></a>
           </div>
         </b-col>
-        <b-col
-          id="head-menu"
-          sm="0"
-          md="6"
-          lg="6"
-          xl="6"
-          class="justify-content-center align-self-center"
-        >
-          <b-collapse v-model="showPhoneMenuCollapse" id="phoneMenuCollapse">
-            <b-nav>
-              <b-nav-item to="/" active>首页</b-nav-item>
-              <b-nav-item>随笔</b-nav-item>
-              <ul class="nav">
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
-                    id="page"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    页面
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="page">
-                    <a class="dropdown-item" href="#">页面默认模板</a>
-                    <div role="separator" class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">页面模板01</a>
-                    <a class="dropdown-item" href="#">页面模板02</a>
-                    <a class="dropdown-item" href="#">用户列表页</a>
-                    <a class="dropdown-item" href="#">标签页面</a>
-                  </div>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
-                    id="tool"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    工具
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="tool">
-                    <a class="dropdown-item" href="#">图集</a>
-                    <a class="dropdown-item" href="#">下载</a>
-                    <a class="dropdown-item" href="#">视频</a>
-                  </div>
-                </li>
-              </ul>
-              <b-nav-item>专题</b-nav-item>
-            </b-nav>
-          </b-collapse>
-        </b-col>
-        <b-col
-          md="4"
-          lg="4"
-          xl="2"
-          class="justify-content-center align-self-center"
-        >
-          <div
-            :class="
-              showPhoneMenuCollapse ? 'header-right' : 'header-right hide'
-            "
-          >
-            <div class="loginlink">
-              <a
-                id="btn-search"
-                href="javascript:void(0);"
-                @click="showSearchCollapse = !showSearchCollapse"
-              >
-                <i class="fa fa-search"></i><span>搜索</span></a
-              >
-              <a href="/auth/login"><i class="fa fa-user-circle"></i>登录</a>
-              <a href="/auth/register"
-                ><i class="fa fa-pencil-square-o"></i>注册</a
-              >
-            </div>
-          </div>
-        </b-col>
+        <b-col id="head-menu" sm="0" md="6" lg="6" xl="6"></b-col>
         <!-- 搜索框 -->
-        <b-col cols="12">
-          <div>
-            <b-collapse v-model="showSearchCollapse" id="searchCollapse">
-              <b-form id="searchform" method="get" action="/">
-                <!-- Using components -->
-                <b-input-group prepend="">
-                  <b-form-input
-                    id="s"
-                    v-model="s"
-                    name="s"
-                    ref="s"
-                    type="text"
-                    placeholder="输入关键词查找..."
-                  ></b-form-input>
-                  <b-input-group-append>
-                    <b-btn id="searchsubmit" type="submit" variant="primary"
-                      >搜索</b-btn
-                    >
-                  </b-input-group-append>
-                </b-input-group>
-              </b-form>
-            </b-collapse>
-          </div>
+        <b-col cols="12" id="searchArea">
+          <b-form id="searchform" method="get" action="/">
+            <!-- Using components -->
+            <b-input-group prepend="">
+              <b-form-input
+                id="s"
+                v-model="s"
+                name="s"
+                ref="s"
+                type="text"
+                placeholder="输入关键词查找..."
+              ></b-form-input>
+              <b-input-group-append>
+                <b-btn id="searchsubmit" type="submit" variant="primary"
+                  >搜索</b-btn
+                >
+              </b-input-group-append>
+            </b-input-group>
+          </b-form>
         </b-col>
       </b-row>
     </b-col>
     <b-col sm="0" md="0" lg="0" xl="2"></b-col>
   </b-row>
 </template>
-
 <script>
 export default {
   name: "Header",
@@ -149,38 +61,58 @@ export default {
       }
     }
   },
-  watch: {},
   // 钩子函数
-  // mounted() {
-  //   const that = this;
-  //   // window.onresize = () => {
-  //   //   return (() => {
-  //   //     window.screenWidth = document.body.clientWidth;
-  //   //     that.screenWidth = window.screenWidth;
-  //   //   })();
-  //   // };
-  //
-  //   console.log("screenWidth:" + that.screenWidth);
-  //   // 手机才展开菜单
-  //   if (that.screenWidth < 768) {
-  //     that.isMobile = true;
-  //     that.showPhoneMenuCollapse = false;
-  //   }
-  // },
+  mounted() {
+    const that = this;
+    console.log("init screenWidth:" + that.screenWidth);
+    // 屏幕适配
+    that.fitScreen();
+    window.onresize = () => {
+      return (() => {
+        if (!that.isInNashorn()) {
+          window.screenWidth = document.body.clientWidth;
+          that.screenWidth = window.screenWidth;
+        }
+      })();
+    };
+  },
+  watch: {
+    screenWidth() {
+      const that = this;
+      console.log("screenWidth:" + that.screenWidth);
+      // 屏幕适配
+      that.fitScreen();
+    }
+  },
   data() {
+    const that = this;
     return {
       s: "",
       isMobile: false,
-      // screenWidth: 1400,// document.body.clientWidth, // 屏幕尺寸
-      showSearchCollapse: false,
-      showPhoneMenuCollapse: true
+      screenWidth: that.isInNashorn() ? 0 : document.body.clientWidth // 屏幕尺寸
     };
   },
-  methods: {}
+  methods: {
+    isInNashorn() {
+      const isInNashorn = typeof document === "undefined";
+      console.log("isInNashorn:" + isInNashorn);
+      return isInNashorn;
+    },
+    fitScreen() {
+      const that = this;
+      if (!that.isInNashorn()) {
+        // 手机才展开菜单
+        that.isMobile = that.screenWidth < 768;
+        console.log("isMobile:" + that.isMobile);
+      }
+    }
+  }
 };
 </script>
-
 <style scoped>
+.header-content {
+  background: #fff;
+}
 #header a {
   text-decoration: none;
 }
@@ -196,22 +128,25 @@ export default {
   vertical-align: middle;
   height: 100%;
 }
-.nav li .dropdown-menu {
-  min-width: 0 !important;
-}
-.nav li:hover > .dropdown-menu {
-  position: absolute;
-  display: block;
-}
-.dropdown-menu a:hover {
-  background: #007bff;
-  color: #fff;
-}
+/*三级菜单*/
+
+/*.nav li .dropdown-menu {*/
+/*min-width: 0 !important;*/
+/*}*/
+/*.nav li:hover > .dropdown-menu {*/
+/*position: absolute;*/
+/*display: block;*/
+/*}*/
+/*.dropdown-menu a:hover {*/
+/*background: #007bff;*/
+/*color: #fff;*/
+/*}*/
+/* 右侧登录按钮 */
 .loginlink a {
   padding: 0.5rem;
 }
-#searchCollapse {
-  padding: 10px 0;
+#searchArea {
+  padding-bottom: 10px;
 }
 #phoneMenuCollapse {
 }

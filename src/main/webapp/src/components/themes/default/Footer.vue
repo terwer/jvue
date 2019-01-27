@@ -51,10 +51,8 @@
               <p>
                 技术之路，路漫漫其修远兮，吾将上下而求索。欢迎关注公众号"架构设计漫谈"，一起分享技术，探讨人生。
               </p>
-              <p></p>
               <div class="ewmimg">
                 <img src="./images/mp-qrcode.png" alt="Terwer" />
-                <p>微信公众号</p>
               </div>
             </div>
           </div>
@@ -63,59 +61,30 @@
     </b-col>
     <b-col sm="12" md="12" lg="12" xl="4" class="footer-item">
       <div class="contact">
-        <div class="footertit">
-          <h2>联系作者</h2>
-        </div>
         <div class="contactcon">
-          <p>
-            如果您有想过合作事宜，可以通过以下方式联系我们<br /><br />
-            邮箱：youweics@sina.com<br />
-            微博：<a href="https://weibo.com/youweics" target="_blank"
-              >youweics</a
-            ><br />
-            QQ：1035136784（倚楼听雨）<br />
-            微信：15986685029（hiterwer）
-          </p>
-          <p class="copyright">
-            Copyright © 2011-2018 <a href="/" target="_blank">webname</a> ·
-            保留所有权益
-            <span id="cnzz">
-              <a target="_blank" href="http://www.miitbeian.gov.cn/">
-                <span>beianinfo</span>
-              </a>
-              <!--  cnzz数据统计 -->
-              <!-- <script type="text/javascript">
-                                    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-                                    document.write(unescape("%3Cspan id='cnzz_stat_icon_4445524'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/stat.php%3Fid%3D4445524%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
-                                </script> -->
-              <span id="cnzz_stat_icon_4445524">
-                <a
-                  href="http://www.cnzz.com/stat/website.php?web_id=4445524"
-                  target="_blank"
-                  title="站长统计"
-                >
-                  <img
-                    border="0"
-                    hspace="0"
-                    vspace="0"
-                    src="http://icon.cnzz.com/img/pic.gif"
-                    alt="cnzz"
-                  />
-                </a>
-              </span>
-              <!-- 改为异步代码，防止警告
-                                <script type="text/javascript">
-                                    var cnzz_s_tag = document.createElement('script');
-                                    cnzz_s_tag.type = 'text/javascript';
-                                    cnzz_s_tag.async = true;
-                                    cnzz_s_tag.charset = 'utf-8';
-                                    cnzz_s_tag.src = 'https://w.cnzz.com/c.php?id=4445524&async=1';
-                                    var root_s = document.getElementsByTagName('script')[0];
-                                    root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
-                                </script>
-                                 -->
-            </span>
-          </p>
+          <b-row>
+            <b-col cols="12">
+              <div class="footertit">
+                <h2>联系作者</h2>
+              </div>
+              <p>
+                如果您有相关合作事宜，可以通过以下方式联系我，我会在收到消息后第一时间回复处理，谢谢支持！
+              </p>
+            </b-col>
+            <b-col xl="6">邮箱：youweics@sina.com</b-col>
+            <b-col xl="6"
+              >微博：<a href="https://weibo.com/youweics" target="_blank"
+                >youweics</a
+              ></b-col
+            >
+            <b-col xl="6">QQ：1035136784（倚楼听雨）</b-col>
+            <b-col xl="6">微信：15986685029（hiterwer）</b-col>
+            <b-col cols="12" class="copyright">
+              Copyright © 2011-2018 <a href="/" target="_blank">webname</a>
+              <span class="next-line"><br /></span>
+              All Rights Reserved· 保留所有权益
+            </b-col>
+          </b-row>
         </div>
       </div>
     </b-col>
@@ -195,5 +164,33 @@ export default {
 }
 .wpm_submit .wpm_submitbtn:hover {
   color: #fff;
+}
+/* 设备兼容处理 */
+/*
+##Device = iPad
+##Screen = B/w 768px - 1023px
+*/
+@media (min-width: 768px) and (max-width: 1023px) {
+  .next-line {
+    display: none;
+  }
+}
+/*
+##Device = iPad Pro
+##Screen = B/w 1024px - 1365px
+*/
+@media (min-width: 1024px) and (max-width: 1365px) {
+  .next-line {
+    display: none;
+  }
+}
+/*
+##Device = PC
+##Screen = B/w 1366px
+*/
+@media (min-width: 1366px) {
+  .next-line {
+    display: none;
+  }
 }
 </style>
