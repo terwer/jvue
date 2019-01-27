@@ -23,7 +23,7 @@ export default {
   },
   data() {
     return {
-      clientTime: "2019年01月25日 23:27:01"
+      clientTime: ""
     };
   },
   methods: {

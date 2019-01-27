@@ -25,6 +25,7 @@ public class VueRenderer {
         synchronized (promiseLock) {
             html = object;
             promiseResolved = true;
+            logger.info("promiseResolved");
         }
     };
 
@@ -32,6 +33,7 @@ public class VueRenderer {
         synchronized (promiseLock) {
             html = object;
             promiseRejected = true;
+            logger.info("promiseRejected");
         }
     };
 
@@ -54,7 +56,6 @@ public class VueRenderer {
             int interval = 200; // 等待时间间隔
             int totalWaitTime = 0; // 实际等待时间
 
-            logger.info("rejected status:" + promiseRejected);
             if (!promiseRejected) {
                 while (!promiseResolved && totalWaitTime < jsWaitTimeout) {
                     // 执行nashornEventLoops.process()使主线程执行回调函数

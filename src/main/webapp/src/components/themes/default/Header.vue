@@ -17,17 +17,48 @@
             </a>
             <a
               v-if="isMobile"
+              @click="showPhoneMenu"
               href="javascript:void(0);"
               class="phone-nav-trigger float-right"
               ><span class="phone-nav-icon"></span
             ></a>
           </div>
         </b-col>
-        <b-col id="head-menu" sm="0" md="6" lg="6" xl="6"></b-col>
+        <b-col
+          id="head-nav"
+          sm="0"
+          md="6"
+          lg="6"
+          xl="6"
+          class="justify-content-center align-self-center"
+        >
+          <b-nav v-bind:class="(!isMobile || showHeadNav)?'':'hide'">
+            <b-nav-item to="/" active>首页</b-nav-item>
+            <b-nav-item>随笔</b-nav-item>
+            <b-nav-item-dropdown
+              id="nav-page"
+              text="页面"
+              extra-toggle-classes="nav-link-custom"
+              right
+            >
+              <b-dropdown-item>页面默认模板</b-dropdown-item>
+              <b-dropdown-item>页面模板01</b-dropdown-item>
+              <b-dropdown-item>页面模板02</b-dropdown-item>
+              <b-dropdown-divider></b-dropdown-divider>
+              <b-dropdown-item>用户列表页</b-dropdown-item>
+              <b-dropdown-item>标签页面</b-dropdown-item>
+            </b-nav-item-dropdown>
+            <b-nav-item-dropdown id="nav-tool" text="工具" extra-toggle-classes="nav-link-custom" right>
+              <b-dropdown-item>图集</b-dropdown-item>
+              <b-dropdown-item>下载</b-dropdown-item>
+              <b-dropdown-item>视频</b-dropdown-item>
+            </b-nav-item-dropdown>
+            <b-nav-item>专题</b-nav-item>
+          </b-nav>
+        </b-col>
         <!-- 搜索框 -->
         <b-col cols="12" id="searchArea">
           <b-form id="searchform" method="get" action="/">
-            <!-- Using components -->
             <b-input-group prepend="">
               <b-form-input
                 id="s"
@@ -89,7 +120,8 @@ export default {
     return {
       s: "",
       isMobile: false,
-      screenWidth: that.isInNashorn() ? 0 : document.body.clientWidth // 屏幕尺寸
+      screenWidth: that.isInNashorn() ? 0 : document.body.clientWidth, // 屏幕尺寸
+      showHeadNav: false
     };
   },
   methods: {
@@ -105,6 +137,9 @@ export default {
         that.isMobile = that.screenWidth < 768;
         console.log("isMobile:" + that.isMobile);
       }
+    },
+    showPhoneMenu() {
+      this.showHeadNav = !this.showHeadNav;
     }
   }
 };
@@ -128,27 +163,12 @@ export default {
   vertical-align: middle;
   height: 100%;
 }
-/*三级菜单*/
-
-/*.nav li .dropdown-menu {*/
-/*min-width: 0 !important;*/
-/*}*/
-/*.nav li:hover > .dropdown-menu {*/
-/*position: absolute;*/
-/*display: block;*/
-/*}*/
-/*.dropdown-menu a:hover {*/
-/*background: #007bff;*/
-/*color: #fff;*/
-/*}*/
 /* 右侧登录按钮 */
 .loginlink a {
   padding: 0.5rem;
 }
 #searchArea {
   padding-bottom: 10px;
-}
-#phoneMenuCollapse {
 }
 /* 手机菜单按钮 */
 .phone-nav-icon {
@@ -186,8 +206,8 @@ export default {
   #header .header-right a:hover {
     color: #007bff;
   }
-  #head-menu {
-    padding: 0;
+  #head-nav {
+    padding: 10px;
   }
   #btn-search {
     padding-left: 0;
@@ -214,7 +234,7 @@ export default {
   #header .header-right a:hover {
     color: #007bff;
   }
-  #head-menu {
+  #head-nav {
     padding: 0 0 0 25px;
   }
   .img-wrap .img-align-middle {
@@ -237,7 +257,7 @@ export default {
   #header .header-right a:hover {
     color: #007bff;
   }
-  #head-menu {
+  #head-nav {
     padding: 0;
   }
   .img-wrap .img-align-middle {
