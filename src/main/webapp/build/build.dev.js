@@ -6,7 +6,7 @@
 const exec = require("child_process").exec;
 const chalk = require("chalk");
 
-const encoding = { encoding: "utf8" };
+const options = { encoding: "utf8", maxBuffer: 1024 * 500 };
 
 // build ssr_client
 const DEVELOPMENT_BUILD_SSR_CLIENT =
@@ -25,7 +25,7 @@ const COPY_SCRIPT_TEXT = "copy js from ssrclientdist to ssrdist successful";
 const build = function() {
   // 构建ssr客户端
   console.log("build ssr_client");
-  exec(DEVELOPMENT_BUILD_SSR_CLIENT, encoding, err => {
+  exec(DEVELOPMENT_BUILD_SSR_CLIENT, options, err => {
     if (err) {
       console.log(err);
       return;
@@ -34,7 +34,7 @@ const build = function() {
 
     // 构建ssr服务端
     console.log("build ssr_server");
-    exec(DEVELOPMENT_BUILD_SSR_SERVER, encoding, err => {
+    exec(DEVELOPMENT_BUILD_SSR_SERVER, options, err => {
       if (err) {
         console.log(err);
         return;

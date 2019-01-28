@@ -24,7 +24,7 @@
             ></a>
           </div>
         </b-col>
-        <b-col class="justify-content-center align-self-center">
+        <b-col sm="10" class="justify-content-center align-self-center">
           <HeaderMenu />
         </b-col>
         <!-- 搜索框 -->
