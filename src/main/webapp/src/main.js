@@ -16,9 +16,11 @@ if (!isInNashorn()) {
   uweb
     .then(resolve => {
       console.log("uweb register success");
-      console.log(resolve.default);
+      // console.log(resolve.default);
       Vue.use(resolve.default, {
-        siteId: "4445524"
+        siteId: "4445524",
+        // http://s11.cnzz.com/z_stat.php?id=SITEID&web_id=SITEID // 文字样式
+        src: "http://s5.cnzz.com/stat.php?id=4445524&show=pic" // 图片样式
       });
     })
     .catch(rejected => {
