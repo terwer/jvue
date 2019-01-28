@@ -17,9 +17,18 @@ import FriendLink from "./FriendLink.vue";
 
 export default {
   name: "Index",
+  // 钩子函数
+  mounted() {
+    const that = this;
+    setTimeout(function() {
+      console.log("加载站点配置");
+      that.siteConfig = {};
+    }, 2000);
+  },
   data: function() {
     return {
-      title: "Next Vue SSR Project for Java Nashorn Script engine"
+      title: "Next Vue SSR Project for Java Nashorn Script engine",
+      siteConfig: null
     };
   },
   components: {

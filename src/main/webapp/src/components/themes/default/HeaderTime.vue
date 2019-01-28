@@ -2,52 +2,36 @@
   <b-row id="headerTime">
     <b-col sm="0" md="0" lg="0" xl="2"></b-col>
     <b-col>
-      现在是 {{ clientTime }}
+      现在是
+      <span v-if="clientTime === ''"> 加载中... </span>
+      <span v-else> {{ clientTime }}</span>
       <span class="next-line"><br /></span>
-      星期五 农历 腊月二十一 天气晴
+      <span v-if="clientTime === ''"> 加载中... </span>
+      <span v-else>{{ tradTime }}</span>
+      天气晴
     </b-col>
     <b-col sm="0" md="2"></b-col>
   </b-row>
 </template>
 
 <script>
+import { getClientTime, getTradTime } from "../../../commom/DateUtil";
 export default {
   name: "HeaderTime",
+  // 钩子函数
   mounted() {
-    this.clientTime = this.getClientTime();
-  },
-  watch: {
-    clientTime(val) {
-      console.log("this.clientTime changed:" + val);
-    }
+    let that = this;
+    that.clientTime = getClientTime();
+    that.tradTime = getTradTime();
+    setInterval(function() {
+      that.clientTime = getClientTime();
+    }, 2000);
   },
   data() {
     return {
-      clientTime: ""
+      clientTime: "",
+      tradTime: ""
     };
-  },
-  methods: {
-    getClientTime() {
-      //获取客户端时间
-      var now = new Date();
-      var currDatetime = now.getFullYear() + "年";
-      currDatetime +=
-        now.getMonth() + 1 > 9
-          ? now.getMonth() + 1
-          : "0" + (now.getMonth() + 1);
-      currDatetime += "月";
-      currDatetime += now.getDate() > 9 ? now.getDate() : "0" + now.getDate();
-      currDatetime += "日 ";
-      currDatetime +=
-        now.getHours() > 9 ? now.getHours() : "0" + now.getHours();
-      currDatetime += ":";
-      currDatetime +=
-        now.getMinutes() > 9 ? now.getMinutes() : "0" + now.getMinutes();
-      currDatetime += ":";
-      currDatetime +=
-        now.getSeconds() > 9 ? now.getSeconds() : "0" + now.getSeconds();
-      return currDatetime;
-    }
   }
 };
 </script>

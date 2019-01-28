@@ -11,8 +11,8 @@
     "lint:vue": "eslint . --ext .vue --fix --color",
     "lint:css": "stylelint --config stylelint.config.js 'src/**/*.css' --fix --color",
     "lint": "yarn run lint:js && yarn run lint:vue && yarn run lint:css",
-    "ssr:build-dev":"yarn run clean && node ./build/build.dev.js",
-    "ssr:build":"yarn run clean && node ./build/build.prod.js"
+    "ssr:build-dev": "yarn run clean && node ./build/build.dev.js",
+    "ssr:build": "yarn run clean && node ./build/build.prod.js"
   },
   "author": "Terwer",
   "license": "MIT",
@@ -56,6 +56,7 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "stylelint": "^9.10.1",
     "vue": "^2.5.22",
+    "vue-content-loading": "^1.5.3",
     "vue-server-renderer": "^2.5.22",
     "vue-uweb": "^0.2.1"
   },
