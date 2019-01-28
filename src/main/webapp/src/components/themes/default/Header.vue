@@ -24,38 +24,7 @@
             ></a>
           </div>
         </b-col>
-        <b-col
-          id="head-nav"
-          sm="0"
-          md="6"
-          lg="6"
-          xl="6"
-          class="justify-content-center align-self-center"
-        >
-          <b-nav v-bind:class="(!isMobile || showHeadNav)?'':'hide'">
-            <b-nav-item to="/" active>首页</b-nav-item>
-            <b-nav-item>随笔</b-nav-item>
-            <b-nav-item-dropdown
-              id="nav-page"
-              text="页面"
-              extra-toggle-classes="nav-link-custom"
-              right
-            >
-              <b-dropdown-item>页面默认模板</b-dropdown-item>
-              <b-dropdown-item>页面模板01</b-dropdown-item>
-              <b-dropdown-item>页面模板02</b-dropdown-item>
-              <b-dropdown-divider></b-dropdown-divider>
-              <b-dropdown-item>用户列表页</b-dropdown-item>
-              <b-dropdown-item>标签页面</b-dropdown-item>
-            </b-nav-item-dropdown>
-            <b-nav-item-dropdown id="nav-tool" text="工具" extra-toggle-classes="nav-link-custom" right>
-              <b-dropdown-item>图集</b-dropdown-item>
-              <b-dropdown-item>下载</b-dropdown-item>
-              <b-dropdown-item>视频</b-dropdown-item>
-            </b-nav-item-dropdown>
-            <b-nav-item>专题</b-nav-item>
-          </b-nav>
-        </b-col>
+
         <!-- 搜索框 -->
         <b-col cols="12" id="searchArea">
           <b-form id="searchform" method="get" action="/">
@@ -82,6 +51,8 @@
   </b-row>
 </template>
 <script>
+import { isInNashorn } from "../../../commom/NashornUtil";
+
 export default {
   name: "Header",
   props: {
@@ -100,7 +71,7 @@ export default {
     that.fitScreen();
     window.onresize = () => {
       return (() => {
-        if (!that.isInNashorn()) {
+        if (!isInNashorn()) {
           window.screenWidth = document.body.clientWidth;
           that.screenWidth = window.screenWidth;
         }
@@ -116,23 +87,17 @@ export default {
     }
   },
   data() {
-    const that = this;
     return {
       s: "",
       isMobile: false,
-      screenWidth: that.isInNashorn() ? 0 : document.body.clientWidth, // 屏幕尺寸
+      screenWidth: isInNashorn() ? 0 : document.body.clientWidth, // 屏幕尺寸
       showHeadNav: false
     };
   },
   methods: {
-    isInNashorn() {
-      const isInNashorn = typeof document === "undefined";
-      console.log("isInNashorn:" + isInNashorn);
-      return isInNashorn;
-    },
     fitScreen() {
       const that = this;
-      if (!that.isInNashorn()) {
+      if (!isInNashorn()) {
         // 手机才展开菜单
         that.isMobile = that.screenWidth < 768;
         console.log("isMobile:" + that.isMobile);

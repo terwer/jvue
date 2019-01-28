@@ -1,11 +1,33 @@
+import { isInNashorn } from "./commom/NashornUtil";
 import Vue from "vue";
-import BootstrapVue from "bootstrap-vue";
 import App from "./App.vue";
+
+// 组件引用
+import BootstrapVue from "bootstrap-vue";
+
+// 组建注册
+Vue.use(BootstrapVue);
+
+// 非Nashorn环境组件
+if (!isInNashorn()) {
+  console.log("Register components without nashorn in main.js");
+  // import uweb from 'vue-uweb'
+  const uweb = import(/* webpackChunkName: "vue-uweb" */ "vue-uweb");
+  uweb
+    .then(resolve => {
+      console.log("uweb register success");
+      console.log(resolve.default);
+      Vue.use(resolve.default, {
+        siteId: "4445524"
+      });
+    })
+    .catch(rejected => {
+      console.log("uweb load error:" + rejected);
+    });
+}
 
 // 生产部署时候需要设置为false
 Vue.config.productionTip = true;
-
-Vue.use(BootstrapVue);
 
 export default () => {
   console.log("Main is starting");
