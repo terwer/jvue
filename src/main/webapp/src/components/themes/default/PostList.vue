@@ -1,7 +1,7 @@
 <template>
-  <b-container>
+  <b-row id="postList">
     PostList
-  </b-container>
+  </b-row>
 </template>
 
 <script>
@@ -10,4 +10,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#postList {
+  background: #1c7430;
+  color: #fff;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+}
+</style>

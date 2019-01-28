@@ -5,7 +5,8 @@ const { renderToString } = createRenderer();
 
 global.renderServer = () => {
   const vm = Main();
+  vm.$mount("#app");
   var promise = renderToString(vm);
-  console.log("Vue server render promise:" + promise);
+  console.log("Vue server render return promise");
   return promise;
 };

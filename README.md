@@ -22,7 +22,7 @@ With Vue,Spring Boot and Java Nashorn Script engine for server-side-rendering
 1、Go to [webapp](src/main/webapp) and run vue ssr build
 
 ```
-cd src/main/webapp && npm i -S && npm run ssr:build
+cd src/main/webapp && yarn && yarn run ssr:build
 ```
 
 notice:You can run ``ssr:build-dev`` in development mode to show error logs
@@ -34,6 +34,10 @@ mvn clean package -DskipTests
 ```
 
 3、Copy ``target/ROOT.war`` to ``${TOMCAT_HOME}/webapps``
+
+# Run
+
+You beed set ``-Djava.awt.headless=false`` in order to get screen info
 
 # Structure
 

@@ -7,12 +7,6 @@
 var self = this;
 // 模拟global
 var global = this;
-// var window = {
-//     navigator: {
-//         userAgent: "Chrome"
-//     }
-// };
-// global.window = window;
 
 // 模拟process
 var process = {
@@ -21,7 +15,7 @@ var process = {
         NODE_ENV: "production"
     },
     nextTick: function (fn) {
-        global.setTimeout(fn, 0)
+        global.setTimeout(fn, 0);
     }
 };
 global.process = process;
@@ -36,6 +30,7 @@ console.trace = print;
 console.assert = print;
 global.console = console;
 
+// 模拟Object.assign
 Object.assign = function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -89,7 +84,7 @@ Object.assign = function (t) {
         if (timerMap) {
             timerMap.forEach(function (key, value) {
                 value.cancel(true);
-            })
+            });
         }
         timerMap = new HashMap();
         eventLoop = new ArrayDeque();
@@ -128,9 +123,9 @@ Object.assign = function (t) {
 
     context.nashornEventLoop = {
         process: function () {
-            console.log('nashornEventLoop.process is called in thread ' + Thread.currentThread().getName())
+            console.log('nashornEventLoop.process is called in thread ' + Thread.currentThread().getName());
             while (waitForMessages()) {
-                processNextMessages()
+                processNextMessages();
             }
         },
         reset: resetEventLoop
@@ -172,11 +167,11 @@ Object.assign = function (t) {
     var setImmediate = function (fn /* [, args...] */) {
         var args = [].slice.call(arguments, 1, arguments.length);
         return setTimeout(fn, 0, args);
-    }
+    };
 
     var clearImmediate = function (timerId) {
         clearTimeout(timerId);
-    }
+    };
 
     var clearTimeout = function (timerId) {
         var task = timerMap.get(timerId);
@@ -309,7 +304,7 @@ Object.assign = function (t) {
             });
 
             httpclient.execute(this.requestBuilder.build(), null, callback);
-        }
+        };
     };
 
     context.setTimeout = setTimeout;
