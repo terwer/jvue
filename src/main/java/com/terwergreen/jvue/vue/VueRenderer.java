@@ -47,7 +47,7 @@ public class VueRenderer {
 
     public String renderContent() {
         try {
-            ScriptObjectMirror promise = (ScriptObjectMirror) engine.callRender("renderServer", "{url:\"/\"}");
+            ScriptObjectMirror promise = (ScriptObjectMirror) engine.callRender("renderServer");
             promise.callMember("then", fnResolve, fnRejected);
             promise.callMember("catch", fnRejected);
 

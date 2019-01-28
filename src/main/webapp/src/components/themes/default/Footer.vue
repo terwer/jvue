@@ -49,7 +49,10 @@
           <div>
             <div>
               <p>
-                技术之路，路漫漫其修远兮，吾将上下而求索。欢迎关注公众号"架构设计漫谈"，一起分享技术，探讨人生。
+                技术之路，路漫漫其修远兮，吾将上下而求索。
+              </p>
+              <p>
+                欢迎关注公众号"架构设计漫谈"，一起分享技术，探讨人生。
               </p>
               <div class="ewmimg">
                 <img src="./images/mp-qrcode.png" alt="Terwer" />
@@ -68,7 +71,7 @@
                 <h2>联系作者</h2>
               </div>
               <p>
-                如果您有相关合作事宜，可以通过以下方式联系我，我会在收到消息后第一时间回复处理，谢谢支持！
+                如果您有相关合作事宜，可以通过以下方式联系我，我会在收到消息后第一时间回复处理！<br />
               </p>
             </b-col>
             <b-col xl="6">邮箱：youweics@sina.com</b-col>
@@ -80,9 +83,15 @@
             <b-col xl="6">QQ：1035136784（倚楼听雨）</b-col>
             <b-col xl="6">微信：15986685029（hiterwer）</b-col>
             <b-col cols="12" class="copyright">
+              <br />
               Copyright © 2011-2018 <a href="/" target="_blank">webname</a>
               <span class="next-line"><br /></span>
-              All Rights Reserved· 保留所有权益
+              All Rights Reserved
+            </b-col>
+            <b-col>
+              博客已稳定运行： 2年303天22时22分48秒 &nbsp;
+              <!-- cnzz统计 -->
+              <span id="cnzz_stat_icon_4445524"></span>
             </b-col>
           </b-row>
         </div>
