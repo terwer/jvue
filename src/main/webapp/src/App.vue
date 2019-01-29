@@ -15,7 +15,7 @@
     <!-- 对应的组件内容渲染到router-view中
     <router-view></router-view>
     -->
-      <Index/>
+    <Index />
   </div>
 </template>
 
@@ -26,7 +26,7 @@ import Index from "./components/themes/default/Index";
 
 export default {
   name: "App",
-    components: {Index}
+  components: { Index }
 };
 </script>
 

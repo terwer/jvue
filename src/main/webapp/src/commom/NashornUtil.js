@@ -8,5 +8,7 @@ var isInNashorn = function() {
   console.log("isInNashorn:" + isInNashorn);
   return isInNashorn;
 };
+var inBrowser =
+  typeof window !== "undefined" && typeof document !== "undefined";
 
-export { isInNashorn };
+export { isInNashorn, inBrowser };
