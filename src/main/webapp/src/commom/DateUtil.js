@@ -8,7 +8,7 @@ const lunar = calendar.solar2lunar();
  */
 var getWeekByDay = function() {
   var day = new Date();
-  var today = new Array(
+  var today = [
     "星期日",
     "星期一",
     "星期二",
@@ -16,7 +16,7 @@ var getWeekByDay = function() {
     "星期四",
     "星期五",
     "星期六"
-  ); //创建星期数组
+  ]; //创建星期数组
   // console.log(today[day.getDay()]);
   return today[day.getDay()]; //返一个星期中的某一天，其中0为星期日
 };
@@ -61,7 +61,6 @@ var getPopTime = function() {
 
 var getTradTime = function() {
   var tradTime = "农历：" + lunar.lYear + "年" + lunar.IMonthCn + lunar.IDayCn;
-
   return tradTime;
 };
 
