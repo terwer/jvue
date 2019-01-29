@@ -9,16 +9,16 @@
 $ yarn
 
 # serve with hot reload at localhost:8080
-$ yarn run serve
+$ yarn serve
 
 # build for production and launch server
-$ yarn run build
+$ yarn build
 
 # build for server-side-render decelopment
-$ yarn run ssr:build-dev
+$ yarn ssr:build-dev
 
 # build for server-side-render production
-$ yarn run ssr:build
+$ yarn ssr:build
 ```
 
 For detailed explanation on how things work, please visit [author's blog](https://www.terwergreen.com).
