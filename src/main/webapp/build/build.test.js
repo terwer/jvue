@@ -13,9 +13,7 @@ const DEVELOPMENT_BUILD_SSR_SERVER =
   "webpack --progress --mode development --renderMode ssr_server";
 const DEVELOPMENT_BUILD_SSR_SERVER_TEXT = "ssr_server development打包成功";
 
-// run test script
-const TEST_SCRIPT = "babel-node ./src/ssr/server.test.js";
-const BUILD_SUCCESS_TEXT = "ssr server development test successful";
+const BUILD_SUCCESS_TEXT = "ssr server development test build successful";
 
 const build = function() {
   console.log(chalk.yellow("mode:development"));
@@ -27,15 +25,7 @@ const build = function() {
       return;
     }
     console.log(chalk.blue(DEVELOPMENT_BUILD_SSR_SERVER_TEXT));
-
-    // 拷贝ssr客户端到ssr服务端目录
-    console.log("server test is starting");
-    exec(TEST_SCRIPT, err => {
-      if (err) {
-        console.log(err);
-      }
-      console.log(chalk.green(BUILD_SUCCESS_TEXT) + "🌟 ");
-    });
+    console.log(chalk.green(BUILD_SUCCESS_TEXT) + "🌟 ");
   });
 };
 

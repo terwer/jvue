@@ -22,9 +22,11 @@ const promise = global.renderServer();
 // console.log(promise);
 promise.then(
   resolve => {
+    console.log("result:resolve");
     console.log(resolve);
   },
   rejected => {
+    console.log("rejected:resolve");
     console.log(rejected);
   }
 );

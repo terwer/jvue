@@ -14,7 +14,7 @@
     "ssr:build-dev": "yarn clean && node ./build/build.dev.js",
     "ssr:build": "yarn clean && node ./build/build.prod.js",
     "ssr:build-test": "node ./build/build.test.js",
-    "ssr:test": "babel-node ./src/ssr/server.test.js"
+    "ssr:test": "yarn ssr:build-test && babel-node ./src/ssr/server.test.js"
   },
   "author": "Terwer",
   "license": "MIT",
@@ -60,6 +60,7 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "stylelint": "^9.10.1",
     "vue": "^2.5.22",
+    "vue-router": "^3.0.2",
     "vue-server-renderer": "^2.5.22",
     "vue-uweb": "^0.2.1"
   },

@@ -29,22 +29,22 @@ export default {
         {
           id: 2,
           name: "随笔",
-          link: "#"
+          link: "/cat/essay"
         },
         {
           id: 3,
           name: "技巧",
-          link: "#"
+          link: "/cat/skill"
         },
         {
           id: 4,
           name: "工具",
-          link: "#"
+          link: "/cat/tool"
         },
         {
           id: 5,
           name: "专题",
-          link: "#"
+          link: "/cat/special"
         },
         {
           id: 6,

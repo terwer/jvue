@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import HeaderTime from "./HeaderTime.vue";
-import Header from "./Header.vue";
-import Body from "./Body.vue";
-import Footer from "./Footer.vue";
-import FriendLink from "./FriendLink.vue";
+import HeaderTime from "./HeaderTime";
+import Header from "./Header";
+import Body from "./Body";
+import Footer from "./Footer";
+import FriendLink from "./FriendLink";
 
 export default {
   name: "Index",

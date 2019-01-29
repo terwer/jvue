@@ -2,6 +2,9 @@ import { isInNashorn } from "./commom/NashornUtil";
 import Vue from "vue";
 import App from "./App.vue";
 
+// 引入路由
+// import router from "./router"; // import router 的router 一定要小写， 不要写成Router, 否则报 can't match的报错
+
 // 组件引用
 import BootstrapVue from "bootstrap-vue";
 
@@ -34,6 +37,8 @@ Vue.config.productionTip = true;
 export default () => {
   console.log("Main is starting");
   return new Vue({
+    // 注入 router 到根Vue实例
+    // router,
     render: h => h(App)
   });
 };
