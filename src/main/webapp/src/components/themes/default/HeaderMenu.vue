@@ -1,17 +1,17 @@
 <template>
-    <b-row>
-        <b-col>
-            <b-nav pills>
-                <b-nav-item to="/" active>首页</b-nav-item>
-                <b-nav-item>随笔</b-nav-item>
-                <b-nav-item>技巧</b-nav-item>
-                <b-nav-item>工具</b-nav-item>
-                <b-nav-item>专题</b-nav-item>
-                <b-nav-item to="/auth/login">登录</b-nav-item>
-                <b-nav-item to="/auth/register">注册</b-nav-item>
-            </b-nav>
-        </b-col>
-    </b-row>
+  <b-row>
+    <b-col>
+      <b-nav pills>
+        <b-nav-item to="/" active>首页</b-nav-item>
+        <b-nav-item>随笔</b-nav-item>
+        <b-nav-item>技巧</b-nav-item>
+        <b-nav-item>工具</b-nav-item>
+        <b-nav-item>专题</b-nav-item>
+        <b-nav-item to="/auth/login">登录</b-nav-item>
+        <b-nav-item to="/auth/register">注册</b-nav-item>
+      </b-nav>
+    </b-col>
+  </b-row>
 </template>
 
 <script>

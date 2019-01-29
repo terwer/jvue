@@ -24,7 +24,11 @@
             ></a>
           </div>
         </b-col>
-        <b-col v-if="!isMobile || showHeadNav" sm="10" class="justify-content-center align-self-center">
+        <b-col
+          v-if="!isMobile || showHeadNav"
+          sm="10"
+          class="justify-content-center align-self-center"
+        >
           <HeaderMenu />
         </b-col>
         <!-- 搜索框 -->
