@@ -4,38 +4,27 @@
 //
 // 模拟window
 var window = {
-    navigator: {
-        userAgent: "Chrome"
-    }
+  navigator: {
+    userAgent: "Chrome"
+  }
 };
 global.window = window;
 
-// // =============================
-// // Require compiled script
-// // =============================
-// //
-// eval("../../ssrdist/js/server-bundle.js");
-//
-// // =============================
-// // Test script start
-// // =============================
-// //
-// var promise = global.renderServer();
-// console.log("renderServer finished")
-// console.log(promise)
-
-// =================
-// Usage
-// =================
+// =============================
+// Require compiled script
+// =============================
 require("../../ssrdist/js/server-bundle.js");
 
+// =============================
+// Test script start
+// =============================
 const promise = global.renderServer();
-
+// console.log(promise);
 promise.then(
-    value => {
-        console.log(value); // Success!
-    },
-    reason => {
-        console.log(reason); // Error!
-    }
+  resolve => {
+    console.log(resolve);
+  },
+  rejected => {
+    console.log(rejected);
+  }
 );

@@ -13,8 +13,8 @@
     "lint": "yarn lint:js && yarn lint:vue && yarn lint:css",
     "ssr:build-dev": "yarn clean && node ./build/build.dev.js",
     "ssr:build": "yarn clean && node ./build/build.prod.js",
-    "ssr:test": "node ./build/build.test.js",
-    "ssr:test-no-build": "node ./src/ssr/server.test.js"
+    "ssr:build-test": "node ./build/build.test.js",
+    "ssr:test": "babel-node ./src/ssr/server.test.js"
   },
   "author": "Terwer",
   "license": "MIT",

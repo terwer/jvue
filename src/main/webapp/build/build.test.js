@@ -31,8 +31,8 @@ const build = function() {
     // 拷贝ssr客户端到ssr服务端目录
     console.log("server test is starting");
     exec(TEST_SCRIPT, err => {
-      if(err){
-        console.log(err)
+      if (err) {
+        console.log(err);
       }
       console.log(chalk.green(BUILD_SUCCESS_TEXT) + "🌟 ");
     });
