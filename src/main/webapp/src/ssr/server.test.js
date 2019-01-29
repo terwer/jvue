@@ -10,6 +10,8 @@ var window = {
 };
 global.window = window;
 
+global.inBrowser = false;
+
 // =============================
 // Require compiled script
 // =============================
@@ -18,7 +20,13 @@ require("../../ssrdist/js/server-bundle.js");
 // =============================
 // Test script start
 // =============================
-const promise = global.renderServer();
+const context = {
+  title: "vue ssr",
+  meta: `<meta charset="utf-8"/>`,
+  url: "/p/1.html"
+};
+
+const promise = global.renderServer(context);
 // console.log(promise);
 promise.then(
   resolve => {

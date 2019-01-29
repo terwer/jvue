@@ -14,7 +14,8 @@
     "ssr:build-dev": "yarn clean && node ./build/build.dev.js",
     "ssr:build": "yarn clean && node ./build/build.prod.js",
     "ssr:build-test": "node ./build/build.test.js",
-    "ssr:test": "yarn ssr:build-test && babel-node ./src/ssr/server.test.js"
+    "ssr:test-no-build": "babel-node ./src/ssr/server.test.js",
+    "ssr:test": "yarn ssr:build-test && yarn ssr:test-no-build"
   },
   "author": "Terwer",
   "license": "MIT",
