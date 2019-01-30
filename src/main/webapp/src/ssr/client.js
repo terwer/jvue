@@ -1,7 +1,7 @@
 import "@babel/polyfill";
-import Main from "../main";
+import { createApp } from "../main";
 
 global.renderClient = () => {
-  const vm = Main();
-  vm.$mount("#app");
+  let { app } = createApp();
+  app.$mount("#app");
 };

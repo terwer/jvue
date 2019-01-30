@@ -6,7 +6,7 @@
 const exec = require("child_process").exec;
 const chalk = require("chalk");
 
-const encoding = { encoding: "utf8" };
+const options = { encoding: "utf8", maxBuffer: 1024 * 500 };
 
 // build ssr_client
 const DEVELOPMENT_BUILD_SSR_CLIENT =
@@ -20,12 +20,13 @@ const DEVELOPMENT_BUILD_SSR_SERVER_TEXT = "ssr_server development打包成功";
 
 // copy js from ssrclientdist to ssrdist
 const COPY_SCRIPT = "cp ssrclientdist/js/* ssrdist/js && rm -rf ssrclientdist";
-const COPY_SCRIPT_TEXT = "copy js from ssrclientdist to ssrdist successful";
+const BUILD_SUCCESS_TEXT = "ssr build development successful";
 
 const build = function() {
+  console.log(chalk.yellow("mode:development"));
   // 构建ssr客户端
-  console.log("build ssr_client");
-  exec(DEVELOPMENT_BUILD_SSR_CLIENT, encoding, err => {
+  console.log("build ssr_client is starting");
+  exec(DEVELOPMENT_BUILD_SSR_CLIENT, options, err => {
     if (err) {
       console.log(err);
       return;
@@ -33,8 +34,8 @@ const build = function() {
     console.log(chalk.blue(DEVELOPMENT_BUILD_SSR_CLIENT_TEXT));
 
     // 构建ssr服务端
-    console.log("build ssr_server");
-    exec(DEVELOPMENT_BUILD_SSR_SERVER, encoding, err => {
+    console.log("build ssr_server is starting");
+    exec(DEVELOPMENT_BUILD_SSR_SERVER, options, err => {
       if (err) {
         console.log(err);
         return;
@@ -42,11 +43,11 @@ const build = function() {
       console.log(chalk.blue(DEVELOPMENT_BUILD_SSR_SERVER_TEXT));
 
       // 拷贝ssr客户端到ssr服务端目录
-      console.log("copy script");
-      exec(COPY_SCRIPT);
+      console.log("copy script is starting");
+      exec(COPY_SCRIPT, () => {
+        console.log(chalk.green(BUILD_SUCCESS_TEXT) + "🌟 ");
+      });
     });
-
-    console.log(chalk.green(COPY_SCRIPT_TEXT) + "🌟 ");
   });
 };
 

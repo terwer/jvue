@@ -97,6 +97,9 @@ module.exports = (env, argv) => {
       filename: outputFilename,
       path: buildPath
     },
+    resolve: {
+      extensions: [".js", ".json", ".vue"]
+    },
     module: {
       rules: [
         {

@@ -1,33 +1,42 @@
 <template>
   <b-container fluid>
     <HeaderTime />
-    <Header title="jvue" />
+    <!--<Header title="jvue" />-->
     <Body />
-    <Footer />
-    <FriendLink />
+    <!--<Footer />-->
+    <!--<FriendLink />-->
   </b-container>
 </template>
 
 <script>
-import HeaderTime from "./HeaderTime.vue";
-import Header from "./Header.vue";
-import Body from "./Body.vue";
-import Footer from "./Footer.vue";
-import FriendLink from "./FriendLink.vue";
+import HeaderTime from "./HeaderTime";
+// import Header from "./Header";
+import Body from "./Body";
+// import Footer from "./Footer";
+// import FriendLink from "./FriendLink";
 
 export default {
   name: "Index",
+  // 钩子函数
+  mounted() {
+    const that = this;
+    setTimeout(function() {
+      console.log("加载站点配置");
+      that.siteConfig = {};
+    }, 2000);
+  },
   data: function() {
     return {
-      title: "Next Vue SSR Project for Java Nashorn Script engine"
+      title: "Next Vue SSR Project for Java Nashorn Script engine",
+      siteConfig: null
     };
   },
   components: {
     HeaderTime,
-    Header,
-    Body,
-    Footer,
-    FriendLink
+    // Header,
+    Body
+    // Footer,
+    // FriendLink
   }
 };
 </script>

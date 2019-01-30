@@ -24,7 +24,13 @@
             ></a>
           </div>
         </b-col>
-
+        <b-col
+          v-if="!isMobile || showHeadNav"
+          sm="10"
+          class="justify-content-center align-self-center"
+        >
+          <HeaderMenu />
+        </b-col>
         <!-- 搜索框 -->
         <b-col cols="12" id="searchArea">
           <b-form id="searchform" method="get" action="/">
@@ -52,9 +58,13 @@
 </template>
 <script>
 import { isInNashorn } from "../../../commom/NashornUtil";
+import HeaderMenu from "./HeaderMenu.vue";
 
 export default {
   name: "Header",
+  components: {
+    HeaderMenu
+  },
   props: {
     title: {
       type: [String],
@@ -127,10 +137,6 @@ export default {
   display: inline-block;
   vertical-align: middle;
   height: 100%;
-}
-/* 右侧登录按钮 */
-.loginlink a {
-  padding: 0.5rem;
 }
 #searchArea {
   padding-bottom: 10px;
