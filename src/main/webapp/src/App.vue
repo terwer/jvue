@@ -13,18 +13,15 @@
     </header>
     <!-- 对应的组件内容渲染到router-view中 -->
     <router-view></router-view>
-    <!--<Index />-->
   </div>
 </template>
 
 <script>
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
-import Index from "./components/themes/default/Index";
 
 export default {
-  name: "App",
-  components: { Index }
+  name: "App"
 };
 </script>
 

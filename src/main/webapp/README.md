@@ -21,4 +21,7 @@ $ yarn ssr:build-dev
 $ yarn ssr:build
 ```
 
+# Notice!!!
+1、Html tag can not have too much sub tags,or calse "Java.lang.StackOverflowError"
+
 For detailed explanation on how things work, please visit [author's blog](https://www.terwergreen.com).
