@@ -33,11 +33,11 @@ export default {
   },
   components: {
     HeaderTime,
-// Header,
-Body,
-// Footer,
-// FriendLink
-}
+    // Header,
+    Body
+    // Footer,
+    // FriendLink
+  }
 };
 </script>
 

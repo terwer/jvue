@@ -1,7 +1,7 @@
 import "@babel/polyfill";
 import { createApp } from "../main";
-import { createRenderer } from "vue-server-renderer";
-const { renderToString } = createRenderer();
+
+const renderer = require("vue-server-renderer").createRenderer();
 
 global.renderServer = context => {
   // Without router
@@ -41,8 +41,8 @@ global.renderServer = context => {
         return reject({ status: 0, data: null, msg: "404 Not Found" });
       }
 
-        //Render the html string
-      renderToString(app, context, (err, html) => {
+      //Render the html string
+      renderer.renderToString(app, context, (err, html) => {
         if (err) {
           console.log("Error rendering to string: ");
           console.log(err);
