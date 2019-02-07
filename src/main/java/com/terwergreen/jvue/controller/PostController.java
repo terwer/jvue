@@ -12,35 +12,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 入口
+ * 文章
  *
  * @author Terwer
  * @version 1.0
- * 2019/1/10 18:51
+ * 2019/2/1 12:04
  **/
 @Controller
 @Scope("prototype")
-public class MainController {
+public class PostController {
     private VueRenderer vueRenderer;
 
     @Autowired
-    public MainController() {
+    public PostController() {
         this.vueRenderer = new VueRenderer();
     }
 
-    @RequestMapping("/")
-    public String index(Model model) {
+
+    @RequestMapping("/post/{id}.html")
+    public String post(Model model, @PathVariable String id) {
         // 设置路由上下文
         Map<String, Object> context = new HashMap<>();
-        context.put("url", "/");
+        context.put("url", String.format("/post/%s.html", id));
 
         Map<String, Object> resultMap = vueRenderer.renderContent(context);
         model.addAllAttributes(resultMap);
         return "index";
-    }
-
-    @RequestMapping("/home")
-    public String home(Model model) {
-        return index(model);
     }
 }

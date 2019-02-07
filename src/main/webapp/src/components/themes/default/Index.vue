@@ -4,7 +4,7 @@
     <!--<Header title="jvue" />-->
     <Body />
     <!--<Footer />-->
-    <!--<FriendLink />-->
+    <FriendLink />
   </b-container>
 </template>
 
@@ -13,7 +13,7 @@ import HeaderTime from "./HeaderTime";
 // import Header from "./Header";
 import Body from "./Body";
 // import Footer from "./Footer";
-// import FriendLink from "./FriendLink";
+import FriendLink from "./FriendLink";
 
 export default {
   name: "Index",
@@ -34,9 +34,9 @@ export default {
   components: {
     HeaderTime,
     // Header,
-    Body
+    Body,
     // Footer,
-    // FriendLink
+    FriendLink
   }
 };
 </script>
