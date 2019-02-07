@@ -13,7 +13,6 @@
     </header>
     <!-- 对应的组件内容渲染到router-view中 -->
     <router-view></router-view>
-    <!--<Index />-->
   </div>
 </template>
 

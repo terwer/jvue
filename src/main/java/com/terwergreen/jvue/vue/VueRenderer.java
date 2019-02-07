@@ -1,11 +1,15 @@
 package com.terwergreen.jvue.vue;
 
+import com.alibaba.fastjson.JSON;
 import com.terwergreen.jvue.utils.NashornUtil;
 import com.terwergreen.jvue.utils.VueUtil;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.util.StringUtils;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Consumer;
 
 /**
@@ -19,11 +23,11 @@ public class VueRenderer {
     private volatile boolean promiseResolved = false;
     private volatile boolean promiseRejected = false;
 
-    private Object html = null;
+    private ScriptObjectMirror htmlObject = null;
 
     private Consumer<Object> fnResolve = object -> {
         synchronized (promiseLock) {
-            html = object;
+            htmlObject = (ScriptObjectMirror) object;
             promiseResolved = true;
             logger.info("promiseResolved");
         }
@@ -31,7 +35,7 @@ public class VueRenderer {
 
     private Consumer<Object> fnRejected = object -> {
         synchronized (promiseLock) {
-            html = object;
+            htmlObject = (ScriptObjectMirror) object;
             promiseRejected = true;
             logger.info("promiseRejected");
         }
@@ -45,9 +49,12 @@ public class VueRenderer {
         logger.info("Vue server编译成功，编译引擎为Nashorn");
     }
 
-    public String renderContent() {
+    public String renderContent(Map<String, Object> context) {
         try {
-            ScriptObjectMirror promise = (ScriptObjectMirror) engine.callRender("renderServer");
+            logger.info("服务端调用renderServer前，设置路由上下文context:" + JSON.toJSONString(context));
+
+            // 调用render方法返回promise
+            ScriptObjectMirror promise = (ScriptObjectMirror) engine.callRender("renderServer", context);
             promise.callMember("then", fnResolve, fnRejected);
             promise.callMember("catch", fnRejected);
 
@@ -73,7 +80,25 @@ public class VueRenderer {
                 }
             }
             engine.eval("global.nashornEventLoop.reset();");
-            return String.valueOf(html);
+
+            if (StringUtils.isEmpty(htmlObject)) {
+                return "Server Timed Out";
+            }
+            logger.info("renderServer获取数据成功");
+            logger.debug("htmlObject:" + JSON.toJSONString(htmlObject));
+
+            // 处理返回结果
+            if(htmlObject.size()==0){
+                return "Server render error";
+            }
+            int status = (int) htmlObject.get("status");
+            if (status == 0) {
+                return (String) htmlObject.get("msg");
+            } else {
+                String outputHtml = (String) htmlObject.get("data");
+                logger.debug("outputHtml:" + JSON.toJSONString(outputHtml));
+                return outputHtml;
+            }
         } catch (Exception e) {
             throw new IllegalStateException("failed to render vue component", e);
         }

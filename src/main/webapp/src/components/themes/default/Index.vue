@@ -1,19 +1,19 @@
 <template>
   <b-container fluid>
     <HeaderTime />
-    <Header title="jvue" />
+    <!--<Header title="jvue" />-->
     <Body />
-    <Footer />
-    <FriendLink />
+    <!--<Footer />-->
+    <!--<FriendLink />-->
   </b-container>
 </template>
 
 <script>
 import HeaderTime from "./HeaderTime";
-import Header from "./Header";
+// import Header from "./Header";
 import Body from "./Body";
-import Footer from "./Footer";
-import FriendLink from "./FriendLink";
+// import Footer from "./Footer";
+// import FriendLink from "./FriendLink";
 
 export default {
   name: "Index",
@@ -33,10 +33,10 @@ export default {
   },
   components: {
     HeaderTime,
-    Header,
-    Body,
-    Footer,
-    FriendLink
+    // Header,
+    Body
+    // Footer,
+    // FriendLink
   }
 };
 </script>

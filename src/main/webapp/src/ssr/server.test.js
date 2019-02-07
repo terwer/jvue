@@ -21,20 +21,20 @@ require("../../ssrdist/js/server-bundle.js");
 // Test script start
 // =============================
 const context = {
-  title: "vue ssr",
-  meta: `<meta charset="utf-8"/>`,
-  url: "/p/1.html"
+  url: "/"
+  // url: "/p/1.html"
+  // url: "/test-no-page"
 };
 
 const promise = global.renderServer(context);
 // console.log(promise);
 promise.then(
   resolve => {
-    console.log("result:resolve");
+    console.log("resolve");
     console.log(resolve);
   },
   rejected => {
-    console.log("rejected:resolve");
+    console.log("rejected");
     console.log(rejected);
   }
 );
