@@ -1,7 +1,6 @@
 import "@babel/polyfill";
 import { createApp } from "../main";
-import { createRenderer } from "vue-server-renderer";
-const { renderToString } = createRenderer();
+const renderVueComponentToString = require("vue-server-renderer/basic.js");
 
 global.renderServer = context => {
   console.log("context");
@@ -10,7 +9,7 @@ global.renderServer = context => {
   // let { app, router } = createApp();
   // const vm = app;
   //
-  // var promise = renderToString(vm, context);
+  // var promise = renderVueComponentToString(vm, context);
   // console.log("Vue server render return promise");
   // return promise;
 
@@ -38,7 +37,7 @@ global.renderServer = context => {
       }
 
       //Render the html string
-      renderToString(app, context, (err, html) => {
+      renderVueComponentToString(app, context, (err, html) => {
         if (err) {
           console.log("Error rendering to string: ");
           console.log(err);
