@@ -62,6 +62,10 @@ public class NashornUtil {
             // 编译nashorn-polyfill
             engine.eval(read(LIB_DIR + File.separator + POLYFILL_FILE_NAME));
             logger.info("nashorn-polyfill编译成功，编译引擎为Nashorn");
+
+            // 编译Vue server
+            engine.eval(VueUtil.readVueFile("server-bundle.js"));
+            logger.info("Vue server编译成功，编译引擎为Nashorn");
         } catch (ScriptException e) {
             logger.error("nashorn-polyfill解析错误", e);
         }

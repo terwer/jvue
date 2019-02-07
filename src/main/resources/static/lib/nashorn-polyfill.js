@@ -1,20 +1,11 @@
 /**
  * poli-fill the following
- * self,global,process,console,Object.assign
+ * global,process,console,Object.assign
  * setTimeout,clearTimeout,setImmediate,clearImmediate,setInterval,clearInterval
  * XMLHttpRequest
  */
-var self = this;
 // 模拟global
 var global = this;
-
-// 模拟window
-var window = {
-    navigator: {
-        userAgent: "Chrome"
-    }
-};
-global.window = window;
 
 // 模拟process
 var process = {
@@ -323,4 +314,4 @@ Object.assign = function (t) {
     context.clearInterval = clearInterval;
     context.XMLHttpRequest = XMLHttpRequest;
 
-})(typeof global !== "undefined" && global || typeof self !== "undefined" && self || this);
+})(typeof global !== "undefined" && global || this);

@@ -2,13 +2,11 @@ package com.terwergreen.jvue.vue;
 
 import com.alibaba.fastjson.JSON;
 import com.terwergreen.jvue.utils.NashornUtil;
-import com.terwergreen.jvue.utils.VueUtil;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.util.StringUtils;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -44,9 +42,6 @@ public class VueRenderer {
     public VueRenderer() {
         // 获取Javascript引擎
         engine = NashornUtil.getInstance();
-        // 编译Vue server
-        engine.eval(VueUtil.readVueFile("server-bundle.js"));
-        logger.info("Vue server编译成功，编译引擎为Nashorn");
     }
 
     public String renderContent(Map<String, Object> context) {
@@ -59,7 +54,7 @@ public class VueRenderer {
             promise.callMember("catch", fnRejected);
 
             int i = 0;
-            int jsWaitTimeout = 1000 * 6;
+            int jsWaitTimeout = 1000 * 1;
             int interval = 200; // 等待时间间隔
             int totalWaitTime = 0; // 实际等待时间
 

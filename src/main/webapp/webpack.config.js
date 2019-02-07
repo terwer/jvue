@@ -11,7 +11,7 @@ module.exports = (env, argv) => {
   const isProduction = argv.mode === "production";
   const renderMode = argv.renderMode ? argv.renderMode : "client";
   const isClientServe = renderMode === "client" && !isProduction;
-  const isClient = renderMode === "client";
+  const isClient = renderMode === "client" || renderMode === "ssr_client";
 
   console.log("mode:" + argv.mode);
   console.log("renderMode:" + renderMode);
