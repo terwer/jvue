@@ -1,16 +1,6 @@
 // =============================
 // This is polyfill not in node
 // =============================
-//
-// 模拟window
-// var window = {
-//   navigator: {
-//     userAgent: "Chrome"
-//   }
-// };
-// global.window = window;
-//
-// global.inBrowser = false;
 
 // =============================
 // Require compiled script

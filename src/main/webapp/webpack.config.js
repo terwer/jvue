@@ -9,11 +9,14 @@ module.exports = (env, argv) => {
   // CSS提取应该只用于生产环境
   // 这样我们在开发过程中仍然可以热重载
   const isProduction = argv.mode === "production";
-  console.log("mode:" + argv.mode);
   const renderMode = argv.renderMode ? argv.renderMode : "client";
-  console.log("renderMode:" + renderMode);
   const isClientServe = renderMode === "client" && !isProduction;
+  const isClient = renderMode === "client";
+
+  console.log("mode:" + argv.mode);
+  console.log("renderMode:" + renderMode);
   console.log("isClientServe:" + isClientServe);
+  console.log("isClient:" + isClient);
 
   let entryFile;
   let buildPath;
@@ -87,7 +90,7 @@ module.exports = (env, argv) => {
     }
   }
 
-  return {
+  let webpackConfig = {
     node: {
       fs: "empty",
       module: "empty"
@@ -95,8 +98,7 @@ module.exports = (env, argv) => {
     entry: entryFile,
     output: {
       filename: outputFilename,
-      path: buildPath,
-      globalObject: "typeof self !== 'undefined' ? self : this"
+      path: buildPath
     },
     resolve: {
       extensions: [".js", ".json", ".vue"]
@@ -156,4 +158,12 @@ module.exports = (env, argv) => {
     },
     plugins: webpackPlugins
   };
+
+  // 自定义webpack配置
+  if (!isClient) {
+    webpackConfig.output.globalObject =
+      'typeof self !== "undefined" ? self : this';
+  }
+
+  return webpackConfig;
 };
