@@ -3,14 +3,14 @@
 // =============================
 //
 // 模拟window
-var window = {
-  navigator: {
-    userAgent: "Chrome"
-  }
-};
-global.window = window;
-
-global.inBrowser = false;
+// var window = {
+//   navigator: {
+//     userAgent: "Chrome"
+//   }
+// };
+// global.window = window;
+//
+// global.inBrowser = false;
 
 // =============================
 // Require compiled script

@@ -95,7 +95,8 @@ module.exports = (env, argv) => {
     entry: entryFile,
     output: {
       filename: outputFilename,
-      path: buildPath
+      path: buildPath,
+      globalObject: "typeof self !== 'undefined' ? self : this"
     },
     resolve: {
       extensions: [".js", ".json", ".vue"]

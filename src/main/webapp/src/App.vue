@@ -19,9 +19,13 @@
 <script>
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+// import Index from "./components/themes/default/Index";
 
 export default {
-  name: "App"
+  name: "App",
+  components: {
+    // Index
+  }
 };
 </script>
 
