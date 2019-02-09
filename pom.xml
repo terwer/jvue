@@ -35,6 +35,13 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.47</version>
         </dependency>
+        <!-- commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+
         <!-- 文件处理 -->
         <dependency>
             <groupId>commons-io</groupId>
@@ -46,6 +53,18 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.4</version>
+        </dependency>
+        <!-- guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.0.1-jre</version>
+        </dependency>
+        <!--graalvm.js -->
+        <dependency>
+            <groupId>org.graalvm.js</groupId>
+            <artifactId>js</artifactId>
+            <version>1.0.0-rc12</version>
         </dependency>
 
         <!-- Test -->
@@ -60,22 +79,24 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <filtering>true</filtering>
+                <filtering>false</filtering>
                 <includes>
                     <include>**/*</include>
                 </includes>
             </resource>
             <resource>
                 <directory>src/main/webapp</directory>
-                <!--注意此次必须要放在此目录下才能被访问到 -->
-                <targetPath>META-INF/resources</targetPath>
+                <filtering>false</filtering>
                 <includes>
                     <!-- 客户端渲染
                     <include>dist/**</include>
                     -->
                     <!-- 服务端渲染 -->
-                    <include>ssrdist/**</include>
+                    <include>templates/**</include>
                 </includes>
+                <excludes>
+                    <exclude>templates/entry-server.css</exclude>
+                </excludes>
             </resource>
         </resources>
 

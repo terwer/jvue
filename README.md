@@ -16,32 +16,34 @@
 # Introduction
 ## jvue
 Next light-weight,responsive project
-With Vue,Spring Boot and Java Nashorn Script engine for server-side-rendering
+With Vue,Spring Boot and Java GraalVM.js Script engine for server-side-rendering
 
 # Build setup
 1、Go to [webapp](src/main/webapp) and run vue ssr build
 
-```
-cd src/main/webapp && yarn && yarn ssr:build
+```bash
+cd src/main/webapp && yarn && yarn build-ssr
 ```
 
-notice:You can run ``ssr:build-dev`` in development mode to show error logs
+notice:You can run ``yarn build-ssr-dev`` in development mode to show error logs
 
 2、Run java mavem build
 
-```
+```bash
 mvn clean package -DskipTests
 ```
 
 3、Copy ``target/ROOT.war`` to ``${TOMCAT_HOME}/webapps``
 
-# Run
+or
 
-You beed set ``-Djava.awt.headless=false`` in order to get screen info
+```bash
+mvn spring-boot:run
+```
 
 # Structure
 
-The whole project is a Java Spring Boot Maven structure,the ``src/main/webapp`` is a complete Vue Project With webpack structure
+The whole project is a ``Java Spring Boot Maven`` structure,the ``src/main/webapp`` is a complete ``Vue`` Project With ``parcel`` structure
 
 When build finish,all files merged into ``target/ROOT.war``
 

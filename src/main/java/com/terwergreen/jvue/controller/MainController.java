@@ -2,10 +2,8 @@ package com.terwergreen.jvue.controller;
 
 import com.terwergreen.jvue.vue.VueRenderer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.HashMap;
@@ -19,14 +17,9 @@ import java.util.Map;
  * 2019/1/10 18:51
  **/
 @Controller
-@Scope("prototype")
 public class MainController {
-    private VueRenderer vueRenderer;
-
     @Autowired
-    public MainController() {
-        this.vueRenderer = new VueRenderer();
-    }
+    private VueRenderer vueRenderer;
 
     @RequestMapping("/")
     public String index(Model model) {
@@ -36,7 +29,7 @@ public class MainController {
 
         Map<String, Object> resultMap = vueRenderer.renderContent(context);
         model.addAllAttributes(resultMap);
-        return "index";
+        return "index.ssr";
     }
 
     @RequestMapping("/home")

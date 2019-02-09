@@ -17,16 +17,16 @@
     <title>Next Vue SSR Project for Java Nashorn Script engine</title>
     <meta name="keywords" content="jvue,vue,spring,spring-boot,nashorn,ssr,server-side-rendering">
     <meta name="description" content="Next light-weight,responsive project With Vue,Spring Boot and Java Nashorn Script engine">
-    <link rel="icon" th:href="'/favicon.ico?rnd='+${rnd}" type="image/x-icon" />
-    <link rel="shortcut icon" th:href="'/favicon.ico?rnd='+${rnd}" type="image/x-icon" />
-    <link th:href="'/css/common.css?rnd='+${rnd}" rel="stylesheet">
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon" />
 </head>
 <body>
 <noscript>
     <strong>We're sorry but this page doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
 </noscript>
 <render th:utext="${content}" th:remove="tag"></render>
-<script type="text/javascript" th:src="'/js/client.js?rnd='+${rnd}"></script>
+<!-- Note the reference to src here. Parcel will rewrite it on build. -->
+<script type="text/javascript" src="./entry-client.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         console.log('DOMContentLoaded');

@@ -1,6 +1,8 @@
-package com.terwergreen.jvue.utils;
+package com.terwergreen.jvue.vue;
 
 import com.alibaba.fastjson.JSON;
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -30,7 +32,25 @@ public class VueUtil {
     /**
      * Vue资源文件目录
      */
-    private static final String VUE_RESOURCE_PATH = "/META-INF/resources/ssrdist/js/";
+    private static final String VUE_RESOURCE_PATH = "/templates/";
+
+    /**
+     * 读取脚本
+     *
+     * @param resourceName 脚本名称
+     * @return 脚本字符
+     */
+    public static String readVueResourceString(String resourceName) {
+        String result = null;
+        try {
+            URL resourcePath = VueUtil.class.getResource(VUE_RESOURCE_PATH + resourceName);
+            logger.info("resourcePath:" + resourcePath);
+            result = Resources.toString(resourcePath, Charsets.UTF_8);
+        } catch (Exception e) {
+            logger.error("文件读取失败:" + resourceName + "," ,e);
+        }
+        return result;
+    }
 
     /**
      * 读取资源文件
@@ -38,7 +58,7 @@ public class VueUtil {
      * @param fileName 文件名称
      * @return Reader
      */
-    public static Reader readVueFile(final String fileName) {
+    public static Reader readVueFileReader(final String fileName) {
         InputStream in = null;
         try {
             String appFilename = getVueFileResource(fileName);
