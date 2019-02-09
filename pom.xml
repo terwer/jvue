@@ -10,9 +10,23 @@
     </parent>
     <groupId>com.terwergreen</groupId>
     <artifactId>jvue</artifactId>
-    <version>0.0.1.SNAPSHOT</version>
-    <name>jvue</name>
-    <description>Next light-weight,responsive project With Vue,Spring Boot and Java Nashorn Script engine</description>
+    <version>${projectVersion}</version>
+    <name>${projectName}</name>
+    <description>Next light-weight,responsive project With Vue,Spring Boot and Java GraalVM.js Script engine for server-side-rendering</description>
+
+    <profiles>
+        <profile>
+            <id>application-config</id>
+            <properties>
+                <activatedProperties>dev</activatedProperties>
+                <projectName>JVue Framework</projectName>
+                <projectVersion>1.0.2</projectVersion>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
 
     <properties>
         <java.version>1.8</java.version>
@@ -41,7 +55,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.8.1</version>
         </dependency>
-
         <!-- 文件处理 -->
         <dependency>
             <groupId>commons-io</groupId>
@@ -79,10 +92,7 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <filtering>false</filtering>
-                <includes>
-                    <include>**/*</include>
-                </includes>
+                <filtering>true</filtering>
             </resource>
             <resource>
                 <directory>src/main/webapp</directory>

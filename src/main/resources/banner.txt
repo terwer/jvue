@@ -5,4 +5,4 @@ ${AnsiColor.MAGENTA}
     | | / _ \| '__|\ \ /\ / // _ \| '__|
     | ||  __/| |    \ V  V /|  __/| |
     |_| \___||_|     \_/\_/  \___||_|
-${AnsiColor.YELLOW}:: ${AnsiColor.GREEN}JVue ::            ${AnsiColor.BRIGHT_RED}(v0.0.1.SNAPSHOT)
+${AnsiColor.YELLOW}:: ${AnsiColor.GREEN}${application.title} ::            ${AnsiColor.BRIGHT_RED}(${application.formatted-version})
