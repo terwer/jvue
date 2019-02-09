@@ -21,6 +21,8 @@
     "test-ssr-no-build": "yarn test:compile-entry-server && yarn test:entry-server"
   },
   "dependencies": {
+    "bootstrap": "^4.2.1",
+    "bootstrap-vue": "^2.0.0-rc.11",
     "vue": "^2.6.4",
     "vue-server-renderer": "^2.6.4"
   },
@@ -36,5 +38,8 @@
     "rimraf": "^2.6.3",
     "vue-hot-reload-api": "^2.3.1",
     "vue-template-compiler": "^2.6.4"
+  },
+  "posthtml": {
+    "recognizeSelfClosing": true
   }
 }
