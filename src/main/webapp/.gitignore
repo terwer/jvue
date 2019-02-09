@@ -1,62 +1,26 @@
-# Created by .ignore support plugin (hsz.mobi)
-### Java template
-# Compiled class file
-*.class
+.DS_Store
+node_modules
 
-# Log file
-*.log
+# local env files
+.env.local
+.env.*.local
 
-# BlueJ files
-*.ctxt
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-### Windows template
-# Windows thumbnail cache files
-Thumbs.db
-ehthumbs.db
-ehthumbs_vista.db
-
-# Dump file
-*.stackdump
-
-# Folder config file
-[Dd]esktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-### Example user template template
-### Example user template
-
-# IntelliJ project files
+# Editor directories and files
 .idea
-*.iml
-out
-gen
-dist/
-ssrdist/
-ssrclientdist/
-node_modules/
-yarn.*
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
+.cache
+dist
+templates
+
+*compiled.js

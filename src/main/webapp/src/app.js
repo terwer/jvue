@@ -1,5 +1,5 @@
 import { createApp } from "./main";
 
-let { app } = createApp();
-const vm = app;
+const { vm } = createApp();
 vm.$mount("#app");
+console.log("app.js is running...");

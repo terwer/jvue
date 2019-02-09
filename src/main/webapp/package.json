@@ -1,94 +1,40 @@
 {
-  "name": "jvue",
-  "version": "1.0.0",
-  "description": "Next light-weight,responsive project With Vue,Spring Boot and Java Nashorn Script engine for server-side-rendering",
-  "main": "src/app.js",
-  "scripts": {
-    "clean": "rimraf dist && rimraf ssrclientdist && rimraf ssrdist",
-    "serve": "webpack-dev-server --progress --mode development",
-    "build": "yarn clean && webpack --mode production",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore . --fix --color",
-    "lint:css": "stylelint --config stylelint.config.js 'src/**/*.css' --fix --color",
-    "ssr:build-dev": "yarn clean && node ./build/build.dev.js",
-    "ssr:build": "yarn clean && node ./build/build.prod.js",
-    "ssr:build-test": "node ./build/build.test.js",
-    "ssr:test-no-build": "node ./src/ssr/server.test.js",
-    "ssr:test": "yarn ssr:build-test && yarn ssr:test-no-build"
-  },
-  "author": "Terwer",
   "license": "MIT",
+  "scripts": {
+    "clean": "rimraf .cache && rimraf dist && rimraf templates",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --ignore-pattern '!.eslintrc.js' . --fix --color",
+    "serve": "parcel src/index.html -d dist",
+    "watch": "parcel watch src/index.html -d dist",
+    "build-dev": "parcel build src/index.html -d dist --detailed-report --no-minify",
+    "build": "parcel build src/index.html -d dist --detailed-report",
+    "build:entry-client-dev": "parcel build src/ssr/index.ssr.html -d templates --detailed-report --no-minify",
+    "build:entry-client": "parcel build src/ssr/index.ssr.html -d templates --detailed-report",
+    "build:entry-server": "parcel build src/ssr/entry-server.js -d templates --detailed-report",
+    "build-ssr-dev": "yarn clean && yarn build:entry-client-dev && yarn build:entry-server",
+    "build-ssr": "yarn clean && yarn build:entry-client && yarn build:entry-server",
+    "test": "node build/dist/app.*.js",
+    "test:compile-entry-client": "babel tests/ssr/test-entry-client.js --out-file tests/ssr/test-entry-client-compiled.js",
+    "test:entry-client": "node tests/ssr/test-entry-cliententry-server.js-compiled.js",
+    "test:compile-entry-server": "babel tests/ssr/test-entry-server.js --out-file tests/ssr/test-entry-server-compiled.js",
+    "test:entry-server": "node tests/ssr/test-entry-server-compiled.js",
+    "test-ssr": "yarn build:entry-server && yarn test:compile-entry-server && yarn test:entry-server",
+    "test-ssr-no-build": "yarn test:compile-entry-server && yarn test:entry-server"
+  },
+  "dependencies": {
+    "vue": "^2.6.4",
+    "vue-server-renderer": "^2.6.4"
+  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
-    "@babel/node": "^7.2.2",
-    "@babel/plugin-syntax-jsx": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.2.0",
-    "@babel/preset-env": "^7.2.3",
+    "@vue/component-compiler-utils": "^2.5.2",
     "@vue/eslint-config-prettier": "^4.0.1",
     "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.5",
-    "babel-plugin-transform-vue-jsx": "4.0.1",
-    "css-loader": "^2.1.0",
-    "cssnano": "^4.1.8",
-    "eslint": "^5.12.1",
-    "eslint-loader": "^2.1.1",
+    "eslint": "^5.13.0",
     "eslint-plugin-vue": "^5.1.0",
-    "file-loader": "^3.0.1",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.0.7",
-    "mini-css-extract-plugin": "^0.5.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "parcel-bundler": "^1.11.0",
     "rimraf": "^2.6.3",
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-no-browser-hacks": "^1.2.1",
-    "url-loader": "^1.1.2",
-    "vue": "^2.5.22",
-    "vue-loader": "^15.5.1",
-    "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.5.22",
-    "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
-  },
-  "dependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-async-to-generator": "^7.2.0",
-    "@babel/polyfill": "^7.2.5",
-    "@babel/runtime": "^7.3.1",
-    "babel-helper-vue-jsx-merge-props": "^2.0.3",
-    "bootstrap-vue": "^2.0.0-rc.11",
-    "stylelint": "^9.10.1",
-    "vue": "^2.5.22",
-    "vue-router": "^3.0.2",
-    "vue-server-renderer": "^2.5.22",
-    "vue-uweb": "^0.2.1"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended",
-      "@vue/prettier"
-    ],
-    "rules": {
-      "no-console": "off",
-      "no-unused-vars": [
-        2,
-        {
-          "vars": "local",
-          "args": "none"
-        }
-      ],
-      "semi": [
-        "error",
-        "always"
-      ]
-    },
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
+    "vue-hot-reload-api": "^2.3.1",
+    "vue-template-compiler": "^2.6.4"
   }
 }
