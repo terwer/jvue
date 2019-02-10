@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.resource.PathResourceResolver;
+import org.springframework.web.servlet.resource.WebJarsResourceResolver;
 
 /**
  * 静态资源配置
@@ -30,5 +32,14 @@ public class WebConfig implements WebMvcConfigurer {
         // 静态资源映射
         // registry.addResourceHandler("/**").addResourceLocations("classpath:/dist/");
         registry.addResourceHandler("/**").addResourceLocations("classpath:/templates/");
+
+        // swagger-ui
+        logger.info("映射swagger-ui");
+        registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+        // webjars资源映射
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/")
+                .resourceChain(false)
+                .addResolver(new WebJarsResourceResolver())
+                .addResolver(new PathResourceResolver());
     }
 }
