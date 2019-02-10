@@ -1,12 +1,13 @@
 module.exports = {
-  "presets": [
+  presets: [
     [
       "@babel/preset-env",
       {
-        "targets": {
-          "esmodules": true
+        targets: {
+          esmodules: true
         }
       }
-    ]
+    ],
+    "@babel/preset-flow"
   ]
 };

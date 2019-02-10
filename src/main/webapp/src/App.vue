@@ -1,23 +1,16 @@
 <template>
   <div id="app">
-    <img src="assets/logo.png" />
-    <h1>{{ msg }}</h1>
+    <!-- 对应的组件内容渲染到router-view中 -->
+    <router-view />
   </div>
 </template>
 
-<script>
-export default {
-  name: "app",
-  data() {
-    return {
-      msg: "Welcome to Your Vue.js App,with parcel build"
-    };
-  }
-};
-</script>
-
-<style lang="css">
+<style lang="scss">
 #app {
-    color: #56b983;
+  font-family: "Microsoft YaHei", sans-serif, "Avenir", Helvetica, Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
 }
 </style>

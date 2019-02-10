@@ -25,6 +25,12 @@ With Vue,Spring Boot and Java GraalVM.js Script engine for server-side-rendering
 cd src/main/webapp && yarn && yarn build-ssr
 ```
 
+# compile && run test
+
+```bash
+mvn -v && mvn compile && mvn exec:java
+```
+
 notice:You can run ``yarn build-ssr-dev`` in development mode to show error logs
 
 2、Run java mavem build
