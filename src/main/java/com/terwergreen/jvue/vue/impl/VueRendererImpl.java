@@ -1,16 +1,21 @@
 package com.terwergreen.jvue.vue.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.terwergreen.jvue.vue.JSContext;
+import com.eclipsesource.v8.NodeJS;
+import com.eclipsesource.v8.V8;
+import com.terwergreen.jvue.vue.V8Context;
 import com.terwergreen.jvue.vue.VueRenderer;
+import com.terwergreen.jvue.vue.VueUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.graalvm.polyglot.Context;
-import org.graalvm.polyglot.Value;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -28,7 +33,9 @@ public class VueRendererImpl implements VueRenderer {
     private final Log logger = LogFactory.getLog(this.getClass());
     // 是否显示错误到浏览器
     private static final Integer SHOW_SERVER_ERROR = 1;
-    private Context context;
+    // private Context context;
+    private V8 v8;
+    private NodeJS nodeJS;
 
     private final Object promiseLock = new Object();
     private volatile boolean promiseResolved = false;
@@ -56,7 +63,9 @@ public class VueRendererImpl implements VueRenderer {
 
     public VueRendererImpl() {
         // 获取Javascript引擎
-        context = JSContext.getInstance().getContext();
+        // context = JSContext.getInstance().getContext();
+        v8 = V8Context.getInstance().getV8();
+        nodeJS = V8Context.getInstance().getNodeJS();
         logger.info("初始化VueRender");
     }
 
@@ -82,50 +91,109 @@ public class VueRendererImpl implements VueRenderer {
 //        }
 //    }
 
-    private void execute(Map<String, Object> httpContext) {
-        try {
-            String source = "(async()=>{" +
-                    "const context = " + JSON.toJSONString(httpContext) + ";" +
-                    "const promise = global.renderServer(context);" +
-                    "console.log('promise=>', promise);" +
-                    "return promise;" +
-                    "})();";
-            Value eval = context.eval("js", source);
-            logger.info("eval=>" + eval);
+//    private void execute(Map<String, Object> httpContext) {
+//        try {
+//            String source = "(async()=>{" +
+//                    "const context = " + JSON.toJSONString(httpContext) + ";" +
+//                    "const promise = global.renderServer(context);" +
+//                    "console.log('promise=>', promise);" +
+//                    "return promise;" +
+//                    "})();";
+//            Value eval = context.eval("js", source);
+//            logger.info("eval=>" + eval);
+//
+//            Value thenEval = eval.invokeMember("then", fnResolve, fnRejected);
+//            logger.info("thenEval=>" + thenEval);
+//
+//            int i = 0;
+//            int jsWaitTimeout = 1000 * 2;
+//            int interval = 200; // 等待时间间隔
+//            int totalWaitTime = 0; // 实际等待时间
+//
+//            if (!promiseResolved) {
+//                while (!promiseResolved && totalWaitTime < jsWaitTimeout) {
+//                    try {
+//                        Thread.sleep(interval);
+//                    } catch (InterruptedException e) {
+//                        logger.error("Thread error:", e);
+//                    }
+//                    totalWaitTime = totalWaitTime + interval;
+//                    if (interval < 500) interval = interval * 2;
+//                    i = i + 1;
+//                }
+//
+//                if (!promiseResolved) {
+//                    logger.error("time is out");
+//                } else {
+//                    logger.info("cost time to resolve:" + totalWaitTime);
+//                    logger.info("htmlObject get success");
+//                }
+//            } else {
+//                logger.info("promise already resolved");
+//                logger.info("htmlObject get success");
+//            }
+//        } catch (Exception e) {
+//            logger.error("Vue execute error:", e);
+//        }
+//    }
 
-            Value thenEval = eval.invokeMember("then", fnResolve, fnRejected);
-            logger.info("thenEval=>" + thenEval);
-
-            int i = 0;
-            int jsWaitTimeout = 1000 * 2;
-            int interval = 200; // 等待时间间隔
-            int totalWaitTime = 0; // 实际等待时间
-
-            if (!promiseResolved) {
-                while (!promiseResolved && totalWaitTime < jsWaitTimeout) {
-                    try {
-                        Thread.sleep(interval);
-                    } catch (InterruptedException e) {
-                        logger.error("Thread error:", e);
-                    }
-                    totalWaitTime = totalWaitTime + interval;
-                    if (interval < 500) interval = interval * 2;
-                    i = i + 1;
-                }
-
-                if (!promiseResolved) {
-                    logger.error("time is out");
-                } else {
-                    logger.info("cost time to resolve:" + totalWaitTime);
-                    logger.info("htmlObject get success");
-                }
-            } else {
-                logger.info("promise already resolved");
-                logger.info("htmlObject get success");
-            }
-        } catch (Exception e) {
-            logger.error("Vue execute error:", e);
+    private void runMessageLoop() {
+        while (nodeJS.isRunning()) {
+            nodeJS.handleMessage();
         }
+    }
+
+    private static File createTemporaryScriptFile(final String script, final String name) {
+        File tempFile = null;
+        PrintWriter writer = null;
+        try {
+            tempFile = File.createTempFile(name, ".js.tmp");
+            writer = new PrintWriter(tempFile, "UTF-8");
+            writer.print(script);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            writer.close();
+        }
+        return tempFile;
+    }
+
+
+    private void executeV8(Map<String, Object> httpContext) {
+        boolean isRunning = nodeJS.isRunning();
+        logger.info("NodeJS isRunning:" + isRunning);
+
+        File entryServerFile = VueUtil.readVueFile("entry-server.js");
+        nodeJS.exec(entryServerFile);
+        runMessageLoop();
+
+        File testScript = createTemporaryScriptFile("global.passed = true;", "testScript");
+        nodeJS.require(testScript);
+        runMessageLoop();
+
+        Object test = nodeJS.getRuntime().executeScript(""
+                + "var hello = 'hello, ';"
+                + "var world = 'world!';"
+                + "hello.concat(world).length;");
+        logger.info("test=>" + test);
+
+        String testSource = "(function() {" +
+                "  var context = {" +
+                "    url: '/about'" +
+                "  };" +
+                "  var promise = renderServer(context);" +
+                "  console.log('promise=>', promise);" +
+                "  return promise;" +
+                "})();";
+
+        Object testSourceResult = nodeJS.getRuntime().executeScript(testSource);
+        logger.info("testSourceResult=>" + JSON.toJSONString(testSourceResult));
+
+        logger.info("entry-server.js执行完成");
     }
 
     @Override
@@ -136,7 +204,8 @@ public class VueRendererImpl implements VueRenderer {
         logger.info("服务端调用renderServer前，设置路由上下文context:" + JSON.toJSONString(httpContext));
         try {
             // testExecute(httpContext);
-            execute(httpContext);
+            // execute(httpContext);
+            executeV8(httpContext);
 
             // 处理返回结果
             if (promiseRejected || null == htmlObject || StringUtils.isEmpty(htmlObject.toString())) {
