@@ -23,7 +23,7 @@ import java.util.function.Consumer;
  * 2019/2/1 11:29
  **/
 @Service
-@Scope("prototype")
+//@Scope("prototype")
 public class VueRendererImpl implements VueRenderer {
     private final Log logger = LogFactory.getLog(this.getClass());
     // 是否显示错误到浏览器

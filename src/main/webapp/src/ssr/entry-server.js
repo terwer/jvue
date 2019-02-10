@@ -40,12 +40,11 @@ global.renderServer = context => {
         console.log("Render the html string");
         renderVueComponentToString(vm, context, (err, html) => {
           if (err) {
-            console.log("Error rendering to string:");
-            console.log(err);
+            console.log(`Error rendering to string=>${err}`);
             return resolve({
               status: 0,
               data: err,
-              msg: "500 Internal Server Error:renderVueComponentToString"
+              msg: `500 Internal Server Error:renderVueComponentToString,context.url=>${context.url}`
             });
           }
 
