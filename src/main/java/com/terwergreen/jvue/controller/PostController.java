@@ -30,6 +30,6 @@ public class PostController {
 
         Map<String, Object> resultMap = vueRenderer.renderContent(context);
         model.addAllAttributes(resultMap);
-        return "index";
+        return "index.ssr";
     }
 }

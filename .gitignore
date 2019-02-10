@@ -10,3 +10,8 @@
 ### Dev Tools && Production ###
 src/main/resources/application-prod.properties
 src/main/resources/rebel.xml
+.classpath
+.factorypath
+.project
+.settings/
+.vscode/

@@ -60,27 +60,27 @@ public class VueRendererImpl implements VueRenderer {
         logger.info("初始化VueRender");
     }
 
-    private void testExecute(Map<String, Object> httpContext) {
-        try {
-            String testSource = "(async()=>{" +
-                    "const context = " + JSON.toJSONString(httpContext) + ";" +
-                    "const promise = global.renderServer(context);" +
-                    "console.log('promise=>', promise);" +
-                    "promise.then(" +
-                    "  resolve => {" +
-                    "    console.log('resolve>>', JSON.stringify(resolve));" +
-                    "  }," +
-                    "  rejected => {" +
-                    "    console.log('rejected>>', JSON.stringify(rejected));" +
-                    "  }" +
-                    ");" +
-                    "})();";
-            context.eval("js", testSource);
-            logger.info("testExecute executed");
-        } catch (Exception e) {
-            logger.error("Vue testExecute error:", e);
-        }
-    }
+//    private void testExecute(Map<String, Object> httpContext) {
+//        try {
+//            String testSource = "(async()=>{" +
+//                    "const context = " + JSON.toJSONString(httpContext) + ";" +
+//                    "const promise = global.renderServer(context);" +
+//                    "console.log('promise=>', promise);" +
+//                    "promise.then(" +
+//                    "  resolve => {" +
+//                    "    console.log('resolve>>', JSON.stringify(resolve));" +
+//                    "  }," +
+//                    "  rejected => {" +
+//                    "    console.log('rejected>>', JSON.stringify(rejected));" +
+//                    "  }" +
+//                    ");" +
+//                    "})();";
+//            context.eval("js", testSource);
+//            logger.info("testExecute executed");
+//        } catch (Exception e) {
+//            logger.error("Vue testExecute error:", e);
+//        }
+//    }
 
     private void execute(Map<String, Object> httpContext) {
         try {
@@ -135,11 +135,11 @@ public class VueRendererImpl implements VueRenderer {
         resultMap.put("showError", SHOW_SERVER_ERROR);
         logger.info("服务端调用renderServer前，设置路由上下文context:" + JSON.toJSONString(httpContext));
         try {
-            testExecute(httpContext);
-            // execute(httpContext);
+            // testExecute(httpContext);
+            execute(httpContext);
 
             // 处理返回结果
-            if (null == htmlObject || StringUtils.isEmpty(htmlObject.toString())) {
+            if (promiseRejected || null == htmlObject || StringUtils.isEmpty(htmlObject.toString())) {
                 logger.error("500 Internal Server Error:Server render error,Timed out more than 60 seconds...");
                 resultMap.put("renderStatus", 0);
                 resultMap.put("content", "500 Internal Server Error:Server render error,Timed out more than 60 seconds...");
@@ -147,9 +147,16 @@ public class VueRendererImpl implements VueRenderer {
             }
 
             logger.info("renderServer获取数据成功");
-            logger.debug("htmlObject:" + JSON.toJSONString(htmlObject));
-            resultMap.put("renderStatus", 1);
-            resultMap.put("content", htmlObject);
+            String jsonContent = JSON.toJSONString(htmlObject);
+            logger.debug("htmlObject:" + jsonContent);
+
+            Map<?, ?> jsonMap = JSON.parseObject(jsonContent, Map.class);
+            Integer renderStatus = Integer.parseInt(jsonMap.get("status").toString());
+            String content = String.valueOf(jsonMap.get("data"));
+            String message = String.valueOf(jsonMap.get("msg"));
+            resultMap.put("renderStatus", renderStatus);
+            resultMap.put("content", content);
+            resultMap.put("message", message);
         } catch (Exception e) {
             resultMap.put("renderStatus", 0);
             resultMap.put("content", "failed to render vue component");
