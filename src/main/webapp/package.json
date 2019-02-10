@@ -2,7 +2,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf .cache && rimraf dist && rimraf templates",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --ignore-pattern '!.eslintrc.js' . --fix --color",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --ignore-pattern '!.eslintrc.js' --ignore-pattern '!.babelrc.js' . --fix --color",
     "serve": "parcel src/index.html -d dist",
     "watch": "parcel watch src/index.html -d dist",
     "build-dev": "parcel build src/index.html -d dist --detailed-report --no-minify",
@@ -14,21 +14,23 @@
     "build-ssr": "yarn clean && yarn build:entry-client && yarn build:entry-server",
     "test": "node build/dist/app.*.js",
     "test:compile-entry-client": "babel tests/ssr/test-entry-client.js --out-file tests/ssr/test-entry-client-compiled.js",
-    "test:entry-client": "node tests/ssr/test-entry-cliententry-server.js-compiled.js",
+    "test:entry-client": "node tests/ssr/test-entry-client-compiled.js",
     "test:compile-entry-server": "babel tests/ssr/test-entry-server.js --out-file tests/ssr/test-entry-server-compiled.js",
     "test:entry-server": "node tests/ssr/test-entry-server-compiled.js",
     "test-ssr": "yarn build:entry-server && yarn test:compile-entry-server && yarn test:entry-server",
     "test-ssr-no-build": "yarn test:compile-entry-server && yarn test:entry-server"
   },
   "dependencies": {
-    "bootstrap": "^4.2.1",
     "bootstrap-vue": "^2.0.0-rc.11",
     "vue": "^2.6.4",
+    "vue-router": "^3.0.2",
     "vue-server-renderer": "^2.6.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-flow": "^7.0.0",
     "@vue/component-compiler-utils": "^2.5.2",
     "@vue/eslint-config-prettier": "^4.0.1",
     "babel-eslint": "^10.0.1",
@@ -36,6 +38,7 @@
     "eslint-plugin-vue": "^5.1.0",
     "parcel-bundler": "^1.11.0",
     "rimraf": "^2.6.3",
+    "sass": "^1.17.0",
     "vue-hot-reload-api": "^2.3.1",
     "vue-template-compiler": "^2.6.4"
   },

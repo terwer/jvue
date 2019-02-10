@@ -1,4 +1,4 @@
-import "../../build/ssrdist/entry-client";
+import "../../templates/entry-client.777aafaa";
 
 var inBrowser = require("../../src/util/dom").inBrowser;
 

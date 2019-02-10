@@ -566,7 +566,7 @@
     "@babel/helper-regex" "^7.0.0"
     regexpu-core "^4.1.3"
 
-"@babel/preset-env@^7.0.0":
+"@babel/preset-env@^7.0.0", "@babel/preset-env@^7.3.1":
   version "7.3.1"
   resolved "http://registry.npm.taobao.org/@babel/preset-env/download/@babel/preset-env-7.3.1.tgz#389e8ca6b17ae67aaf9a2111665030be923515db"
   integrity sha1-OJ6MprF65nqvmiERZlAwvpI1Fds=
@@ -614,6 +614,14 @@
     invariant "^2.2.2"
     js-levenshtein "^1.1.3"
     semver "^5.3.0"
+
+"@babel/preset-flow@^7.0.0":
+  version "7.0.0"
+  resolved "http://registry.npm.taobao.org/@babel/preset-flow/download/@babel/preset-flow-7.0.0.tgz#afd764835d9535ec63d8c7d4caf1c06457263da2"
+  integrity sha1-r9dkg12VNexj2MfUyvHAZFcmPaI=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-transform-flow-strip-types" "^7.0.0"
 
 "@babel/runtime@^7.0.0":
   version "7.3.1"
@@ -774,9 +782,9 @@ acorn@^6.0.2:
   integrity sha1-sKO+MXUsl6D3ATxfSQO3GgXbaBg=
 
 ajv@^6.5.3, ajv@^6.6.1:
-  version "6.8.1"
-  resolved "http://registry.npm.taobao.org/ajv/download/ajv-6.8.1.tgz#0890b93742985ebf8973cd365c5b23920ce3cb20"
-  integrity sha1-CJC5N0KYXr+Jc802XFsjkgzjyyA=
+  version "6.9.0"
+  resolved "http://registry.npm.taobao.org/ajv/download/ajv-6.9.0.tgz#06458dbfb789366d703e308f180e0db195b7f2fa"
+  integrity sha1-BkWNv7eJNm1wPjCPGA4NsZW38vo=
   dependencies:
     fast-deep-equal "^2.0.1"
     fast-json-stable-stringify "^2.0.0"
@@ -1046,7 +1054,7 @@ bootstrap-vue@^2.0.0-rc.11:
     popper.js "^1.12.9"
     vue-functional-data-merge "^2.0.5"
 
-bootstrap@^4.1.1, bootstrap@^4.2.1:
+bootstrap@^4.1.1:
   version "4.2.1"
   resolved "http://registry.npm.taobao.org/bootstrap/download/bootstrap-4.2.1.tgz#8f8bdca024dbf0e8644da32e918c8a03a90a5757"
   integrity sha1-j4vcoCTb8OhkTaMukYyKA6kKV1c=
@@ -1304,7 +1312,7 @@ chardet@^0.7.0:
   resolved "http://registry.npm.taobao.org/chardet/download/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha1-kAlISfCTfy7twkJdDSip5fDLrZ4=
 
-chokidar@^2.0.3:
+chokidar@^2.0.0, chokidar@^2.0.3:
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/chokidar/download/chokidar-2.1.0.tgz#5fcb70d0b28ebe0867eb0f09d5f6a08f29a1efa0"
   integrity sha1-X8tw0LKOvghn6w8J1fagjymh76A=
@@ -5099,6 +5107,13 @@ safer-eval@^1.3.0:
   dependencies:
     clones "^1.2.0"
 
+sass@^1.17.0:
+  version "1.17.0"
+  resolved "http://registry.npm.taobao.org/sass/download/sass-1.17.0.tgz#e370b9302af121c9eadad5639619127772094ae6"
+  integrity sha1-43C5MCrxIcnq2tVjlhkSd3IJSuY=
+  dependencies:
+    chokidar "^2.0.0"
+
 sax@^1.2.4, sax@~1.2.1, sax@~1.2.4:
   version "1.2.4"
   resolved "http://registry.npm.taobao.org/sax/download/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
@@ -5839,6 +5854,11 @@ vue-hot-reload-api@^2.3.1:
   version "2.3.1"
   resolved "http://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.1.tgz#b2d3d95402a811602380783ea4f566eb875569a2"
   integrity sha1-stPZVAKoEWAjgHg+pPVm64dVaaI=
+
+vue-router@^3.0.2:
+  version "3.0.2"
+  resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-3.0.2.tgz#dedc67afe6c4e2bc25682c8b1c2a8c0d7c7e56be"
+  integrity sha1-3txnr+bE4rwlaCyLHCqMDXx+Vr4=
 
 vue-server-renderer@^2.6.4:
   version "2.6.4"
