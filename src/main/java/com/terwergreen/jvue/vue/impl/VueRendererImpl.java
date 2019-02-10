@@ -193,6 +193,8 @@ public class VueRendererImpl implements VueRenderer {
         Object testSourceResult = nodeJS.getRuntime().executeScript(testSource);
         logger.info("testSourceResult=>" + JSON.toJSONString(testSourceResult));
 
+        // nodeJS.getRuntime().executeFunction("then",null);
+
         logger.info("entry-server.js执行完成");
     }
 
