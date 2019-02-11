@@ -27,10 +27,10 @@ if (typeof renderServer !== "undefined") {
 // =======================
 // callbacks
 // =======================
-function onServerRenderSuccess(res) {
-  console.log("successCallback invoked");
-}
+global.onServerRenderSuccess = function(res) {
+  console.log("successCallback invoked", res);
+};
 
-function onServerRenderError(res) {
-  console.log("errorCallback invoked");
-}
+global.onServerRenderError = function(err) {
+  console.log("errorCallback invoked", err);
+};

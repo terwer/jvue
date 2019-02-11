@@ -98,28 +98,26 @@ global.renderServer = context => {
 
               // Promise应该resolve渲染后的html
               console.log("Promise resolved success");
-              if (hasOnServerRenderSuccess) {
-                onServerRenderSuccess({ status: 1, data: html, msg: "200 OK" });
-                return;
-              }
+              //if (hasOnServerRenderSuccess) {
+              onServerRenderSuccess({ status: 1, data: html, msg: "200 OK" });
+              return;
+              //}
               resolve({ status: 1, data: html, msg: "200 OK" });
             });
           })
           .catch(rejected => {
             console.log("Promise.all catch rejected=>", rejected);
-            if (hasOnServerRenderError) {
-              console.log("has error callback");
-              global.onServerRenderError({
-                status: 0,
-                data: err,
-                msg: "500 Internal Server Error:async data errr"
-              });
-              return;
-            }
-            console.log("no error callback");
+            // if (hasOnServerRenderError) {
+            onServerRenderError({
+              status: 0,
+              data: rejected,
+              msg: "500 Internal Server Error:async data errr"
+            });
+            return;
+            // }
             resolve({
               status: 0,
-              data: reject,
+              data: rejected,
               msg: "500 Internal Server Error:async data errr"
             });
           });

@@ -1,10 +1,10 @@
 <template>
   <b-container fluid>
-    <!--<HeaderTime />-->
-    <!--<Header title="jvue" />-->
-    <!--<Body />-->
-    <!--<Footer />-->
-    <FriendLink />
+    <!-- <HeaderTime />
+    <Header title="jvue" />
+    <Body />
+    <Footer />
+    <FriendLink /> -->
     <div id="ssrData">{{ item }}</div>
   </b-container>
 </template>

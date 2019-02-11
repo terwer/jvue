@@ -20,6 +20,11 @@
 Next light-weight,responsive project
 With Vue,Spring Boot and eclipse j2v8 Script engine for server-side-rendering
 
+## Note !!!
+
+> j2v8 is not support promise on windows right now,
+> so ``linux`` is prefered for production,windows support is on the way ...
+
 # Build setup
 1、Go to [webapp](src/main/webapp) and run vue ssr build
 
@@ -46,7 +51,7 @@ mvn clean package -DskipTests
 or
 
 ```bash
-mvn spring-boot:run
+mvn clean spring-boot:run
 ```
 
 # Structure

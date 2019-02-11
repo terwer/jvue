@@ -172,9 +172,10 @@ public class VueRendererImpl implements VueRenderer {
 
             // 处理返回结果
             if (!callbackResolved && htmlMap.size() == 0) {
-                logger.error("Server render error,Timed out more than " + MAX_WAIT_SECONDS + " seconds...");
+                String errorMessage = "Server render error,Timed out more than " + MAX_WAIT_SECONDS + " seconds...";
+                logger.error(errorMessage);
                 resultMap.put("renderStatus", 0);
-                resultMap.put("content", "Server render error,Timed out more than 60 seconds...");
+                resultMap.put("content", errorMessage);
                 return resultMap;
             }
 
