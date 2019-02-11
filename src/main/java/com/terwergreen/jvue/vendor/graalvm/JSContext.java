@@ -1,5 +1,6 @@
-package com.terwergreen.jvue.vue;
+package com.terwergreen.jvue.vendor.graalvm;
 
+import com.terwergreen.jvue.util.VueUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.graalvm.polyglot.Context;

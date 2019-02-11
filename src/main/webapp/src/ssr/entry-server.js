@@ -29,6 +29,16 @@ global.renderServer = context => {
         const matchedComponents = router.getMatchedComponents();
         // 匹配不到的路由，执行reject函数，并返回 404
         if (!matchedComponents.length) {
+          console.log("No matchedComponents");
+          if (onServerRenderError) {
+            onServerRenderError({
+              status: 0,
+              data: "No matchedComponents",
+              msg: "404 Not Found"
+            });
+            return;
+          }
+
           return resolve({
             status: 0,
             data: "No matchedComponents",
@@ -41,15 +51,31 @@ global.renderServer = context => {
         renderVueComponentToString(vm, context, (err, html) => {
           if (err) {
             console.log(`Error rendering to string=>${err}`);
+            if (onServerRenderError) {
+              onServerRenderError({
+                status: 0,
+                data: err,
+                msg: `500 Internal Server Error:renderVueComponentToString,context.url=>${
+                  context.url
+                }`
+              });
+              return;
+            }
             return resolve({
               status: 0,
               data: err,
-              msg: `500 Internal Server Error:renderVueComponentToString,context.url=>${context.url}`
+              msg: `500 Internal Server Error:renderVueComponentToString,context.url=>${
+                context.url
+              }`
             });
           }
 
           // Promise应该resolve渲染后的html
           console.log("Promise resolved success");
+          if (onServerRenderSuccess) {
+            onServerRenderSuccess({ status: 1, data: html, msg: "200 OK" });
+            return;
+          }
           resolve({ status: 1, data: html, msg: "200 OK" });
         });
       },
@@ -57,6 +83,14 @@ global.renderServer = context => {
         // 错误返回
         console.log("router.onReady error callback");
         console.log(err);
+        if (onServerRenderError) {
+          onServerRenderError({
+            status: 0,
+            data: err,
+            msg: "500 Internal Server Error:router.onReady error callback"
+          });
+          return;
+        }
         reject({
           status: 0,
           data: err,

@@ -1,4 +1,4 @@
-package com.terwergreen.jvue.vue;
+package com.terwergreen.jvue.util;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Charsets;

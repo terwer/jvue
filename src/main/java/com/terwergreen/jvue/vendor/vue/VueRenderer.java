@@ -1,4 +1,4 @@
-package com.terwergreen.jvue.vue;
+package com.terwergreen.jvue.vendor.vue;
 
 import java.util.Map;
 
