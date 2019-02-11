@@ -3193,6 +3193,11 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "http://registry.npm.taobao.org/isobject/download/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
+jquery@^3.3.1:
+  version "3.3.1"
+  resolved "http://registry.npm.taobao.org/jquery/download/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
+  integrity sha1-lYzinoHJeQ8xvneS311NlfxX+8o=
+
 js-base64@^2.1.9:
   version "2.5.1"
   resolved "http://registry.npm.taobao.org/js-base64/download/js-base64-2.5.1.tgz#1efa39ef2c5f7980bb1784ade4a8af2de3291121"
@@ -5896,6 +5901,16 @@ vue@^2.6.4:
   version "2.6.4"
   resolved "http://registry.npm.taobao.org/vue/download/vue-2.6.4.tgz#8a5a44e5740d8b8423a420c8655c97663421fb4d"
   integrity sha1-ilpE5XQNi4QjpCDIZVyXZjQh+00=
+
+vuex-router-sync@^5.0.0:
+  version "5.0.0"
+  resolved "http://registry.npm.taobao.org/vuex-router-sync/download/vuex-router-sync-5.0.0.tgz#1a225c17a1dd9e2f74af0a1b2c62072e9492b305"
+  integrity sha1-GiJcF6Hdni90rwobLGIHLpSSswU=
+
+vuex@^3.1.0:
+  version "3.1.0"
+  resolved "http://registry.npm.taobao.org/vuex/download/vuex-3.1.0.tgz#634b81515cf0cfe976bd1ffe9601755e51f843b9"
+  integrity sha1-Y0uBUVzwz+l2vR/+lgF1XlH4Q7k=
 
 wcwidth@^1.0.1:
   version "1.0.1"

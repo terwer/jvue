@@ -15,3 +15,5 @@ src/main/resources/rebel.xml
 .project
 .settings/
 .vscode/
+logs/
+*.log
