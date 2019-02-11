@@ -1,6 +1,8 @@
 import Vue from "vue";
 import App from "./App.vue";
 import { createRouter } from "./router";
+import { createStore } from "./store";
+import { sync } from "vuex-router-sync";
 
 // 组件引用
 import BootstrapVue from "bootstrap-vue";
@@ -11,13 +13,19 @@ Vue.use(BootstrapVue);
 Vue.config.productionTip = false;
 
 export function createApp() {
-  // 创建 router 实例
+  // 创建 router 和 store 实例
   const router = createRouter();
+  const store = createStore();
+
+  // 同步路由状态(route state)到 store
+  sync(store, router);
+
   const vm = new Vue({
-    // 注入 router 到根 Vue 实例
     router,
+    store,
     render: h => h(App)
   });
-  // 返回 vm 和 router
-  return { vm, router };
+
+  // 暴露 vm, router 和 store。
+  return { vm, router, store };
 }

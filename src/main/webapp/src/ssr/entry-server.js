@@ -1,10 +1,14 @@
+/* eslint-disable no-undef */
 import { createApp } from "../main";
 
-var hasOnServerRenderSuccess = require("../../src/util/lib").hasOnServerRenderSuccess;
-var hasOnServerRenderError = require("../../src/util/lib").hasOnServerRenderError;
+var hasOnServerRenderSuccess = require("../../src/util/lib")
+  .hasOnServerRenderSuccess;
+var hasOnServerRenderError = require("../../src/util/lib")
+  .hasOnServerRenderError;
 
 // 解构赋值
-const { vm, router } = createApp();
+// 解构赋值
+const { vm, router, store } = createApp();
 const renderVueComponentToString = require("vue-server-renderer/basic.js");
 
 global.renderServer = context => {
@@ -49,38 +53,76 @@ global.renderServer = context => {
           });
         }
 
-        //Render the html string
-        console.log("Render the html string");
-        renderVueComponentToString(vm, context, (err, html) => {
-          if (err) {
-            console.log(`Error rendering to string=>${err}`);
+        // 对所有匹配的路由组件调用 `asyncData()`
+        Promise.all(
+          matchedComponents.map(Component => {
+            console.log("Server matched Component=>", Component.name);
+            // console.log("Server matched Component", Component);
+            if (Component.asyncData) {
+              console.log("invoke Component.asyncData");
+              return Component.asyncData({
+                store
+              });
+            }
+          })
+        )
+          .then(() => {
+            // 在所有预取钩子(preFetch hook) resolve 后，
+            // 我们的 store 现在已经填充入渲染应用程序所需的状态。
+            // 当我们将状态附加到上下文，
+            // 并且 `template` 选项用于 renderer 时，
+            // 状态将自动序列化为 `window.__INITIAL_STATE__`，并注入 HTML。
+            context.state = store.state;
+
+            //Render the html string
+            console.log("Render the html string");
+            renderVueComponentToString(vm, context, (err, html) => {
+              if (err) {
+                console.log(`Error rendering to string=>${err}`);
+                if (hasOnServerRenderError) {
+                  onServerRenderError({
+                    status: 0,
+                    data: err,
+                    msg: `500 Internal Server Error:renderVueComponentToString,context.url=>${
+                      context.url
+                    }`
+                  });
+                  return;
+                }
+                resolve({
+                  status: 0,
+                  data: err,
+                  msg: "500 Internal Server Error:renderVueComponentToString"
+                });
+              }
+
+              // Promise应该resolve渲染后的html
+              console.log("Promise resolved success");
+              if (hasOnServerRenderSuccess) {
+                onServerRenderSuccess({ status: 1, data: html, msg: "200 OK" });
+                return;
+              }
+              resolve({ status: 1, data: html, msg: "200 OK" });
+            });
+          })
+          .catch(rejected => {
+            console.log("Promise.all catch rejected=>", rejected);
             if (hasOnServerRenderError) {
-              onServerRenderError({
+              console.log("has error callback");
+              global.onServerRenderError({
                 status: 0,
                 data: err,
-                msg: `500 Internal Server Error:renderVueComponentToString,context.url=>${
-                  context.url
-                }`
+                msg: "500 Internal Server Error:async data errr"
               });
               return;
             }
-            return resolve({
+            console.log("no error callback");
+            resolve({
               status: 0,
-              data: err,
-              msg: `500 Internal Server Error:renderVueComponentToString,context.url=>${
-                context.url
-              }`
+              data: reject,
+              msg: "500 Internal Server Error:async data errr"
             });
-          }
-
-          // Promise应该resolve渲染后的html
-          console.log("Promise resolved success");
-          if (hasOnServerRenderSuccess) {
-            onServerRenderSuccess({ status: 1, data: html, msg: "200 OK" });
-            return;
-          }
-          resolve({ status: 1, data: html, msg: "200 OK" });
-        });
+          });
       },
       err => {
         // 错误返回
