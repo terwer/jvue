@@ -2,9 +2,9 @@
   <b-container fluid>
     <HeaderTime />
     <Header title="jvue" />
-    <!--<Body />-->
-    <!--<Footer />-->
-    <!--<FriendLink />-->
+    <Body />
+    <Footer />
+    <FriendLink />
   </b-container>
 </template>
 
@@ -14,9 +14,9 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 
 import HeaderTime from "../components/themes/default/HeaderTime";
 import Header from "../components/themes/default/Header";
-// import Body from "../components/themes/default/Body";
-// import Footer from "../components/themes/default/Footer";
-// import FriendLink from "../components/themes/default/FriendLink";
+import Body from "../components/themes/default/Body";
+import Footer from "../components/themes/default/Footer";
+import FriendLink from "../components/themes/default/FriendLink";
 
 export default {
   name: "Index",
@@ -36,10 +36,10 @@ export default {
   },
   components: {
     HeaderTime,
-    Header
-    // Body,
-    // Footer,
-    // FriendLink
+    Header,
+    Body,
+    Footer,
+    FriendLink
   }
 };
 </script>

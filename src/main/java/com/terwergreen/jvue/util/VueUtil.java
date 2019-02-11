@@ -1,4 +1,4 @@
-package com.terwergreen.jvue.vue;
+package com.terwergreen.jvue.util;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Charsets;
@@ -40,14 +40,14 @@ public class VueUtil {
      * @param resourceName 脚本名称
      * @return 脚本字符
      */
-    public static String readVueResourceString(String resourceName) {
+    public static String readVueResourceString(final String resourceName) {
         String result = null;
         try {
             URL resourcePath = VueUtil.class.getResource(VUE_RESOURCE_PATH + resourceName);
             logger.info("resourcePath:" + resourcePath);
             result = Resources.toString(resourcePath, Charsets.UTF_8);
         } catch (Exception e) {
-            logger.error("文件读取失败:" + resourceName + "," ,e);
+            logger.error("文件读取失败:" + resourceName + ",", e);
         }
         return result;
     }
@@ -67,6 +67,19 @@ public class VueUtil {
             logger.error("Vue资源文件不存在", e);
         }
         return new InputStreamReader(in);
+    }
+
+    /**
+     * 读取资源文件
+     *
+     * @param fileName 文件名称
+     * @return File
+     */
+    public static File readVueFile(final String fileName) {
+        File file = null;
+        String appFilename = getVueFileResource(fileName);
+        file = new File(appFilename);
+        return file;
     }
 
     /**
