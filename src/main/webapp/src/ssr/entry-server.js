@@ -1,5 +1,8 @@
 import { createApp } from "../main";
 
+var hasOnServerRenderSuccess = require("../../src/util/lib").hasOnServerRenderSuccess;
+var hasOnServerRenderError = require("../../src/util/lib").hasOnServerRenderError;
+
 // 解构赋值
 const { vm, router } = createApp();
 const renderVueComponentToString = require("vue-server-renderer/basic.js");
@@ -51,7 +54,7 @@ global.renderServer = context => {
         renderVueComponentToString(vm, context, (err, html) => {
           if (err) {
             console.log(`Error rendering to string=>${err}`);
-            if (onServerRenderError) {
+            if (hasOnServerRenderError) {
               onServerRenderError({
                 status: 0,
                 data: err,
@@ -72,7 +75,7 @@ global.renderServer = context => {
 
           // Promise应该resolve渲染后的html
           console.log("Promise resolved success");
-          if (onServerRenderSuccess) {
+          if (hasOnServerRenderSuccess) {
             onServerRenderSuccess({ status: 1, data: html, msg: "200 OK" });
             return;
           }
@@ -83,7 +86,7 @@ global.renderServer = context => {
         // 错误返回
         console.log("router.onReady error callback");
         console.log(err);
-        if (onServerRenderError) {
+        if (hasOnServerRenderError) {
           onServerRenderError({
             status: 0,
             data: err,

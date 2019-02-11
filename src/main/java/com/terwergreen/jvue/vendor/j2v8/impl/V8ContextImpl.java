@@ -3,6 +3,8 @@ package com.terwergreen.jvue.vendor.j2v8.impl;
 import com.eclipsesource.v8.NodeJS;
 import com.eclipsesource.v8.V8;
 import com.eclipsesource.v8.V8Object;
+import com.terwergreen.jvue.util.ReflectUtil;
+import com.terwergreen.jvue.util.SystemUtil;
 import com.terwergreen.jvue.vendor.j2v8.Console;
 import com.terwergreen.jvue.vendor.j2v8.V8Context;
 import org.apache.commons.logging.Log;
@@ -22,7 +24,12 @@ public class V8ContextImpl implements V8Context {
         logger.info("init v8Context finish");
 
         nodeJS = NodeJS.createNodeJS();
-        logger.info("createNodeJS finish");
+        if (SystemUtil.isLinux()) {
+            Object nodeVersion = ReflectUtil.invoke(nodeJS, "getNodeVersion");
+            logger.info("createNodeJS finish:nodeVersion=>" + nodeVersion);
+        } else {
+            logger.info("createNodeJS finish");
+        }
 
         v8 = nodeJS.getRuntime();
         v8.getLocker().acquire();
