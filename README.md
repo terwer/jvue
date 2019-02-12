@@ -18,7 +18,7 @@
 # Introduction
 ## jvue
 Next light-weight,responsive project
-With Vue,Spring Boot and eclipse j2v8 Script engine for server-side-rendering
+With Vue,webpack,Spring Boot and eclipse j2v8 Script engine for server-side-rendering
 
 ## Note !!!
 

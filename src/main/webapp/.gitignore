@@ -19,8 +19,5 @@ yarn-error.log*
 *.sln
 *.sw*
 
-.cache
+.jvue
 dist
-templates
-
-*compiled.js
