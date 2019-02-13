@@ -190,7 +190,6 @@ public class VueRendererImpl implements VueRenderer {
             // logger.info("testSource=>" + testSource);
             v8.executeScript(testSource);
             runMessageLoop();
-
             // =====================================================================
 
             v8.getLocker().release();
