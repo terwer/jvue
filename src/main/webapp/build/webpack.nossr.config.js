@@ -2,10 +2,8 @@
 const merge = require("webpack-merge");
 const base = require("./webpack.base.config");
 
-console.log("webpack base=>", base);
-
 const appConfig = merge(base.webpackCnfig, {
-  entry: "./src/app.js",
+  entry: "./src/nossr.js",
   output: {
     filename: "js/[name].[hash:6].js"
   },
@@ -14,11 +12,5 @@ const appConfig = merge(base.webpackCnfig, {
     port: 8888
   }
 });
-
-console.log("webpack appConfig=>", appConfig);
-console.log(
-  "base.config.isProduction in appConfig=>",
-  base.config.isProduction
-);
 
 module.exports = appConfig;

@@ -9,7 +9,7 @@
     "clean": "rimraf dist",
     "lint": "eslint --ext .js,.vue,.html --ignore-path .gitignore --ignore-pattern !.eslintrc.js --ignore-pattern !.babelrc.js . --fix --color",
     "nossr": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.nossr.config.js --hot --inline --progress",
-    "build:nossr": "yarn clean && cross-env NODE_ENV=production webpack --config build/webpack.nossr.config.js",
+    "build:nossr": "yarn clean && cross-env NODE_ENV=production webpack --config build/webpack.nossr.config.js --progress --hide-modules",
     "dev": "node server",
     "build": "yarn clean && yarn build:client && yarn build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.client.config.js --progress --hide-modules",
