@@ -15,8 +15,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <meta name="keywords" content="jvue,vue,spring,spring-boot,nashorn,ssr,server-side-rendering">
-    <meta name="description" content="Next light-weight,responsive project With Vue,Spring Boot and Java Nashorn Script engine">
+    <% if(!htmlWebpackPlugin.options.inject){ %><link rel="shortcut icon" href="favicon.ico"/><% } %>
 </head>
 <body>
 <noscript>
@@ -24,5 +23,6 @@
 </noscript>
 <div id="app"></div>
 <!-- built files will be auto injected -->
+<!--vue-ssr-outlet-->
 </body>
 </html>

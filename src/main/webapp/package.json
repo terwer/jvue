@@ -1,6 +1,17 @@
 {
   "name": "jvue",
-  "version": "1.0.0",
+  "version": "1.0.3",
+  "keywords": [
+    "jvue",
+    "vue",
+    "java",
+    "spring",
+    "spring-boot",
+    "webpack",
+    "j2v8",
+    "ssr",
+    "server-side-rendering"
+  ],
   "description": "Next light-weight,responsive project With Vue,webpack,Spring Boot and eclipse j2v8 Script engine for server-side-rendering",
   "main": "server.js",
   "author": "Terwer",
@@ -8,9 +19,9 @@
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint --ext .js,.vue,.html --ignore-path .gitignore --ignore-pattern !.eslintrc.js --ignore-pattern !.babelrc.js . --fix --color",
-    "nossr": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.nossr.config.js --hot --inline --progress",
-    "build:nossr": "yarn clean && cross-env NODE_ENV=production webpack --config build/webpack.nossr.config.js --progress --hide-modules",
-    "dev": "node server",
+    "serve": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.client.config.js --port 8888 --hot --inline --progress",
+    "dev": "cross-env NODE_ENV=development nodemon dev-server.js",
+    "start": "cross-env NODE_ENV=production node v8-server.js",
     "build": "yarn clean && yarn build:client && yarn build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.client.config.js --progress --hide-modules",
     "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.config.js --progress --hide-modules"
@@ -31,12 +42,14 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "rimraf": "^2.6.3",
+    "serve-favicon": "^2.5.0",
     "vue-loader": "^15.6.2",
     "vue-server-renderer": "^2.6.6",
     "vue-template-compiler": "^2.6.6",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14",
-    "webpack-merge": "^4.2.1"
+    "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }

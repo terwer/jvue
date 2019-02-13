@@ -22,12 +22,24 @@ const webpackCnfig = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      template: "./public/index.ejs",
-      title: "Next Vue SSR Project for Java j2v8 Script engine",
-      favicon: "./public/favicon.ico",
-      inject: true
-    })
+    new HtmlWebpackPlugin(
+      Object.assign(
+        {
+          template: "./public/index.ejs",
+          favicon: "./public/favicon.ico",
+          inject: !config.isProduction, // 只有开发环境才inject
+          minify: {
+            removeComments: false,
+            collapseWhitespace: false,
+            removeAttributeQuotes: false
+            // more options:// https://github.com/kangax/html-minifier#options-quick-reference
+          },
+          // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+          chunksSortMode: "dependency"
+        },
+        config.seo
+      )
+    )
   ]
 };
 

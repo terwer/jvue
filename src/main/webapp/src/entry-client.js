@@ -1,7 +1,10 @@
 import { createApp } from "./app";
+const config = require("../config");
 
-// noinspection JSCheckFunctionSignatures
-const { app } = createApp();
+// get context
+const context = Object.assign({ url: "/" }, config.seo);
+
+const { app } = createApp(context);
 
 // actually mount to DOM
 app.$mount("#app");

@@ -8,6 +8,8 @@ import App from "./App.vue";
  * @returns {{app: Vue | CombinedVueInstance<V, object, object, object, Record<never, any>>}}
  */
 export function createApp(ssrContext) {
+  console.log("ssrContext=>", ssrContext);
+
   // create the app instance.
   const app = new Vue({
     render: h => h(App)
