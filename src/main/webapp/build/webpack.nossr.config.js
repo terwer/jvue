@@ -1,31 +1,24 @@
-const { VueLoaderPlugin } = require("vue-loader");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-module.exports = {
-  mode: "development",
-  node: {
-    fs: "empty",
-    module: "empty"
-  },
+// const webpack = require("webpack");
+const merge = require("webpack-merge");
+const base = require("./webpack.base.config");
+
+console.log("webpack base=>", base);
+
+const appConfig = merge(base.webpackCnfig, {
   entry: "./src/app.js",
-  module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        use: "vue-loader"
-      }
-    ]
+  output: {
+    filename: "js/[name].[hash:6].js"
   },
-  plugins: [
-    new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      template: "./public/index.ejs",
-      title: "Next Vue SSR Project for Java j2v8 Script engine",
-      favicon: "./public/favicon.ico",
-      inject: true
-    })
-  ],
   devServer: {
-    host: "0.0.0.0",
+    // host: "0.0.0.0",
     port: 8888
   }
-};
+});
+
+console.log("webpack appConfig=>", appConfig);
+console.log(
+  "base.config.isProduction in appConfig=>",
+  base.config.isProduction
+);
+
+module.exports = appConfig;
