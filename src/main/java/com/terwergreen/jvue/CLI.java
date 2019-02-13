@@ -1,5 +1,6 @@
 package com.terwergreen.jvue;
 
+import com.alibaba.fastjson.JSON;
 import com.terwergreen.jvue.vendor.vue.VueRenderer;
 import com.terwergreen.jvue.vendor.vue.impl.VueRendererImpl;
 import org.apache.commons.logging.Log;
@@ -18,6 +19,7 @@ public class CLI {
 
         // 渲染Vue
         VueRenderer vueRenderer = new VueRendererImpl();
-        vueRenderer.renderContent(httpContext);
+        Map<String, Object> resultMap = vueRenderer.renderContentCLI(httpContext);
+        logger.info("resultMap=>" + JSON.toJSONString(resultMap));
     }
 }

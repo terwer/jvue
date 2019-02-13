@@ -9,6 +9,8 @@ import com.eclipsesource.v8.V8Array;
 import com.eclipsesource.v8.V8Object;
 import com.terwergreen.jvue.servlet.JVueDispatcherServlet;
 import com.terwergreen.jvue.util.VueUtil;
+import com.terwergreen.jvue.vendor.j2v8.V8Context;
+import com.terwergreen.jvue.vendor.j2v8.impl.V8ContextImpl;
 import com.terwergreen.jvue.vendor.vue.VueRenderer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -119,13 +121,11 @@ public class VueRendererImpl implements VueRenderer {
 
             File entryServerFile = VueUtil.readVueFile("entry-server.js");
             nodeJS.exec(entryServerFile);
-
             runMessageLoop();
 
-            String testSource = "var context = {url:'" + httpContext.getOrDefault("url", "") + "'};renderServer(context);";
-            logger.info("testSource=>" + testSource);
-            v8.executeScript(testSource);
-
+            String source = "var context = {url:'" + httpContext.getOrDefault("url", "") + "'};renderServer(context);";
+            logger.info("source=>" + source);
+            v8.executeScript(source);
             runMessageLoop();
 
             int i = 0;
@@ -161,14 +161,64 @@ public class VueRendererImpl implements VueRenderer {
         logger.info("entry-server.js执行完成");
     }
 
-    @Override
-    public Map<String, Object> renderContent(Map<String, Object> httpContext) {
+    private void executeV8CLI(Map<String, Object> httpContext) {
+        try {
+            // 获取Javascript引擎
+            if (v8 == null) {
+                // 初始化v8和nodejs
+                logger.info("初始化v8和nodejs...");
+                V8Context v8Context = new V8ContextImpl();
+                v8 = v8Context.getV8();
+                v8.getLocker().acquire();
+                logger.info("获取v8线程锁...");
+                nodeJS = v8Context.getNodeJS();
+                v8.getLocker().release();
+                logger.info("释放v8线程锁...");
+            }
+
+            logger.info("获取v8线程锁...");
+            v8.getLocker().acquire();
+
+            // ===================================================================
+            // 执行js
+            // File entryServerFile = VueUtil.readVueFile("entry-server.js");
+            // nodeJS.exec(entryServerFile);
+            // runMessageLoop();
+
+            String testSource = "var context = {url:'" + httpContext.getOrDefault("url", "") + "'};" +
+                    "console.log('context=>', context);";
+            // logger.info("testSource=>" + testSource);
+            v8.executeScript(testSource);
+            runMessageLoop();
+
+            // =====================================================================
+
+            v8.getLocker().release();
+            logger.info("释放v8线程锁...");
+        } catch (Exception e) {
+            logger.error("Vue executeV8CLI error:", e);
+        }
+        logger.info("entry-server.js执行完成");
+    }
+
+    /**
+     * 通用的渲染方法
+     *
+     * @param httpContext 上下文
+     * @param isCLI       是否命令行
+     * @return 服务端html及对应状态
+     */
+    private Map<String, Object> renderContent(Map<String, Object> httpContext, boolean isCLI) {
         Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("rnd", System.currentTimeMillis());
         resultMap.put("showError", SHOW_SERVER_ERROR);
         logger.info("服务端调用renderServer前，设置路由上下文context:" + JSON.toJSONString(httpContext));
         try {
-            executeV8(httpContext);
+            if (isCLI) {
+                executeV8CLI(httpContext);
+            } else {
+                executeV8(httpContext);
+            }
 
             // 处理返回结果
             if (!callbackResolved && htmlMap.size() == 0) {
@@ -194,5 +244,18 @@ public class VueRendererImpl implements VueRenderer {
             logger.error("failed to render vue component", e);
         }
         return resultMap;
+    }
+
+    // ===============================
+    // implementations
+    // ===============================
+    @Override
+    public Map<String, Object> renderContentCLI(Map<String, Object> httpContext) {
+        return renderContent(httpContext, true);
+    }
+
+    @Override
+    public Map<String, Object> renderContent(Map<String, Object> httpContext) {
+        return renderContent(httpContext, false);
     }
 }

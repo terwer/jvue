@@ -29,9 +29,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         logger.info("添加静态资源映射");
-        // 静态资源映射
-        // registry.addResourceHandler("/**").addResourceLocations("classpath:/dist/");
-        registry.addResourceHandler("/**").addResourceLocations("classpath:/templates/");
+        // Vue静态资源映射
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/dist/");
 
         // swagger-ui
         logger.info("映射swagger-ui");
