@@ -4,5 +4,23 @@
   "description": "Next light-weight,responsive project With Vue,webpack,Spring Boot and eclipse j2v8 Script engine for server-side-rendering",
   "main": "server.js",
   "author": "Terwer",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext .js,.vue,.html --ignore-path .gitignore --ignore-pattern !.eslintrc.js --ignore-pattern !.babelrc.js . --fix --color"
+  },
+  "dependencies": {
+    "vue": "^2.6.6",
+    "vue-router": "^3.0.2"
+  },
+  "devDependencies": {
+    "@vue/eslint-config-prettier": "^4.0.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.13.0",
+    "eslint-config-google": "^0.12.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-html": "^5.0.3",
+    "eslint-plugin-vue": "^5.1.0",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  }
 }
