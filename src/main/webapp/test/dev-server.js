@@ -13,10 +13,10 @@ const port = 3000;
 const favicon = require("serve-favicon");
 const serve = (path, cache) => express.static(resolve(path));
 
-const render = require("./server");
+const render = require("../dist/server").default;
 
 app.use(favicon("./public/favicon.ico"));
-app.use("/js", serve("./dist/js", false));
+app.use("/js", serve("../dist/js", false));
 
 // handle http requests
 app.get("*", (req, res) => {

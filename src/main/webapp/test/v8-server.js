@@ -1,8 +1,8 @@
+// babel test/v8-server.js --presets=@babel/preset-env
 // ====================================
 // test server
 // ====================================
-
-const render = require("./server");
+const render = require("../dist/server").default;
 
 // get context
 const seo = {

@@ -29,7 +29,7 @@ With Vue,webpack,Spring Boot and eclipse j2v8 Script engine for server-side-rend
 1、Go to [webapp](src/main/webapp) and run vue ssr build
 
 ```bash
-cd src/main/webapp && yarn && yarn build && yarn ssr
+cd src/main/webapp && yarn && yarn build
 ```
 
 notice:You can run ``yarn dev`` in development mode to show vue error logs
