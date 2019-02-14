@@ -2,7 +2,7 @@
 // ====================================
 // test server
 // ====================================
-const render = require("../dist/server").default;
+const render = require("../dist/server");
 
 // get context
 const seo = {
@@ -12,10 +12,10 @@ const seo = {
     description: "description"
   }
 };
-const context = Object.assign({ url: "/" }, seo);
+const context = JSON.stringify(Object.assign({ url: "/" }, seo));
 
 // deal with promise
-var promise = render(context);
+var promise = render.renderServer(context);
 promise
   .then((resolve, reject) => {
     if (reject) {

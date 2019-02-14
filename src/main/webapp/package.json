@@ -22,10 +22,10 @@
     "serve": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.client.config.js --port 8888 --hot --inline --progress",
     "dev": "cross-env NODE_ENV=development nodemon ./test/dev-server.js",
     "start": "cross-env NODE_ENV=production node ./test/v8-server.js",
-    "build": "yarn clean && yarn build:client && yarn build:server && yarn build:ssr",
+    "build": "yarn clean && yarn build:client && yarn build:server && yarn cp-ssr-modules && yarn build:ssr",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.client.config.js --progress --hide-modules",
     "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.config.js --progress --hide-modules",
-
+    "cp-ssr-module-vue": "scp -r node_modules/vue/ dist/node_modules",
     "cp-ssr-module-he": "scp -r node_modules/he/ dist/node_modules",
     "cp-ssr-module-pseudomap": "scp -r node_modules/pseudomap/ dist/node_modules",
     "cp-ssr-module-lru-cache": "scp -r node_modules/lru-cache/ dist/node_modules",
@@ -35,13 +35,13 @@
     "cp-ssr-module-lodash._reinterpolate": "scp -r node_modules/lodash._reinterpolate/ dist/node_modules",
     "cp-ssr-module-lodash.template": "scp -r node_modules/lodash.template/ dist/node_modules",
     "cp-ssr-module-vue-server-renderer": "scp -r node_modules/vue-server-renderer/ dist/node_modules",
-
-    "cp-ssr-modules": "mkdir dist/node_modules && yarn cp-ssr-module-he && yarn cp-ssr-module-pseudomap && yarn cp-ssr-module-lru-cache && yarn cp-ssr-module-resolve && yarn cp-ssr-module-serialize-javascript && yarn cp-ssr-module-lodash.templatesettings && yarn cp-ssr-module-lodash._reinterpolate && yarn cp-ssr-module-lodash.template && yarn cp-ssr-module-vue-server-renderer",
-    "build:ssr":"yarn cp-ssr-modules && babel src/server.js -o dist/server.js --presets=@babel/preset-env"
+    "cp-ssr-modules": "mkdir dist/node_modules && yarn cp-ssr-module-vue && yarn cp-ssr-module-he && yarn cp-ssr-module-pseudomap && yarn cp-ssr-module-lru-cache && yarn cp-ssr-module-resolve && yarn cp-ssr-module-serialize-javascript && yarn cp-ssr-module-lodash.templatesettings && yarn cp-ssr-module-lodash._reinterpolate && yarn cp-ssr-module-lodash.template && yarn cp-ssr-module-vue-server-renderer",
+    "build:ssr": "babel src/server.js -o dist/server.js --presets=@babel/preset-env"
   },
   "dependencies": {
     "vue": "^2.6.6",
-    "vue-router": "^3.0.2"
+    "vue-router": "^3.0.2",
+    "vue-server-renderer": "^2.6.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -60,7 +60,6 @@
     "rimraf": "^2.6.3",
     "serve-favicon": "^2.5.0",
     "vue-loader": "^15.6.2",
-    "vue-server-renderer": "^2.6.6",
     "vue-template-compiler": "^2.6.6",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",

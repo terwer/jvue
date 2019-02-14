@@ -23,6 +23,13 @@ public class CLI {
         Map<String, Object> httpContext = new HashMap<>();
         httpContext.put("url", "/");
 
+        // 添加seo
+        httpContext.put("title", "title");
+        Map<String, Object> metaMap = new HashMap<>();
+        metaMap.put("keywords", "keywords");
+        metaMap.put("description", "description");
+        httpContext.put("meta", metaMap);
+
         // 渲染Vue
         VueRenderer vueRenderer = new VueRendererImpl();
         Map<String, Object> resultMap = vueRenderer.renderContentCLI(httpContext);

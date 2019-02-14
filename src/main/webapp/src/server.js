@@ -49,6 +49,22 @@ renderer = createRenderer(bundle, {
 });
 
 console.log("export renderToString promise");
-export default context => {
-  return renderer.renderToString(context);
-};
+
+/**
+ * 渲染服务
+ * @param context 上下文
+ * @returns {*}
+ */
+function renderServer(context) {
+  var promise = null;
+  try {
+    var contextObj = JSON.parse(context);
+    promise = renderer.renderToString(contextObj);
+  } catch (err) {
+    console.log(err);
+    throw new Error(err);
+  }
+  return promise;
+}
+
+exports.renderServer = renderServer;
