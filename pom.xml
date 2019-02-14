@@ -12,7 +12,7 @@
     <artifactId>jvue</artifactId>
     <version>${projectVersion}</version>
     <name>${projectName}</name>
-    <description>Next light-weight,responsive project With Vue,Spring Boot and Java GraalVM.js Script engine for server-side-rendering</description>
+    <description>Next light-weight,responsive project With Vue,webpack,Spring Boot and eclipse j2v8 Script engine for server-side-rendering</description>
 
     <profiles>
         <profile>
@@ -20,7 +20,7 @@
             <properties>
                 <activatedProperties>dev</activatedProperties>
                 <projectName>JVue Framework</projectName>
-                <projectVersion>1.0.2</projectVersion>
+                <projectVersion>1.0.3</projectVersion>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -191,15 +191,9 @@
                 <directory>src/main/webapp</directory>
                 <filtering>false</filtering>
                 <includes>
-                    <!-- 客户端渲染
-                    <include>dist/**</include>
-                    -->
                     <!-- 服务端渲染 -->
-                    <include>templates/**</include>
+                    <include>dist/**</include>
                 </includes>
-                <excludes>
-                    <exclude>templates/entry-server.css</exclude>
-                </excludes>
             </resource>
         </resources>
 

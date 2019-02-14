@@ -29,30 +29,35 @@ With Vue,webpack,Spring Boot and eclipse j2v8 Script engine for server-side-rend
 1、Go to [webapp](src/main/webapp) and run vue ssr build
 
 ```bash
-cd src/main/webapp && yarn && yarn build-ssr
+cd src/main/webapp && yarn && yarn build
 ```
 
-# compile && run test
+notice:You can run ``yarn dev`` in development mode to show vue error logs
 
-```bash
-mvn -v && mvn compile && mvn exec:java
-```
-
-notice:You can run ``yarn build-ssr-dev`` in development mode to show error logs
-
-2、Run java mavem build
+2、Run java maven build
 
 ```bash
 mvn clean package -DskipTests
 ```
 
-3、Copy ``target/ROOT.war`` to ``${TOMCAT_HOME}/webapps``
+# compile && run cli
 
-or
+```bash
+mvn -v && mvn compile && mvn exec:java
+```
+
+# run && deploy
+
+## run
 
 ```bash
 mvn clean spring-boot:run
 ```
+
+## deploy
+
+Copy ``target/ROOT.war`` to ``${TOMCAT_HOME}/webapps``
+
 
 # Structure
 
