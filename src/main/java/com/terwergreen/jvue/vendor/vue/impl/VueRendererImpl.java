@@ -181,14 +181,42 @@ public class VueRendererImpl implements VueRenderer {
 
             // ===================================================================
             // 执行js
-            // File entryServerFile = VueUtil.readVueFile("entry-server.js");
-            // nodeJS.exec(entryServerFile);
-            // runMessageLoop();
+            // require he module
+            File heFile = VueUtil.readVueFile("node_modules/he/he.js");
+            nodeJS.require(heFile);
+            // require pseudomap module
+            File pseudomapFile = VueUtil.readVueFile("node_modules/pseudomap/map.js");
+            nodeJS.require(pseudomapFile);
+            // require lru-cache module
+            File lruCacheFile = VueUtil.readVueFile("node_modules/lru-cache/index.js");
+            nodeJS.require(lruCacheFile);
+            // require resolve module
+            File resolveFile = VueUtil.readVueFile("node_modules/resolve/index.js");
+            nodeJS.require(resolveFile);
+            // require serialize-javascript module
+            File SerializeJavascriptFile = VueUtil.readVueFile("node_modules/serialize-javascript/index.js");
+            nodeJS.require(SerializeJavascriptFile);
+            // require lodash.templatesettings module
+            File lodashTemplatesettingsFile = VueUtil.readVueFile("node_modules/lodash.templatesettings/index.js");
+            nodeJS.require(lodashTemplatesettingsFile);
+            // require lodash._reinterpolate module
+            File lodashReinterpolateFile = VueUtil.readVueFile("node_modules/lodash._reinterpolate/index.js");
+            nodeJS.require(lodashReinterpolateFile);
+            // require lodash.template module
+            File lodashTemplateFile = VueUtil.readVueFile("node_modules/lodash.template/index.js");
+            nodeJS.require(lodashTemplateFile);
+            // require vueServerRenderer module
+            File vueServerRendererFile = VueUtil.readVueFile("node_modules/vue-server-renderer/build.prod.js");
+            nodeJS.require(vueServerRendererFile);
+            // execute server.js
+            File entryServerFile = VueUtil.readVueFile("server.js");
+            nodeJS.exec(entryServerFile);
+            runMessageLoop();
 
-            String testSource = "var context = {url:'" + httpContext.getOrDefault("url", "") + "'};" +
+            String source = "var context = {url:'" + httpContext.getOrDefault("url", "") + "'};" +
                     "console.log('context=>', context);";
-            // logger.info("testSource=>" + testSource);
-            v8.executeScript(testSource);
+            // logger.info("source=>" + source);
+            v8.executeScript(source);
             runMessageLoop();
             // =====================================================================
 

@@ -12,10 +12,16 @@ import java.util.Map;
 public class CLI {
     private static final Log logger = LogFactory.getLog(CLI.class);
 
+    /**
+     * 运行命令
+     * mvn -v && mvn compile && mvn exec:java
+     *
+     * @param args 参数
+     */
     public static void main(String[] args) {
         // 设置路由上下文
         Map<String, Object> httpContext = new HashMap<>();
-        httpContext.put("url", "/about");
+        httpContext.put("url", "/");
 
         // 渲染Vue
         VueRenderer vueRenderer = new VueRendererImpl();

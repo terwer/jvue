@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -82,13 +83,26 @@ public class VueUtil {
         return file;
     }
 
+    private static String getVueFileResource(final String fileName) {
+        try {
+            // 获取JS路径
+            URL resourcePath = VueUtil.class.getResource(VUE_RESOURCE_PATH + fileName);
+            String fullResourcePath = Paths.get(resourcePath.toURI()).toFile().getAbsolutePath();
+            logger.info("fullResourcePath = " + fullResourcePath);
+            return fullResourcePath;
+        } catch (URISyntaxException e) {
+            logger.error("Vue文件路径错误", e);
+        }
+        return null;
+    }
+
     /**
      * 根据正则名称获取Vue资源文件
      *
-     * @param fileName 文件名称
+     * @param fileNameRegex 文件名称正则
      * @return 匹配的第一个文件
      */
-    private static String getVueFileResource(final String fileName) {
+    private static String getVueFileResourceRegex(final String fileNameRegex) {
         List<String> filenameList = new ArrayList<>();
         try {
             // 获取JS路径
@@ -96,7 +110,7 @@ public class VueUtil {
             logger.info("resourcePath = " + resourcePath.toURI());
             File path = new File(resourcePath.toURI());
             String[] list = path.list(new FilenameFilter() {
-                private Pattern pattern = Pattern.compile(fileName);
+                private Pattern pattern = Pattern.compile(fileNameRegex);
 
                 @Override
                 public boolean accept(File dir, String name) {
@@ -119,5 +133,11 @@ public class VueUtil {
             return filenameList.get(0);
         }
         return null;
+    }
+
+    public static void main(String[] args) {
+        String fileName = "lib/he.js";
+        String appFilename = getVueFileResource(fileName);
+        System.out.println("appFilename = " + appFilename);
     }
 }
