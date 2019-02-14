@@ -13,7 +13,7 @@ const port = 3000;
 const favicon = require("serve-favicon");
 const serve = (path, cache) => express.static(resolve(path));
 
-const render = require("../dist/server").default;
+const render = require("../dist/server");
 
 app.use(favicon("./public/favicon.ico"));
 app.use("/js", serve("../dist/js", false));
@@ -28,9 +28,10 @@ app.get("*", (req, res) => {
       description: "description"
     }
   };
-  const context = Object.assign({ url: req.url }, seo);
+  const context = JSON.stringify(Object.assign({ url: req.url }, seo));
 
-  render(context)
+  render
+    .renderServer(context)
     .then((resolve, reject) => {
       if (reject) {
         console.log("reject");

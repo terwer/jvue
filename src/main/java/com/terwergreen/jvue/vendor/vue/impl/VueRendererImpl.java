@@ -195,9 +195,13 @@ public class VueRendererImpl implements VueRenderer {
             parameters.push(JSON.toJSONString(httpContext));
             // execute renderServer
             V8Object result = server.executeObjectFunction("renderServer", parameters);
-            logger.info("result=>" + result.toString());
+            logger.info("result=>" + result);
 
             // execute server
+            V8Array thenParameters = new V8Array(v8);
+            V8Object thenResult = result.executeObjectFunction("then", thenParameters);
+            logger.info("thenResult=>" + thenResult);
+
             // File entryServerFile = VueUtil.readVueFile("server.js");
             // nodeJS.exec(entryServerFile);
             runMessageLoop();
