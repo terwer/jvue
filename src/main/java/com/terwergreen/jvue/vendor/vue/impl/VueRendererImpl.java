@@ -80,6 +80,12 @@ public class VueRendererImpl implements VueRenderer {
             v8.registerJavaMethod(successCallback, "renderServerCallback");
             logger.info("renderServerCallback注册成功");
 
+            // ===================================================================
+            // 执行js
+            // require vueServerRenderer module
+            File vueServerRendererFile = VueUtil.readVueFile("node_modules/vue-server-renderer/build.prod.js");
+            nodeJS.require(vueServerRendererFile);
+
             v8.getLocker().release();
             logger.info("释放v8线程锁...");
         }
@@ -135,12 +141,6 @@ public class VueRendererImpl implements VueRenderer {
         try {
             v8.getLocker().acquire();
             logger.info("获取v8线程锁...");
-
-            // ===================================================================
-            // 执行js
-            // require vueServerRenderer module
-            File vueServerRendererFile = VueUtil.readVueFile("node_modules/vue-server-renderer/build.prod.js");
-            nodeJS.require(vueServerRendererFile);
 
             // require server module
             File serverFile = VueUtil.readVueFile("server.js");

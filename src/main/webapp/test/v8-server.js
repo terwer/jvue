@@ -23,7 +23,7 @@ var renderServerCallback = (err, html) => {
   console.log("html=>", html);
 };
 
-render.renderServer(context, "renderServerCallback");
+render.renderServer(context, renderServerCallback);
 
 // // deal with promise
 // var promise = render.renderServer(context);

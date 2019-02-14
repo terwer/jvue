@@ -37,13 +37,13 @@ notice:You can run ``yarn dev`` in development mode to show vue error logs
 2、Run java maven build
 
 ```bash
-mvn clean package -DskipTests
+mvn clean package -f pom_linux_x86_64.xml -DskipTests
 ```
 
 # compile && run cli
 
 ```bash
-mvn -v && mvn compile && mvn exec:java
+mvn -v && mvn compile -f pom_linux_x86_64.xml && mvn exec:java -f pom_linux_x86_64.xml
 ```
 
 # run && deploy
@@ -51,7 +51,7 @@ mvn -v && mvn compile && mvn exec:java
 ## run
 
 ```bash
-mvn clean spring-boot:run
+mvn clean spring-boot:run -f pom_linux_x86_64.xml
 ```
 
 ## deploy

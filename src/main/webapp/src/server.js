@@ -53,37 +53,38 @@ console.log("export renderToString promise");
 /**
  * 渲染服务
  * @param context 上下文
- * @param cb 回调
+ * @param renderServerCallback 回调
  * @returns {*}
  */
-function renderServer(context, cb) {
+function renderServer(context, renderServerCallback) {
   var promise = null;
   try {
     var contextObj = JSON.parse(context);
     promise = renderer.renderToString(contextObj);
     // 如果有callback，优先执行callback
-    if (cb) {
+    if (renderServerCallback) {
       console.log("callback exists,calling callback...");
+      console.log("renderServerCallback=>", renderServerCallback);
       promise
         .then((resolve, reject) => {
           if (reject) {
-            cb(reject);
+            renderServerCallback(reject);
             console.log("renderServer reject");
             return;
           }
-          cb(null, resolve);
+          renderServerCallback(null, resolve);
           console.log("renderServer resolve");
         })
         .catch(rejected => {
-          cb(rejected);
+          renderServerCallback(rejected);
           console.log("renderServer rejected");
         });
       return;
     }
   } catch (err) {
     console.log(err);
-    if (cb) {
-      cb(err);
+    if (renderServerCallback) {
+      renderServerCallback(err);
     }
     throw new Error(err);
   }

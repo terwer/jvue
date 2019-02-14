@@ -151,13 +151,6 @@
             <version>1.0.0-rc12</version>
         </dependency>
         <!-- j2v8 -->
-        <!-- j2v8_linux_x86_64
-        <dependency>
-            <groupId>com.eclipsesource.j2v8</groupId>
-            <artifactId>j2v8_linux_x86_64</artifactId>
-            <version>4.8.0</version>
-        </dependency>
-        -->
         <!-- j2v8_win32_x86_64 -->
         <dependency>
             <groupId>com.eclipsesource.j2v8</groupId>
