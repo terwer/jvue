@@ -1,6 +1,8 @@
 package com.terwergreen.jvue;
 
 import com.alibaba.fastjson.JSON;
+import com.terwergreen.jvue.vendor.j2v8.V8Context;
+import com.terwergreen.jvue.vendor.j2v8.impl.V8ContextImpl;
 import com.terwergreen.jvue.vendor.vue.VueRenderer;
 import com.terwergreen.jvue.vendor.vue.impl.VueRendererImpl;
 import org.apache.commons.logging.Log;
@@ -31,7 +33,8 @@ public class CLI {
         httpContext.put("meta", metaMap);
 
         // 渲染Vue
-        VueRenderer vueRenderer = new VueRendererImpl();
+        V8Context v8Context = new V8ContextImpl();
+        VueRenderer vueRenderer = new VueRendererImpl(v8Context);
         Map<String, Object> resultMap = vueRenderer.renderContentCLI(httpContext);
         logger.info("resultMap=>" + JSON.toJSONString(resultMap));
     }

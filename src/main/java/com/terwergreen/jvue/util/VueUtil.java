@@ -19,6 +19,7 @@ import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
@@ -133,6 +134,29 @@ public class VueUtil {
             return filenameList.get(0);
         }
         return null;
+    }
+
+    /**
+     * 结果Map转换
+     *
+     * @param resultMap 结果Map
+     * @return 结果html
+     */
+    public static String resultMapToString(Map<String, Object> resultMap) {
+        Integer renderStatus = (Integer) resultMap.getOrDefault("renderStatus", 0);
+        StringBuilder sb = new StringBuilder();
+        String content = (String) resultMap.getOrDefault("content", "");
+        sb.append(content);
+
+        if (renderStatus == 1) {
+            logger.info("服务端渲染成功");
+        }
+        Integer isShowError = (Integer) resultMap.getOrDefault("isShowError", 0);
+        if (isShowError == 1) {
+            String data = (String) resultMap.getOrDefault("data", "");
+            sb.append(data);
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
