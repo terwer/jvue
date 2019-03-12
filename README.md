@@ -28,10 +28,7 @@ Use Docker for deploy
 
 # Structure
 
-The whole project is a ``Java Spring Boot Maven`` structure,the ``src/main/vue`` is a complete ``Vue`` Project With ``Vue CLI 3`` structure
-
-When build finish,all files merged into ``target/ROOT.war``
-
+coming soon ...    
 Have fun and enjoy!
 
 # Contribute
