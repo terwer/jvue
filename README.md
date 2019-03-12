@@ -20,9 +20,9 @@
 
 ## jvue
 Next light-weight,responsive project
-With Docker,Vue,Vue CLI 3,webpack and Spring Boot
+With Docker,Vue,Vue CLI 3,webpack,Java and Spring Boot
 
-# Important Changes in JVue 4
+# Important Changes in Jvue 4
 
 Use Docker for deploy
 
