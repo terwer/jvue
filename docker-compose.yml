@@ -19,10 +19,9 @@ services:
       - "MYSQL_DATABASE=testbugucms"
       - "MYSQL_USER=test"
       - "MYSQL_PASSWORD=123456"
-    # 可以加--default-time-zone='+8:00'设定时区
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - ./data/mysql/db:/var/db
       - ./jvue-docker/jvue-mysql/my.cnf:/etc/my.cnf
       - ./data/mysql/log:/var/log
+      - ./jvue-docker/jvue-mysql/init:/docker-entrypoint-initdb.d/
     restart: always
