@@ -9,6 +9,10 @@
         <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
         <property name="logFilePath" value="${catalina.base}/logs" />
     </springProfile>
+    <springProfile name="docker">
+        <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+        <property name="logFilePath" value="/logs" />
+    </springProfile>
 
     <property name="log.context.name" value="JVueApplication" />
     <property name="log.charset" value="UTF-8" />

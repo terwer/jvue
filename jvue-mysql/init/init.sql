@@ -1,9 +1,9 @@
-# 数据库已经配置，这里不指定
+-- 数据库已经配置，这里不指定
 -- DROP DATABASE IF EXISTS testbugucms;
 -- CREATE DATABASE testbugucms CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE testbugucms;
 
-# 用户已经指定，不要创建
+-- 用户已经指定，不要创建
 -- CREATE USER 'test'@'%' IDENTIFIED BY '123456';
 -- GRANT All privileges ON *.* TO '123456'@'%';
 
