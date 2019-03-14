@@ -24,3 +24,6 @@
 /.nb-gradle/
 /build/
 /logs/
+
+### Secret ###
+docker-compose.prod.yml
