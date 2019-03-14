@@ -1,5 +1,5 @@
 # 构建docker-compose项目
-# docker-compose up --force-recreate
+# docker-compose up -V --force-recreate
 # docker-compose up -d --force-recreate
 version: '3'
 services:
@@ -14,8 +14,8 @@ services:
       - "MYSQL_ROOT_PASSWORD=123456"
       - "MYSQL_ROOT_HOST=%"
       - "TZ=Asia/Shanghai"
-#    volumes:
-#      - ./mysql/my.cnf:/etc/my.cnf
-#      - ./mysql/db:/var/lib/mysql
-#      - ./mysql/logs/mysql:/var/logs/mysql
+    volumes:
+      - ./jvue-docker/jvue-mysql/my.cnf:/etc/my.cnf
+      - ./data/mysql/log:/var/log
+      - ./data/mysql/db:/var/lib/mysql
     restart: always

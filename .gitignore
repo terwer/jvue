@@ -27,3 +27,6 @@
 
 ### Secret ###
 docker-compose.prod.yml
+
+### Temp data ###
+/data/
