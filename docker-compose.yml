@@ -8,7 +8,7 @@ services:
     container_name: jvue-mysql
     build:
       context: ./
-      dockerfile: ./jvue-docker/jvue-mysql/Dockerfile
+      dockerfile: ./jvue-mysql/Dockerfile
     ports:
       - "3306:3306"
     environment:
@@ -21,7 +21,7 @@ services:
       - "MYSQL_PASSWORD=123456"
     volumes:
       - ./data/mysql/db:/var/db
-      - ./jvue-docker/jvue-mysql/my.cnf:/etc/my.cnf
       - ./data/mysql/log:/var/log
-      - ./jvue-docker/jvue-mysql/init:/docker-entrypoint-initdb.d/
+      - ./jvue-mysql/my.cnf:/etc/my.cnf
+      - ./jvue-mysql/init:/docker-entrypoint-initdb.d/
     restart: always
