@@ -20,6 +20,7 @@ MAINTAINER terwer "csyouwei@gmail.com"
 # 设置编码
 ENV LANG C.UTF-8
 # 设置时区
-ENV TZ Asia/Shanghai
+# ENV TZ Asia/Shanghai
+ENV TZ CST-8
 #容器运行时启动的命令，下面命令等价于 CMD echo 'TZ is:'$TZ
 RUN echo 'LANG is:'$LANG',TZ is:'$TZ
