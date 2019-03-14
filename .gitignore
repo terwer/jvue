@@ -24,5 +24,3 @@
 /.nb-gradle/
 /build/
 /logs/
-src/main/resources/static/
-src/main/resources/templates/
