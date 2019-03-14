@@ -25,5 +25,7 @@ HELP.md
 /.nb-gradle/
 /build/
 
+rebel.xml
+
 ### Secret ###
 application-prod.properties
