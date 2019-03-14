@@ -143,7 +143,9 @@
     </dependencyManagement>
 
     <build>
+        <finalName>jvue</finalName>
         <plugins>
+            <!-- spring-boot-maven-plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

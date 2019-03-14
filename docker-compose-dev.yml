@@ -3,9 +3,8 @@
 # docker-compose up -d --force-recreate
 version: '3'
 services:
-  jvue-mysql:
+  mysql:
     privileged: true
-    image: jvue/mysql:5.7.24
     container_name: jvue-mysql
     build:
       context: ./
@@ -25,20 +24,4 @@ services:
       - ./data/mysql/log:/var/log
       - ./jvue-mysql/my.cnf:/etc/my.cnf
       - ./jvue-mysql/init:/docker-entrypoint-initdb.d/
-    restart: always
-  jvue-server:
-    privileged: true
-    image: jvue/server:4.0.0
-    container_name: jvue-server
-    build:
-      context: ./
-      dockerfile: ./jvue-server/Dockerfile
-    ports:
-      - "8081:8081"
-    working_dir: /app
-    command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker -DskipTests
-    volumes:
-      - ./jvue-server:/app
-      - ./data/maven/.m2:/root/.m2
-      - ./data/server/logs:/logs
     restart: always
