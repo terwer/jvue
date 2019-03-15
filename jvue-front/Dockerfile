@@ -21,6 +21,6 @@ RUN npm install
 # 注意这个一定要要在npm install后面，否则devDependencies的包无法安装
 ENV HOST 0.0.0.0
 
-COPY ./jvue-admin .
+COPY ./jvue-front .
 
 CMD ["npm", "run", "serve"]
