@@ -1,20 +1,10 @@
-# 构建docker-compose项目
-# docker-compose up
-# docker-compose up -V --force-recreate
-# docker-compose up -d --force-recreate
 version: '3'
 services:
   jvue-front:
-    privileged: true
-    image: jvue/front:4.0.0
     container_name: jvue-front
+    image: jvue-front:4.0.0
     build:
-      context: ./
+      context: .
       dockerfile: ./jvue-front/Dockerfile
     ports:
-      - "3000:3000"
-    working_dir: /app
-    volumes:
-      - ./jvue-front:/app
-      - ./data/front/.npm:/root/.npm
-    restart: always
+      - "8080:8080"

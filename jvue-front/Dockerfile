@@ -1,20 +1,17 @@
-#依赖的镜像
 FROM node:10.15.1-alpine
-#镜像创建者的信息
-MAINTAINER terwer "csyouwei@gmail.com"
-# 设置编码
-ENV LANG C.UTF-8
-# 设置Node环境
-ENV HOST 0.0.0.0
-ENV NODE_ENV=production
+
+# CDN注册
+RUN npm config set registry https://registry.npm.taobao.org && \
+    npm set chromedriver_cdnurl https://npm.taobao.org/mirrors/chromedriver && \
+    npm cache clean --force
 
 WORKDIR /app
 
+COPY ./jvue-front/package.json ./
+RUN npm install
+
 COPY ./jvue-front .
 
-RUN npm config set registry https://registry.npm.taobao.org && \
-    npm i -g @vue/cli \
-    npm install && \
-    npm run build
+RUN npm run build
 
-CMD ["npm","run","start"]
+CMD ["npm", "run", "serve"]
