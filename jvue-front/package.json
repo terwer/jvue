@@ -1,35 +1,76 @@
 {
-  "name": "jvue-front",
-  "version": "0.1.0",
+  "name": "jvue",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 3000",
-    "dev": "vue-cli-service serve --port 3000 --mode production",
-    "start": "npm run build && npm run dev",
-    "build": "vue-cli-service build",
+    "clean": "rimraf dist",
     "lint": "vue-cli-service lint",
-    "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
+    "serve": "cross-env NODE_ENV=development vue-cli-service serve",
+    "dev-build-entry-client": "cross-env SSR_ENV=client vue-cli-service build --mode development",
+    "build-entry-client": "cross-env SSR_ENV=client vue-cli-service build",
+    "dev-build-entry-server": "cross-env SSR_ENV=server vue-cli-service build --mode development --no-clean",
+    "build-entry-server": "cross-env SSR_ENV=server vue-cli-service build --no-clean",
+    "dev-build": "npm run dev-build-entry-client && npm run dev-build-entry-server && node node_modules/@babel/cli/bin/babel --presets=@babel/preset-env -o dist/server.js src/server.js",
+    "build": "npm run build-entry-client && npm run build-entry-server && node node_modules/@babel/cli/bin/babel -o dist/server.js --presets=@babel/preset-env,minify src/server.js",
+    "build-nossr": "npm run build-entry-client",
+    "dev-build-nossr": "npm run dev-build-entry-client",
+    "dev-start": "cross-env NODE_ENV=development node tests/dev-server.js",
+    "prod-start": "cross-env NODE_ENV=production node tests/dev-server.js",
+    "v8-dev-start": "cross-env NODE_ENV=development node tests/v8-server.js",
+    "v8-prod-start": "cross-env NODE_ENV=production node tests/v8-server.js"
   },
   "dependencies": {
-    "vue": "^2.6.6",
-    "vue-router": "^3.0.1"
+    "axios": "^0.18.0",
+    "bootstrap": "latest",
+    "bootstrap-vue": "^2.0.0-rc.13",
+    "circular-json": "^0.5.9",
+    "element-ui": "^2.6.1",
+    "font-awesome": "^4.7.0",
+    "url-search-params-polyfill": "^5.0.0",
+    "v-toaster": "^1.0.3",
+    "vue": "^2.6.7",
+    "vue-hljs": "^1.1.2",
+    "vue-progressbar": "^0.7.5",
+    "vue-router": "^3.0.2",
+    "vue-server-renderer": "^2.6.7",
+    "vue-uweb": "^0.2.1",
+    "vue-web-storage": "^4.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.5.0",
-    "@vue/cli-plugin-e2e-nightwatch": "^3.5.0",
-    "@vue/cli-plugin-eslint": "^3.5.0",
-    "@vue/cli-plugin-unit-jest": "^3.5.0",
-    "@vue/cli-service": "^3.5.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@vue/cli-plugin-babel": "^3.4.0",
+    "@vue/cli-plugin-eslint": "^3.4.0",
+    "@vue/cli-service": "^3.4.0",
     "@vue/eslint-config-prettier": "^4.0.1",
-    "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.6.0",
+    "babel-minify": "^0.5.0",
+    "babel-preset-minify": "^0.5.0",
+    "cross-env": "^5.2.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
+    "express": "^4.16.4",
+    "lint-staged": "^8.1.0",
+    "ncp": "^2.0.0",
     "node-sass": "^4.9.0",
-    "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.5.21"
+    "rimraf": "^2.6.3",
+    "sass-loader": "7.1.0",
+    "vue-template-compiler": "^2.5.21",
+    "webpack": "^4.29.5",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
   }
 }
