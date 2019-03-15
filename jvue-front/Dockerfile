@@ -14,9 +14,7 @@ COPY ./jvue-front/package.json ./
 
 # 因为被墙，单独安装
 ENV SASS_BINARY_SITE https://npm.taobao.org/mirrors/node-sass
-RUN npm install node-sass
-
-RUN npm install
+RUN npm install node-sass && npm install
 
 # 注意这个一定要要在npm install后面，否则devDependencies的包无法安装
 ENV HOST 0.0.0.0
