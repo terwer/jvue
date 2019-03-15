@@ -31,6 +31,7 @@
   https://ssr.vuejs.org/zh/guide/hydration.html
   注意，这里并没有添加 id="app"，而是添加 data-server-rendered 属性：你需要自行添加 ID 或其他能够选取到应用程序根元素的选择器，否则应用程序将无法正常激活。
   -->
+  <!--vue-ssr-outlet-->
 <% }else{ %>
   <script>window.BROWSER_ENV = {};</script>
 <% } %>
