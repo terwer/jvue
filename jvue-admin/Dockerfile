@@ -6,7 +6,7 @@ FROM node:10.15.1-alpine
 WORKDIR /app
 
 # 安装依赖
-COPY ./jvue-front/package.json ./
+COPY ./jvue-admin/package.json ./
 
 # 因为被墙，单独安装
 ENV SASS_BINARY_SITE https://npm.taobao.org/mirrors/node-sass
