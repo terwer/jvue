@@ -14,12 +14,12 @@ WORKDIR /app
 ENV SASS_BINARY_SITE https://npm.taobao.org/mirrors/node-sass
 RUN npm install node-sass
 
-COPY ./jvue-admin/package.json ./
+COPY ./jvue-front/package.json ./
 RUN npm install
 
 # 注意这个一定要要在npm install后面，否则devDependencies的包无法安装
 ENV HOST 0.0.0.0
 
-COPY ./jvue-admin .
+COPY ./jvue-front .
 
 CMD ["npm", "run", "serve"]
