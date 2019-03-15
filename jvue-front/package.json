@@ -5,8 +5,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "lint": "vue-cli-service lint",
-    "serve": "cross-env NODE_ENV=development vue-cli-service serve  --port 3000",
-    "dev":"npm run clean && npm run dev-build && mv dist/index.html dist/index.ssr.html && npm run dev-start",
+    "serve": "vue-cli-service serve --port 3000",
+    "start": "vue-cli-service serve --port 3000 --mode production",
     "dev-build-entry-client": "cross-env SSR_ENV=client vue-cli-service build --mode development",
     "build-entry-client": "cross-env SSR_ENV=client vue-cli-service build",
     "dev-build-entry-server": "cross-env SSR_ENV=server vue-cli-service build --mode development --no-clean",
