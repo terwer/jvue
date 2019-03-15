@@ -30,8 +30,6 @@ module.exports = {
 
   // https://cli.vuejs.org/zh/config/#configurewebpack
   configureWebpack: config => {
-    // 解决Invalid Host header
-    config.devServer.set('disableHostCheck', true);
     console.log("\nprocess.env.SSR_ENV=>", process.env.SSR_ENV);
     switch (process.env.SSR_ENV) {
       case "client": {
@@ -98,7 +96,9 @@ module.exports = {
         console.log("serve模式");
 
         // config.resolve.symlinks(true);
-        config.devServer = {};
+        config.devServer = {
+          disableHostCheck: true
+        };
 
         // 两种配置都可以
         config.entry = "./src/entry-client.js";
