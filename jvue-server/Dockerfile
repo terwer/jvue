@@ -2,7 +2,7 @@
 # docker build . -t jvue-server:4.0.0 --force-rm --no-cache
 
 #依赖的镜像
-FROM maven:3.6.0-jdk-8
+FROM maven:3.6.0-jdk-8-alpine
 #镜像创建者的信息
 MAINTAINER terwer "csyouwei@gmail.com"
 # 设置编码
