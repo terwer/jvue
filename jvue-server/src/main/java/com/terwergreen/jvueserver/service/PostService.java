@@ -20,7 +20,7 @@ public interface PostService {
      * @param paramMap 筛选条件
      * @return 最新文章
      */
-    List<Post> getRecentPosts(Map paramMap);
+    List<Post> getRecentPosts(Map<String, Object> paramMap);
 
     /**
      * 查询单个文章
@@ -46,7 +46,7 @@ public interface PostService {
      * @param paramMap 筛选条件
      * @return 分页数据
      */
-    PageInfo<Post> getPostsByPage(Integer pageNum, Integer pageSize, Map paramMap);
+    PageInfo<Post> getPostsByPage(Integer pageNum, Integer pageSize, Map<String, Object> paramMap);
 
     /**
      * 获取博客信息

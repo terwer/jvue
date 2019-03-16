@@ -4,6 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * 入口
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
     private final Log logger = LogFactory.getLog(this.getClass());
 
-    @RequestMapping(value = "/", produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
     public String index() {
         logger.info("enter main");
         return "index";

@@ -1,6 +1,7 @@
 package com.terwergreen.jvueserver.api;
 
 import com.github.pagehelper.PageInfo;
+import com.terwergreen.jvueserver.exception.RestException;
 import com.terwergreen.jvueserver.pojo.Post;
 import com.terwergreen.jvueserver.service.PostService;
 import com.terwergreen.jvueserver.util.Constants;
@@ -9,10 +10,14 @@ import com.terwergreen.jvueserver.util.MarkdownUtil;
 import com.terwergreen.jvueserver.util.PostTypeEmum;
 import com.terwergreen.jvueserver.util.RestResponse;
 import com.terwergreen.jvueserver.util.RestResponseStates;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,9 +50,14 @@ public class PostApi {
      * @param pageSize 每页数量
      * @return {@see Pagination<Post>}
      */
+    @ApiOperation("获取文章列表")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "pageNum", value = "页码"),
+            @ApiImplicitParam(name = "pageSize", value = "每页展示的数目")
+    })
     @PostMapping("post/list")
-    public RestResponse list(@RequestParam(required = false) Integer pageNum,
-                             @RequestParam(required = false) Integer pageSize) {
+    public RestResponse getPostList(@RequestParam(required = false) Integer pageNum,
+                                    @RequestParam(required = false) Integer pageSize) throws RestException {
         if (pageNum == null) {
             pageNum = Constants.DEFAULT_PAGE_NUM;
         }
@@ -82,6 +92,48 @@ public class PostApi {
             logger.error("接口异常:error=", e);
             restResponse.setStatus(RestResponseStates.SERVER_ERROR.getValue());
             restResponse.setMsg(RestResponseStates.SERVER_ERROR.getMsg());
+            throw new RestException(e);
+        }
+        return restResponse;
+    }
+
+    @ApiOperation("获取文章详情")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "postSlug", value = "文章ID或者别名")
+    })
+    @PostMapping("/post/detail")
+    public RestResponse getPostDetail(Model model, String postSlug) throws RestException {
+        RestResponse restResponse = new RestResponse();
+        try {
+            if (StringUtils.isEmpty(postSlug)) {
+                restResponse.setStatus(RestResponseStates.SERVER_ERROR.getValue());
+                restResponse.setMsg("文章ID或者别名不能为空");
+                return restResponse;
+            }
+
+            Post post = null;
+            if (StringUtils.isNumeric(postSlug)) {
+                post = postService.getPostById(Integer.parseInt(postSlug));
+            } else {
+                post = postService.getPostBySlug(postSlug);
+            }
+
+            if (null == post) {
+                restResponse.setStatus(RestResponseStates.SERVER_ERROR.getValue());
+                restResponse.setMsg("文章不存在");
+                return restResponse;
+            }
+
+            // 转换结果
+            transformContent(post);
+            restResponse.setStatus(RestResponseStates.SUCCESS.getValue());
+            restResponse.setMsg(RestResponseStates.SUCCESS.getMsg());
+            restResponse.setData(post);
+        } catch (Exception e) {
+            logger.error("接口异常:error=", e);
+            restResponse.setStatus(RestResponseStates.SERVER_ERROR.getValue());
+            restResponse.setMsg(RestResponseStates.SERVER_ERROR.getMsg());
+            throw new RestException(e);
         }
         return restResponse;
     }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,22 +30,28 @@ public class PostServiceImpl implements PostService {
     private CommonDAO commonDAO;
 
     @Override
-    public List<Post> getRecentPosts(Map paramMap) {
+    public List<Post> getRecentPosts(Map<String, Object> paraMap) {
         return null;
     }
 
     @Override
     public Post getPostBySlug(String slug) {
-        return null;
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("postSlug", slug);
+        Post post = (Post) commonDAO.querySingleByMap("getPostBySlug", paramMap);
+        return post;
     }
 
     @Override
     public Post getPostById(Integer postId) {
-        return null;
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("postId", postId);
+        Post post = (Post) commonDAO.querySingleByMap("getPostById", paramMap);
+        return post;
     }
 
     @Override
-    public PageInfo<Post> getPostsByPage(Integer pageNum, Integer pageSize, Map paramMap) {
+    public PageInfo<Post> getPostsByPage(Integer pageNum, Integer pageSize, Map<String, Object> paramMap) {
         PageHelper.startPage(pageNum, pageSize);
         List<Post> list = (List<Post>) commonDAO.queryListByMap("selectPosts", paramMap);
         // 分页信息

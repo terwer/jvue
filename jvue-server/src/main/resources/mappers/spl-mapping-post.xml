@@ -11,4 +11,18 @@
             AND type=#{postType}
         </if>
     </select>
+    <select id="getPostBySlug" resultType="com.terwergreen.jvueserver.pojo.Post">
+        SELECT id,title,created,modified,content,author_id as authorId
+             ,hits,tags,category,status,type,allow_comment as allowComment
+             ,comment_count as commentCount
+        FROM posts
+        WHERE name=#{postSlug}
+    </select>
+    <select id="getPostById" resultType="com.terwergreen.jvueserver.pojo.Post">
+        SELECT id,title,created,modified,content,author_id as authorId
+             ,hits,tags,category,status,type,allow_comment as allowComment
+             ,comment_count as commentCount
+        FROM posts
+        WHERE id=#{postId}
+    </select>
 </mapper>

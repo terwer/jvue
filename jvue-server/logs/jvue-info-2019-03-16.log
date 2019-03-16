@@ -462,3 +462,386 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'testbugucms.bg_options' does
 2019-03-16 16:32:33.376 [http-nio-8081-exec-8] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /csrf
 2019-03-16 16:32:38.700 [http-nio-8081-exec-9] INFO  c.t.jvueserver.service.impl.PostServiceImpl - 分页信息：total=1，pages=1，pageNum=1，pageSize=10
 2019-03-16 16:33:48.684 [Thread-24] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2019-03-16 16:34:04.609 [main] INFO  com.terwergreen.jvueserver.JvueServerApplication - Starting JvueServerApplication on WORK with PID 1392 (C:\Users\Terwer\IdeaProjects\jvue\jvue-server\target\classes started by Terwer in C:\Users\Terwer\IdeaProjects\jvue)
+2019-03-16 16:34:04.610 [main] INFO  com.terwergreen.jvueserver.JvueServerApplication - The following profiles are active: dev
+2019-03-16 16:34:04.745 [main] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-03-16 16:34:04.746 [main] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-03-16 16:34:06.681 [main] WARN  o.s.c.a.ClassPathScanningCandidateComponentProvider - No MyBatis mapper was found in '[com.terwergreen.jvueserver]' package. Please check your configuration.
+2019-03-16 16:34:07.373 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$1a3eec3f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-16 16:34:08.172 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2019-03-16 16:34:08.201 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2019-03-16 16:34:08.214 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-03-16 16:34:08.214 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-03-16 16:34:08.226 [main] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_181\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\GitExtensions\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files\Microsoft VS Code\bin;C:\Users\Terwer\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Software\apache-maven-3.5.4\bin;C:\Users\Terwer\AppData\Local\Programs\Python\Python36;C:\Users\Terwer\AppData\Local\Programs\Python\Python36\Scripts;C:\Software\spring-2.1.0.RELEASE\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2018.3\bin;;C:\Software\ringojs\ringojs-1.2.1\bin;C:\Software\node-v10.15.1-win-x64;;.]
+2019-03-16 16:34:08.771 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-03-16 16:34:08.772 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 4026 ms
+2019-03-16 16:34:08.992 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2019-03-16 16:34:09.185 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-03-16 16:34:10.125 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-16 16:34:10.138 [main] INFO  com.terwergreen.jvueserver.config.Swagger2Config - 创建Swagger2自动Api文档
+2019-03-16 16:34:10.162 [main] INFO  com.terwergreen.jvueserver.config.WebConfig - 添加静态资源映射
+2019-03-16 16:34:10.162 [main] INFO  com.terwergreen.jvueserver.config.WebConfig - 映射swagger-ui
+2019-03-16 16:34:10.309 [main] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-03-16 16:34:10.876 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2019-03-16 16:34:10.897 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2019-03-16 16:34:10.964 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2019-03-16 16:34:11.289 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2019-03-16 16:34:11.347 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2019-03-16 16:34:11.355 [main] INFO  com.terwergreen.jvueserver.JvueServerApplication - Started JvueServerApplication in 7.898 seconds (JVM running for 14.853)
+2019-03-16 16:34:26.082 [http-nio-8081-exec-1] INFO  org.apache.tomcat.util.http.parser.Cookie - A cookie header was received [1544431995,1545375298,1545962594; UM_distinctid=16927d96aa673-01bdd05df48f94-b781636-1fa400-16927d96aa7489; zg_700a639b4ec0421188762c155c49b73b=%7B%22sid%22%3A%201551179409129%2C%22updated%22%3A%201551180010819%2C%22info%22%3A%201551179409133%2C%22superProperty%22%3A%20%22%7B%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22%22%2C%22landHref%22%3A%20%22http%3A%2F%2Flocalhost%3A9090%2F%22%2C%22cuid%22%3A%20%22NaNNaNNaNNaNNaNNaNNaN%22%2C%22zs%22%3A%200%2C%22sc%22%3A%200%7D; _ga=GA1.1.1942599884.1552384392; CNZZDATA4445524=cnzz_eid%3D1834108414-1534931338-%26ntime%3D1552713546] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2019-03-16 16:34:26.160 [http-nio-8081-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-03-16 16:34:26.161 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-03-16 16:34:26.207 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 45 ms
+2019-03-16 16:34:26.276 [http-nio-8081-exec-1] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-16 16:34:26.314 [http-nio-8081-exec-1] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2019-03-16 16:34:37.551 [http-nio-8081-exec-2] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2019-03-16 16:34:42.898 [http-nio-8081-exec-10] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2019-03-16 16:34:42.902 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2019-03-16 16:34:42.904 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingHEAD_1
+2019-03-16 16:34:42.906 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingPOST_1
+2019-03-16 16:34:42.908 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingPUT_1
+2019-03-16 16:34:42.910 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingPATCH_1
+2019-03-16 16:34:42.912 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingDELETE_1
+2019-03-16 16:34:42.914 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingOPTIONS_1
+2019-03-16 16:34:42.916 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingTRACE_1
+2019-03-16 16:34:42.923 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: listUsingPOST_1
+2019-03-16 16:34:42.927 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPostsUsingPOST_1
+2019-03-16 16:34:42.938 [http-nio-8081-exec-9] INFO  c.terwergreen.jvueserver.controller.MainController - enter main
+2019-03-16 16:34:43.439 [http-nio-8081-exec-1] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /csrf
+2019-03-16 16:34:48.352 [http-nio-8081-exec-3] INFO  c.t.jvueserver.service.impl.PostServiceImpl - 分页信息：total=1，pages=1，pageNum=1，pageSize=10
+2019-03-16 16:37:03.100 [http-nio-8081-exec-4] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-16 16:37:03.275 [http-nio-8081-exec-4] INFO  c.t.jvueserver.service.impl.PostServiceImpl - 分页信息：total=1，pages=1，pageNum=1，pageSize=10
+2019-03-16 16:38:29.284 [http-nio-8081-exec-6] INFO  c.t.jvueserver.service.impl.PostServiceImpl - 分页信息：total=1，pages=1，pageNum=1，pageSize=10
+2019-03-16 16:38:42.050 [http-nio-8081-exec-5] INFO  c.t.jvueserver.service.impl.PostServiceImpl - 分页信息：total=1，pages=1，pageNum=1，pageSize=10
+2019-03-16 16:38:42.861 [http-nio-8081-exec-10] INFO  c.t.jvueserver.service.impl.PostServiceImpl - 分页信息：total=1，pages=1，pageNum=1，pageSize=10
+2019-03-16 16:38:43.429 [http-nio-8081-exec-9] INFO  c.t.jvueserver.service.impl.PostServiceImpl - 分页信息：total=1，pages=1，pageNum=1，pageSize=10
+2019-03-16 16:49:07.198 [http-nio-8081-exec-2] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-16 16:49:07.465 [http-nio-8081-exec-5] INFO  c.terwergreen.jvueserver.controller.MainController - enter main
+2019-03-16 16:49:07.482 [http-nio-8081-exec-8] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2019-03-16 16:49:07.487 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_2
+2019-03-16 16:49:07.489 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingHEAD_2
+2019-03-16 16:49:07.491 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingPOST_2
+2019-03-16 16:49:07.494 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingPUT_2
+2019-03-16 16:49:07.496 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingPATCH_2
+2019-03-16 16:49:07.498 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingDELETE_2
+2019-03-16 16:49:07.502 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingOPTIONS_2
+2019-03-16 16:49:07.505 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingTRACE_2
+2019-03-16 16:49:07.509 [http-nio-8081-exec-10] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /csrf
+2019-03-16 16:49:07.519 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPostsUsingPOST_2
+2019-03-16 16:49:25.984 [http-nio-8081-exec-9] ERROR com.terwergreen.jvueserver.api.PostApi - 接口异常:error=
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.executor.ExecutorException: A query was run and no Result Maps were found for the Mapped Statement 'com.terwergreen.jvueserver.post.getPostBySlug'.  It's likely that neither a Result Type nor a Result Map was specified.
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:77)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:446)
+	at com.sun.proxy.$Proxy68.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:230)
+	at com.terwergreen.jvueserver.core.impl.CommonDAOImpl.querySingleByMap(CommonDAOImpl.java:116)
+	at com.terwergreen.jvueserver.core.impl.CommonDAOImpl$$FastClassBySpringCGLIB$$ba133554.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at com.terwergreen.jvueserver.core.impl.CommonDAOImpl$$EnhancerBySpringCGLIB$$f1002124.querySingleByMap(<generated>)
+	at com.terwergreen.jvueserver.service.impl.PostServiceImpl.getPostBySlug(PostServiceImpl.java:41)
+	at com.terwergreen.jvueserver.api.PostApi.getPostDetail(PostApi.java:103)
+	at sun.reflect.GeneratedMethodAccessor183.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:45005)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.servlet.resource.ResourceUrlEncodingFilter.doFilter(ResourceUrlEncodingFilter.java:63)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
+	at org.apache.catalina.core.StandardContextValve.__invoke(StandardContextValve.java:96)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:41002)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.ibatis.executor.ExecutorException: A query was run and no Result Maps were found for the Mapped Statement 'com.terwergreen.jvueserver.post.getPostBySlug'.  It's likely that neither a Result Type nor a Result Map was specified.
+	at org.apache.ibatis.executor.resultset.DefaultResultSetHandler.validateResultMapsCount(DefaultResultSetHandler.java:291)
+	at org.apache.ibatis.executor.resultset.DefaultResultSetHandler.handleResultSets(DefaultResultSetHandler.java:193)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:326)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.github.pagehelper.PageInterceptor.intercept(PageInterceptor.java:143)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at com.sun.proxy.$Proxy109.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141)
+	at sun.reflect.GeneratedMethodAccessor91.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:45005)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	... 61 common frames omitted
+2019-03-16 16:49:26.041 [http-nio-8081-exec-9] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is com.terwergreen.jvueserver.exception.RestException: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.executor.ExecutorException: A query was run and no Result Maps were found for the Mapped Statement 'com.terwergreen.jvueserver.post.getPostBySlug'.  It's likely that neither a Result Type nor a Result Map was specified.] with root cause
+org.apache.ibatis.executor.ExecutorException: A query was run and no Result Maps were found for the Mapped Statement 'com.terwergreen.jvueserver.post.getPostBySlug'.  It's likely that neither a Result Type nor a Result Map was specified.
+	at org.apache.ibatis.executor.resultset.DefaultResultSetHandler.validateResultMapsCount(DefaultResultSetHandler.java:291)
+	at org.apache.ibatis.executor.resultset.DefaultResultSetHandler.handleResultSets(DefaultResultSetHandler.java:193)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:326)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.github.pagehelper.PageInterceptor.intercept(PageInterceptor.java:143)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at com.sun.proxy.$Proxy109.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141)
+	at sun.reflect.GeneratedMethodAccessor91.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:45005)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	at com.sun.proxy.$Proxy68.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:230)
+	at com.terwergreen.jvueserver.core.impl.CommonDAOImpl.querySingleByMap(CommonDAOImpl.java:116)
+	at com.terwergreen.jvueserver.core.impl.CommonDAOImpl$$FastClassBySpringCGLIB$$ba133554.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at com.terwergreen.jvueserver.core.impl.CommonDAOImpl$$EnhancerBySpringCGLIB$$f1002124.querySingleByMap(<generated>)
+	at com.terwergreen.jvueserver.service.impl.PostServiceImpl.getPostBySlug(PostServiceImpl.java:41)
+	at com.terwergreen.jvueserver.api.PostApi.getPostDetail(PostApi.java:103)
+	at sun.reflect.GeneratedMethodAccessor183.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:45005)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.servlet.resource.ResourceUrlEncodingFilter.doFilter(ResourceUrlEncodingFilter.java:63)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
+	at org.apache.catalina.core.StandardContextValve.__invoke(StandardContextValve.java:96)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:41002)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-03-16 16:51:08.623 [http-nio-8081-exec-2] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-16 16:51:08.834 [http-nio-8081-exec-10] INFO  c.terwergreen.jvueserver.controller.MainController - enter main
+2019-03-16 16:51:08.853 [http-nio-8081-exec-5] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2019-03-16 16:51:08.857 [http-nio-8081-exec-5] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_3
+2019-03-16 16:51:08.859 [http-nio-8081-exec-5] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingHEAD_3
+2019-03-16 16:51:08.861 [http-nio-8081-exec-5] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingPOST_3
+2019-03-16 16:51:08.864 [http-nio-8081-exec-5] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingPUT_3
+2019-03-16 16:51:08.865 [http-nio-8081-exec-5] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingPATCH_3
+2019-03-16 16:51:08.867 [http-nio-8081-exec-5] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingDELETE_3
+2019-03-16 16:51:08.869 [http-nio-8081-exec-5] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingOPTIONS_3
+2019-03-16 16:51:08.875 [http-nio-8081-exec-5] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingTRACE_3
+2019-03-16 16:51:08.882 [http-nio-8081-exec-8] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /csrf
+2019-03-16 16:51:08.898 [http-nio-8081-exec-5] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPostDetailUsingPOST_1
+2019-03-16 16:51:08.901 [http-nio-8081-exec-5] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPostListUsingPOST_1
+2019-03-16 16:51:08.906 [http-nio-8081-exec-5] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPostsUsingPOST_3
+2019-03-16 16:53:29.152 [http-nio-8081-exec-2] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-16 16:53:29.385 [http-nio-8081-exec-8] INFO  c.terwergreen.jvueserver.controller.MainController - enter main
+2019-03-16 16:53:29.400 [http-nio-8081-exec-10] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2019-03-16 16:53:29.404 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_4
+2019-03-16 16:53:29.406 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingHEAD_4
+2019-03-16 16:53:29.408 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingPOST_4
+2019-03-16 16:53:29.411 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingPUT_4
+2019-03-16 16:53:29.413 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingPATCH_4
+2019-03-16 16:53:29.413 [http-nio-8081-exec-5] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /csrf
+2019-03-16 16:53:29.414 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingDELETE_4
+2019-03-16 16:53:29.418 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingOPTIONS_4
+2019-03-16 16:53:29.424 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingTRACE_4
+2019-03-16 16:53:29.431 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPostDetailUsingPOST_2
+2019-03-16 16:53:29.445 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPostListUsingPOST_2
+2019-03-16 16:53:29.448 [http-nio-8081-exec-10] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPostsUsingPOST_4
+2019-03-16 16:54:13.999 [http-nio-8081-exec-2] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-16 16:54:14.286 [http-nio-8081-exec-5] INFO  c.terwergreen.jvueserver.controller.MainController - enter main
+2019-03-16 16:54:14.298 [http-nio-8081-exec-8] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2019-03-16 16:54:14.302 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_5
+2019-03-16 16:54:14.307 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPostDetailUsingPOST_3
+2019-03-16 16:54:14.308 [http-nio-8081-exec-10] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /csrf
+2019-03-16 16:54:14.310 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPostListUsingPOST_3
+2019-03-16 16:54:14.317 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPostsUsingPOST_5
+2019-03-16 16:54:19.230 [http-nio-8081-exec-2] INFO  c.terwergreen.jvueserver.controller.MainController - enter main
+2019-03-16 16:55:32.460 [http-nio-8081-exec-7] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-16 16:55:32.712 [http-nio-8081-exec-9] INFO  c.terwergreen.jvueserver.controller.MainController - enter main
+2019-03-16 16:55:32.722 [http-nio-8081-exec-8] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2019-03-16 16:55:32.725 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_6
+2019-03-16 16:55:32.731 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPostDetailUsingPOST_4
+2019-03-16 16:55:32.735 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPostListUsingPOST_4
+2019-03-16 16:55:32.741 [http-nio-8081-exec-8] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPostsUsingPOST_6
+2019-03-16 16:55:32.742 [http-nio-8081-exec-1] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /csrf
+2019-03-16 16:57:16.410 [Thread-24] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2019-03-16 16:57:29.857 [main] INFO  com.terwergreen.jvueserver.JvueServerApplication - Starting JvueServerApplication on WORK with PID 22688 (C:\Users\Terwer\IdeaProjects\jvue\jvue-server\target\classes started by Terwer in C:\Users\Terwer\IdeaProjects\jvue)
+2019-03-16 16:57:29.861 [main] DEBUG com.terwergreen.jvueserver.JvueServerApplication - Running with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE
+2019-03-16 16:57:29.861 [main] INFO  com.terwergreen.jvueserver.JvueServerApplication - The following profiles are active: dev
+2019-03-16 16:57:29.978 [main] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-03-16 16:57:29.978 [main] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-03-16 16:57:32.069 [main] WARN  o.s.c.a.ClassPathScanningCandidateComponentProvider - No MyBatis mapper was found in '[com.terwergreen.jvueserver]' package. Please check your configuration.
+2019-03-16 16:57:32.856 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$fcf14dd1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-16 16:57:33.863 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2019-03-16 16:57:33.899 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2019-03-16 16:57:33.914 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-03-16 16:57:33.914 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-03-16 16:57:33.928 [main] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_181\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\GitExtensions\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files\Microsoft VS Code\bin;C:\Users\Terwer\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Software\apache-maven-3.5.4\bin;C:\Users\Terwer\AppData\Local\Programs\Python\Python36;C:\Users\Terwer\AppData\Local\Programs\Python\Python36\Scripts;C:\Software\spring-2.1.0.RELEASE\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2018.3\bin;;C:\Software\ringojs\ringojs-1.2.1\bin;C:\Software\node-v10.15.1-win-x64;;.]
+2019-03-16 16:57:34.495 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-03-16 16:57:34.495 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 4517 ms
+2019-03-16 16:57:34.745 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2019-03-16 16:57:35.014 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-03-16 16:57:36.222 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-16 16:57:36.235 [main] INFO  com.terwergreen.jvueserver.config.Swagger2Config - 创建Swagger2自动Api文档
+2019-03-16 16:57:36.261 [main] INFO  com.terwergreen.jvueserver.config.WebConfig - 添加静态资源映射
+2019-03-16 16:57:36.262 [main] INFO  com.terwergreen.jvueserver.config.WebConfig - 映射swagger-ui
+2019-03-16 16:57:36.432 [main] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-03-16 16:57:37.054 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2019-03-16 16:57:37.092 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2019-03-16 16:57:37.178 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2019-03-16 16:57:37.553 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2019-03-16 16:57:37.637 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2019-03-16 16:57:37.646 [main] INFO  com.terwergreen.jvueserver.JvueServerApplication - Started JvueServerApplication in 9.336 seconds (JVM running for 17.113)
+2019-03-16 16:57:41.419 [http-nio-8081-exec-2] INFO  org.apache.tomcat.util.http.parser.Cookie - A cookie header was received [1544431995,1545375298,1545962594; UM_distinctid=16927d96aa673-01bdd05df48f94-b781636-1fa400-16927d96aa7489; zg_700a639b4ec0421188762c155c49b73b=%7B%22sid%22%3A%201551179409129%2C%22updated%22%3A%201551180010819%2C%22info%22%3A%201551179409133%2C%22superProperty%22%3A%20%22%7B%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22%22%2C%22landHref%22%3A%20%22http%3A%2F%2Flocalhost%3A9090%2F%22%2C%22cuid%22%3A%20%22NaNNaNNaNNaNNaNNaNNaN%22%2C%22zs%22%3A%200%2C%22sc%22%3A%200%7D; _ga=GA1.1.1942599884.1552384392; CNZZDATA4445524=cnzz_eid%3D1834108414-1534931338-%26ntime%3D1552713546] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2019-03-16 16:57:41.449 [http-nio-8081-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-03-16 16:57:41.450 [http-nio-8081-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-03-16 16:57:41.466 [http-nio-8081-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 16 ms
+2019-03-16 16:57:42.588 [http-nio-8081-exec-2] DEBUG com.terwergreen.jvueserver.post.getPostBySlug - ==>  Preparing: SELECT id,title,created,modified,content,author_id as authorId ,hits,tags,category,status,type,allow_comment as allowComment ,comment_count as commentCount FROM posts WHERE name=? 
+2019-03-16 16:57:42.660 [http-nio-8081-exec-2] DEBUG com.terwergreen.jvueserver.post.getPostBySlug - ==> Parameters: {postSlug}(String)
+2019-03-16 16:57:42.798 [http-nio-8081-exec-2] DEBUG com.terwergreen.jvueserver.post.getPostBySlug - <==      Total: 0
+2019-03-16 16:57:52.617 [http-nio-8081-exec-1] DEBUG com.terwergreen.jvueserver.post.getPostBySlug - ==>  Preparing: SELECT id,title,created,modified,content,author_id as authorId ,hits,tags,category,status,type,allow_comment as allowComment ,comment_count as commentCount FROM posts WHERE name=? 
+2019-03-16 16:57:52.618 [http-nio-8081-exec-1] DEBUG com.terwergreen.jvueserver.post.getPostBySlug - ==> Parameters: {postSlug}(String)
+2019-03-16 16:57:52.673 [http-nio-8081-exec-1] DEBUG com.terwergreen.jvueserver.post.getPostBySlug - <==      Total: 0
+2019-03-16 16:58:21.607 [http-nio-8081-exec-3] DEBUG com.terwergreen.jvueserver.post.getPostBySlug - ==>  Preparing: SELECT id,title,created,modified,content,author_id as authorId ,hits,tags,category,status,type,allow_comment as allowComment ,comment_count as commentCount FROM posts WHERE name=? 
+2019-03-16 16:58:21.609 [http-nio-8081-exec-3] DEBUG com.terwergreen.jvueserver.post.getPostBySlug - ==> Parameters: {postSlug}(String)
+2019-03-16 16:58:21.669 [http-nio-8081-exec-3] DEBUG com.terwergreen.jvueserver.post.getPostBySlug - <==      Total: 0
+2019-03-16 16:59:03.369 [Thread-24] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2019-03-16 16:59:18.588 [main] INFO  com.terwergreen.jvueserver.JvueServerApplication - Starting JvueServerApplication on WORK with PID 22684 (C:\Users\Terwer\IdeaProjects\jvue\jvue-server\target\classes started by Terwer in C:\Users\Terwer\IdeaProjects\jvue)
+2019-03-16 16:59:18.590 [main] DEBUG com.terwergreen.jvueserver.JvueServerApplication - Running with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE
+2019-03-16 16:59:18.591 [main] INFO  com.terwergreen.jvueserver.JvueServerApplication - The following profiles are active: dev
+2019-03-16 16:59:18.720 [main] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-03-16 16:59:18.721 [main] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-03-16 16:59:20.421 [main] WARN  o.s.c.a.ClassPathScanningCandidateComponentProvider - No MyBatis mapper was found in '[com.terwergreen.jvueserver]' package. Please check your configuration.
+2019-03-16 16:59:21.134 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$dd5147f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-16 16:59:21.936 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2019-03-16 16:59:22.143 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2019-03-16 16:59:22.156 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-03-16 16:59:22.156 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-03-16 16:59:22.168 [main] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_181\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\GitExtensions\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files\Microsoft VS Code\bin;C:\Users\Terwer\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Software\apache-maven-3.5.4\bin;C:\Users\Terwer\AppData\Local\Programs\Python\Python36;C:\Users\Terwer\AppData\Local\Programs\Python\Python36\Scripts;C:\Software\spring-2.1.0.RELEASE\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2018.3\bin;;C:\Software\ringojs\ringojs-1.2.1\bin;C:\Software\node-v10.15.1-win-x64;;.]
+2019-03-16 16:59:22.550 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-03-16 16:59:22.551 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3830 ms
+2019-03-16 16:59:22.783 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2019-03-16 16:59:22.971 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-03-16 16:59:23.937 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-16 16:59:23.950 [main] INFO  com.terwergreen.jvueserver.config.Swagger2Config - 创建Swagger2自动Api文档
+2019-03-16 16:59:23.973 [main] INFO  com.terwergreen.jvueserver.config.WebConfig - 添加静态资源映射
+2019-03-16 16:59:23.974 [main] INFO  com.terwergreen.jvueserver.config.WebConfig - 映射swagger-ui
+2019-03-16 16:59:24.165 [main] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-03-16 16:59:24.752 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2019-03-16 16:59:24.776 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2019-03-16 16:59:24.876 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2019-03-16 16:59:25.199 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2019-03-16 16:59:25.255 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2019-03-16 16:59:25.264 [main] INFO  com.terwergreen.jvueserver.JvueServerApplication - Started JvueServerApplication in 7.898 seconds (JVM running for 14.401)
+2019-03-16 16:59:29.362 [http-nio-8081-exec-2] INFO  org.apache.tomcat.util.http.parser.Cookie - A cookie header was received [1544431995,1545375298,1545962594; UM_distinctid=16927d96aa673-01bdd05df48f94-b781636-1fa400-16927d96aa7489; zg_700a639b4ec0421188762c155c49b73b=%7B%22sid%22%3A%201551179409129%2C%22updated%22%3A%201551180010819%2C%22info%22%3A%201551179409133%2C%22superProperty%22%3A%20%22%7B%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22%22%2C%22landHref%22%3A%20%22http%3A%2F%2Flocalhost%3A9090%2F%22%2C%22cuid%22%3A%20%22NaNNaNNaNNaNNaNNaNNaN%22%2C%22zs%22%3A%200%2C%22sc%22%3A%200%7D; _ga=GA1.1.1942599884.1552384392; CNZZDATA4445524=cnzz_eid%3D1834108414-1534931338-%26ntime%3D1552713546] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2019-03-16 16:59:29.385 [http-nio-8081-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-03-16 16:59:29.386 [http-nio-8081-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-03-16 16:59:29.399 [http-nio-8081-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 13 ms
+2019-03-16 16:59:29.442 [http-nio-8081-exec-2] WARN  org.springframework.web.servlet.PageNotFound - No mapping for POST /api/blog/post/%7BpostSlug%7D
+2019-03-16 16:59:32.035 [http-nio-8081-exec-8] INFO  c.terwergreen.jvueserver.controller.MainController - enter main
+2019-03-16 16:59:32.412 [http-nio-8081-exec-10] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /csrf
+2019-03-16 16:59:50.016 [http-nio-8081-exec-9] DEBUG com.terwergreen.jvueserver.post.getPostById - ==>  Preparing: SELECT id,title,created,modified,content,author_id as authorId ,hits,tags,category,status,type,allow_comment as allowComment ,comment_count as commentCount FROM posts WHERE id=? 
+2019-03-16 16:59:50.082 [http-nio-8081-exec-9] DEBUG com.terwergreen.jvueserver.post.getPostById - ==> Parameters: 1(Integer)
+2019-03-16 16:59:50.220 [http-nio-8081-exec-9] DEBUG com.terwergreen.jvueserver.post.getPostById - <==      Total: 1
+2019-03-16 17:00:04.664 [http-nio-8081-exec-2] DEBUG com.terwergreen.jvueserver.post.getPostById - ==>  Preparing: SELECT id,title,created,modified,content,author_id as authorId ,hits,tags,category,status,type,allow_comment as allowComment ,comment_count as commentCount FROM posts WHERE id=? 
+2019-03-16 17:00:04.664 [http-nio-8081-exec-2] DEBUG com.terwergreen.jvueserver.post.getPostById - ==> Parameters: 1(Integer)
+2019-03-16 17:00:04.717 [http-nio-8081-exec-2] DEBUG com.terwergreen.jvueserver.post.getPostById - <==      Total: 1
+2019-03-16 17:02:43.813 [http-nio-8081-exec-9] INFO  c.terwergreen.jvueserver.controller.MainController - enter main
+2019-03-16 17:02:43.847 [http-nio-8081-exec-2] WARN  org.springframework.web.servlet.PageNotFound - No mapping for GET /csrf
+2019-03-16 17:02:48.650 [http-nio-8081-exec-1] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-16 17:05:24.546 [http-nio-8081-exec-6] DEBUG com.terwergreen.jvueserver.post.getPostById - ==>  Preparing: SELECT id,title,created,modified,content,author_id as authorId ,hits,tags,category,status,type,allow_comment as allowComment ,comment_count as commentCount FROM posts WHERE id=? 
+2019-03-16 17:05:24.547 [http-nio-8081-exec-6] DEBUG com.terwergreen.jvueserver.post.getPostById - ==> Parameters: 1(Integer)
+2019-03-16 17:05:24.602 [http-nio-8081-exec-6] DEBUG com.terwergreen.jvueserver.post.getPostById - <==      Total: 1
+2019-03-16 17:05:35.599 [http-nio-8081-exec-7] DEBUG com.terwergreen.jvueserver.post.getPostById - ==>  Preparing: SELECT id,title,created,modified,content,author_id as authorId ,hits,tags,category,status,type,allow_comment as allowComment ,comment_count as commentCount FROM posts WHERE id=? 
+2019-03-16 17:05:35.599 [http-nio-8081-exec-7] DEBUG com.terwergreen.jvueserver.post.getPostById - ==> Parameters: 1(Integer)
+2019-03-16 17:05:35.652 [http-nio-8081-exec-7] DEBUG com.terwergreen.jvueserver.post.getPostById - <==      Total: 1
+2019-03-16 17:05:37.029 [http-nio-8081-exec-8] DEBUG com.terwergreen.jvueserver.post.getPostById - ==>  Preparing: SELECT id,title,created,modified,content,author_id as authorId ,hits,tags,category,status,type,allow_comment as allowComment ,comment_count as commentCount FROM posts WHERE id=? 
+2019-03-16 17:05:37.029 [http-nio-8081-exec-8] DEBUG com.terwergreen.jvueserver.post.getPostById - ==> Parameters: 1(Integer)
+2019-03-16 17:05:37.085 [http-nio-8081-exec-8] DEBUG com.terwergreen.jvueserver.post.getPostById - <==      Total: 1
+2019-03-16 17:05:37.840 [http-nio-8081-exec-9] DEBUG com.terwergreen.jvueserver.post.getPostById - ==>  Preparing: SELECT id,title,created,modified,content,author_id as authorId ,hits,tags,category,status,type,allow_comment as allowComment ,comment_count as commentCount FROM posts WHERE id=? 
+2019-03-16 17:05:37.841 [http-nio-8081-exec-9] DEBUG com.terwergreen.jvueserver.post.getPostById - ==> Parameters: 1(Integer)
+2019-03-16 17:05:37.896 [http-nio-8081-exec-9] DEBUG com.terwergreen.jvueserver.post.getPostById - <==      Total: 1
+2019-03-16 17:05:38.366 [http-nio-8081-exec-2] DEBUG com.terwergreen.jvueserver.post.getPostById - ==>  Preparing: SELECT id,title,created,modified,content,author_id as authorId ,hits,tags,category,status,type,allow_comment as allowComment ,comment_count as commentCount FROM posts WHERE id=? 
+2019-03-16 17:05:38.367 [http-nio-8081-exec-2] DEBUG com.terwergreen.jvueserver.post.getPostById - ==> Parameters: 1(Integer)
+2019-03-16 17:05:38.419 [http-nio-8081-exec-2] DEBUG com.terwergreen.jvueserver.post.getPostById - <==      Total: 1
+2019-03-16 17:05:38.605 [http-nio-8081-exec-10] DEBUG com.terwergreen.jvueserver.post.getPostById - ==>  Preparing: SELECT id,title,created,modified,content,author_id as authorId ,hits,tags,category,status,type,allow_comment as allowComment ,comment_count as commentCount FROM posts WHERE id=? 
+2019-03-16 17:05:38.605 [http-nio-8081-exec-10] DEBUG com.terwergreen.jvueserver.post.getPostById - ==> Parameters: 1(Integer)
+2019-03-16 17:05:38.660 [http-nio-8081-exec-10] DEBUG com.terwergreen.jvueserver.post.getPostById - <==      Total: 1
