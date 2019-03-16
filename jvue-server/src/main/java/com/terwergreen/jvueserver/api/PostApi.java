@@ -53,11 +53,14 @@ public class PostApi {
     @ApiOperation("获取文章列表")
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "pageNum", value = "页码"),
-            @ApiImplicitParam(name = "pageSize", value = "每页展示的数目")
+            @ApiImplicitParam(name = "pageSize", value = "每页展示的数目"),
+            @ApiImplicitParam(name = "isHot", value = "是否热门，1热门，不传或者0全部")
     })
     @PostMapping("post/list")
     public RestResponse getPostList(@RequestParam(required = false) Integer pageNum,
-                                    @RequestParam(required = false) Integer pageSize) throws RestException {
+                                    @RequestParam(required = false) Integer pageSize,
+                                    @RequestParam(required = false) Integer isHot
+    ) throws RestException {
         if (pageNum == null) {
             pageNum = Constants.DEFAULT_PAGE_NUM;
         }
@@ -68,6 +71,7 @@ public class PostApi {
         try {
             Map<String, Object> paramMap = new HashMap<>();
             paramMap.put("postType", PostTypeEmum.POST_TYPE_POST.getName());
+            paramMap.put("isHot", isHot);
             PageInfo<Post> posts = postService.getPostsByPage(pageNum, pageSize, paramMap);
 
             if (null == posts.getList()) {

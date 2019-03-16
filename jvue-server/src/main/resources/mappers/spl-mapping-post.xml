@@ -10,6 +10,9 @@
         <if test="postType!=null">
             AND type=#{postType}
         </if>
+        <if test="isHot!=null and isHot==1">
+            ORDER BY hits DESC LIMIT 5
+        </if>
     </select>
     <select id="getPostBySlug" resultType="com.terwergreen.jvueserver.pojo.Post">
         SELECT id,title,created,modified,content,author_id as authorId
