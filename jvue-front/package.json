@@ -16,7 +16,8 @@
     "dev-start": "cross-env NODE_ENV=development node server/express-server.js",
     "prod-start": "cross-env NODE_ENV=production node server/express-server.js",
     "v8-dev-start": "cross-env NODE_ENV=development node server/v8-server.js",
-    "v8-prod-start": "cross-env NODE_ENV=production node server/v8-server.js"
+    "v8-prod-start": "cross-env NODE_ENV=production node server/v8-server.js",
+    "ssr": "npm run clean && npm run build && prod-start"
   },
   "dependencies": {
     "axios": "^0.18.0",
