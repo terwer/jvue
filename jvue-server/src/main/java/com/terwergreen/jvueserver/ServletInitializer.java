@@ -1,4 +1,4 @@
-package com.terwergreen.jvue;
+package com.terwergreen.jvueserver;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

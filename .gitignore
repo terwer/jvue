@@ -30,3 +30,5 @@ docker-compose.prod.yml
 
 ### Temp data ###
 /data/
+src/main/resources/static/
+src/main/resources/templates/

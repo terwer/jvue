@@ -1,4 +1,4 @@
-package com.terwergreen.jvue;
+package com.terwergreen.jvueserver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

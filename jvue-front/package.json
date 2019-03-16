@@ -1,6 +1,6 @@
 {
   "name": "jvue",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "private": true,
   "scripts": {
     "clean": "rimraf dist",
@@ -13,12 +13,12 @@
     "build-entry-server": "cross-env SSR_ENV=server vue-cli-service build --no-clean",
     "dev-build": "npm run dev-build-entry-client && npm run dev-build-entry-server && node node_modules/@babel/cli/bin/babel --presets=@babel/preset-env -o dist/server.js src/server.js",
     "build": "npm run build-entry-client && npm run build-entry-server && node node_modules/@babel/cli/bin/babel -o dist/server.js --presets=@babel/preset-env,minify src/server.js",
-    "build-nossr": "npm run build-entry-client",
-    "dev-build-nossr": "npm run dev-build-entry-client",
     "dev-start": "cross-env NODE_ENV=development node tests/express-server.js",
     "prod-start": "cross-env NODE_ENV=production node tests/express-server.js",
     "v8-dev-start": "cross-env NODE_ENV=development node tests/v8-server.js",
-    "v8-prod-start": "cross-env NODE_ENV=production node tests/v8-server.js"
+    "v8-prod-start": "cross-env NODE_ENV=production node tests/v8-server.js",
+    "dev": "npm run dev-build && npm run dev-start",
+    "prod": "npm run build && npm run prod-start"
   },
   "dependencies": {
     "axios": "^0.18.0",
