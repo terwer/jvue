@@ -72,7 +72,7 @@ services:
   jvue-front:
     privileged: true
     container_name: jvue-front
-    image: jvue-front:4.0.0
+    image: jvue/front:4.0.0
     build:
       context: .
       dockerfile: ./jvue-front/Dockerfile
