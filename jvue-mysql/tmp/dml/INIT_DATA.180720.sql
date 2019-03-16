@@ -1,15 +1,3 @@
--- 初始化站点配置
-INSERT INTO `bg_options` VALUES ('1', 'siteConfig', 'domain', 'localhost');
-INSERT INTO `bg_options` VALUES ('2', 'siteConfig', 'weburl', 'http://localhost');
-INSERT INTO `bg_options` VALUES ('3', 'siteConfig', 'webtheme', 'default');
-INSERT INTO `bg_options` VALUES ('4', 'siteConfig', 'webname', '远方的灯塔');
-INSERT INTO `bg_options` VALUES ('5', 'siteConfig', 'webslogen', '专注于服务端技术分享');
-INSERT INTO `bg_options` VALUES ('6', 'siteConfig', 'keywords', '软件架构、服务端开发、Java、Spring、Dubbo、Zookeeper、微服务、vuejs');
-INSERT INTO `bg_options` VALUES ('7', 'siteConfig', 'description', '远方的灯塔是关注与分享互联网及服务端开发技术的个人博客，致力于Java后端开发及服务端技术、软件架构、微服务技术分享。同时也记录个人的一路点滴，所蕴含的包括前端、后端、数据库等知识，欢迎关注。');
-INSERT INTO `bg_options` VALUES ('8', 'siteConfig', 'beianinfo', '粤ICP备18023717号-1');
-INSERT INTO `bg_options` VALUES ('9', 'siteConfig', 'debug', 'true');
-INSERT INTO `bg_options` VALUES ('10', 'siteConfig', 'adminpath', 'a');
-
 -- 初始化角色
 INSERT INTO `sys_role` VALUES ('1', 'ROLE_ADMIN', '超级管理员');
 INSERT INTO `sys_role` VALUES ('2', 'ROLE_USER', '普通用户');

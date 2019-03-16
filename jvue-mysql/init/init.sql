@@ -1,11 +1,35 @@
--- 数据库已经配置，这里不指定
--- DROP DATABASE IF EXISTS testbugucms;
--- CREATE DATABASE testbugucms CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE testbugucms;
 
--- 用户已经指定，不要创建
--- CREATE USER 'test'@'%' IDENTIFIED BY '123456';
--- GRANT All privileges ON *.* TO '123456'@'%';
+-- ------------------------------
+-- Database
+-- ------------------------------
+-- 数据库和用户已经指定，不要创建
+-- 数据库
+-- create database testbugucms default character set utf collate utf8_general_ci;
+-- 测试用户
+-- CREATE USER 'test'@'localhost' IDENTIFIED BY '123456'; #本地登录
+-- CREATE USER 'test'@'%' IDENTIFIED BY '123456'; #远程登录
+-- CREATE USER 'prod'@'localhost' IDENTIFIED BY '123456'; #本地登录
+-- CREATE USER 'prod'@'%' IDENTIFIED BY '123456'; #远程登录
+-- grant all privileges on testbugucms.* to test@'%' identified by '123456';
+-- REVOKE ALL PRIVILEGES ON `testbugucms`.* FROM 'test'@'%';
+-- GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER ON `testbugucms`.* TO 'test'@'%';
+-- grant all privileges on bugucms.* to prod@'%' identified by "123456"
+-- REVOKE ALL PRIVILEGES ON `bugucms`.* FROM 'prod'@'%';
+-- GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER ON `bugucms`.* TO 'prod'@'%';
+
+-- ------------------------------
+-- Table Structure
+-- ------------------------------
+-- 站点选项表
+CREATE TABLE options (
+    option_id bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID',
+    option_group varchar(64) NOT NULL DEFAULT '' COMMENT '配置组',
+    option_name varchar(64) NOT NULL DEFAULT '' COMMENT '配置名',
+    option_value longtext NOT NULL COMMENT '配置值',
+    PRIMARY KEY (option_id) USING BTREE,
+    UNIQUE KEY option_name (option_name) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COMMENT='站点配置表';
 
 CREATE TABLE users (
   id           INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -71,6 +95,21 @@ CREATE TABLE logs (
   created TIMESTAMP       NOT NULL DEFAULT current_timestamp
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- ------------------------------
+-- Data
+-- ------------------------------
+-- 初始化站点配置
+INSERT INTO options (option_group, option_name, option_value)
+VALUES ('siteConfig', 'domain', 'localhost:8081'),
+       ('siteConfig', 'weburl', 'http://localhost:8081'),
+       ('siteConfig', 'webtheme', 'default'),
+       ('siteConfig', 'webname', '远方的灯塔'),
+       ('siteConfig', 'webslogen', '专注于服务端技术分享'),
+       ('siteConfig', 'keywords', '软件架构、服务端开发、Java、Spring、Dubbo、Zookeeper、微服务'),
+       ('siteConfig', 'description',
+        '远方的灯塔是关注与分享互联网及服务端开发技术的个人博客，致力于Java后端开发及服务端技术、软件架构、微服务技术分享。同时也记录个人的一路点滴，所蕴含的包括前端、后端、数据库等知识，欢迎您关注我们。'),
+       ('siteConfig', 'debug', 'false'),
+       ('siteConfig', 'beianinfo', '粤ICP备18023717号-1');
 
 INSERT INTO users (username, password_md5, email, screen_name)
 VALUES ('jvue', '3e6693e83d186225b85b09e71c974d2d', '', 'admin');
