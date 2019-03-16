@@ -71,7 +71,10 @@ public class PostApi {
         try {
             Map<String, Object> paramMap = new HashMap<>();
             paramMap.put("postType", PostTypeEmum.POST_TYPE_POST.getName());
-            paramMap.put("isHot", isHot);
+            if (null != isHot && isHot == 1) {
+                paramMap.put("isHot", isHot);
+                pageSize = 5;
+            }
             PageInfo<Post> posts = postService.getPostsByPage(pageNum, pageSize, paramMap);
 
             if (null == posts.getList()) {

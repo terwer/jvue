@@ -11,7 +11,7 @@
             AND type=#{postType}
         </if>
         <if test="isHot!=null and isHot==1">
-            ORDER BY hits DESC LIMIT 5
+            ORDER BY hits DESC
         </if>
     </select>
     <select id="getPostBySlug" resultType="com.terwergreen.jvueserver.pojo.Post">
