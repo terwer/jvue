@@ -37,12 +37,11 @@ const getHttp = () => {
  */
 export const sendPost = (url, payloadParms) => {
   const http = getHttp();
-
   // 把Payload参数转换为http参数
   const params = new URLSearchParams(payloadParms);
   logger.info("url=>" + url);
   logger.info("params=>");
   console.log(params);
 
-  return http.post(url);
+  return http.post(url, params);
 };

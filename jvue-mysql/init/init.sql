@@ -12,7 +12,7 @@ USE testbugucms;
 -- CREATE USER 'test'@'%' IDENTIFIED BY '123456'; #远程登录
 -- CREATE USER 'prod'@'localhost' IDENTIFIED BY '123456'; #本地登录
 -- CREATE USER 'prod'@'%' IDENTIFIED BY '123456'; #远程登录
--- grant all privileges on testbugucms.* to test@'%' identified by '123456';
+-- grant all privileges on * to test@'%' identified by '123456';
 -- REVOKE ALL PRIVILEGES ON `testbugucms`.* FROM 'test'@'%';
 -- GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER ON `testbugucms`.* TO 'test'@'%';
 -- grant all privileges on bugucms.* to prod@'%' identified by "123456"
@@ -107,24 +107,29 @@ CREATE TABLE `users` (
 -- Data
 -- ------------------------------
 -- 初始化站点配置
-INSERT INTO options (option_group, option_name, option_value)
-VALUES ('siteConfig', 'domain', 'localhost:8081'),
-       ('siteConfig', 'weburl', 'http://localhost:8081'),
-       ('siteConfig', 'webtheme', 'default'),
-       ('siteConfig', 'webname', '远方的灯塔'),
-       ('siteConfig', 'webslogen', '专注于服务端技术分享'),
-       ('siteConfig', 'keywords', '软件架构、服务端开发、Java、Spring、Dubbo、Zookeeper、微服务'),
-       ('siteConfig', 'description',
-        '远方的灯塔是关注与分享互联网及服务端开发技术的个人博客，致力于Java后端开发及服务端技术、软件架构、微服务技术分享。同时也记录个人的一路点滴，所蕴含的包括前端、后端、数据库等知识，欢迎您关注我们。'),
-       ('siteConfig', 'debug', 'false'),
-       ('siteConfig', 'beianinfo', '粤ICP备18023717号-1');
+INSERT INTO comments (id, post_id, p_id, content, name, email, website, agree, disagree, ip, agent, created) VALUES (1, 1, null, '## 测试评论
+这是我的网址[jvue](http://www.terwergreen.com)', 'terwer', '920049380@qq.com', 'http://www.terwergreen.com', 1, 0, '0.0.0.1', '', '2019-03-15 22:20:11');
 
-INSERT INTO users (username, password_md5, email, screen_name)
-VALUES ('jvue', '3e6693e83d186225b85b09e71c974d2d', '', 'admin');
+INSERT INTO metas (id, name, type) VALUES (1, 'java', 'tag');
+INSERT INTO metas (id, name, type) VALUES (2, 'server', 'category');
 
-INSERT INTO posts (title, created, modified, content, author_id, hits, tags, category, status, type)
-VALUES ('Hello world', now(), now(), '
-欢迎使用[Jvue](https://github.com/zzzzbw/Jvue)! 这是你的第一篇博客。快点来写点什么吧
+INSERT INTO middles (id, p_id, m_id) VALUES (1, 1, 1);
+INSERT INTO middles (id, p_id, m_id) VALUES (2, 1, 2);
+
+INSERT INTO options (option_id, option_group, option_name, option_value) VALUES (11, 'siteConfig', 'domain', 'localhost:8081');
+INSERT INTO options (option_id, option_group, option_name, option_value) VALUES (12, 'siteConfig', 'weburl', 'http://localhost:8081');
+INSERT INTO options (option_id, option_group, option_name, option_value) VALUES (13, 'siteConfig', 'webtheme', 'default');
+INSERT INTO options (option_id, option_group, option_name, option_value) VALUES (14, 'siteConfig', 'webname', '远方的灯塔');
+INSERT INTO options (option_id, option_group, option_name, option_value) VALUES (15, 'siteConfig', 'webslogen', '专注于服务端技术分享');
+INSERT INTO options (option_id, option_group, option_name, option_value) VALUES (16, 'siteConfig', 'keywords', '软件架构、服务端开发、Java、Spring、Dubbo、Zookeeper、微服务');
+INSERT INTO options (option_id, option_group, option_name, option_value) VALUES (17, 'siteConfig', 'description', '远方的灯塔是关注与分享互联网及服务端开发技术的个人博客，致力于Java后端开发及服务端技术、软件架构、微服务技术分享。同时也记录个人的一路点滴，所蕴含的包括前端、后端、数据库等知识，欢迎您关注我们。');
+INSERT INTO options (option_id, option_group, option_name, option_value) VALUES (18, 'siteConfig', 'debug', 'false');
+INSERT INTO options (option_id, option_group, option_name, option_value) VALUES (19, 'siteConfig', 'beianinfo', '粤ICP备18023717号-1');
+
+INSERT INTO posts (id, name, title, created, modified, content, author_id, hits, tags, category, status, type, allow_comment, comment_count) VALUES (1, 'hello-world', 'Hello world', '2019-03-15 22:20:11', '2019-03-16 23:32:15', '
+欢迎使用[Jvue](https://github.com/terwer/Jvue)! 这是你的第一篇博客。快点来写点什么吧
+
+![](https://raw.githubusercontent.com/terwer/jvue/master/slogan/java.png)
 
 ```java
 public static void main(String[] args){
@@ -132,19 +137,8 @@ public static void main(String[] args){
 }
 ```
 
-> 想要了解更多详细信息，可以查看[文档](https://github.com/terwer/jvue)。', 1, 0, 'First', 'New', 'publish', 'post');
-
-INSERT INTO comments (post_id, content, name, email, website, agree, disagree, ip, agent) VALUES ('1', '## 测试评论
-这是我的网址[jvue](http://www.terwergreen.com)', 'terwer', '920049380@qq.com', 'http://www.terwergreen.com', '1', '0', '0.0.0.1', '');
-
-INSERT INTO metas (name, type) VALUES ('First', 'tag');
-INSERT INTO metas (name, type) VALUES ('New', 'category');
-
-INSERT INTO middles (p_id, m_id) VALUES (1, 1);
-INSERT INTO middles (p_id, m_id) VALUES (1, 2);
-
-INSERT INTO posts (title, created, modified, content, author_id, tags, category, status, type)
-VALUES ('About', now(), now(), '# About me
+> 想要了解更多详细信息，可以查看[文档](https://github.com/terwer/jvue)。', 1, 0, 'First', 'New', 'publish', 'post', 1, 0);
+INSERT INTO posts (id, name, title, created, modified, content, author_id, hits, tags, category, status, type, allow_comment, comment_count) VALUES (2, 'about', 'About', '2019-03-15 22:20:11', '2019-03-16 16:47:32', '# About me
 ### Hello word
 这是关于我的页面
 
@@ -152,4 +146,6 @@ VALUES ('About', now(), now(), '# About me
 * [知乎](https://www.zhihu.com/people/terwer)
 
 ### 也可以设置别的页面
-* 比如友链页面', 1, NULL, NULL, 'publish', 'page');
+* 比如友链页面', 1, 0, null, null, 'publish', 'page', 1, 0);
+
+INSERT INTO users (id, username, password_md5, email, screen_name, created, logged) VALUES (1, 'jvue', '3e6693e83d186225b85b09e71c974d2d', '', 'admin', '2019-03-15 22:20:11', '2019-03-15 22:20:11');

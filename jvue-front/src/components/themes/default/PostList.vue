@@ -4,8 +4,8 @@
       class="pic-text-article"
       tag="article"
       v-for="post in postList"
-      :key="post.postId"
-      :title="post.postFullTitle === '' ? '无标题' : post.postFullTitle"
+      :key="post.id"
+      :title="post.title === '' ? '无标题' : post.title"
       sub-title="发布于5分钟前"
     >
       <b-media style="margin-bottom: 1rem;">
@@ -15,29 +15,26 @@
           :src="post.thumbnails[0]"
           width="200"
           height="100"
-          :title="post.postFullTitle === '' ? '无标题' : post.postFullTitle"
-          :alt="post.postFullTitle === '' ? '无标题' : post.postFullTitle"
+          :title="post.title === '' ? '无标题' : post.title"
+          :alt="post.title === '' ? '无标题' : post.title"
         />
         <p class="card-text">
-          {{ post.postDesc }}
+          {{ post.desc }}
         </p>
       </b-media>
       <router-link
         :to="
-          post.postSlug === ''
-            ? '/post/' + post.postId + '.html'
-            : '/post/' + post.postSlug + '.html'
+          post.name === ''
+            ? '/post/' + post.id + '.html'
+            : '/post/' + post.name + '.html'
         "
       >
         <b-btn type="button" variant="primary">查看全文</b-btn>
       </router-link>
       <div class="article-ext" v-if="!isMobile">
         <span class="article-ext-info">作者：Terwer</span>
-        <span class="article-ext-info" :title="post.praiseCount"
-          >点赞数：{{ post.praiseCount }}</span
-        >
-        <span class="article-ext-info" :title="post.viewCount"
-          >阅读数：{{ post.viewCount }}</span
+        <span class="article-ext-info" :title="post.hits"
+          >阅读数：{{ post.hits }}</span
         >
         <span class="article-ext-info" :title="post.commentCount"
           >评论数：{{ post.commentCount }}</span

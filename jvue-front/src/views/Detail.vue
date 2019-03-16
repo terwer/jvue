@@ -10,18 +10,18 @@
           <router-link
             :to="
               postObj.postSlug === ''
-                ? '/post/' + postObj.postId + '.html'
-                : '/post/' + postObj.postSlug + '.html'
+                ? '/post/' + postObj.id + '.html'
+                : '/post/' + postObj.name + '.html'
             "
           >
             <h1>
-              {{ postObj.postFullTitle }}
+              {{ postObj.title }}
             </h1>
           </router-link>
         </div>
         <div id="menuTree" style="display: none;"></div>
         <div class="clear"></div>
-        <div id="postContent" v-html="postObj.postContent" v-highlight></div>
+        <div id="postContent" v-html="postObj.content" v-highlight></div>
         <div class="text-center">
           <span>本文为原创内容，作者：Terwer，转载请注明出处！</span>
         </div>

@@ -1,9 +1,11 @@
 package com.terwergreen.jvueserver.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Post
@@ -20,7 +22,7 @@ public class Post {
      */
     private Integer id;
     /**
-     * 内容标题
+     * 别名
      */
     private String name;
     /**
@@ -94,7 +96,7 @@ public class Post {
      * 评论数量
      */
     private Integer commentCount;
-     /**
+    /**
      * 文章包含的图片，数据库不保存
      */
     private List<String> thumbnails;

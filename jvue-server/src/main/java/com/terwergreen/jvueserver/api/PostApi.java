@@ -4,12 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.terwergreen.jvueserver.exception.RestException;
 import com.terwergreen.jvueserver.pojo.Post;
 import com.terwergreen.jvueserver.service.PostService;
-import com.terwergreen.jvueserver.util.Constants;
-import com.terwergreen.jvueserver.util.HtmlUtil;
-import com.terwergreen.jvueserver.util.MarkdownUtil;
-import com.terwergreen.jvueserver.util.PostTypeEmum;
-import com.terwergreen.jvueserver.util.RestResponse;
-import com.terwergreen.jvueserver.util.RestResponseStates;
+import com.terwergreen.jvueserver.util.*;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -109,7 +104,7 @@ public class PostApi {
             @ApiImplicitParam(name = "postSlug", value = "文章ID或者别名")
     })
     @PostMapping("/post/detail")
-    public RestResponse getPostDetail(Model model, String postSlug) throws RestException {
+    public RestResponse getPostDetail(@RequestParam(required = true) String postSlug) throws RestException {
         RestResponse restResponse = new RestResponse();
         try {
             if (StringUtils.isEmpty(postSlug)) {
@@ -163,14 +158,14 @@ public class PostApi {
      * @param article 文章实体类
      */
     private void transformPreView(Post article) {
+        // markdown转换为html
         String html = MarkdownUtil.md2html(article.getContent());
-        String filteredHtml = HtmlUtil.parseHtml(html, Constants.MAX_PREVIEW_LENGTH);
-
-
-        this.thumbnails = ImageUtil.getImgSrc(html);
-
-
         article.setContent(null);
+        // 截取摘要
+        String filteredHtml = HtmlUtil.parseHtml(html, Constants.MAX_PREVIEW_LENGTH);
         article.setDesc(filteredHtml);
+        // 解析图片
+        List<String> thumbnails = ImageUtil.getImgSrc(html);
+        article.setThumbnails(thumbnails);
     }
 }

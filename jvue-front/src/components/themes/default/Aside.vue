@@ -20,9 +20,9 @@
       <div class="article-ext">
         <router-link
           :to="
-            post.postSlug === ''
+            post.name === ''
               ? '/post/' + post.id + '.html'
-              : '/post/' + post.postSlug + '.html'
+              : '/post/' + post.name + '.html'
           "
         >
           <b-btn type="button" variant="primary">立即查看</b-btn>
