@@ -77,8 +77,6 @@ services:
       - "3000:3000"
     environment:
       - npm_config_unsafe_perm=true
-    # 这里的命令优先级比较高，会自动覆盖镜像里面的命令
-    command: npm run dev
     restart: always
   jvue-admin:
     privileged: true
