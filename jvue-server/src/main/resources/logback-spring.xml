@@ -2,16 +2,13 @@
 <configuration debug="false">
     <!--使用spring扩展profile支持，要以logback-spring.xml命名-->
     <springProfile name="dev">
-        <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-        <property name="logFilePath" value="jvue-server/logs" />
+        <property name="logFilePath" value="logs" />
     </springProfile>
     <springProfile name="prod">
-        <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
         <property name="logFilePath" value="${catalina.base}/logs" />
     </springProfile>
     <springProfile name="docker">
-        <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-        <property name="logFilePath" value="/logs" />
+        <property name="logFilePath" value="jvue-server/logs" />
     </springProfile>
 
     <property name="log.context.name" value="JVueApplication" />
