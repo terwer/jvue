@@ -1,6 +1,6 @@
 {
   "name": "jvue",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "private": true,
   "scripts": {
     "clean": "rimraf dist",
@@ -13,36 +13,33 @@
     "build-entry-server": "cross-env SSR_ENV=server vue-cli-service build --no-clean",
     "dev-build": "npm run dev-build-entry-client && npm run dev-build-entry-server && node node_modules/@babel/cli/bin/babel --presets=@babel/preset-env -o dist/server.js src/server.js",
     "build": "npm run build-entry-client && npm run build-entry-server && node node_modules/@babel/cli/bin/babel -o dist/server.js --presets=@babel/preset-env,minify src/server.js",
-    "build-nossr": "npm run build-entry-client",
-    "dev-build-nossr": "npm run dev-build-entry-client",
-    "dev-start": "cross-env NODE_ENV=development node tests/dev-server.js",
-    "prod-start": "cross-env NODE_ENV=production node tests/dev-server.js",
-    "v8-dev-start": "cross-env NODE_ENV=development node tests/v8-server.js",
-    "v8-prod-start": "cross-env NODE_ENV=production node tests/v8-server.js"
+    "dev-start": "cross-env NODE_ENV=development node server/express-server.js",
+    "prod-start": "cross-env NODE_ENV=production node server/express-server.js",
+    "v8-dev-start": "cross-env NODE_ENV=development node server/v8-server.js",
+    "v8-prod-start": "cross-env NODE_ENV=production node server/v8-server.js",
+    "ssr": "npm run clean && npm run build && prod-start"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "bootstrap": "latest",
-    "bootstrap-vue": "^2.0.0-rc.13",
+    "bootstrap": "4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.14",
     "circular-json": "^0.5.9",
-    "element-ui": "^2.6.1",
-    "font-awesome": "^4.7.0",
     "url-search-params-polyfill": "^5.0.0",
     "v-toaster": "^1.0.3",
-    "vue": "^2.6.7",
+    "vue": "^2.6.9",
     "vue-hljs": "^1.1.2",
     "vue-progressbar": "^0.7.5",
     "vue-router": "^3.0.2",
-    "vue-server-renderer": "^2.6.7",
+    "vue-server-renderer": "^2.6.9",
     "vue-uweb": "^0.2.1",
     "vue-web-storage": "^4.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
-    "@vue/cli-plugin-babel": "^3.4.0",
-    "@vue/cli-plugin-eslint": "^3.4.0",
-    "@vue/cli-service": "^3.4.0",
+    "@vue/cli-plugin-babel": "^3.5.1",
+    "@vue/cli-plugin-eslint": "^3.5.1",
+    "@vue/cli-service": "^3.5.1",
     "@vue/eslint-config-prettier": "^4.0.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
@@ -52,26 +49,11 @@
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "express": "^4.16.4",
-    "lint-staged": "^8.1.0",
-    "ncp": "^2.0.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.11.0",
     "rimraf": "^2.6.3",
     "sass-loader": "7.1.0",
-    "vue-template-compiler": "^2.5.21",
+    "vue-template-compiler": "^2.6.9",
     "webpack": "^4.29.5",
     "webpack-node-externals": "^1.7.2"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.js": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "*.vue": [
-      "vue-cli-service lint",
-      "git add"
-    ]
   }
 }

@@ -1,7 +1,21 @@
 # 构建docker-compose项目
-# docker-compose up
-# docker-compose up -V --force-recreate
-# docker-compose up -d --force-recreate
+# docker-compose --log-level INFO build
+# docker-compose --log-level INFO build jvue-front
+
+# 重启并清理以及重建容器
+# docker-compose --log-level INFO up --force-recreate --remove-orphans
+# docker-compose --log-level INFO up --force-recreate jvue-front
+
+# 重启并重建镜像
+# docker-compose --log-level INFO up --build --force-recreate --remove-orphans
+# docker-compose --log-level INFO up --build --force-recreate jvue-front
+
+# 启动守护线程
+# docker-compose --log-level INFO up -d
+
+# 重启并重建镜像启动守护线程
+# docker-compose --log-level INFO up -d --build --force-recreate jvue-front
+
 version: '3'
 services:
   jvue-nginx:
@@ -58,7 +72,7 @@ services:
   jvue-front:
     privileged: true
     container_name: jvue-front
-    image: jvue-front:4.0.0
+    image: jvue/front:4.0.0
     build:
       context: .
       dockerfile: ./jvue-front/Dockerfile
@@ -66,8 +80,6 @@ services:
       - "3000:3000"
     environment:
       - npm_config_unsafe_perm=true
-    # 这里的命令优先级比较高，会自动覆盖镜像里面的命令
-    command: npm run start
     restart: always
   jvue-admin:
     privileged: true

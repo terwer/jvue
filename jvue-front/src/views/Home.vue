@@ -109,30 +109,30 @@ export default {
           search: that.k,
           postType: that.postType,
           postStatus: "publish",
-          page: that.currentPage
+          pageNum: that.currentPage
         })
         .then(resolve => {
           that.$Progress.finish();
           // that.showMask = false;
           const postList = resolve.data;
-          if (postList.code === 0) {
+          if (postList.status === 1) {
             // console.log(postList.data);
             // 填充数据
             if (that.isloadmore === 1) {
               // 加载更多，追加
-              if (postList.data.length === 0) {
+              if (postList.data.list.length === 0) {
                 that.loadingText = "加载完成";
                 that.$toaster.warning("暂无结果");
               } else {
                 that.loadingText = "加载更多";
               }
-              for (const idx in postList.data) {
-                const post = postList.data[idx];
+              for (const idx in postList.data.list) {
+                const post = postList.data.list[idx];
                 that.postListArray.push(post);
               }
             } else {
               // 切换，需要重置
-              that.postListArray = postList.data;
+              that.postListArray = postList.data.list;
             }
           } else {
             that.loadingText = "加载失败";
@@ -170,7 +170,7 @@ export default {
       const getPostListPromise = postApi.getPostList({
         postType: "post",
         postStatus: "publish",
-        page: 1
+        pageNum: 1
       });
       Promise.all([getSiteConfigPromise, getPostListPromise])
         .then(function(values) {
@@ -183,8 +183,8 @@ export default {
             asyncDataMap["siteConfig"] = siteConfigString;
             setSession("siteConfig", siteConfigString);
           }
-          if (postList.code === 0) {
-            const postListString = CircularJSON.stringify(postList.data);
+          if (postList.status === 1) {
+            const postListString = CircularJSON.stringify(postList.data.list);
             asyncDataMap["postList"] = postListString;
             setSession("postList", postListString);
           }

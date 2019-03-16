@@ -23,7 +23,10 @@ const getPostList = params => {
  * @returns {AxiosPromise<any>}
  */
 const getHotPostList = params => {
-  const GET_HOT_POST_LIST = "blog/post/hot";
+  const GET_HOT_POST_LIST = "blog/post/list";
+  params = Object.assign(params, {
+    isHot: 1
+  });
   return sendPost(GET_HOT_POST_LIST, params);
 };
 
@@ -33,8 +36,11 @@ const getHotPostList = params => {
  * @returns {AxiosPromise<any>}
  */
 const getPost = postSlug => {
-  const GET_POST = "blog/post/" + postSlug;
-  return sendPost(GET_POST);
+  const GET_POST = "blog/post/detail";
+  const params = {
+    postSlug: postSlug
+  };
+  return sendPost(GET_POST, params);
 };
 
 export default {

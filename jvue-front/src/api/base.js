@@ -20,7 +20,7 @@ const getHttp = () => {
   const baseUrl =
     process.env.NODE_ENV === "production"
       ? "http://www.terwergreen.com/api/"
-      : "http://jvue-server:8081/api/";
+      : "http://localhost:8081/api/";
   logger.info(`baseUrl=>${baseUrl}`);
 
   return axios.create({
@@ -37,12 +37,11 @@ const getHttp = () => {
  */
 export const sendPost = (url, payloadParms) => {
   const http = getHttp();
-
   // 把Payload参数转换为http参数
   const params = new URLSearchParams(payloadParms);
   logger.info("url=>" + url);
   logger.info("params=>");
   console.log(params);
 
-  return http.post(url);
+  return http.post(url, params);
 };

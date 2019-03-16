@@ -3,8 +3,8 @@
     <b-card
       tag="article"
       v-for="post in hotPosts"
-      :key="post.postId"
-      :title="post.postFullTitle === '' ? '无标题' : post.postFullTitle"
+      :key="post.id"
+      :title="post.title === '' ? '无标题' : post.title"
       sub-title="发布于5分钟前"
     >
       <b-media style="margin-bottom: 1rem;">
@@ -15,23 +15,23 @@
         />
       </b-media>
       <p class="card-text">
-        {{ post.postFullTitle === "" ? "无标题" : post.postFullTitle }}
+        {{ post.title === "" ? "无标题" : post.title }}
       </p>
       <div class="article-ext">
         <router-link
           :to="
-            post.postSlug === ''
-              ? '/post/' + post.postId + '.html'
-              : '/post/' + post.postSlug + '.html'
+            post.name === ''
+              ? '/post/' + post.id + '.html'
+              : '/post/' + post.name + '.html'
           "
         >
           <b-btn type="button" variant="primary">立即查看</b-btn>
         </router-link>
-        <span class="article-ext-info" :title="post.praiseCount"
-          >点赞数：{{ post.praiseCount }}</span
+        <span class="article-ext-info" :title="post.commentCount"
+          >评论数：{{ post.commentCount }}</span
         >
-        <span class="article-ext-info" :title="post.viewCount"
-          >阅读数：{{ post.viewCount }}</span
+        <span class="article-ext-info" :title="post.hits"
+          >阅读数：{{ post.hits }}</span
         >
       </div>
     </b-card>
@@ -78,8 +78,8 @@ export default {
         })
         .then(resolve => {
           const postList = resolve.data;
-          if (postList.code === 0) {
-            that.hotPosts = postList.data;
+          if (postList.status === 1) {
+            that.hotPosts = postList.data.list;
           } else {
             that.$toaster.error(postList.msg);
           }
