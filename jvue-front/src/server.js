@@ -14,7 +14,7 @@ const { createBundleRenderer } = require("vue-server-renderer");
 // 路径相对于 dist 文件夹
 // noinspection JSFileReferences
 const template = fs.readFileSync(
-  path.resolve(__dirname, "./index.html"),
+  path.resolve(__dirname, "./index.ssr.html"),
   "utf-8"
 );
 
