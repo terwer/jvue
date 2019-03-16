@@ -5,7 +5,7 @@
  * @version 1.0
  * 19-2-27 下午11:26
  **/
-import {sendPost} from "./base";
+import { sendPost } from "./base";
 
 /**
  * 获取文章列表
@@ -13,8 +13,8 @@ import {sendPost} from "./base";
  * @returns {AxiosPromise<any>}
  */
 const getPostList = params => {
-    const GET_POST_LIST = "blog/post/list";
-    return sendPost(GET_POST_LIST, params);
+  const GET_POST_LIST = "blog/post/list";
+  return sendPost(GET_POST_LIST, params);
 };
 
 /**
@@ -23,11 +23,11 @@ const getPostList = params => {
  * @returns {AxiosPromise<any>}
  */
 const getHotPostList = params => {
-    const GET_HOT_POST_LIST = "blog/post/list";
-    params = Object.assign(params, {
-        "isHot": 1
-    });
-    return sendPost(GET_HOT_POST_LIST, params);
+  const GET_HOT_POST_LIST = "blog/post/list";
+  params = Object.assign(params, {
+    isHot: 1
+  });
+  return sendPost(GET_HOT_POST_LIST, params);
 };
 
 /**
@@ -36,12 +36,12 @@ const getHotPostList = params => {
  * @returns {AxiosPromise<any>}
  */
 const getPost = postSlug => {
-    const GET_POST = "blog/post/" + postSlug;
-    return sendPost(GET_POST);
+  const GET_POST = "blog/post/" + postSlug;
+  return sendPost(GET_POST);
 };
 
 export default {
-    getPostList,
-    getHotPostList,
-    getPost
+  getPostList,
+  getHotPostList,
+  getPost
 };

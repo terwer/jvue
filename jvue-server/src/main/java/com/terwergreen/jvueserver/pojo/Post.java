@@ -22,16 +22,22 @@ public class Post {
     /**
      * 内容标题
      */
+    private String name;
+    /**
+     * 内容标题
+     */
     private String title;
 
     /**
      * 内容生成时间
      */
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")  //FastJson包使用注解
     private Date created;
 
     /**
      * 内容修改时间
      */
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")  //FastJson包使用注解
     private Date modified;
 
     /**
@@ -88,4 +94,8 @@ public class Post {
      * 评论数量
      */
     private Integer commentCount;
+     /**
+     * 文章包含的图片，数据库不保存
+     */
+    private List<String> thumbnails;
 }

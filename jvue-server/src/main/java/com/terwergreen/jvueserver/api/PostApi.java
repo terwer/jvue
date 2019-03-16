@@ -165,6 +165,11 @@ public class PostApi {
     private void transformPreView(Post article) {
         String html = MarkdownUtil.md2html(article.getContent());
         String filteredHtml = HtmlUtil.parseHtml(html, Constants.MAX_PREVIEW_LENGTH);
+
+
+        this.thumbnails = ImageUtil.getImgSrc(html);
+
+
         article.setContent(null);
         article.setDesc(filteredHtml);
     }

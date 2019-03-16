@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.terwergreen.jvueserver.post">
     <select id="selectPosts" resultType="com.terwergreen.jvueserver.pojo.Post">
-        SELECT id,title,created,modified,content,author_id as authorId
+        SELECT id,name,title,created,modified,content,author_id as authorId
                 ,hits,tags,category,status,type,allow_comment as allowComment
                 ,comment_count as commentCount
         FROM posts
@@ -15,16 +15,16 @@
         </if>
     </select>
     <select id="getPostBySlug" resultType="com.terwergreen.jvueserver.pojo.Post">
-        SELECT id,title,created,modified,content,author_id as authorId
-             ,hits,tags,category,status,type,allow_comment as allowComment
-             ,comment_count as commentCount
+        SELECT id,name,title,created,modified,content,author_id as authorId
+                ,hits,tags,category,status,type,allow_comment as allowComment
+                ,comment_count as commentCount
         FROM posts
         WHERE name=#{postSlug}
     </select>
     <select id="getPostById" resultType="com.terwergreen.jvueserver.pojo.Post">
-        SELECT id,title,created,modified,content,author_id as authorId
-             ,hits,tags,category,status,type,allow_comment as allowComment
-             ,comment_count as commentCount
+        SELECT id,name,title,created,modified,content,author_id as authorId
+                ,hits,tags,category,status,type,allow_comment as allowComment
+                ,comment_count as commentCount
         FROM posts
         WHERE id=#{postId}
     </select>
