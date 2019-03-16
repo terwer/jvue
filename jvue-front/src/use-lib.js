@@ -19,12 +19,6 @@ import vueHljs from "vue-hljs";
 Vue.use(vueHljs);
 logger.debug("Register vue-hljs success");
 
-import ElementUI from "element-ui";
-Vue.use(ElementUI, {
-  size: "small"
-});
-logger.debug("Register element-ui success");
-
 import "url-search-params-polyfill";
 logger.debug("Register url-search-params-polyfill success");
 

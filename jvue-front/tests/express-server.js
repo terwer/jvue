@@ -77,7 +77,7 @@ app.get("*", (req, res) => {
 
 // start http server
 app.listen(port, () => {
-  console.log(`dev-server is listening on port ${port}...`);
+  console.log(`express-server is listening on port ${port}...`);
 });
 
 // deal with callback

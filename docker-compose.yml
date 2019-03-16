@@ -1,7 +1,18 @@
 # 构建docker-compose项目
-# docker-compose up
-# docker-compose up -V --force-recreate
-# docker-compose up -d --force-recreate
+# docker-compose --log-level DEBUG build
+# docker-compose --log-level DEBUG build jvue-front
+
+# 重启并清理以及重建容器
+# docker-compose --log-level DEBUG up --force-recreate --remove-orphans
+# docker-compose --log-level DEBUG up --force-recreate jvue-front
+
+# 重启并重建镜像
+# docker-compose --log-level DEBUG up --build --force-recreate
+# docker-compose --log-level DEBUG up --build --force-recreate jvue-front
+
+# 启动守护线程
+# docker-compose --log-level DEBUG up -d
+
 version: '3'
 services:
   jvue-nginx:
