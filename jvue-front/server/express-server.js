@@ -17,6 +17,7 @@ const path = require("path");
 const resolvePath = file => path.resolve(__dirname, file);
 
 const express = require("express");
+var session = require("express-session");
 const port = 3000;
 
 // Configure your application to use Thymeleaf via the express-thymeleaf module
@@ -42,6 +43,15 @@ app.use("/", serve("../dist", false));
 app.use("/js", serve("../dist/js", false));
 app.use("/css", serve("../dist/css", false));
 app.use("/img", serve("../dist/img", false));
+
+// 开启session
+app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+}));
+// 设置值 req.session.username = "张三";
+// 获取值 req.session.username
 
 // 在服务器处理函数中……
 app.get("*", (req, res) => {

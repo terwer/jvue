@@ -17,7 +17,7 @@
     "prod-start": "cross-env NODE_ENV=production node server/express-server.js",
     "v8-dev-start": "cross-env NODE_ENV=development node server/v8-server.js",
     "v8-prod-start": "cross-env NODE_ENV=production node server/v8-server.js",
-    "ssr": "npm run clean && npm run build && prod-start"
+    "ssr": "npm run clean && npm run build && node tool/fix.js && npm run prod-start"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -49,6 +49,8 @@
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "mv": "^2.1.1",
     "node-sass": "^4.11.0",
     "rimraf": "^2.6.3",
     "sass-loader": "7.1.0",
