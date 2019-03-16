@@ -4,6 +4,7 @@ import com.terwergreen.jvueserver.core.CommonService;
 import com.terwergreen.jvueserver.pojo.SiteConfig;
 import com.terwergreen.jvueserver.util.RestResponse;
 import com.terwergreen.jvueserver.util.RestResponseStates;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,9 @@ public class SiteConfigApi {
     @Autowired
     private CommonService commonService;
 
+    @ApiOperation("获取站点配置")
     @PostMapping(value = "/config/list")
-    public RestResponse getPosts() {
+    public RestResponse getConfigList() {
         RestResponse restResponse = new RestResponse();
         try {
             SiteConfig siteConfig = commonService.getSiteConfig();
