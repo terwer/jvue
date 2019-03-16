@@ -21,7 +21,6 @@ COPY ./jvue-front .
 # 构建项目
 RUN npm run clean && \
 npm run dev-build && \
-mv dist/index.html dist/index.ssr.html
 
 # 注意这个一定要要在npm install后面，否则devDependencies的包无法安装
 ENV HOST 0.0.0.0
