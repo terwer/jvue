@@ -32,7 +32,7 @@ public class CommonServiceImpl implements CommonService {
     public SiteConfig getSiteConfig() {
         SiteConfig siteConfig = null;
         try {
-            Map paramMap = new HashMap();
+            Map<String, Object> paramMap = new HashMap<>();
             paramMap.put("optionGroup", SITE_CONFIG_KEY);
             siteConfig = (SiteConfig) commonDAO.querySingleByMap("getSiteConfig", paramMap);
         } catch (Exception e) {
@@ -45,7 +45,7 @@ public class CommonServiceImpl implements CommonService {
     public Object getSiteConfigItem(String optionName) {
         String result = null;
         try {
-            Map paramMap = new HashMap();
+            Map<String, Object> paramMap = new HashMap<>();
             paramMap.put("optionGroup", SITE_CONFIG_KEY);
             paramMap.put("optionName", optionName);
             Map resultMap = (Map) commonDAO.querySingleByMap("getOptionByGroup", paramMap);
@@ -62,7 +62,7 @@ public class CommonServiceImpl implements CommonService {
     public Object getOption(String optionGroup) {
         List list = null;
         try {
-            Map paramMap = new HashMap();
+            Map<String, Object> paramMap = new HashMap<>();
             paramMap.put("optionGroup", optionGroup);
             list = commonDAO.queryListByMap("getOptionByGroup", paramMap);
         } catch (Exception e) {
@@ -88,7 +88,7 @@ public class CommonServiceImpl implements CommonService {
     public boolean updateOption(String optionName, String optionValue, String optionGroup) {
         boolean result = false;
         try {
-            Map paramMap = new HashMap();
+            Map<String, Object> paramMap = new HashMap<>();
             paramMap.put("optionName", optionName);
             paramMap.put("optionValue", optionValue);
             paramMap.put("optionGroup", optionGroup);

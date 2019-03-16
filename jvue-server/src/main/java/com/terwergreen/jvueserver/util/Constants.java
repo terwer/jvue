@@ -14,6 +14,11 @@ public class Constants {
     public static final int DEFAULT_PAGE_SIZE = 10;
 
     /**
+     * 文章简介最大长度
+     */
+    public static final int MAX_PREVIEW_LENGTH = 255;
+
+    /**
      * 登录地址
      */
     public static final String AUTH_LOGIN_PAGE = "/auth/login";

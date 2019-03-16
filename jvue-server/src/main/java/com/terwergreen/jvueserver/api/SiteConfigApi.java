@@ -7,10 +7,9 @@ import com.terwergreen.jvueserver.util.RestResponseStates;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 站点配置API接口
@@ -19,16 +18,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @version 1.0
  * 19-2-25 下午5:59
  **/
-@Controller
-@RequestMapping("api/site/config")
+@RestController
+@RequestMapping(value = "api/site",produces = "application/json;charset=utf-8")
 public class SiteConfigApi {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private CommonService commonService;
 
-    @RequestMapping(value = "/list", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-    @ResponseBody
+    @PostMapping(value = "/config/list")
     public RestResponse getPosts() {
         RestResponse restResponse = new RestResponse();
         try {

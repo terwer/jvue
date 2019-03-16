@@ -2,7 +2,6 @@ package com.terwergreen.jvueserver.service;
 
 import com.github.pagehelper.PageInfo;
 import com.terwergreen.jvueserver.pojo.Post;
-import com.terwergreen.jvueserver.pojo.PostMeta;
 
 import java.util.List;
 import java.util.Map;
@@ -90,12 +89,4 @@ public interface PostService {
      * @return 是否删除成功
      */
     boolean deletePostById(Integer postId);
-
-    /**
-     * 新增或者修改文章属性
-     *
-     * @param postMeta 文章属性
-     * @return 修改结果
-     */
-    boolean saveOrUpdatePostMeta(PostMeta postMeta);
 }

@@ -20,7 +20,6 @@ import java.util.Map;
  * @author Terwer
  * @version 1.0 2018/11/26 10:20
  **/
-@SuppressWarnings("all")
 @Repository
 public class CommonDAOImpl implements CommonDAO {
     private static final Log logger = LogFactory.getLog(CommonDAOImpl.class);
@@ -50,7 +49,7 @@ public class CommonDAOImpl implements CommonDAO {
     }
 
     @Override
-    public List queryListByMap(String sql, Map paraMap) {
+    public List queryListByMap(String sql, Map<String, Object> paraMap) {
         return sqlSession.selectList(sql, paraMap);
     }
 
@@ -60,7 +59,7 @@ public class CommonDAOImpl implements CommonDAO {
     }
 
     @Override
-    public List queryPageList(String sql, Map paraMap, int start, int pageSize) {
+    public List queryPageList(String sql, Map<String, Object> paraMap, int start, int pageSize) {
         pageSize = pageSize > MAX_ROW ? MAX_ROW : pageSize;
         try {
             return sqlSession.selectList(sql, paraMap, new RowBounds(start - 1, pageSize));
@@ -82,7 +81,7 @@ public class CommonDAOImpl implements CommonDAO {
     }
 
     @Override
-    public List queryPageListByMap(String sql, Map paraMap, int start, int pageSize) {
+    public List queryPageListByMap(String sql, Map<String, Object> paraMap, int start, int pageSize) {
         pageSize = pageSize > MAX_ROW ? MAX_ROW : pageSize;
         try {
             return sqlSession.selectList(sql, paraMap, new RowBounds(start - 1, pageSize));
@@ -113,7 +112,7 @@ public class CommonDAOImpl implements CommonDAO {
     }
 
     @Override
-    public Object querySingleByMap(String sql, Map paraMap) {
+    public Object querySingleByMap(String sql, Map<String, Object> paraMap) {
         List list = sqlSession.selectList(sql, paraMap);
         if (list != null && list.size() > 0) {
             return list.get(0);
@@ -140,7 +139,7 @@ public class CommonDAOImpl implements CommonDAO {
     }
 
     @Override
-    public Object insert(String sql, Map paraMap) {
+    public Object insert(String sql, Map<String, Object> paraMap) {
         return sqlSession.insert(sql, paraMap);
     }
 
@@ -150,7 +149,7 @@ public class CommonDAOImpl implements CommonDAO {
     }
 
     @Override
-    public int delete(String sql, Map paraMap) {
+    public int delete(String sql, Map<String, Object> paraMap) {
         return sqlSession.delete(sql, paraMap);
     }
 
@@ -160,7 +159,7 @@ public class CommonDAOImpl implements CommonDAO {
     }
 
     @Override
-    public boolean checkDelete(String sql, Map paraMap) {
+    public boolean checkDelete(String sql, Map<String, Object> paraMap) {
         int row = this.delete(sql, paraMap);
         if (row > 0) {
             return true;
@@ -178,7 +177,7 @@ public class CommonDAOImpl implements CommonDAO {
     }
 
     @Override
-    public int update(String sql, Map paraMap) {
+    public int update(String sql, Map<String, Object> paraMap) {
         return sqlSession.update(sql, paraMap);
     }
 
@@ -188,7 +187,7 @@ public class CommonDAOImpl implements CommonDAO {
     }
 
     @Override
-    public boolean checkUpdate(String sql, Map paraMap) {
+    public boolean checkUpdate(String sql, Map<String, Object> paraMap) {
         int row = this.update(sql, paraMap);
         if (row > 0) {
             return true;

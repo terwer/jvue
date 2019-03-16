@@ -114,7 +114,7 @@ VALUES ('siteConfig', 'domain', 'localhost:8081'),
 INSERT INTO users (username, password_md5, email, screen_name)
 VALUES ('jvue', '3e6693e83d186225b85b09e71c974d2d', '', 'admin');
 
-INSERT INTO articles (title, created, modified, content, author_id, hits, tags, category, status, type)
+INSERT INTO posts (title, created, modified, content, author_id, hits, tags, category, status, type)
 VALUES ('Hello world', now(), now(), '
 欢迎使用[Jvue](https://github.com/zzzzbw/Jvue)! 这是你的第一篇博客。快点来写点什么吧
 
@@ -135,7 +135,7 @@ INSERT INTO metas (name, type) VALUES ('New', 'category');
 INSERT INTO middles (a_id, m_id) VALUES (1, 1);
 INSERT INTO middles (a_id, m_id) VALUES (1, 2);
 
-INSERT INTO articles (title, created, modified, content, author_id, tags, category, status, type)
+INSERT INTO posts (title, created, modified, content, author_id, tags, category, status, type)
 VALUES ('About', now(), now(), '# About me
 ### Hello word
 这是关于我的页面
