@@ -18,7 +18,9 @@ RUN npm config set registry https://registry.npm.taobao.org && \
 
 COPY ./jvue-front .
 
+RUN npm run build
+
 # 注意这个一定要要在npm install后面，否则devDependencies的包无法安装
 ENV HOST 0.0.0.0
 
-CMD ["npm", "run", "ssr"]
+CMD ["npm", "run", "start"]

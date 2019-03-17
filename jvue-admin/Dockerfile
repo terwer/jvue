@@ -21,4 +21,4 @@ ENV HOST 0.0.0.0
 
 COPY ./jvue-admin .
 
-CMD ["npm", "run", "serve"]
+CMD ["npm", "run", "start"]
