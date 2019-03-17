@@ -69,3 +69,27 @@ services:
       - ./data/maven/.m2:/root/.m2
       - ./data/server/logs:/logs
     restart: always
+  jvue-front:
+    privileged: true
+    container_name: jvue-front
+    image: jvue/front:4.0.0
+    build:
+      context: .
+      dockerfile: ./jvue-front/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - npm_config_unsafe_perm=true
+    restart: always
+  jvue-admin:
+    privileged: true
+    container_name: jvue-admin
+    image: jvue-admin:4.0.0
+    build:
+      context: .
+      dockerfile: ./jvue-admin/Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - npm_config_unsafe_perm=true
+    restart: always
