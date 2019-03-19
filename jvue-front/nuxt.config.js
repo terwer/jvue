@@ -29,7 +29,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["@/plugins/element-ui"],
+  plugins: ["@/plugins/element-ui", "~/plugins/axios"],
 
   /*
    ** Nuxt.js modules
@@ -43,6 +43,7 @@ module.exports = {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL: "http://www.terwergreen.com/api"
   },
 
   /*

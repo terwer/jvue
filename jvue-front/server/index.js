@@ -27,7 +27,7 @@ async function start() {
   // Listen the server
   app.listen(port, host);
   consola.ready({
-    message: `Server listening on http://${host}:${port}`,
+    message: `Front module is running on http://${host}:${port} ...`,
     badge: true
   });
 }

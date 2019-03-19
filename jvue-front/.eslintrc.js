@@ -17,6 +17,15 @@ module.exports = {
   plugins: ["prettier"],
   // add your custom rules here
   rules: {
-    "nuxt/no-cjs-in-config": "off"
+    "nuxt/no-cjs-in-config": "off",
+    "no-console": "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+    "no-unused-vars": [
+      2,
+      {
+        vars: "local",
+        args: "none"
+      }
+    ]
   }
 };
