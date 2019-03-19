@@ -6,9 +6,6 @@
         <el-col :xs="24" :md="20">
           <el-main>
             <el-container>
-              <el-row>
-                <el-col>&nbsp;</el-col>
-              </el-row>
               <el-main>
                 <el-container>
                   <el-header>
