@@ -1,6 +1,8 @@
 {
   "name": "jvue-admin",
   "version": "4.0.0",
+  "description": "Admin module for jvue",
+  "author": "terwer",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --port 3001",
