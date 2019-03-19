@@ -1,25 +1,23 @@
 <template>
   <el-row>
-    <el-col :xs="24" :md="4">
-      <div class="grid-content bg-purple">Footer Left</div>
-    </el-col>
     <el-col :xs="24" :md="16">
-      <div class="grid-content bg-purple-light">Footer</div>
+      <div class="grid-content bg-purple-dark">Body</div>
     </el-col>
-    <el-col :xs="24" :md="4">
-      <div class="grid-content bg-purple">Footer Right</div>
+    <el-col :xs="24" :md="8">
+      <div class="grid-content bg-purple-blue">Aside</div>
     </el-col>
   </el-row>
 </template>
 
 <script>
 export default {
-  name: "Footer"
+  name: "Body"
 };
 </script>
 
 <style scoped lang="scss">
 .el-row {
+  margin-bottom: 20px;
   &:last-child {
     margin-bottom: 0;
   }
@@ -32,8 +30,8 @@ export default {
 .bg-purple {
   background: #d3dce6;
 }
-.bg-purple-light {
-  background: #e5e9f2;
+.bg-purple-blue {
+  background: #2a57f2;
 }
 .grid-content {
   min-height: 36px;

@@ -14,7 +14,8 @@ ENV SASS_BINARY_SITE https://npm.taobao.org/mirrors/node-sass
 RUN npm config set registry https://registry.npm.taobao.org && \
     npm set chromedriver_cdnurl https://npm.taobao.org/mirrors/chromedriver && \
     npm cache clean --force && \
-    npm install node-sass && npm install
+    npm install --save-dev node-sass sass-loader && \
+    npm install
 
 COPY ./jvue-front .
 
