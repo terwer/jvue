@@ -24,7 +24,11 @@
 </template>
 
 <script>
+import { getLogger } from "../util/logger";
 import Logo from "~/components/Logo.vue";
+const logger = getLogger("pages/default");
+
+logger.info("enter default");
 
 export default {
   components: {

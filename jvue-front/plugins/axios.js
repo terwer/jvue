@@ -5,9 +5,12 @@
  *@version 1.0
  *2019/3/19 16:39
  **/
+import { getLogger } from "../util/logger";
+const logger = getLogger("plugins/axios");
+
 export default function({ $axios, redirect }) {
   $axios.onRequest(config => {
-    console.log("Making request to " + config.baseURL + config.url);
+    logger.info("Making request to " + config.baseURL + config.url);
   });
 
   $axios.onError(error => {

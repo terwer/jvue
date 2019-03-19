@@ -6,6 +6,9 @@
 </template>
 
 <script>
+import { getLogger } from "../util/logger";
+const logger = getLogger("pages/index");
+
 export default {
   name: "Index",
   async asyncData({ $axios }) {
@@ -14,6 +17,7 @@ export default {
     const siteConfigObj =
       siteConfigResult.status === 1 ? siteConfigResult.data : {};
     const postListArray = postsResult.status === 1 ? postsResult.data.list : [];
+    logger.info("fetch siteConfig and postList finish");
 
     return { siteConfigObj, postListArray };
   },
