@@ -1,16 +1,25 @@
 <template>
   <el-container>
+    <el-header>Header</el-header>
+    <el-main>Main</el-main>
+    <!--
     <p>postListArray=>{{ postListArray }}</p>
     <p>siteConfigObj=>{{ siteConfigObj }}</p>
+    -->
+    <el-footer>
+      <Footer />
+    </el-footer>
   </el-container>
 </template>
 
 <script>
 import { getLogger } from "../util/logger";
+import Footer from "../components/themes/default/Footer";
 const logger = getLogger("pages/index");
 
 export default {
   name: "Index",
+  components: { Footer },
   async asyncData({ $axios }) {
     const siteConfigResult = await $axios.$post("/site/config/list");
     const postsResult = await $axios.$post("/blog/post/list");
@@ -40,4 +49,21 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.el-header,
+.el-footer {
+  background-color: #b3c0d1;
+  color: #333;
+  text-align: center;
+  line-height: 60px;
+}
+.el-main {
+  background-color: #e9eef3;
+  color: #333;
+  text-align: center;
+  line-height: 160px;
+}
+body > .el-container {
+  margin-bottom: 40px;
+}
+</style>
