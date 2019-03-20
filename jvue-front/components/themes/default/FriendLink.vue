@@ -1,6 +1,6 @@
 <template>
   <el-row id="friendLink">
-    <el-col :xs="24" :md="4">
+    <el-col :xs="24" :md="4" class="friendLinkBox">
       <h2>友情链接</h2>
     </el-col>
     <el-col :xs="24" :md="20">
@@ -36,12 +36,14 @@ export default {
   color: rgba(255, 255, 255, 0.42);
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
 }
+.friendLinkBox {
+  text-align: right;
+}
 #friendLink h2 {
   font-size: 15px;
   color: rgba(255, 255, 255, 0.42);
   font-weight: 600;
   display: inline-block;
-  text-align: right;
   margin-right: 5px;
 }
 .footerbottom {
