@@ -15,7 +15,7 @@
                     <Header />
                   </el-header>
                   <el-main>
-                    <Body />
+                    <Body :post-list="postListArray" />
                   </el-main>
                 </el-container>
               </el-main>
