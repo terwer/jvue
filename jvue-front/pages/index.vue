@@ -43,6 +43,9 @@ import Header from "../components/themes/default/Header";
 import Body from "../components/themes/default/Body";
 import Footer from "../components/themes/default/Footer";
 import FriendLink from "../components/themes/default/FriendLink";
+
+// 全局样式
+import "../components/themes/default/style.css";
 const logger = getLogger("pages/index");
 
 export default {
@@ -77,27 +80,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-body a {
-  text-decoration: none;
-}
-.el-header,
-.el-footer {
-  background-color: #fff;
-  color: #333;
-  text-align: center;
-  line-height: 60px;
-  padding: 0;
-  height: auto !important;
-}
-.el-main {
-  background-color: #fff;
-  color: #333;
-  text-align: center;
-  line-height: 160px;
-  padding: 0;
-}
-body > .el-container {
-  margin-bottom: 40px;
-}
-</style>
+<style lang="scss"></style>

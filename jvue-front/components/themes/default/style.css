@@ -1,0 +1,29 @@
+/**
+  * style
+  *
+  *@author Terwer
+  *@version 1.0
+  *2019/3/20 14:43 
+  **/
+body a {
+  text-decoration: none;
+}
+.el-header,
+.el-footer {
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  line-height: 60px;
+  padding: 0;
+  height: auto !important;
+}
+.el-main {
+  background-color: #fff;
+  color: #333;
+  text-align: left;
+  line-height: 45px;
+  padding: 0;
+}
+body > .el-container {
+  margin-bottom: 40px;
+}
