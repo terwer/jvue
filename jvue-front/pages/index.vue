@@ -9,6 +9,9 @@
               <el-main>
                 <el-container>
                   <el-header>
+                    <HeaderTime />
+                  </el-header>
+                  <el-header>
                     <Header />
                   </el-header>
                   <el-main>
@@ -35,6 +38,7 @@
 
 <script>
 import { getLogger } from "../util/logger";
+import HeaderTime from "../components/themes/default/HeaderTime";
 import Header from "../components/themes/default/Header";
 import Body from "../components/themes/default/Body";
 import Footer from "../components/themes/default/Footer";
@@ -43,7 +47,7 @@ const logger = getLogger("pages/index");
 
 export default {
   name: "Index",
-  components: { Header, Body, Footer, FriendLink },
+  components: { HeaderTime, Header, Body, Footer, FriendLink },
   async asyncData({ $axios }) {
     const siteConfigResult = await $axios.$post("/site/config/list");
     const postsResult = await $axios.$post("/blog/post/list");
@@ -76,7 +80,7 @@ export default {
 <style lang="scss">
 .el-header,
 .el-footer {
-  background-color: #b3c0d1;
+  background-color: #fff;
   color: #333;
   text-align: center;
   line-height: 60px;
