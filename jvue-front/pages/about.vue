@@ -89,7 +89,7 @@ export default {
   },
   head() {
     return {
-      title: this.siteConfigObj.webname + " - " + this.siteConfigObj.webslogen,
+      title: "关于我" + " - " + this.siteConfigObj.webname,
       meta: [
         {
           name: "keywords",
