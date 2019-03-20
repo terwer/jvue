@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <el-col :xs="24" :sm="24" :md="6">
+    <el-col :xs="24" :sm="3" :md="3">
       <div class="img-wrap">
         <nuxt-link to="/" class="float-left">
           <div class="img-align-middle">
@@ -14,8 +14,10 @@
         </nuxt-link>
       </div>
     </el-col>
-    <el-col :xs="24" :sm="24" :md="12">
-      <div class="grid-content bg-purple-light">HeaderMenu</div>
+    <el-col :xs="0" :sm="15" :md="15">
+      <div class="grid-content bg-purple-light">
+        <HeaderMenu />
+      </div>
     </el-col>
     <el-col :xs="24" :sm="24" :md="6">
       <div class="search">
@@ -36,10 +38,14 @@
 
 <script>
 import { getLogger } from "../../../util/logger";
+import HeaderMenu from "./HeaderMenu";
 const logger = getLogger("components/themes/default/Header");
 
 export default {
   name: "Header",
+  components: {
+    HeaderMenu
+  },
   data() {
     return {
       s: "",
@@ -61,18 +67,31 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 /**
    * 图片居中
    */
 .img-wrap {
   background: #fff;
+  text-align: left;
+  max-height: 45px;
+  margin-top: 10px;
 }
 .img-wrap .img-align-middle:before {
   content: " ";
   display: inline-block;
   vertical-align: middle;
   height: 100%;
+}
+.logo {
+  max-height: 45px;
+}
+/* 菜单 */
+.el-menu--horizontal > .el-menu-item {
+  height: 55px !important;
+}
+.el-menu--horizontal > .el-submenu .el-submenu__title {
+  height: 55px !important;
 }
 /* 搜索 */
 .search {

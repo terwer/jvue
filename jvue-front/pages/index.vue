@@ -78,6 +78,9 @@ export default {
 </script>
 
 <style lang="scss">
+body a {
+  text-decoration: none;
+}
 .el-header,
 .el-footer {
   background-color: #fff;
