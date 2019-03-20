@@ -16,5 +16,5 @@ export default () => {
     // http://s11.cnzz.com/z_stat.php?id=SITEID&web_id=SITEID // 文字样式
     src: "http://s5.cnzz.com/stat.php?id=4445524&show=pic" // 图片样式
   });
-  logger.debug("Register uweb success");
+  logger.info("Register uweb success");
 };
