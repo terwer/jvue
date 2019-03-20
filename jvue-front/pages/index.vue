@@ -9,10 +9,13 @@
               <el-main>
                 <el-container>
                   <el-header>
+                    <HeaderTime />
+                  </el-header>
+                  <el-header>
                     <Header />
                   </el-header>
                   <el-main>
-                    <Body />
+                    <Body :post-list="postListArray" />
                   </el-main>
                 </el-container>
               </el-main>
@@ -24,7 +27,7 @@
       <el-row>
         <el-col>
           <el-footer>
-            <Footer />
+            <Footer :site-config="siteConfigObj" />
             <FriendLink />
           </el-footer>
         </el-col>
@@ -35,15 +38,19 @@
 
 <script>
 import { getLogger } from "../util/logger";
+import HeaderTime from "../components/themes/default/HeaderTime";
 import Header from "../components/themes/default/Header";
 import Body from "../components/themes/default/Body";
 import Footer from "../components/themes/default/Footer";
 import FriendLink from "../components/themes/default/FriendLink";
+
+// 全局样式
+import "../components/themes/default/style.css";
 const logger = getLogger("pages/index");
 
 export default {
   name: "Index",
-  components: { Header, Body, Footer, FriendLink },
+  components: { HeaderTime, Header, Body, Footer, FriendLink },
   async asyncData({ $axios }) {
     const siteConfigResult = await $axios.$post("/site/config/list");
     const postsResult = await $axios.$post("/blog/post/list");
@@ -73,24 +80,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.el-header,
-.el-footer {
-  background-color: #b3c0d1;
-  color: #333;
-  text-align: center;
-  line-height: 60px;
-  padding: 0;
-  height: auto !important;
-}
-.el-main {
-  background-color: #fff;
-  color: #333;
-  text-align: center;
-  line-height: 160px;
-  padding: 0;
-}
-body > .el-container {
-  margin-bottom: 40px;
-}
-</style>
+<style lang="scss"></style>

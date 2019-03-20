@@ -1,10 +1,25 @@
 <template>
-  <el-row>
-    <el-col :xs="24" :md="4">
-      <div class="grid-content bg-purple-light">Info</div>
+  <el-row id="friendLink">
+    <el-col :xs="24" :md="4" class="friendLinkBox">
+      <h2>友情链接</h2>
     </el-col>
     <el-col :xs="24" :md="20">
-      <div class="grid-content bg-purple-purple">FriendLink</div>
+      <div class="text-left">
+        <ul class="footerbottom">
+          <li>
+            <a href="http://www.terwergreen.com" target="_blank">远方的灯塔</a>
+          </li>
+          <li>
+            <a href="https://www.pengjiandry.com/" target="_blank">彭涧</a>
+          </li>
+          <li>
+            <a href="http://lusongsong.com/" target="_blank">卢松松博客</a>
+          </li>
+          <li>
+            <a href="/guestbook.html">申请友链</a>
+          </li>
+        </ul>
+      </div>
     </el-col>
   </el-row>
 </template>
@@ -16,27 +31,30 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.el-row {
-  margin-bottom: 20px;
-  &:last-child {
-    margin-bottom: 0;
-  }
+#friendLink {
+  background: #2e3033;
+  color: rgba(255, 255, 255, 0.42);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
 }
-.el-col {
+.friendLinkBox {
+  text-align: right;
 }
-.bg-purple-light {
-  background: #e5e9f2;
+#friendLink h2 {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.42);
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 5px;
 }
-.bg-purple {
-  background: #d3dce6;
+.footerbottom {
+  text-align: left;
 }
-.bg-purple-purple {
-  background: #ad51f2;
+.footerbottom a {
+  color: #666 !important;
 }
-.grid-content {
-  min-height: 36px;
-}
-.row-bg {
-  background-color: #f9fafc;
+.footerbottom li {
+  display: inline-block;
+  margin-right: 15px;
+  margin-bottom: 5px;
 }
 </style>

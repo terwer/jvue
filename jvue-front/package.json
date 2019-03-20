@@ -16,7 +16,9 @@
     "cross-env": "^5.2.0",
     "element-ui": "^2.4.11",
     "express": "^4.16.4",
-    "nuxt": "^2.4.0"
+    "font-awesome": "^4.7.0",
+    "nuxt": "^2.4.0",
+    "vue-uweb": "^0.2.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

@@ -11,6 +11,8 @@ const logger = getLogger("plugins/axios");
 export default function({ $axios, redirect }) {
   $axios.onRequest(config => {
     logger.info("Making request to " + config.baseURL + config.url);
+    logger.info("params=>");
+    console.log(config.data);
   });
 
   $axios.onError(error => {
