@@ -1,44 +1,209 @@
 <template>
   <el-row>
     <el-col :xs="24" :md="4">
-      <div class="grid-content bg-purple">Footer Left</div>
+      <div class="dingyue">
+        <div class="footertit">
+          <h2>订阅本站</h2>
+        </div>
+        <div class="dyform">
+          <form class="wpm_form" method="post">
+            <input
+              class="wpm_hiddenfield"
+              name="wpm_form"
+              type="hidden"
+              value="1"
+            />
+            <p class="wpm_prepend">
+              订阅本站获取每周更新邮件提醒，不错过任何一篇文章！
+            </p>
+            <p class="wpm_email">
+              <label class="wpm_emaillabel" for="wpm_email">邮箱：</label>
+              <input
+                id="wpm_email"
+                class="wpm_emailinput"
+                name="wpm_email"
+                placeholder="请输入您的邮箱地址"
+                type="text"
+                value=""
+              />
+            </p>
+            <p class="wpm_submit">
+              <input
+                name="submit"
+                class="btn wpm_submitbtn"
+                type="submit"
+                value="订阅"
+              />
+            </p>
+          </form>
+        </div>
+      </div>
     </el-col>
     <el-col :xs="24" :md="16">
-      <div class="grid-content bg-purple-light">Footer</div>
+      <div class="guanzhu">
+        <div class="footertit">
+          <h2>关注&amp;交流</h2>
+        </div>
+        <div class="ewm">
+          <div>
+            <div>
+              <p>
+                技术之路，路漫漫其修远兮，吾将上下而求索。
+              </p>
+              <p>
+                欢迎关注公众号"架构设计漫谈"，一起分享技术，探讨人生。
+              </p>
+              <div class="ewmimg">
+                <img src="../../../assets/mp-qrcode.png" alt="Terwer" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </el-col>
     <el-col :xs="24" :md="4">
-      <div class="grid-content bg-purple">Footer Right</div>
+      <div class="contact">
+        <div class="contactcon">
+          <el-row>
+            <el-col :span="12">
+              <div class="footertit">
+                <h2>联系作者</h2>
+              </div>
+              <p>
+                如果您有相关合作事宜，可以通过以下方式联系我，我会在收到消息后第一时间回复处理！<br />
+              </p>
+            </el-col>
+            <el-col :xl="6">邮箱：youweics@sina.com</el-col>
+            <el-col :xl="6"
+              >微博：<a href="https://weibo.com/youweics" target="_blank"
+                >youweics</a
+              ></el-col
+            >
+            <el-col :xl="6">QQ：1035136784（倚楼听雨）</el-col>
+            <el-col :xl="6">微信：15986685029（hiterwer）</el-col>
+            <el-col :span="12" class="copyright">
+              <br />
+              Copyright © 2011-{{ nowYear }}
+              <a :href="siteConfig.weburl" target="_blank">{{
+                siteConfig.webname
+              }}</a>
+              <span class="next-line"><br /></span>
+              All Rights Reserved
+            </el-col>
+            <el-col :span="12">
+              博客已稳定运行： 2年303天22时22分48秒
+            </el-col>
+            <el-col :span="12">
+              <a
+                href="http://www.miitbeian.gov.cn/"
+                rel="external nofollow"
+                target="_blank"
+                >{{ siteConfig.beianinfo }}</a
+              >
+              <!-- cnzz统计 -->
+              &nbsp;&nbsp;<span id="cnzz_stat_icon_4445524">
+                <a
+                  href="https://www.cnzz.com/stat/website.php?web_id=4445524"
+                  target="_blank"
+                  title="站长统计"
+                >
+                  <img
+                    border="0"
+                    hspace="0"
+                    vspace="0"
+                    src="http://icon.cnzz.com/img/pic.gif"
+                    alt="cnzz"
+                  />
+                </a>
+              </span>
+            </el-col>
+          </el-row>
+        </div>
+      </div>
     </el-col>
   </el-row>
 </template>
 
 <script>
 export default {
-  name: "Footer"
+  name: "Footer",
+  props: {
+    siteConfig: {
+      type: Object,
+      default: () => {}
+    }
+  },
+  data() {
+    return {
+      nowYear: new Date().getFullYear()
+    };
+  }
 };
 </script>
 
 <style scoped lang="scss">
-.el-row {
-  &:last-child {
-    margin-bottom: 0;
-  }
+#footer {
+  padding: 0;
+  background: #2e3033;
+  color: rgba(255, 255, 255, 0.42);
+  margin-top: 10px;
 }
-.el-col {
+#footer p {
+  margin-bottom: 5px;
+  font-size: 14px;
 }
-.bg-purple-dark {
-  background: #99a9bf;
+.footertop {
+  padding-bottom: 30px;
 }
-.bg-purple {
-  background: #d3dce6;
+.footertit h2 {
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
-.bg-purple-light {
-  background: #e5e9f2;
+.copyright {
 }
-.grid-content {
-  min-height: 36px;
+.guanzhu {
+  padding: 0;
 }
-.row-bg {
-  background-color: #f9fafc;
+.guanzhu .row {
+  margin-left: 0;
+}
+.ewmimg img {
+  width: 50px;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+.wpm_emaillabel {
+  display: none;
+}
+.wpm_emailinput {
+  border: 1px solid #f1f1f1;
+  background: #f6f6f6;
+  color: #a3a9b0;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  margin-top: 20px;
+}
+.wpm_submit .wpm_submitbtn {
+  width: 100%;
+  padding: 10px;
+  min-height: 30px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background: #00a4ff;
+  color: #fff;
+  border-color: #00a4ff;
+}
+.wpm_submit .wpm_submitbtn:hover {
+  color: #fff;
 }
 </style>

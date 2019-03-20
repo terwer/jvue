@@ -32,7 +32,11 @@ module.exports = {
   plugins: [
     "~/plugins/element-ui",
     "~/plugins/font-awesome",
-    "~/plugins/axios"
+    "~/plugins/axios",
+    {
+      src: "~/plugins/vue-uweb",
+      ssr: false // 只在客户端打包
+    }
   ],
 
   /*

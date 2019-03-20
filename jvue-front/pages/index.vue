@@ -27,7 +27,7 @@
       <el-row>
         <el-col>
           <el-footer>
-            <Footer />
+            <Footer :site-config="siteConfigObj" />
             <FriendLink />
           </el-footer>
         </el-col>
