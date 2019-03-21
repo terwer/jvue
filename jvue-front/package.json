@@ -18,6 +18,7 @@
     "express": "^4.16.4",
     "font-awesome": "^4.7.0",
     "nuxt": "^2.4.0",
+    "vue-hljs": "^1.1.2",
     "vue-uweb": "^0.2.1"
   },
   "devDependencies": {
@@ -38,6 +39,7 @@
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
     "prettier": "^1.16.4",
+    "qs": "^6.6.0",
     "sass-loader": "^7.1.0"
   }
 }
