@@ -6,7 +6,7 @@
           <div class="img-align-middle">
             <img
               class="logo"
-              src="../../../assets/logo.png"
+              src="../../../assets/logo-dark.png"
               alt="jvue"
               title="jvue"
             />
