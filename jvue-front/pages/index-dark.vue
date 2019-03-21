@@ -38,11 +38,11 @@
 
 <script>
 import { getLogger } from "../util/logger";
-import HeaderTime from "../components/themes/default/HeaderTime";
-import Header from "../components/themes/default/Header";
-import Body from "../components/themes/default/Body";
-import Footer from "../components/themes/default/Footer";
-import FriendLink from "../components/themes/default/FriendLink";
+import HeaderTime from "../components/themes/dark/HeaderTime";
+import Header from "../components/themes/dark/Header";
+import Body from "../components/themes/dark/Body";
+import Footer from "../components/themes/dark/Footer";
+import FriendLink from "../components/themes/dark/FriendLink";
 const logger = getLogger("pages/index");
 
 export default {
@@ -79,7 +79,7 @@ export default {
 
 <style lang="scss" scoped>
 /*!
- * Theme Name: terwer
+ * Theme Name: dark
  * Theme URL:  http://www.terwergreen.com
  * Description: 本主题是一款适合博客、新闻资讯、自媒体的主题模板。基于bootstrap响应式布局，自适应PC、手机、平板等多种设备浏览。包含普通文章、专题、视频、图集、下载五中文章类型，多种文章页模板。自带前端用户中心，前端登录注册、资料编辑、投稿、文章编辑、评论管理、收藏管理、用户关注一应俱全。文章列表及评论列表AJAX加载。视频支持本地上传、视频链接及视频平台视频。
  * Author: 倚楼听雨
@@ -104,14 +104,14 @@ body a:hover {
 }
 .el-header,
 .el-footer {
-  background-color: #fff;
+  background-color: #212121;
   color: #333;
   line-height: 60px;
   padding: 0;
   height: auto !important;
 }
 .el-main {
-  background-color: #fff;
+  background-color: #181818;
   color: #333;
   text-align: left;
   line-height: 45px;
