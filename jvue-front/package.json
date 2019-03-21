@@ -18,6 +18,7 @@
     "express": "^4.16.4",
     "font-awesome": "^4.7.0",
     "nuxt": "^2.4.0",
+    "vue-hljs": "^1.1.2",
     "vue-uweb": "^0.2.1"
   },
   "devDependencies": {

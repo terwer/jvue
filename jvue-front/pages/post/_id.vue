@@ -41,6 +41,18 @@
                           </h1>
                         </router-link>
                       </div>
+
+                      <!-- 文章详情 -->
+                      <div
+                        id="postContent"
+                        v-highlight
+                        v-html="postObj.content"
+                      ></div>
+                      <div class="text-center">
+                        <span
+                          >本文为原创内容，作者：Terwer，转载请注明出处！</span
+                        >
+                      </div>
                     </div>
                   </el-main>
                 </el-container>
@@ -63,11 +75,16 @@
 </template>
 
 <script>
+/* eslint no-undef: 0 */ // --> OFF
+/* eslint nuxt/no-globals-in-created: 0 */ // --> OFF
+/* eslint vue/no-v-html: 0 */ // --> OFF
+/* eslint no-useless-escape: 0 */ // --> OFF
 import { getLogger } from "../../util/logger";
 import HeaderTime from "../../components/themes/default/HeaderTime";
 import Header from "../../components/themes/default/Header";
 import Footer from "../../components/themes/default/Footer";
 import FriendLink from "../../components/themes/default/FriendLink";
+import { inBrowser } from "../../util/dom";
 
 // 全局样式
 import "../../components/themes/default/style.css";
@@ -121,14 +138,74 @@ export default {
           name: "description",
           content: this.siteConfigObj.description
         }
+      ],
+      script: [
+        {
+          src:
+            "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+        }
       ]
     };
+  },
+  created() {
+    if (inBrowser && window.MathJax) {
+      // 高亮数学公式
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [["$", "$"], ["\(", "\)"]]
+        }
+      });
+
+      this.$nextTick(function() {
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+      });
+      logger.info("MathJax hilight success");
+    }
   }
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #post {
   margin: 20px;
+}
+
+#postTitle {
+  a {
+    color: #000;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+  a:hover {
+    color: red;
+  }
+  h1 {
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    padding-bottom: 5px;
+  }
+}
+
+#postContent {
+  h1 {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 10px 0;
+  }
+  h2 {
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 10px 0;
+  }
+  p {
+    // 图片自适应
+    img {
+      max-width: 100% !important;
+    }
+  }
 }
 </style>
