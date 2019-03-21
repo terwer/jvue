@@ -86,8 +86,6 @@ import Footer from "../../components/themes/default/Footer";
 import FriendLink from "../../components/themes/default/FriendLink";
 import { inBrowser } from "../../util/dom";
 
-// 全局样式
-import "../../components/themes/default/style.css";
 const logger = getLogger("pages/post");
 
 export default {

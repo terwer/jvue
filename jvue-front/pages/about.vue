@@ -71,9 +71,6 @@ import HeaderTime from "../components/themes/default/HeaderTime";
 import Header from "../components/themes/default/Header";
 import Footer from "../components/themes/default/Footer";
 import FriendLink from "../components/themes/default/FriendLink";
-
-// 全局样式
-import "../components/themes/default/style.css";
 const logger = getLogger("pages/index");
 
 export default {
