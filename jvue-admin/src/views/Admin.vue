@@ -15,31 +15,30 @@
 </template>
 
 <script>
-import MHeader from '../components/common/MHeader';
-import LeftMenu from '../components/common/LeftMenu';
+import MHeader from "../components/common/MHeader";
+import LeftMenu from "../components/common/LeftMenu";
 
 export default {
   components: {
     MHeader,
     LeftMenu
   },
-  data () {
+  data() {
     return {
       indexShowUp: false
     };
   },
   methods: {
-    indexDown () {
+    indexDown() {
       this.indexShowUp = false;
     },
-    indexUp () {
+    indexUp() {
       this.indexShowUp = true;
     }
   },
-  created () {
-    document.title = 'Jvue Admin';
-    this.$root.$on('indexDown', this.indexDown);
-    this.$root.$on('indexUp', this.indexUp);
+  created() {
+    this.$root.$on("indexDown", this.indexDown);
+    this.$root.$on("indexUp", this.indexUp);
   }
 };
 </script>

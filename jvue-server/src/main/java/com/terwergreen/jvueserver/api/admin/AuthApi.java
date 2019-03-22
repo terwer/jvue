@@ -74,4 +74,9 @@ public class AuthApi extends BaseApi {
         }
         return RestResponse.fail("用户名或密码错误");
     }
+
+    @PostMapping("logout")
+    public RestResponse logout() {
+        return RestResponse.ok("退出成功");
+    }
 }
