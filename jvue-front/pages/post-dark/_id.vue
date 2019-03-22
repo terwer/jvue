@@ -32,8 +32,8 @@
                         <router-link
                           :to="
                             postObj.name === ''
-                              ? '/post/' + postObj.id + '.html'
-                              : '/post/' + postObj.name + '.html'
+                              ? '/post-dark/' + postObj.id + '.html'
+                              : '/post-dark/' + postObj.name + '.html'
                           "
                         >
                           <h1>
