@@ -36,9 +36,10 @@ public class AuthHandlerInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) {
         logger.info(request.getRequestURI());
         // Access-Control-Allow-Origin
-        String origin = request.getHeader("Origin");
-        String accessAllowedOrigins = allowedOrigins.contains(origin) ? origin : "";
-        response.setHeader("Access-Control-Allow-Origin", accessAllowedOrigins);
+        // String origin = request.getHeader("Origin");
+        // String accessAllowedOrigins = allowedOrigins.contains(origin) ? origin : "";
+        // response.setHeader("Access-Control-Allow-Origin", accessAllowedOrigins);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         // Access-Control-Max-Age
         response.setHeader("Access-Control-Max-Age", "3600");
         // Access-Control-Allow-Credentials
