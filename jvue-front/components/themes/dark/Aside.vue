@@ -25,7 +25,7 @@
 <script>
 import { getLogger } from "../../../util/logger";
 import { inBrowser } from "../../../util/dom";
-const logger = getLogger("components/themes/default/Aside");
+const logger = getLogger("components/themes/dark/Aside");
 
 export default {
   name: "Aside",

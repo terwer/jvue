@@ -1,8 +1,9 @@
 .hljs {
+    font-family: "dejavu sans mono","Fira Code",Menlo,Monaco,Consolas,"Courier New",monospace;
     display: block;
     overflow-x: auto;
     padding: .5em;
-    background: #1E1E1E;
+    background: #212121;
     color: #DCDCDC
 }
 

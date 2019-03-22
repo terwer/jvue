@@ -15,7 +15,7 @@
                     <Header />
                   </el-header>
                   <el-main>
-                    <div id="post">
+                    <div id="post" class="post-dark">
                       <!-- 导航 -->
                       <el-breadcrumb separator="/">
                         <el-breadcrumb-item
@@ -49,9 +49,7 @@
                         v-html="postObj.content"
                       ></div>
                       <div class="text-center">
-                        <span
-                          >本文为原创内容，作者：Terwer，转载请注明出处！</span
-                        >
+                        <p>本文为原创内容，作者：Terwer，转载请注明出处！</p>
                       </div>
                     </div>
                   </el-main>
@@ -80,10 +78,10 @@
 /* eslint vue/no-v-html: 0 */ // --> OFF
 /* eslint no-useless-escape: 0 */ // --> OFF
 import { getLogger } from "../../util/logger";
-import HeaderTime from "../../components/themes/default/HeaderTime";
-import Header from "../../components/themes/default/Header";
-import Footer from "../../components/themes/default/Footer";
-import FriendLink from "../../components/themes/default/FriendLink";
+import HeaderTime from "../../components/themes/dark/HeaderTime";
+import Header from "../../components/themes/dark/Header";
+import Footer from "../../components/themes/dark/Footer";
+import FriendLink from "../../components/themes/dark/FriendLink";
 import { inBrowser } from "../../util/dom";
 
 const logger = getLogger("pages/post");
@@ -163,11 +161,23 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-@import "../../plugins/lib/vue-hljs/vs.css";
+<style lang="scss">
+@import "../../plugins/lib/vue-hljs/vs2015.css";
+
+.text-center {
+  text-align: center;
+}
+
+.el-breadcrumb__inner a,
+.el-breadcrumb__inner.is-link {
+  color: #ffcb6b;
+}
 
 #post {
   margin: 20px;
+  p {
+    color: #f3f3f3;
+  }
 }
 
 #postTitle {
@@ -180,22 +190,28 @@ export default {
     color: red;
   }
   h1 {
+    color: #f3f3f3;
     border-bottom: 1px solid #ddd;
     font-size: 14px;
     font-weight: bold;
     margin: 20px 0 10px;
     padding-bottom: 5px;
   }
+  h1:hover {
+    color: #ffcb6b;
+  }
 }
 
 #postContent {
   h1 {
+    color: #c792ea;
     font-size: 28px;
     font-weight: bold;
     line-height: 1.5;
     margin: 10px 0;
   }
   h2 {
+    color: #ffcb6b;
     font-size: 21px;
     font-weight: bold;
     line-height: 1.5;
