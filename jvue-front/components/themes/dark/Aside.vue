@@ -25,7 +25,7 @@
 <script>
 import { getLogger } from "../../../util/logger";
 import { inBrowser } from "../../../util/dom";
-const logger = getLogger("components/themes/default/Aside");
+const logger = getLogger("components/themes/dark/Aside");
 
 export default {
   name: "Aside",
@@ -57,5 +57,11 @@ export default {
 }
 h2 {
   color: #c792ea;
+}
+.image {
+  width: 100%;
+  max-height: 150px;
+  display: block;
+  padding: 0 20px 0 0;
 }
 </style>

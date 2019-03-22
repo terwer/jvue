@@ -67,15 +67,18 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 /**
-   * 图片居中
-   */
+* 图片居中
+*/
 .img-wrap {
-  background: #fff;
+  background: #212121;
   text-align: left;
   max-height: 45px;
   margin-top: 10px;
+}
+.img-wrap:hover {
+  background: #181818;
 }
 .img-wrap .img-align-middle:before {
   content: " ";
@@ -88,10 +91,10 @@ export default {
 }
 /* 菜单 */
 .el-menu--horizontal > .el-menu-item {
-  height: 55px !important;
+  height: 60px !important;
 }
 .el-menu--horizontal > .el-submenu .el-submenu__title {
-  height: 55px !important;
+  height: 60px !important;
 }
 /* 搜索 */
 .search {

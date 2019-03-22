@@ -1,9 +1,14 @@
 package com.terwergreen.jvueserver.util;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * @author terwergreen
  * 接口返回数据模型DTO
  */
+@Getter
+@Setter
 public class RestResponse {
 
     /**
@@ -24,16 +29,16 @@ public class RestResponse {
     public RestResponse() {
     }
 
-    public RestResponse(Integer status) {
+    private RestResponse(Integer status) {
         this.status = status;
     }
 
-    public RestResponse(Integer status, String msg) {
+    private RestResponse(Integer status, String msg) {
         this.status = status;
         this.msg = msg;
     }
 
-    public RestResponse(Integer status, String msg, Object data) {
+    private RestResponse(Integer status, String msg, Object data) {
         this.status = status;
         this.msg = msg;
         this.data = data;
@@ -50,27 +55,22 @@ public class RestResponse {
         }
     }
 
-    public Integer getStatus() {
-        return status;
+    // ===============
+    // 便捷方法
+    // ===============
+    public static RestResponse ok() {
+        return new RestResponse(RestResponseStates.SUCCESS.getValue(), RestResponseStates.SUCCESS.getMsg());
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public static RestResponse ok(Object data) {
+        return new RestResponse(RestResponseStates.SUCCESS.getValue(), RestResponseStates.SUCCESS.getMsg(), data);
     }
 
-    public String getMsg() {
-        return msg;
+    public static RestResponse fail() {
+        return new RestResponse(RestResponseStates.SERVER_ERROR.getValue(), RestResponseStates.SERVER_ERROR.getMsg());
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
+    public static RestResponse fail(String msg) {
+        return new RestResponse(RestResponseStates.SERVER_ERROR.getValue(), msg);
     }
 }

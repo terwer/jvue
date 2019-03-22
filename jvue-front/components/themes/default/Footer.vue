@@ -164,6 +164,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+a {
+  color: #c3e88d;
+  text-decoration: none;
+}
 #footer {
   padding: 0;
   background: #2e3033;

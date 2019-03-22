@@ -35,8 +35,8 @@
               <nuxt-link
                 :to="
                   post.name === ''
-                    ? '/post/' + post.id + '.html'
-                    : '/post/' + post.name + '.html'
+                    ? '/post-dark/' + post.id + '.html'
+                    : '/post-dark/' + post.name + '.html'
                 "
               >
                 <el-button type="text" class="read-more">查看全文</el-button>
@@ -103,6 +103,7 @@ export default {
   width: 100%;
   max-height: 150px;
   display: block;
+  padding: 0 20px 0 0;
 }
 
 h2 {

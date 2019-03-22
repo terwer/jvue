@@ -8,7 +8,6 @@
 import Vue from "vue";
 import vueHljs from "vue-hljs";
 import { getLogger } from "../util/logger";
-import("./lib/vue-hljs/vs.css");
 const logger = getLogger("plugins/vue-hljs");
 
 Vue.use(vueHljs);

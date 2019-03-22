@@ -67,10 +67,12 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@import "../../../node_modules/element-ui/lib/theme-chalk/index.css";
+
 /**
-   * 图片居中
-   */
+ * 图片居中
+ */
 .img-wrap {
   background: #fff;
   text-align: left;

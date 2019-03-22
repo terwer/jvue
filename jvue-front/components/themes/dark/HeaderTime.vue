@@ -49,6 +49,7 @@ export default {
 
 <style scoped lang="scss">
 .time {
+  color: #ffcb6b;
   line-height: 30px;
   text-align: left;
   padding: 10px;
