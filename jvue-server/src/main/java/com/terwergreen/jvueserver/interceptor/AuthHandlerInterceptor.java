@@ -30,7 +30,7 @@ public class AuthHandlerInterceptor implements HandlerInterceptor {
     private static final Logger logger = LogManager.getLogger(AuthHandlerInterceptor.class);
     // This is to be replaced with a list of domains allowed to access the server
     // You can include more than one origin here
-    private final List<String> allowedOrigins = Arrays.asList("http://127.0.0.1:3001", "http://localhost:3001", "http://www.terwergreen.com");
+    // private final List<String> allowedOrigins = Arrays.asList("http://127.0.0.1:3001", "http://localhost:3001", "http://www.terwergreen.com");
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) {
