@@ -26,4 +26,9 @@ public class Constants {
      * 登录出错地址
      */
     public static final String AUTH_ERROR_URL = "/auth/login";
+
+    /**
+     * 登陆用户session key
+     */
+    public static final String USER_SESSION_KEY = "login_user";
 }

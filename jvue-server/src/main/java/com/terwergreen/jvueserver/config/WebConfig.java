@@ -1,10 +1,12 @@
 package com.terwergreen.jvueserver.config;
 
+import com.terwergreen.jvueserver.interceptor.AuthHandlerInterceptor;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
@@ -44,16 +46,23 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 配置跨域访问
+     * 配置拦截器
      *
      * @param registry InterceptorRegistry
-     * @author Terwer
      */
     @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**")
-                .allowedHeaders("*")
-                .allowedMethods("*")
-                .allowedOrigins("*");
+    public void addInterceptors(InterceptorRegistry registry) {
+        WebMvcConfigurer.super.addInterceptors(registry);
+        registry.addInterceptor(authHandlerInterceptor()).addPathPatterns("/api/**");
+    }
+
+    /**
+     * 接口访问，带token
+     *
+     * @return AuthHandlerInterceptor
+     */
+    @Bean
+    public AuthHandlerInterceptor authHandlerInterceptor() {
+        return new AuthHandlerInterceptor();
     }
 }
