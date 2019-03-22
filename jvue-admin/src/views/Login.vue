@@ -52,7 +52,7 @@ export default {
         if (valid) {
           this.$api.auth.login(this.userForm).then(data => {
             if (data.status === 1) {
-              this.$router.push("/admin");
+              this.$router.push("/");
               this.$message({
                 message: "登录成功!",
                 type: "success"
