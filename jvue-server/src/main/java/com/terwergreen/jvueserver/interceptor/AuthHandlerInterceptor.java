@@ -6,6 +6,7 @@ import com.terwergreen.jvueserver.util.EncryptAndDecryptUtil;
 import com.terwergreen.jvueserver.util.RestResponseStates;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.http.HttpMethod;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -45,7 +46,13 @@ public class AuthHandlerInterceptor implements HandlerInterceptor {
         // Access-Control-Allow-Methods
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         // Access-Control-Allow-Headers
-        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, " + "X-CSRF-TOKEN");
+        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-CSRF-TOKEN");
+
+        // 兼容入参为RequestBody时候的预请求
+        if (request.getMethod().equals(HttpMethod.OPTIONS.name())) {
+            // response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            return true;
+        }
 
         // 校验token
         Object tokenString = request.getParameter("tokenString");
