@@ -7,6 +7,7 @@
  **/
 import { get, post } from "../plugins/http";
 
+// 校验相关
 const auth = {
   login(user) {
     return post("/admin/auth/login", user);
@@ -27,6 +28,14 @@ const auth = {
   }
 };
 
+// 文章相关
+const article = {
+  getArticles(params) {
+    return post("/blog/post/list", params);
+  }
+};
+
 export default {
-  auth
+  auth,
+  article
 };

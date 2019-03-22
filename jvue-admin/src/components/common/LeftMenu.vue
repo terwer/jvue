@@ -55,23 +55,23 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       showLeftMenu: false
     };
   },
   methods: {
-    toggleLeftMenu () {
+    toggleLeftMenu() {
       this.showLeftMenu = !this.showLeftMenu;
     },
-    mobileToggle () {
+    mobileToggle() {
       if (document.body.clientWidth < 600) {
         this.showLeftMenu = false;
       }
     }
   },
-  created () {
-    this.$root.$on('collapse', this.toggleLeftMenu);
+  created() {
+    this.$root.$on("collapse", this.toggleLeftMenu);
   }
 };
 </script>
