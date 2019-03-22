@@ -51,6 +51,10 @@ export default {
 }
 .footerbottom a {
   color: #666 !important;
+  text-decoration: none;
+}
+.footerbottom a:hover {
+  color: #f3f3f3 !important;
 }
 .footerbottom li {
   display: inline-block;

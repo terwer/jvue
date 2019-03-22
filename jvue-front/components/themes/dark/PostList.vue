@@ -103,6 +103,7 @@ export default {
   width: 100%;
   max-height: 150px;
   display: block;
+  padding: 0 20px 0 0;
 }
 
 h2 {

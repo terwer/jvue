@@ -50,7 +50,11 @@ export default {
   text-align: left;
 }
 .footerbottom a {
-  color: #666 !important;
+  color: #ffcb6b !important;
+  text-decoration: none;
+}
+.footerbottom a:hover {
+  color: #c3e88d !important;
 }
 .footerbottom li {
   display: inline-block;

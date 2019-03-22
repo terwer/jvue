@@ -67,10 +67,10 @@
 
 <script>
 import { getLogger } from "../util/logger";
-import HeaderTime from "../components/themes/default/HeaderTime";
-import Header from "../components/themes/default/Header";
-import Footer from "../components/themes/default/Footer";
-import FriendLink from "../components/themes/default/FriendLink";
+import HeaderTime from "../components/themes/dark/HeaderTime";
+import Header from "../components/themes/dark/Header";
+import Footer from "../components/themes/dark/Footer";
+import FriendLink from "../components/themes/dark/FriendLink";
 const logger = getLogger("pages/index");
 
 export default {
@@ -103,13 +103,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import "./default.css";
+<style lang="scss">
+@import "./dark.css";
 
 .visit {
   font-size: 24px;
 }
 .about {
   margin: 40px 20px 20px 20px;
+  color: #f3f3f3;
 }
 </style>
