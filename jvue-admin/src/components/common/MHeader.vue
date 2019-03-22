@@ -86,7 +86,7 @@ export default {
 .header-right {
   list-style: none;
   float: right;
-  margin: 0 15px 0 0;
+  margin: 0 35px 0 0;
   color: #7f8c8d;
 }
 
