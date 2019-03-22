@@ -5,7 +5,7 @@
     </div>
     <h3 class="title">
       <img src="../../assets/logo.png" alt="logo" />
-      Jvue Admin
+      Jvue
     </h3>
     <ul class="header-right">
       <li>
@@ -104,5 +104,8 @@ export default {
   .collapse {
     display: block;
   }
+    .title{
+        width: 120px;
+    }
 }
 </style>
