@@ -48,8 +48,12 @@
                         v-highlight
                         v-html="postObj.content"
                       ></div>
-                      <div class="text-center">
-                        <p>本文为原创内容，作者：Terwer，转载请注明出处！</p>
+                      <div class="copy">
+                        <p>作者：Terwer</p>
+                        <p>首发：远方的灯塔</p>
+                        <p>
+                          原创内容，转载请注明出处！
+                        </p>
                       </div>
                     </div>
                   </el-main>
@@ -215,6 +219,12 @@ export default {
     img {
       max-width: 100% !important;
     }
+  }
+}
+
+.post-dark {
+  .copy p {
+    color: #ffcb6b;
   }
 }
 </style>

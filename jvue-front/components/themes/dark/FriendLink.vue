@@ -39,6 +39,12 @@ export default {
 .friendLinkBox {
   text-align: right;
 }
+@media screen and (max-width: 600px) {
+  .friendLinkBox {
+    text-align: left;
+    margin-left: 20px;
+  }
+}
 #friendLink h2 {
   font-size: 15px;
   color: rgba(255, 255, 255, 0.42);
@@ -48,6 +54,13 @@ export default {
 }
 .footerbottom {
   text-align: left;
+}
+@media screen and (max-width: 600px) {
+  .footerbottom {
+    padding-left: 20px;
+    line-height: 10px;
+    margin-bottom: 20px;
+  }
 }
 .footerbottom a {
   color: #ffcb6b !important;
