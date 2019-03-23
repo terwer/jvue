@@ -123,7 +123,7 @@ export default {
   },
   head() {
     return {
-      title: "文章" + " - " + this.siteConfigObj.webname,
+      title: this.postObj.title + " - " + this.siteConfigObj.webname,
       meta: [
         {
           name: "keywords",
@@ -167,21 +167,23 @@ export default {
 @import "../../plugins/lib/vue-hljs/vs2015.css";
 .post-dark {
   margin: 20px;
+  a {
+    color: #409eff;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #ffcb6b;
+  }
   p {
     color: #f3f3f3;
   }
 }
 .post-dark #postTitle {
-  a {
-    color: #000;
+  h1 {
+    color: #409eff;
     line-height: 1.5;
     text-decoration: none;
-  }
-  a:hover {
-    color: red;
-  }
-  h1 {
-    color: #f3f3f3;
     border-bottom: 1px solid #ddd;
     font-size: 14px;
     font-weight: bold;

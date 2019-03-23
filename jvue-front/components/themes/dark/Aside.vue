@@ -76,4 +76,7 @@ h2 {
   display: block;
   padding: 0 20px 0 0;
 }
+.post-item {
+  margin-bottom: 10px;
+}
 </style>
