@@ -28,12 +28,9 @@
               />
             </div>
             <div class="wpm_submit">
-              <input
-                name="submit"
-                class="btn wpm_submitbtn"
-                type="submit"
-                value="订阅"
-              />
+              <div class="wpm_submit">
+                <button ref="submit" class="btn wpm_submitbtn">订阅</button>
+              </div>
             </div>
           </form>
         </div>

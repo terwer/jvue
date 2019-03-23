@@ -13,6 +13,7 @@
  */
 .el-container-dark{
   background-color: #181818;
+  padding: 0 !important;
 }
 .el-main-dark{
   background-color: #212121;
