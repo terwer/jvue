@@ -11,4 +11,16 @@
  * 自定义默认主题
  * css名称必须有default关键字
  */
+.post-list-title h2{
+  color: #409EFF;
+}
+.post-list-title h2:hover{
+  color: #000000;
+}
+.aside-link h2{
+  color: #409EFF;
+}
+.aside-link h2:hover{
+  color: #000000;
+}
 

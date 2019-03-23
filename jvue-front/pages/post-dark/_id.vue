@@ -1,20 +1,20 @@
 <template>
   <el-container>
-    <el-main>
+    <el-main class="el-container-dark">
       <el-row>
         <el-col :xs="0" :md="2">&nbsp;</el-col>
         <el-col :xs="24" :md="20">
-          <el-main>
+          <el-main class="el-main-dark">
             <el-container>
-              <el-main>
+              <el-main class="el-main-dark">
                 <el-container>
-                  <el-header>
+                  <el-header class="el-header-dark">
                     <HeaderTime />
                   </el-header>
-                  <el-header>
+                  <el-header class="el-header-dark">
                     <Header />
                   </el-header>
-                  <el-main>
+                  <el-main class="el-main-dark">
                     <div id="post" class="post-dark">
                       <!-- 导航 -->
                       <el-breadcrumb separator="/">
@@ -29,7 +29,7 @@
 
                       <!-- 文章标题 -->
                       <div id="postTitle">
-                        <router-link
+                        <nuxt-link
                           :to="
                             postObj.name === ''
                               ? '/post-dark/' + postObj.id + '.html'
@@ -39,7 +39,7 @@
                           <h1>
                             {{ postObj.title }}
                           </h1>
-                        </router-link>
+                        </nuxt-link>
                       </div>
 
                       <!-- 文章详情 -->
@@ -165,6 +165,56 @@ export default {
 @import "../common.css";
 @import "../dark.css";
 @import "../../plugins/lib/vue-hljs/vs2015.css";
+.post-dark {
+  margin: 20px;
+  p {
+    color: #f3f3f3;
+  }
+}
+.post-dark #postTitle {
+  a {
+    color: #000;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+  a:hover {
+    color: red;
+  }
+  h1 {
+    color: #f3f3f3;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    padding-bottom: 5px;
+  }
+  h1:hover {
+    color: #ffcb6b;
+  }
+}
+
+.post-dark #postContent {
+  h1 {
+    color: #c792ea;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 10px 0;
+  }
+  h2 {
+    color: #ffcb6b;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 10px 0;
+  }
+  p {
+    // 图片自适应
+    img {
+      max-width: 100% !important;
+    }
+  }
+}
 </style>
 
 <style lang="scss" scoped></style>

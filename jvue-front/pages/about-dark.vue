@@ -1,21 +1,21 @@
 <template>
   <el-container>
-    <el-main>
+    <el-main class="el-container-dark">
       <el-row>
         <el-col :xs="0" :md="2">&nbsp;</el-col>
         <el-col :xs="24" :md="20">
-          <el-main>
+          <el-main class="el-main-dark">
             <el-container>
-              <el-main>
+              <el-main class="el-main-dark">
                 <el-container>
-                  <el-header>
+                  <el-header class="el-header-dark">
                     <HeaderTime />
                   </el-header>
-                  <el-header>
+                  <el-header class="el-header-dark">
                     <Header />
                   </el-header>
-                  <el-main>
-                    <div class="about">
+                  <el-main class="el-main-dark">
+                    <div class="about about-dark">
                       <div class="visit">
                         谢谢您，您是第
                         <img
@@ -103,9 +103,9 @@ export default {
 };
 </script>
 
-<style>
-@import "./dark.css";
+<style lang="scss">
 @import "./common.css";
+@import "./dark.css";
 </style>
 
 <style lang="scss" scoped>

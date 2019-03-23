@@ -29,7 +29,7 @@
 
                       <!-- 文章标题 -->
                       <div id="postTitle">
-                        <router-link
+                        <nuxt-link
                           :to="
                             postObj.name === ''
                               ? '/post/' + postObj.id + '.html'
@@ -39,7 +39,7 @@
                           <h1>
                             {{ postObj.title }}
                           </h1>
-                        </router-link>
+                        </nuxt-link>
                       </div>
 
                       <!-- 文章详情 -->

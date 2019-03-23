@@ -1,10 +1,13 @@
 .hljs {
-    font-family: "dejavu sans mono","Fira Code",Menlo,Monaco,Consolas,"Courier New",monospace;
-    display: block;
-    overflow-x: auto;
-    padding: .5em;
-    background: #212121;
-    color: #DCDCDC
+  font-family: "dejavu sans mono","Fira Code",Menlo,Monaco,Consolas,"Courier New",monospace;
+  display: block;
+  overflow-x: auto;
+  padding: .5em;
+  background: #181818;
+  color: #DCDCDC;
+  border: solid 1px #181818;
+  border-radius: 5px;
+  line-height: 1.6;
 }
 
 .hljs-keyword, .hljs-literal, .hljs-symbol, .hljs-name {

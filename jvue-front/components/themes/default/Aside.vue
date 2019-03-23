@@ -12,9 +12,20 @@
           </el-col>
           <el-col :xs="24" :md="post.thumbnails.length > 0 ? 18 : 24">
             <div>
-              <h2 :class="post.thumbnails.length > 0 ? 'has-image-title' : ''">
-                {{ post.title === "" ? "暂无标题" : post.title }}
-              </h2>
+              <nuxt-link
+                class="aside-link"
+                :to="
+                  post.name === ''
+                    ? '/post-dark/' + post.id + '.html'
+                    : '/post-dark/' + post.name + '.html'
+                "
+              >
+                <h2
+                  :class="post.thumbnails.length > 0 ? 'has-image-title' : ''"
+                >
+                  {{ post.title === "" ? "暂无标题" : post.title }}
+                </h2>
+              </nuxt-link>
             </div>
           </el-col>
         </el-row>
