@@ -1,3 +1,7 @@
+code{
+  font-family: "dejavu sans mono","Fira Code",Menlo,Monaco,Consolas,"Courier New",monospace;
+  color: red;
+}
 .hljs {
     font-family: "dejavu sans mono","Fira Code",Menlo,Monaco,Consolas,"Courier New",monospace;
     display: block;
