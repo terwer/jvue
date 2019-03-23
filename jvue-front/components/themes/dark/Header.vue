@@ -79,7 +79,7 @@ export default {
   margin-top: 10px;
 }
 .img-wrap:hover {
-  background: #181818;
+  background: transparent;
 }
 .img-wrap .img-align-middle:before {
   content: " ";
