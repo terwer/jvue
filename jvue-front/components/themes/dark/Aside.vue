@@ -12,9 +12,20 @@
           </el-col>
           <el-col :xs="24" :md="post.thumbnails.length > 0 ? 18 : 24">
             <div>
-              <h2 :class="post.thumbnails.length > 0 ? 'has-image-title' : ''">
-                {{ post.title === "" ? "暂无标题" : post.title }}
-              </h2>
+              <nuxt-link
+                class="aside-link-dark"
+                :to="
+                  post.name === ''
+                    ? '/post-dark/' + post.id + '.html'
+                    : '/post-dark/' + post.name + '.html'
+                "
+              >
+                <h2
+                  :class="post.thumbnails.length > 0 ? 'has-image-title' : ''"
+                >
+                  {{ post.title === "" ? "暂无标题" : post.title }}
+                </h2>
+              </nuxt-link>
             </div>
           </el-col>
         </el-row>
@@ -48,6 +59,7 @@ export default {
 <style scoped>
 #aside {
   background-color: #212121;
+  padding-top: 10px;
 }
 .el-card {
   background-color: #212121;

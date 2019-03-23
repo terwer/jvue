@@ -29,7 +29,7 @@
 
                       <!-- 文章标题 -->
                       <div id="postTitle">
-                        <router-link
+                        <nuxt-link
                           :to="
                             postObj.name === ''
                               ? '/post/' + postObj.id + '.html'
@@ -39,7 +39,7 @@
                           <h1>
                             {{ postObj.title }}
                           </h1>
-                        </router-link>
+                        </nuxt-link>
                       </div>
 
                       <!-- 文章详情 -->
@@ -163,9 +163,20 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-@import "../../plugins/lib/vue-hljs/vs.css";
+<style lang="scss" scoped>
+@import "../default.css";
+</style>
 
+<style>
+@import "../../plugins/lib/vue-hljs/vs.css";
+</style>
+
+<style lang="scss" scoped>
+@import "../common.css";
+@import "../default.css";
+</style>
+
+<style lang="scss" scoped>
 #post {
   margin: 20px;
 }

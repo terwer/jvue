@@ -11,8 +11,16 @@
             <img :src="post.thumbnails[0]" class="image" alt="image" />
           </el-col>
           <el-col :xs="24" :md="post.thumbnails.length > 0 ? 18 : 24">
-            <div>
-              <h2>{{ post.title === "" ? "暂无标题" : post.title }}</h2>
+            <div class="post-list-title">
+              <nuxt-link
+                :to="
+                  post.name === ''
+                    ? '/post/' + post.id + '.html'
+                    : '/post/' + post.name + '.html'
+                "
+              >
+                <h2>{{ post.title === "" ? "暂无标题" : post.title }}</h2>
+              </nuxt-link>
               <div class="bottom clearfix">
                 <div class="page">
                   {{ post.desc === "" ? "暂无简介" : post.desc }}
@@ -39,7 +47,7 @@
                     : '/post/' + post.name + '.html'
                 "
               >
-                <el-button type="text" class=".read-more">查看全文</el-button>
+                <el-button type="text" class="read-more">查看全文</el-button>
               </nuxt-link>
             </div>
           </el-col>
@@ -90,6 +98,10 @@ export default {
   padding: 0;
   margin-top: 15px;
   float: left;
+}
+
+.read-more:hover {
+  color: #212121;
 }
 
 .image {

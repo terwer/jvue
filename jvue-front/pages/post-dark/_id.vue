@@ -1,20 +1,20 @@
 <template>
   <el-container>
-    <el-main>
+    <el-main class="el-container-dark">
       <el-row>
         <el-col :xs="0" :md="2">&nbsp;</el-col>
         <el-col :xs="24" :md="20">
-          <el-main>
+          <el-main class="el-main-dark">
             <el-container>
-              <el-main>
+              <el-main class="el-main-dark">
                 <el-container>
-                  <el-header>
+                  <el-header class="el-header-dark">
                     <HeaderTime />
                   </el-header>
-                  <el-header>
+                  <el-header class="el-header-dark">
                     <Header />
                   </el-header>
-                  <el-main>
+                  <el-main class="el-main-dark">
                     <div id="post" class="post-dark">
                       <!-- 导航 -->
                       <el-breadcrumb separator="/">
@@ -29,7 +29,7 @@
 
                       <!-- 文章标题 -->
                       <div id="postTitle">
-                        <router-link
+                        <nuxt-link
                           :to="
                             postObj.name === ''
                               ? '/post-dark/' + postObj.id + '.html'
@@ -39,7 +39,7 @@
                           <h1>
                             {{ postObj.title }}
                           </h1>
-                        </router-link>
+                        </nuxt-link>
                       </div>
 
                       <!-- 文章详情 -->
@@ -162,25 +162,16 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../common.css";
+@import "../dark.css";
 @import "../../plugins/lib/vue-hljs/vs2015.css";
-
-.text-center {
-  text-align: center;
-}
-
-.el-breadcrumb__inner a,
-.el-breadcrumb__inner.is-link {
-  color: #ffcb6b;
-}
-
-#post {
+.post-dark {
   margin: 20px;
   p {
     color: #f3f3f3;
   }
 }
-
-#postTitle {
+.post-dark #postTitle {
   a {
     color: #000;
     line-height: 1.5;
@@ -202,7 +193,7 @@ export default {
   }
 }
 
-#postContent {
+.post-dark #postContent {
   h1 {
     color: #c792ea;
     font-size: 28px;
@@ -225,3 +216,5 @@ export default {
   }
 }
 </style>
+
+<style lang="scss" scoped></style>

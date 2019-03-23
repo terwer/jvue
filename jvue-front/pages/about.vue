@@ -104,8 +104,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./common.css";
 @import "./default.css";
+</style>
 
+<style lang="scss" scoped>
 .visit {
   font-size: 24px;
 }

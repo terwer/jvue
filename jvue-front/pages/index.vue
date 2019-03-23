@@ -1,20 +1,20 @@
 <template>
   <el-container>
-    <el-main>
+    <el-main class="el-container-dark">
       <el-row>
         <el-col :xs="0" :md="2">&nbsp;</el-col>
         <el-col :xs="24" :md="20">
-          <el-main>
+          <el-main class="el-main-dark">
             <el-container>
-              <el-main>
+              <el-main class="el-main-dark">
                 <el-container>
-                  <el-header>
+                  <el-header class="el-header-dark">
                     <HeaderTime />
                   </el-header>
-                  <el-header>
+                  <el-header class="el-header-dark">
                     <Header />
                   </el-header>
-                  <el-main>
+                  <el-main class="el-main-dark">
                     <Body :post-list="postListArray" />
                   </el-main>
                 </el-container>
@@ -78,5 +78,6 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./common.css";
 @import "./dark.css";
 </style>

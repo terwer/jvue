@@ -7,63 +7,71 @@
  * Tags:blog
  * Version: 1.0
  */
-body {
-  font-family: "Microsoft Yahei", Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
-  color: #666 !important;
-}
-body,
-* {
-  box-sizing: border-box;
-}
-body a {
-  text-decoration: none;
-  color: #00a4ff;
-}
-body a:hover {
-  color: orangered;
-}
-.el-header,
-.el-footer {
-  background-color: #212121;
-  color: #333;
-  line-height: 60px;
-  padding: 0;
-  height: auto !important;
-}
-.el-main {
-  background-color: #181818;
-  color: #333;
-  text-align: left;
-  line-height: 45px;
-  padding: 0;
-  overflow: hidden;
-}
-body > .el-container {
-  margin-bottom: 40px;
-}
-.hide {
-  display: none;
-}
 /*!
-* 遮罩层
-*/
-.mask {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 999999;
+ * 自定义黑色主题
+ * css名称必须有default关键字
+ */
+.el-container-dark{
+  background-color: #181818;
 }
-
-/* 自定义黑色主题 */
-.el-menu{
-  background-color: transparent;
+.el-main-dark{
+  background-color: #212121;
+}
+.el-header-dark{
+  background-color: #212121;
 }
 .el-menu-dark {
-  background-color: #212121;
+  background-color: #212121 !important;;
 }
 .el-menu-dark > .el-submenu .el-submenu__title {
   background-color: #212121 !important;
+}
+.s-dark .el-input__inner {
+  color:#f3f3f3;
+  background-color: #212121;
+}
+.s-dark input:-ms-input-placeholder{color:#909399;}/* Internet Explorer 10+ */
+.s-dark input::-webkit-input-placeholder{color:#909399;}/* WebKit browsers */
+.s-dark input::-moz-placeholder{color:#909399;}/* Mozilla Firefox 4 to 18 */
+.s-dark input:-moz-placeholder{color:#909399;}/* Mozilla Firefox 19+ */
+.s-dark-btn {
+  background-color:#212121 !important;
+}
+.s-dark-btn:hover{
+  background-color:#181818 !important;
+}
+.s-dark-btn span:hover {
+  color: #f3f3f3;
+}
+@-moz-document url-prefix() {
+  .s-dark-btn {
+    padding: 11.5px 20px !important;
+  }
+}
+.about-dark{
+  border: solid 1px #f3f3f3;
+  border-radius: 4px;
+  padding: 10px;
+}
+.post-dark{
+  border: solid 1px #f3f3f3;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 15px;
+}
+.post-dark .el-breadcrumb__inner a,
+.post-dark .el-breadcrumb__inner.is-link {
+  color: #ffcb6b;
+}
+.post-list-title-dark h2{
+  color: #c792ea;
+}
+.post-list-title-dark h2:hover{
+  color: #ffcb6b;
+}
+.aside-link-dark h2{
+  color: #c792ea;
+}
+.aside-link-dark h2:hover{
+  color: #ffcb6b;
 }
