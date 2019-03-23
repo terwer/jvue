@@ -15,7 +15,7 @@
                     <Header />
                   </el-header>
                   <el-main>
-                    <div id="post">
+                    <div id="post" class="post-default">
                       <!-- 导航 -->
                       <el-breadcrumb separator="/">
                         <el-breadcrumb-item
@@ -48,10 +48,12 @@
                         v-highlight
                         v-html="postObj.content"
                       ></div>
-                      <div class="text-center">
-                        <span
-                          >本文为原创内容，作者：Terwer，转载请注明出处！</span
-                        >
+                      <div class="copy">
+                        <p>作者：Terwer</p>
+                        <p>首发：远方的灯塔</p>
+                        <p>
+                          原创内容，转载请注明出处！
+                        </p>
                       </div>
                     </div>
                   </el-main>
@@ -125,7 +127,7 @@ export default {
   },
   head() {
     return {
-      title: "文章" + " - " + this.siteConfigObj.webname,
+      title: this.postObj.title + " - " + this.siteConfigObj.webname,
       meta: [
         {
           name: "keywords",
@@ -163,25 +165,17 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import "../common.css";
 @import "../default.css";
-</style>
-
-<style>
 @import "../../plugins/lib/vue-hljs/vs.css";
 </style>
 
-<style lang="scss" scoped>
-@import "../common.css";
-@import "../default.css";
-</style>
-
-<style lang="scss" scoped>
-#post {
+<style lang="scss">
+.post-default {
   margin: 20px;
 }
-
-#postTitle {
+.post-default #postTitle {
   a {
     color: #000;
     line-height: 1.5;
@@ -199,7 +193,7 @@ export default {
   }
 }
 
-#postContent {
+.post-default #postContent {
   h1 {
     font-size: 28px;
     font-weight: bold;
