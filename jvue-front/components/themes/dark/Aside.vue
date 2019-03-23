@@ -48,6 +48,7 @@ export default {
 <style scoped>
 #aside {
   background-color: #212121;
+  padding-top: 10px;
 }
 .el-card {
   background-color: #212121;

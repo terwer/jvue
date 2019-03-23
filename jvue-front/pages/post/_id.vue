@@ -163,9 +163,20 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-@import "../../plugins/lib/vue-hljs/vs.css";
+<style lang="scss" scoped>
+@import "../default.css";
+</style>
 
+<style>
+@import "../../plugins/lib/vue-hljs/vs.css";
+</style>
+
+<style lang="scss" scoped>
+@import "../common.css";
+@import "../default.css";
+</style>
+
+<style lang="scss" scoped>
 #post {
   margin: 20px;
 }

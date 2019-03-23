@@ -1,0 +1,62 @@
+/**
+* 所有主题公共样式
+* 注意：每个主题都要引用这个样式
+*/
+body {
+  font-family: "Microsoft Yahei", Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
+  color: #666 !important;
+}
+body,
+* {
+  box-sizing: border-box;
+}
+body a {
+  text-decoration: none;
+  color: #00a4ff;
+}
+body a:hover {
+  color: orangered;
+}
+.el-header,
+.el-footer {
+  background-color: #fff;
+  color: #333;
+  line-height: 60px;
+  padding: 0;
+  height: auto !important;
+}
+.el-main {
+  background-color: #fff;
+  color: #333;
+  text-align: left;
+  line-height: 45px;
+  padding: 0;
+  overflow: hidden;
+}
+body > .el-container {
+  margin-bottom: 40px;
+}
+.hide {
+  display: none;
+}
+/*!
+* 遮罩层
+*/
+.mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999999;
+}
+.text-center {
+  text-align: center;
+}
+/*!
+* element-ui 覆盖样式
+*/
+.el-menu{
+  background-color: transparent;
+}

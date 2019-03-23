@@ -103,9 +103,12 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 @import "./dark.css";
+@import "./common.css";
+</style>
 
+<style lang="scss" scoped>
 .visit {
   font-size: 24px;
 }

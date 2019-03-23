@@ -162,66 +162,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../common.css";
+@import "../dark.css";
 @import "../../plugins/lib/vue-hljs/vs2015.css";
-
-.text-center {
-  text-align: center;
-}
-
-.el-breadcrumb__inner a,
-.el-breadcrumb__inner.is-link {
-  color: #ffcb6b;
-}
-
-#post {
-  margin: 20px;
-  p {
-    color: #f3f3f3;
-  }
-}
-
-#postTitle {
-  a {
-    color: #000;
-    line-height: 1.5;
-    text-decoration: none;
-  }
-  a:hover {
-    color: red;
-  }
-  h1 {
-    color: #f3f3f3;
-    border-bottom: 1px solid #ddd;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 20px 0 10px;
-    padding-bottom: 5px;
-  }
-  h1:hover {
-    color: #ffcb6b;
-  }
-}
-
-#postContent {
-  h1 {
-    color: #c792ea;
-    font-size: 28px;
-    font-weight: bold;
-    line-height: 1.5;
-    margin: 10px 0;
-  }
-  h2 {
-    color: #ffcb6b;
-    font-size: 21px;
-    font-weight: bold;
-    line-height: 1.5;
-    margin: 10px 0;
-  }
-  p {
-    // 图片自适应
-    img {
-      max-width: 100% !important;
-    }
-  }
-}
 </style>
+
+<style lang="scss" scoped></style>
