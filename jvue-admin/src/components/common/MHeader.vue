@@ -104,8 +104,8 @@ export default {
   .collapse {
     display: block;
   }
-    .title{
-        width: 120px;
-    }
+  .title {
+    width: 120px;
+  }
 }
 </style>

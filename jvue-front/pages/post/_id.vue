@@ -48,6 +48,11 @@
                         v-highlight
                         v-html="postObj.content"
                       ></div>
+
+                      <h1 v-if="errorMessage !== ''" class="error-message">
+                        {{ errorMessage }}
+                      </h1>
+
                       <div class="copy">
                         <p>作者：Terwer</p>
                         <p>首发：远方的灯塔</p>
@@ -119,15 +124,24 @@ export default {
       "/blog/post/detail",
       postParams
     );
-    const postObj = postResult.status === 1 ? postResult.data : {};
+    let postObj = {};
+    let errorMessage = "";
+    if (postResult.status === 1) {
+      postObj = postResult.data;
+    } else {
+      errorMessage = postResult.msg;
+    }
 
     logger.info("fetch siteConfig and post finish");
 
-    return { siteConfigObj, postObj };
+    return { siteConfigObj, postObj, errorMessage };
   },
   head() {
     return {
-      title: this.postObj.title + " - " + this.siteConfigObj.webname,
+      title:
+        this.errorMessage === ""
+          ? this.postObj.title + " - " + this.siteConfigObj.webname
+          : this.errorMessage,
       meta: [
         {
           name: "keywords",
@@ -212,5 +226,11 @@ export default {
       max-width: 100% !important;
     }
   }
+}
+.error-message {
+  font-size: 48px;
+  text-align: center;
+  color: #000000;
+  line-height: 1.6;
 }
 </style>

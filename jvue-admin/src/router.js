@@ -4,6 +4,9 @@ import Admin from "./views/Admin.vue";
 import Login from "./views/Login.vue";
 import Dashboard from "./components/Dashboard";
 
+import ArticleList from "./components/article/ArticleList";
+import ArticleEdit from "./components/article/ArticleEdit";
+
 Vue.use(Router);
 
 export default new Router({
@@ -19,19 +22,19 @@ export default new Router({
         {
           path: "dashboard",
           component: Dashboard
+        },
+        {
+          path: "article/publish/:id",
+          component: ArticleEdit
+        },
+        {
+          path: "article/publish",
+          component: ArticleEdit
+        },
+        {
+          path: "article",
+          component: ArticleList
         }
-        // {
-        //   path: "article/publish/:id",
-        //   component: ArticleEdit
-        // },
-        // {
-        //   path: "article/publish",
-        //   component: ArticleEdit
-        // },
-        // {
-        //   path: "article",
-        //   component: ArticleList
-        // },
         // {
         //   path: "comment",
         //   component: CommentList

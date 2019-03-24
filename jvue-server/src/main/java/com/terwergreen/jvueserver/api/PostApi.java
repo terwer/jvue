@@ -119,7 +119,7 @@ public class PostApi {
                 post = postService.getPostBySlug(postSlug);
             }
 
-            if (null == post) {
+            if (null == post || post.getStatus().equals(PostStatusEnum.POST_STATUS_DRAFT.getName())) {
                 restResponse.setStatus(RestResponseStates.SERVER_ERROR.getValue());
                 restResponse.setMsg("文章不存在");
                 return restResponse;
