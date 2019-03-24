@@ -14,7 +14,7 @@
             <div class="post-list-title">
               <nuxt-link
                 :to="
-                  post.name === ''
+                  post.name === '' || post.name === 'null' || post.name === null
                     ? '/post/' + post.id + '.html'
                     : '/post/' + post.name + '.html'
                 "
