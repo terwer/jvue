@@ -163,7 +163,7 @@ export default {
   async mounted() {
     // 更新文章浏览数
     await this.$axios.$post("/blog/post/updateHits", {
-      articleId: this.postObj.id,
+      postId: this.postObj.id,
       hits: ++this.postObj.hits
     });
   },

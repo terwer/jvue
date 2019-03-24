@@ -91,7 +91,7 @@
       window.open(serverConfig.frontUrl + "post-dark/" + id + ".html", "_blank");
     },
     handleEdit (id) {
-      this.$router.push('/article/publish/' + id);
+      this.$router.push('/post/publish/' + id);
     },
     handleDelete (id) {
       this.$confirm('此操作将永久删除该文章, 是否继续?', '提示', {

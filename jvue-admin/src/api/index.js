@@ -31,13 +31,13 @@ const auth = {
 // 文章相关
 const article = {
   getArticles(params) {
-    return post("/blog/post/list", params);
+    return post("/admin/post/list", params);
   },
   getArticle(params) {
-    return post("/blog/post/detail", params);
+    return post("/admin/post/" + params.postId);
   },
   saveArticle(params) {
-    return post("/blog/post/save", params);
+    return post("/admin/post/save", params);
   }
 };
 

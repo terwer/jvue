@@ -38,6 +38,6 @@
             hits = #{hits},
         </if>
         modified=current_timestamp
-        WHERE id=#{articleId}
+        WHERE id=#{postId}
     </update>
 </mapper>

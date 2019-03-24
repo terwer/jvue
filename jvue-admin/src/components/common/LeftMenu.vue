@@ -15,11 +15,11 @@
         <span class="icon-dashboard"></span>&nbsp;
         <span slot="title">仪表盘</span>
       </el-menu-item>
-      <el-menu-item index="/article/publish">
+      <el-menu-item index="/post/publish">
         <span class="icon-edit"></span>&nbsp;
         <span slot="title">发布文章</span>
       </el-menu-item>
-      <el-menu-item index="/article?page=1">
+      <el-menu-item index="/post?page=1">
         <span class="icon-list"></span>&nbsp;
         <span slot="title">文章列表</span>
       </el-menu-item>

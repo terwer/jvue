@@ -93,9 +93,9 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public boolean updatePostHits(Integer articleId, Integer hits) {
+    public boolean updatePostHits(Integer postId, Integer hits) {
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("articleId", articleId);
+        paramMap.put("postId", postId);
         paramMap.put("hits", hits);
         int count = commonDAO.update("updatePost", paramMap);
         if (count > 0) {

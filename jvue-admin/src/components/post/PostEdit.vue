@@ -114,7 +114,7 @@ export default {
       const id = this.$route.params.id;
       // 如果有id则表示编辑文章,获取文章信息
       if (id) {
-        this.$api.article.getArticle({ postSlug: id }).then(data => {
+        this.$api.article.getArticle({ postId: id }).then(data => {
           this.initArticle(data.data);
         });
       } else {
@@ -130,9 +130,9 @@ export default {
     initArticle(data) {
       this.article.id = data.id;
       this.article.title = data.title;
-      this.article.tags = ""; //this.$util.stringToTags(data.tags);
+      this.article.tags = this.$util.stringToTags(data.tags);
       this.article.category = data.category;
-      this.article.content = data.rawContent;
+      this.article.content = data.content;
       this.article.status = data.status;
     },
     getTags() {
