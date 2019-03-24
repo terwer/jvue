@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.terwergreen.jvueserver.post">
+    <select id="selectMeta" parameterType="java.util.Map" resultType="com.terwergreen.jvueserver.model.Meta">
+        select m.name,m.type from metas m where m.type = #{type}
+    </select>
+</mapper>

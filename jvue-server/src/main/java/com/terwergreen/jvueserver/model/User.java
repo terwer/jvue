@@ -1,4 +1,4 @@
-package com.terwergreen.jvueserver.pojo;
+package com.terwergreen.jvueserver.model;
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import java.util.Date;
  * @version 1.0
  * 2019/3/22 15:22
  **/
-public class Users {
+public class User {
 
     /**
      * 账号

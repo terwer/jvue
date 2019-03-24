@@ -2,7 +2,7 @@ package com.terwergreen.jvueserver.api.admin;
 
 import com.github.pagehelper.PageInfo;
 import com.terwergreen.jvueserver.exception.RestException;
-import com.terwergreen.jvueserver.pojo.Post;
+import com.terwergreen.jvueserver.model.Post;
 import com.terwergreen.jvueserver.service.PostService;
 import com.terwergreen.jvueserver.util.Constants;
 import com.terwergreen.jvueserver.util.PostTypeEmum;
@@ -80,6 +80,7 @@ public class PostManageApi {
             Map<String, Object> resultMap = new HashMap<>();
             List<Post> list = posts.getList();
             resultMap.put("total", posts.getTotal());
+            resultMap.put("pageSize", posts.getPageSize());
             resultMap.put("list", list);
 
             restResponse.setData(resultMap);
@@ -130,20 +131,27 @@ public class PostManageApi {
     /**
      * 新建或修改文章
      *
-     * @param id           文章id
-     * @param title        文章标题
-     * @param content      文章内容
-     * @param tags         文章标签
-     * @param category     文章分类
-     * @param status       {@link Types#DRAFT},{@link Types#PUBLISH}
-     * @param allowComment 是否允许评论
+     * @param post <br/>
+     *             id           文章id
+     *             title        文章标题
+     *             content      文章内容
+     *             tags         文章标签
+     *             category     文章分类
+     *             status       Types#DRAFT,Types#PUBLISH
+     *             allowComment 是否允许评论
      * @return {@see RestResponse.ok()}
      */
     @PostMapping("/save")
-    public RestResponse savePost(@PathVariable Integer postId) throws RestException {
+    public RestResponse savePost(Post post) throws RestException {
         RestResponse restResponse = new RestResponse();
         try {
+            // 登录检测
+            // 发布文章
+            postService.savePost(post);
 
+            restResponse.setStatus(RestResponseStates.SUCCESS.getValue());
+            restResponse.setMsg(RestResponseStates.SUCCESS.getMsg());
+            restResponse.setData(post);
         } catch (Exception e) {
             logger.error("接口异常:error=", e);
             restResponse.setStatus(RestResponseStates.SERVER_ERROR.getValue());
@@ -155,6 +163,7 @@ public class PostManageApi {
 
     /**
      * 文章移到回收站
+     *
      * @param postId 文章ID
      * @return 结果
      */
@@ -172,10 +181,9 @@ public class PostManageApi {
     @PostMapping("/del/{postId}")
     public RestResponse deleteArticle(@PathVariable Integer postId) {
 //        if (articlesService.deleteArticle(id)) {
-//            logsService.save(Types.LOG_ACTION_DELETE, "id:" + id, Types.LOG_MESSAGE_DELETE_ARTICLE, Types.LOG_TYPE_OPERATE, FameUtil.getIp());
 //            return RestResponse.ok("删除文章成功");
 //        } else {
-            return RestResponse.fail();
+        return RestResponse.fail();
 //        }
     }
 }

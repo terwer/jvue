@@ -11,7 +11,7 @@
         </if>
     </select>
     <!-- 获取站点配置 -->
-    <select id="getSiteConfig" resultType="com.terwergreen.jvueserver.pojo.SiteConfig">
+    <select id="getSiteConfig" resultType="com.terwergreen.jvueserver.model.SiteConfig">
         select max(case option_name when 'domain' then option_value else '' end ) `domain`,
         max(case option_name when 'weburl' then option_value else '' end) weburl,
         max(case option_name when 'webtheme' then option_value else '' end) webtheme,

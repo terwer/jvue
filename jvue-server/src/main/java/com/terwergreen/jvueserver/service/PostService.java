@@ -1,7 +1,7 @@
 package com.terwergreen.jvueserver.service;
 
 import com.github.pagehelper.PageInfo;
-import com.terwergreen.jvueserver.pojo.Post;
+import com.terwergreen.jvueserver.model.Post;
 
 import java.util.List;
 import java.util.Map;
@@ -59,28 +59,10 @@ public interface PostService {
     List getUsersBlogs(String appkey, String username, String password);
 
     /**
-     * 新建文章
-     *
-     * @param post 文章
-     * @return 新文章的ID
+     * 添加或者更新文章
+     * @return 结果
      */
-    Integer newPost(Post post);
-
-    /**
-     * 更新文章
-     *
-     * @param post 文章
-     * @return 是否修改成功
-     */
-    boolean editPostById(Post post);
-
-    /**
-     * 根据别名删除文章
-     *
-     * @param postSlug 文章别名
-     * @return 是否删除成功
-     */
-    boolean deletePostBySlug(String postSlug);
+    Post savePost(Post post);
 
     /**
      * 根据ID删除文章

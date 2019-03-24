@@ -13,6 +13,11 @@
         show-overflow-tooltip
       ></el-table-column>
       <el-table-column
+        prop="tags"
+        label="标签"
+        show-overflow-tooltip
+      ></el-table-column>
+      <el-table-column
         prop="statusText"
         label="状态"
         width="100"
@@ -125,6 +130,7 @@
           publish: this.$dayjs(data.created).format('YYYY-MM-DD HH:mm:ss'),
           modified: this.$dayjs(data.modified).format('YYYY-MM-DD HH:mm:ss'),
           category: data.category || this.$util.STATIC.DEFAULT_CATEGORY,
+          tags:data.tags || this.$util.STATIC.DEFAULT_TAG,
           status:data.status,
           statusText:this.$util.STATIC.STATUS_PUBLISH === data.status ? '已发布' : '回收站',
           showTrash:data.status !== this.$util.STATIC.STATUS_PUBLISH,

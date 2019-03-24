@@ -3,12 +3,14 @@ package com.terwergreen.jvueserver.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.terwergreen.jvueserver.core.CommonDAO;
-import com.terwergreen.jvueserver.pojo.Post;
+import com.terwergreen.jvueserver.model.Post;
 import com.terwergreen.jvueserver.service.PostService;
+import com.terwergreen.jvueserver.util.PostTypeEmum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,19 +74,17 @@ public class PostServiceImpl implements PostService {
         return null;
     }
 
+    @Transactional
     @Override
-    public Integer newPost(Post post) {
-        return null;
-    }
-
-    @Override
-    public boolean editPostById(Post post) {
-        return false;
-    }
-
-    @Override
-    public boolean deletePostBySlug(String postSlug) {
-        return false;
+    public Post savePost(Post post) {
+        if (null != post.getId() && post.getId() > 0) {
+            commonDAO.updateByObject("updatePost", post);
+        } else {
+            post.setAuthorId(1);
+            post.setType(PostTypeEmum.POST_TYPE_POST.getName());
+            commonDAO.insertByObject("insertPost", post);
+        }
+        return post;
     }
 
     @Override
@@ -97,7 +97,7 @@ public class PostServiceImpl implements PostService {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("postId", postId);
         paramMap.put("hits", hits);
-        int count = commonDAO.update("updatePost", paramMap);
+        int count = commonDAO.update("updatePostByMap", paramMap);
         if (count > 0) {
             return true;
         }

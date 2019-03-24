@@ -136,8 +136,8 @@ export default {
       this.article.status = data.status;
     },
     getTags() {
-      this.$api.auth.getAllTags().then(data => {
-        if (data.success) {
+      this.$api.article.getAllTags().then(data => {
+        if (data.status === 1) {
           for (let key in data.data) {
             let tag = {
               value: data.data[key].name,
@@ -154,8 +154,8 @@ export default {
       });
     },
     getCategories() {
-      this.$api.auth.getAllCategories().then(data => {
-        if (data.success) {
+      this.$api.article.getAllCategories().then(data => {
+        if (data.status === 1) {
           for (let key in data.data) {
             let category = {
               value: data.data[key].name,
@@ -175,10 +175,10 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           let params = this.article;
-          // params.tags = this.$util.tagsToString(this.article.tags);
+          params.tags = this.$util.tagsToString(this.article.tags);
           this.$api.article.saveArticle(params).then(data => {
-            if (data.success) {
-              this.$router.push("/article");
+            if (data.status === 1) {
+              this.$router.push("/post");
               this.$message({
                 message:
                   this.article.id === "" ? "发布文章成功!" : "修改文章成功!",
@@ -202,8 +202,8 @@ export default {
     },
     init() {
       this.getArticle();
-      // this.getTags();
-      // this.getCategories();
+      this.getTags();
+      this.getCategories();
     }
   },
   mounted() {

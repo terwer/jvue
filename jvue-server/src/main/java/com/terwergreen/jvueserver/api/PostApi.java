@@ -2,7 +2,7 @@ package com.terwergreen.jvueserver.api;
 
 import com.github.pagehelper.PageInfo;
 import com.terwergreen.jvueserver.exception.RestException;
-import com.terwergreen.jvueserver.pojo.Post;
+import com.terwergreen.jvueserver.model.Post;
 import com.terwergreen.jvueserver.service.PostService;
 import com.terwergreen.jvueserver.util.*;
 import io.swagger.annotations.ApiImplicitParam;

@@ -1,7 +1,7 @@
 package com.terwergreen.jvueserver.api;
 
 import com.terwergreen.jvueserver.core.CommonService;
-import com.terwergreen.jvueserver.pojo.SiteConfig;
+import com.terwergreen.jvueserver.model.SiteConfig;
 import com.terwergreen.jvueserver.util.RestResponse;
 import com.terwergreen.jvueserver.util.RestResponseStates;
 import io.swagger.annotations.ApiOperation;
