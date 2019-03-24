@@ -89,4 +89,12 @@ public interface PostService {
      * @return 是否删除成功
      */
     boolean deletePostById(Integer postId);
+
+    /**
+     * 更新文章浏览时
+     * @param articleId 文章ID
+     * @param hits 浏览时
+     * @return 结果
+     */
+    boolean updatePostHits(Integer articleId, Integer hits);
 }

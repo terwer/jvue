@@ -31,7 +31,7 @@ import java.util.Map;
  **/
 @RestController
 @RequestMapping(value = "api/blog", produces = "application/json;charset=utf-8")
-public class PostApi {
+public class PostApi extends BaseApi {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
@@ -70,7 +70,7 @@ public class PostApi {
                 paramMap.put("isHot", isHot);
                 pageSize = 5;
             }
-            if(StringUtils.isNotEmpty(postStatus)){
+            if (StringUtils.isNotEmpty(postStatus)) {
                 paramMap.put("postStatus", postStatus);
             }
             PageInfo<Post> posts = postService.getPostsByPage(pageNum, pageSize, paramMap);
@@ -140,6 +140,43 @@ public class PostApi {
             restResponse.setStatus(RestResponseStates.SERVER_ERROR.getValue());
             restResponse.setMsg(RestResponseStates.SERVER_ERROR.getMsg());
             throw new RestException(e);
+        }
+        return restResponse;
+    }
+
+    /**
+     * 点击量添加
+     *
+     * @param articleId 文章id
+     * @param hits      当前点击量
+     */
+    @ApiOperation("获取文章详情")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "articleId", value = "文章ID"),
+            @ApiImplicitParam(name = "hits", value = "浏览数")
+    })
+    @PostMapping("/post/updateHits")
+    public RestResponse updateHits(Integer articleId, Integer hits) {
+        RestResponse restResponse = new RestResponse();
+        try {
+            if (null == articleId) {
+                restResponse.setStatus(RestResponseStates.SERVER_ERROR.getValue());
+                restResponse.setMsg("文章ID不能为");
+                return restResponse;
+            }
+            if (null == hits || hits <= 0) {
+                restResponse.setStatus(RestResponseStates.SERVER_ERROR.getValue());
+                restResponse.setMsg("浏览数不能为空或者浏览数错误");
+                return restResponse;
+            }
+
+            postService.updatePostHits(articleId, hits);
+            restResponse.setStatus(RestResponseStates.SUCCESS.getValue());
+            restResponse.setMsg(RestResponseStates.SUCCESS.getMsg());
+        } catch (Exception e) {
+            logger.error("接口异常:error=", e);
+            restResponse.setStatus(RestResponseStates.SERVER_ERROR.getValue());
+            restResponse.setMsg(RestResponseStates.SERVER_ERROR.getMsg());
         }
         return restResponse;
     }

@@ -31,4 +31,13 @@
         FROM posts
         WHERE id=#{postId}
     </select>
+    <!-- 更新文章 -->
+    <update id="updatePost" parameterType="java.util.Map">
+        UPDATE posts SET
+        <if test="hits!=null and hits!=''">
+            hits = #{hits},
+        </if>
+        modified=current_timestamp
+        WHERE id=#{articleId}
+    </update>
 </mapper>

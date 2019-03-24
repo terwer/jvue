@@ -91,4 +91,16 @@ public class PostServiceImpl implements PostService {
     public boolean deletePostById(Integer postId) {
         return false;
     }
+
+    @Override
+    public boolean updatePostHits(Integer articleId, Integer hits) {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("articleId", articleId);
+        paramMap.put("hits", hits);
+        int count = commonDAO.update("updatePost", paramMap);
+        if (count > 0) {
+            return true;
+        }
+        return false;
+    }
 }

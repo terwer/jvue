@@ -31,4 +31,9 @@ public class Constants {
      * 登陆用户session key
      */
     public static final String USER_SESSION_KEY = "login_user";
+
+    /**
+     * 文章浏览数缓存key
+     */
+    public static final String  CACHE_ARTICLE_HITS_KEY="cache_article_hits";
 }
