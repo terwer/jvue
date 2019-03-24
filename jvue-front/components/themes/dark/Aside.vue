@@ -15,7 +15,7 @@
               <nuxt-link
                 class="aside-link-dark"
                 :to="
-                  post.name === ''
+                  post.name === '' || post.name === 'null' || post.name === null
                     ? '/post-dark/' + post.id + '.html'
                     : '/post-dark/' + post.name + '.html'
                 "
@@ -23,7 +23,13 @@
                 <h2
                   :class="post.thumbnails.length > 0 ? 'has-image-title' : ''"
                 >
-                  {{ post.title === "" ? "暂无标题" : post.title }}
+                  {{
+                    post.title === ""
+                      ? "暂无标题"
+                      : post.title.length > 20
+                      ? post.title.substring(0, 20)
+                      : post.title
+                  }}
                 </h2>
               </nuxt-link>
             </div>
@@ -66,7 +72,7 @@ export default {
   background-color: #212121;
 }
 .has-image-title {
-  margin-top: 15px;
+  margin: 0;
 }
 h2 {
   color: #c792ea;

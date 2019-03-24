@@ -42,7 +42,7 @@
               <div class="time">发布于 {{ post.created }}</div>
               <nuxt-link
                 :to="
-                  post.name === ''
+                  post.name === '' || post.name === 'null' || post.name === null
                     ? '/post-dark/' + post.id + '.html'
                     : '/post-dark/' + post.name + '.html'
                 "
