@@ -39,9 +39,9 @@ public class AuthHandlerInterceptor implements HandlerInterceptor {
         String origin = request.getHeader("Origin");
         // String accessAllowedOrigins = allowedOrigins.contains(origin) ? origin : "";
         // response.setHeader("Access-Control-Allow-Origin", accessAllowedOrigins);
-        if (origin.contains("127.0.0.1:3001")) {
+        if (origin != null && origin.contains("127.0.0.1:3001")) {
             response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:3001");
-        } else if (origin.contains("localhost:3001")) {
+        } else if (origin != null && origin.contains("localhost:3001")) {
             response.setHeader("Access-Control-Allow-Origin", "http://localhost:3001");
         } else {
             response.setHeader("Access-Control-Allow-Origin", "*");

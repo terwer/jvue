@@ -21,13 +21,13 @@
       <el-table-column
         prop="publish"
         label="发布日期"
-        width="150"
+        width="160"
         show-overflow-tooltip
       ></el-table-column>
       <el-table-column
         prop="modified"
         label="修改日期"
-        width="150"
+        width="160"
         show-overflow-tooltip
       ></el-table-column>
       <el-table-column fixed="right" label="操作" width="315">
@@ -75,7 +75,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-export default {
+  import serverConfig from "../../../server-config";
+
+  export default {
   data: function () {
     return {
       articleDatas: [],
@@ -86,7 +88,7 @@ export default {
   },
   methods: {
     handlePreview(id){
-      window.open("http://www.terwergreen.com/post-dark/" + id + ".html", "_blank");
+      window.open(serverConfig.frontUrl + "post-dark/" + id + ".html", "_blank");
     },
     handleEdit (id) {
       this.$router.push('/article/publish/' + id);
@@ -120,8 +122,8 @@ export default {
         let article = {
           id: data.id,
           title: data.title,
-          publish: this.$dayjs(data.created).format('YYYY-MM-DD HH:mm'),
-          modified: this.$dayjs(data.modified).format('YYYY-MM-DD HH:mm'),
+          publish: this.$dayjs(data.created).format('YYYY-MM-DD HH:mm:ss'),
+          modified: this.$dayjs(data.modified).format('YYYY-MM-DD HH:mm:ss'),
           category: data.category || this.$util.STATIC.DEFAULT_CATEGORY,
           status:data.status,
           statusText:this.$util.STATIC.STATUS_PUBLISH === data.status ? '已发布' : '回收站',
