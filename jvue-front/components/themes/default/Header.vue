@@ -2,7 +2,7 @@
   <el-row>
     <el-col :xs="24" :sm="3" :md="3">
       <div class="img-wrap">
-        <nuxt-link to="/" class="float-left">
+        <nuxt-link to="/index-default" class="float-left">
           <div class="img-align-middle">
             <img
               class="logo"

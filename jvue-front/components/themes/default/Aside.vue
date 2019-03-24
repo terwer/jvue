@@ -16,8 +16,8 @@
                 class="aside-link"
                 :to="
                   post.name === ''
-                    ? '/post-dark/' + post.id + '.html'
-                    : '/post-dark/' + post.name + '.html'
+                    ? '/post/' + post.id + '.html'
+                    : '/post/' + post.name + '.html'
                 "
               >
                 <h2
