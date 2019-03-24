@@ -38,7 +38,7 @@ const article = {
   },
   saveArticle(params) {
     return post("/blog/post/save", params);
-  },
+  }
 };
 
 export default {

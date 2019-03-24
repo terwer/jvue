@@ -93,7 +93,7 @@ export default {
           action: function drawLink (editor) {
             editor.drawLink();
           },
-          className: 'icon-link',
+          className: 'el-icon-more',
           title: '插入链接'
         }, {
           name: 'image',
@@ -102,24 +102,29 @@ export default {
           },
           className: 'icon-image',
           title: '插入图片'
-        }, '|', {
-          name: 'preview',
-          action: function togglePreview (editor) {
-            editor.togglePreview();
-          },
-          className: 'icon-eye',
-          title: '预览'
-        }, {
-          name: 'fullscreen',
-          action: this.toggleFullScreen,
-          className: 'icon-arrows-alt',
-          title: '全屏'
-        }, {
+        },
+        '|',
+        // {
+        //   name: 'preview',
+        //   action: function togglePreview (editor) {
+        //     editor.togglePreview();
+        //   },
+        //   className: 'icon-eye',
+        //   title: '预览'
+        // },
+        {
           name: 'side-by-side',
           action: this.toggleSideBySide,
           className: 'icon-columns',
           title: '分屏'
-        }]
+        },
+        {
+          name: 'fullscreen',
+          action: this.toggleFullScreen,
+          className: 'icon-arrows-alt',
+          title: '全屏'
+        }
+        ]
       }
     };
   },

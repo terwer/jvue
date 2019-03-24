@@ -48,6 +48,11 @@
                         v-highlight
                         v-html="postObj.content"
                       ></div>
+
+                      <h1 v-if="errorMessage !== ''" class="error-message-dark">
+                        {{ errorMessage }}
+                      </h1>
+
                       <div class="copy">
                         <p>作者：Terwer</p>
                         <p>首发：远方的灯塔</p>
@@ -106,7 +111,7 @@ export default {
       ]
     };
   },
-  async asyncData(context) {
+  asyncData: async function(context) {
     const siteConfigResult = await context.$axios.$post("/site/config/list");
     const siteConfigObj =
       siteConfigResult.status === 1 ? siteConfigResult.data : {};
@@ -119,15 +124,23 @@ export default {
       "/blog/post/detail",
       postParams
     );
-    const postObj = postResult.status === 1 ? postResult.data : {};
-
+    let postObj = {};
+    let errorMessage = "";
+    if (postResult.status === 1) {
+      postObj = postResult.data;
+    } else {
+      errorMessage = postResult.msg;
+    }
     logger.info("fetch siteConfig and post finish");
 
-    return { siteConfigObj, postObj };
+    return { siteConfigObj, postObj, errorMessage };
   },
   head() {
     return {
-      title: this.postObj.title + " - " + this.siteConfigObj.webname,
+      title:
+        this.errorMessage === ""
+          ? this.postObj.title + " - " + this.siteConfigObj.webname
+          : this.errorMessage,
       meta: [
         {
           name: "keywords",
@@ -195,7 +208,7 @@ export default {
     padding-bottom: 5px;
   }
   h1:hover {
-    color: #ffcb6b;
+    color: #c792ea;
   }
 }
 
@@ -226,6 +239,13 @@ export default {
   .copy p {
     color: #ffcb6b;
   }
+}
+
+.error-message-dark {
+  font-size: 48px;
+  text-align: center;
+  color: #ff5370;
+  line-height: 1.6;
 }
 </style>
 

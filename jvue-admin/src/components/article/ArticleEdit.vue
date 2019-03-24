@@ -224,18 +224,20 @@ export default {
 .markdown-editor .CodeMirror {
   height: calc(90vh - 200px);
 }
-.editor-preview-side p code{
-  font-family: "dejavu sans mono","Fira Code",Menlo,Monaco,Consolas,"Courier New",monospace;
-  color:red;
+.editor-preview-side p code {
+  font-family: "dejavu sans mono", "Fira Code", Menlo, Monaco, Consolas,
+    "Courier New", monospace;
+  color: red;
 }
-.editor-preview-side pre{
+.editor-preview-side pre {
   padding: 10px;
-  background-color: #f5f5f5!important;
-  border: 1px solid #ccc!important;
-  border-radius: 3px!important;
+  background-color: #f5f5f5 !important;
+  border: 1px solid #ccc !important;
+  border-radius: 3px !important;
 }
-.editor-preview-side pre code{
-  font-family: "dejavu sans mono","Fira Code",Menlo,Monaco,Consolas,"Courier New",monospace;
+.editor-preview-side pre code {
+  font-family: "dejavu sans mono", "Fira Code", Menlo, Monaco, Consolas,
+    "Courier New", monospace;
 }
 </style>
 

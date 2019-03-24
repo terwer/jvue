@@ -30,16 +30,20 @@
         width="150"
         show-overflow-tooltip
       ></el-table-column>
-      <el-table-column fixed="right" label="操作" width="150">
+      <el-table-column fixed="right" label="操作" width="210">
         <template slot-scope="scope">
-          <el-button size="small" @click="handleEdit(scope.row.id)"
-            >编辑
+          <el-button type="primary" size="small" @click="handlePreview(scope.row.id)">
+            预览
+          </el-button>
+          <el-button size="small" @click="handleEdit(scope.row.id)">
+            编辑
           </el-button>
           <el-button
             size="small"
             type="danger"
             @click="handleDelete(scope.row.id)"
-            >删除
+          >
+            删除
           </el-button>
         </template>
       </el-table-column>
@@ -68,6 +72,9 @@ export default {
     };
   },
   methods: {
+    handlePreview(id){
+      window.open("http://www.terwergreen.com/post-dark/" + id + ".html", "_blank");
+    },
     handleEdit (id) {
       this.$router.push('/article/publish/' + id);
     },
