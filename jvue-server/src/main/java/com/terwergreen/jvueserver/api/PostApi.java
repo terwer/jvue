@@ -89,8 +89,6 @@ public class PostApi {
                 this.transformPreView(post);
             }
             resultMap.put("total", posts.getTotal());
-            resultMap.put("pageNum", posts.getPageNum());
-            resultMap.put("pageSize", posts.getPageSize());
             resultMap.put("list", list);
 
             restResponse.setData(resultMap);

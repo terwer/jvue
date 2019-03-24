@@ -51,7 +51,9 @@ export default {
   async asyncData({ $axios }) {
     const siteConfigResult = await $axios.$post("/site/config/list");
     const postsResult = await $axios.$post("/blog/post/list", {
-      postStatus: "publish"
+      postStatus: "publish",
+      pageNum: 1,
+      pageSize: 10
     });
     const siteConfigObj =
       siteConfigResult.status === 1 ? siteConfigResult.data : {};
