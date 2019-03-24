@@ -13,7 +13,7 @@
         show-overflow-tooltip
       ></el-table-column>
       <el-table-column
-        prop="status"
+        prop="statusText"
         label="状态"
         width="100"
         show-overflow-tooltip
@@ -30,9 +30,13 @@
         width="150"
         show-overflow-tooltip
       ></el-table-column>
-      <el-table-column fixed="right" label="操作" width="210">
+      <el-table-column fixed="right" label="操作" width="315">
         <template slot-scope="scope">
-          <el-button type="primary" size="small" @click="handlePreview(scope.row.id)">
+          <el-button
+            type="primary"
+            size="small"
+            @click="handlePreview(scope.row.id)"
+          >
             预览
           </el-button>
           <el-button size="small" @click="handleEdit(scope.row.id)">
@@ -41,9 +45,18 @@
           <el-button
             size="small"
             type="danger"
+            :disabled="scope.row.showDelete"
             @click="handleDelete(scope.row.id)"
           >
             删除
+          </el-button>
+          <el-button
+            size="small"
+            type="warning"
+            :disabled="scope.row.showTrash"
+            @click="handleTrash(scope.row.id)"
+          >
+            移到回收站
           </el-button>
         </template>
       </el-table-column>
@@ -86,7 +99,18 @@ export default {
       }).then(() => {
         this.deleteArticle(id);
       }).catch(err => {
-        console.error(err);
+        console.log(err);
+      });
+    },
+    handleTrash (id) {
+      this.$confirm('此操作会将该文章移到回收站，可在回收站恢复，是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'danger'
+      }).then(() => {
+        this.trashArticle(id);
+      }).catch(err => {
+        console.log(err);
       });
     },
     initArticleDatas (articles) {
@@ -99,7 +123,10 @@ export default {
           publish: this.$dayjs(data.created).format('YYYY-MM-DD HH:mm'),
           modified: this.$dayjs(data.modified).format('YYYY-MM-DD HH:mm'),
           category: data.category || 'deault',
-          status: "publish" === data.status ? '公开' : '隐藏'
+          status:data.status,
+          statusText:this.$util.STATIC.STATUS_PUBLISH === data.status ? '已发布' : '回收站',
+          showTrash:data.status !== this.$util.STATIC.STATUS_PUBLISH,
+          showDelete:data.status !== this.$util.STATIC.STATUS_DRAFT
         };
         this.articleDatas.push(article);
       }
@@ -114,7 +141,10 @@ export default {
       });
     },
     init (page) {
-      this.$api.article.getArticles(page || 1).then(data => {
+      this.$api.article.getArticles({
+        pageNum: page || 1,
+        pageSize: 5
+      }).then(data => {
         this.initArticleDatas(data.data.list);
         this.total = data.data.total;
         this.pageSize = data.data.pageSize;

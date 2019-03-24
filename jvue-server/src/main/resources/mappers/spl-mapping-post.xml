@@ -10,6 +10,9 @@
         <if test="postType!=null">
             AND type=#{postType}
         </if>
+        <if test="postStatus!=null">
+            AND status=#{postStatus}
+        </if>
         <if test="isHot!=null and isHot==1">
             ORDER BY hits DESC
         </if>

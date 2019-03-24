@@ -5,6 +5,7 @@ import store from "./store";
 import Api from "./api";
 import axios from "axios";
 import dayjs from "dayjs";
+import util from "./util/util";
 
 import "./plugins/element-ui";
 
@@ -18,6 +19,7 @@ Vue.config.productionTip = false;
 Vue.prototype.$api = Api;
 Vue.prototype.$axios = axios;
 Vue.prototype.$dayjs = dayjs;
+Vue.prototype.$util = util;
 
 new Vue({
   router,

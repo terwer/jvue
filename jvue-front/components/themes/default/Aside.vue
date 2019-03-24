@@ -48,7 +48,8 @@ export default {
   },
   async mounted() {
     const postsResult = await this.$axios.$post("/blog/post/list", {
-      isHot: 1
+      isHot: 1,
+      postStatus: "publish"
     });
     this.postList = postsResult.status === 1 ? postsResult.data.list || [] : [];
     logger.info("fetch aside postList finish");

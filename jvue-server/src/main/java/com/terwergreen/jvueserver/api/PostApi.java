@@ -53,7 +53,8 @@ public class PostApi {
     @PostMapping("post/list")
     public RestResponse getPostList(@RequestParam(required = false) Integer pageNum,
                                     @RequestParam(required = false) Integer pageSize,
-                                    @RequestParam(required = false) Integer isHot
+                                    @RequestParam(required = false) Integer isHot,
+                                    @RequestParam(required = false) String postStatus
     ) throws RestException {
         if (pageNum == null) {
             pageNum = Constants.DEFAULT_PAGE_NUM;
@@ -68,6 +69,9 @@ public class PostApi {
             if (null != isHot && isHot == 1) {
                 paramMap.put("isHot", isHot);
                 pageSize = 5;
+            }
+            if(StringUtils.isNotEmpty(postStatus)){
+                paramMap.put("postStatus", postStatus);
             }
             PageInfo<Post> posts = postService.getPostsByPage(pageNum, pageSize, paramMap);
 
@@ -84,6 +88,9 @@ public class PostApi {
             for (Post post : list) {
                 this.transformPreView(post);
             }
+            resultMap.put("total", posts.getTotal());
+            resultMap.put("pageNum", posts.getPageNum());
+            resultMap.put("pageSize", posts.getPageSize());
             resultMap.put("list", list);
 
             restResponse.setData(resultMap);
