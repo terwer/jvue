@@ -4,8 +4,8 @@ import Admin from "./views/Admin.vue";
 import Login from "./views/Login.vue";
 import Dashboard from "./components/Dashboard";
 
-import ArticleList from "./components/article/ArticleList";
-import ArticleEdit from "./components/article/ArticleEdit";
+import PostList from "./components/post/PostList";
+import PostEdit from "./components/post/PostEdit";
 
 Vue.use(Router);
 
@@ -24,16 +24,16 @@ export default new Router({
           component: Dashboard
         },
         {
-          path: "article/publish/:id",
-          component: ArticleEdit
+          path: "post/publish/:id",
+          component: PostEdit
         },
         {
-          path: "article/publish",
-          component: ArticleEdit
+          path: "post/publish",
+          component: PostEdit
         },
         {
-          path: "article",
-          component: ArticleList
+          path: "post",
+          component: PostList
         }
         // {
         //   path: "comment",

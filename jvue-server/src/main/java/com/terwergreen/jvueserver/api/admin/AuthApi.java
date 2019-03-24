@@ -2,7 +2,7 @@ package com.terwergreen.jvueserver.api.admin;
 
 import com.terwergreen.jvueserver.api.BaseApi;
 import com.terwergreen.jvueserver.exception.RestException;
-import com.terwergreen.jvueserver.pojo.Users;
+import com.terwergreen.jvueserver.model.User;
 import com.terwergreen.jvueserver.service.UsersService;
 import com.terwergreen.jvueserver.util.Constants;
 import com.terwergreen.jvueserver.util.RestResponse;
@@ -62,7 +62,7 @@ public class AuthApi extends BaseApi {
             if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
                 return RestResponse.fail("用户名和密码不能为空");
             }
-            Users user = usersService.login(username, password);
+            User user = usersService.login(username, password);
             // 正确返回了user，说明登录成功
             if (null != user) {
                 request.getSession().setAttribute(Constants.USER_SESSION_KEY, user);

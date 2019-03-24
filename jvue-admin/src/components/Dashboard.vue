@@ -42,7 +42,8 @@
                 <a
                   target="_blank"
                   :href="
-                    'http://www.terwergreen.com/post-dark/' +
+                    frontUrl +
+                      'post-dark/' +
                       (article.name === '' ? article.id : article.name) +
                       '.html'
                   "
@@ -73,9 +74,12 @@
 </template>
 
 <script>
+import serverConfig from "../../server-config";
+
 export default {
   data() {
     return {
+      frontUrl: serverConfig.frontUrl,
       commentCount: 0,
       articleCount: 0,
       comments: [],

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.terwergreen.jvueserver.post">
-    <select id="selectPosts" resultType="com.terwergreen.jvueserver.pojo.Post">
+    <!-- 获取文章列表 -->
+    <select id="selectPosts" resultType="com.terwergreen.jvueserver.model.Post">
         SELECT id,name,title,created,modified,content,author_id as authorId
                 ,hits,tags,category,status,type,allow_comment as allowComment
                 ,comment_count as commentCount
@@ -10,22 +11,116 @@
         <if test="postType!=null">
             AND type=#{postType}
         </if>
-        <if test="isHot!=null and isHot==1">
-            ORDER BY hits DESC
+        <if test="postStatus!=null">
+            AND status=#{postStatus}
         </if>
+        <choose>
+            <when test="isHot!=null and isHot==1">
+                ORDER BY hits DESC,created DESC,modified DESC
+            </when>
+            <otherwise>
+                ORDER BY created DESC,modified DESC
+            </otherwise>
+        </choose>
     </select>
-    <select id="getPostBySlug" resultType="com.terwergreen.jvueserver.pojo.Post">
+    <!-- 根据别名查文章 -->
+    <select id="getPostBySlug" resultType="com.terwergreen.jvueserver.model.Post">
         SELECT id,name,title,created,modified,content,author_id as authorId
                 ,hits,tags,category,status,type,allow_comment as allowComment
                 ,comment_count as commentCount
         FROM posts
         WHERE name=#{postSlug}
     </select>
-    <select id="getPostById" resultType="com.terwergreen.jvueserver.pojo.Post">
+    <!-- 根据ID查文章 -->
+    <select id="getPostById" resultType="com.terwergreen.jvueserver.model.Post">
         SELECT id,name,title,created,modified,content,author_id as authorId
                 ,hits,tags,category,status,type,allow_comment as allowComment
                 ,comment_count as commentCount
         FROM posts
         WHERE id=#{postId}
     </select>
+    <!-- 新增文章 -->
+    <insert id="insertPost" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="com.terwergreen.jvueserver.model.Post">
+        INSERT INTO posts(
+            created
+            ,modified
+            ,type
+            ,author_id
+            <if test="title!=null and title!=''">
+                ,title
+            </if>
+            <if test="content!=null and content!=''">
+                ,content
+            </if>
+            <if test="tags!=null and tags!=''">
+                ,tags
+            </if>
+            <if test="category!=null and category!=''">
+                ,category
+            </if>
+            <if test="status!=null and status!=''">
+                ,status
+            </if>
+            <if test="allowComment!=null and allowComment!=''">
+                ,allow_comment
+            </if>
+        )
+        VALUES(
+            current_timestamp
+            ,current_timestamp
+            ,#{type}
+            ,#{authorId}
+            <if test="title!=null and title!=''">
+                ,#{title}
+            </if>
+            <if test="content!=null and content!=''">
+                ,#{content}
+            </if>
+            <if test="tags!=null and tags!=''">
+                 ,#{tags}
+            </if>
+            <if test="category!=null and category!=''">
+                ,#{category}
+            </if>
+            <if test="status!=null and status!=''">
+                ,#{status}
+            </if>
+            <if test="allowComment!=null and allowComment!=''">
+                ,#{allowComment}
+            </if>
+        )
+    </insert>
+    <!-- 更新文章 -->
+    <update id="updatePost" parameterType="com.terwergreen.jvueserver.model.Post">
+        UPDATE posts SET
+        <if test="title!=null and title!=''">
+            title = #{title},
+        </if>
+        <if test="content!=null and content!=''">
+            content = #{content},
+        </if>
+        <if test="tags!=null and tags!=''">
+            tags = #{tags},
+        </if>
+        <if test="category!=null and category!=''">
+            category = #{category},
+        </if>
+        <if test="status!=null and status!=''">
+            status = #{status},
+        </if>
+        <if test="allowComment!=null and allowComment!=''">
+            allow_comment = #{allowComment},
+        </if>
+        modified=current_timestamp
+        WHERE id=#{id}
+    </update>
+    <!-- 更新文章属性 -->
+    <update id="updatePostByMap" parameterType="java.util.Map">
+        UPDATE posts SET
+        <if test="hits!=null and hits!=''">
+            hits = #{hits},
+        </if>
+        modified=current_timestamp
+        WHERE id=#{postId}
+    </update>
 </mapper>

@@ -6,6 +6,7 @@
  *2019/3/22 14:46
  **/
 import { get, post } from "../plugins/http";
+import util from "../util/util";
 
 // 校验相关
 const auth = {
@@ -31,13 +32,25 @@ const auth = {
 // 文章相关
 const article = {
   getArticles(params) {
-    return post("/blog/post/list", params);
+    return post("/admin/post/list", params);
   },
   getArticle(params) {
-    return post("/blog/post/detail", params);
+    return post("/admin/post/" + params.postId);
+  },
+  getAllCategories() {
+    let params = {
+      type: util.STATIC.META_CATEGORY
+    };
+    return post("/admin/meta/list", params);
+  },
+  getAllTags() {
+    let params = {
+      type: util.STATIC.META_TAG
+    };
+    return post("/admin/meta/list", params);
   },
   saveArticle(params) {
-    return post("/blog/post/save", params);
+    return post("/admin/post/save", params);
   }
 };
 

@@ -1,6 +1,6 @@
 package com.terwergreen.jvueserver.service.impl;
 
-import com.terwergreen.jvueserver.pojo.Users;
+import com.terwergreen.jvueserver.model.User;
 import com.terwergreen.jvueserver.service.UsersService;
 import org.springframework.stereotype.Service;
 
@@ -15,16 +15,16 @@ import org.springframework.stereotype.Service;
 public class UsersServiceImpl implements UsersService {
 
     @Override
-    public Users login(String username, String password) {
-//        Users record = new Users();
+    public User login(String username, String password) {
+//        User record = new User();
 //        record.setUsername(username);
 //        String md5 = FameUtil.getMd5(password);
 //        record.setPasswordMd5(md5);
-        Users user = null;
+        User user = null;
         if (username.equals("admin") && password.equals("123456")) {
-            user = new Users();
+            user = new User();
         }
-//        Users user = usersMapper.selectOne(record);
+//        User user = usersMapper.selectOne(record);
 //        if (user == null) {
 //            throw new ServiceException("用户名或者密码错误");
 //        }

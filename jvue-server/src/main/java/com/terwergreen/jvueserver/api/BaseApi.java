@@ -1,5 +1,6 @@
 package com.terwergreen.jvueserver.api;
 
+import com.terwergreen.jvueserver.util.SystemCache;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,4 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 public abstract class BaseApi {
     @Autowired
     protected HttpServletRequest request;
+
+    protected SystemCache cache = SystemCache.instance();
 }

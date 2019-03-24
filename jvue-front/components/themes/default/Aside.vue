@@ -16,8 +16,8 @@
                 class="aside-link"
                 :to="
                   post.name === ''
-                    ? '/post-dark/' + post.id + '.html'
-                    : '/post-dark/' + post.name + '.html'
+                    ? '/post/' + post.id + '.html'
+                    : '/post/' + post.name + '.html'
                 "
               >
                 <h2
@@ -48,7 +48,8 @@ export default {
   },
   async mounted() {
     const postsResult = await this.$axios.$post("/blog/post/list", {
-      isHot: 1
+      isHot: 1,
+      postStatus: "publish"
     });
     this.postList = postsResult.status === 1 ? postsResult.data.list || [] : [];
     logger.info("fetch aside postList finish");

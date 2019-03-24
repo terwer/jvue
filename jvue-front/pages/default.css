@@ -23,4 +23,25 @@
 .aside-link h2:hover{
   color: #000000;
 }
-
+/* 加载更多 */
+.loadmore-default {
+  padding: 0;
+  border-radius: 4px;
+  border: 1px solid #EBEEF5;
+  overflow: hidden;
+  background: #fff;
+  text-align: center;
+}
+.loadmore-default a {
+  color: #303133;
+  text-decoration: none;
+  display: block;
+  padding: 0;
+  text-align: center;
+  font-size: 14px;
+  background: #fff;
+}
+.loadmore-default a:hover {
+  color: #409EFF;
+  background-color: rgba(153, 153, 153, 0.17);
+}

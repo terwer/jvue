@@ -1,4 +1,4 @@
-package com.terwergreen.jvueserver.pojo;
+package com.terwergreen.jvueserver.model;
 
 import lombok.Getter;
 import lombok.Setter;

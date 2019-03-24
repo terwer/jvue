@@ -160,6 +160,13 @@ export default {
       ]
     };
   },
+  async mounted() {
+    // 更新文章浏览数
+    await this.$axios.$post("/blog/post/updateHits", {
+      postId: this.postObj.id,
+      hits: ++this.postObj.hits
+    });
+  },
   created() {
     if (inBrowser && window.MathJax) {
       // 高亮数学公式

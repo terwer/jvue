@@ -42,12 +42,12 @@ export default {
   name: "HeaderMenu",
   data() {
     return {
-      activeIndex: "/",
+      activeIndex: "/index-default",
       menuList: [
         {
           id: 1,
           name: "首页",
-          link: "/",
+          link: "/index-default",
           icon: "fa fa-home"
         },
         {

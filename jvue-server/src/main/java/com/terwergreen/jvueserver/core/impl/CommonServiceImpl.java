@@ -2,7 +2,7 @@ package com.terwergreen.jvueserver.core.impl;
 
 import com.terwergreen.jvueserver.core.CommonDAO;
 import com.terwergreen.jvueserver.core.CommonService;
-import com.terwergreen.jvueserver.pojo.SiteConfig;
+import com.terwergreen.jvueserver.model.SiteConfig;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.terwergreen.jvueserver.core;
 
-import com.terwergreen.jvueserver.pojo.SiteConfig;
+import com.terwergreen.jvueserver.model.SiteConfig;
 
 /**
  * 公共服务
