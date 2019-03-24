@@ -122,7 +122,7 @@ export default {
           title: data.title,
           publish: this.$dayjs(data.created).format('YYYY-MM-DD HH:mm'),
           modified: this.$dayjs(data.modified).format('YYYY-MM-DD HH:mm'),
-          category: data.category || 'deault',
+          category: data.category || this.$util.STATIC.DEFAULT_CATEGORY,
           status:data.status,
           statusText:this.$util.STATIC.STATUS_PUBLISH === data.status ? '已发布' : '回收站',
           showTrash:data.status !== this.$util.STATIC.STATUS_PUBLISH,
