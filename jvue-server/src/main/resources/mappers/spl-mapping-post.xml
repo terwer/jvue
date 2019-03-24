@@ -16,10 +16,10 @@
         </if>
         <choose>
             <when test="isHot!=null and isHot==1">
-                ORDER BY hits DESC,created DESC,modified DESC
+                ORDER BY hits DESC,modified,created DESC DESC
             </when>
             <otherwise>
-                ORDER BY created DESC,modified DESC
+                ORDER BY modified DESC,created DESC
             </otherwise>
         </choose>
     </select>
