@@ -32,7 +32,13 @@ const auth = {
 const article = {
   getArticles(params) {
     return post("/blog/post/list", params);
-  }
+  },
+  getArticle(params) {
+    return post("/blog/post/detail", params);
+  },
+  saveArticle(params) {
+    return post("/blog/post/save", params);
+  },
 };
 
 export default {
