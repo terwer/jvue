@@ -21,14 +21,14 @@
               >
                 <h2>{{ post.title === "" ? "暂无标题" : post.title }}</h2>
               </nuxt-link>
-              <div class="bottom clearfix">
-                <div class="page desc">
-                  {{ post.desc === "" ? "暂无简介" : post.desc }}
-                </div>
-              </div>
             </div>
           </el-col>
           <el-col :span="24">
+            <div class="bottom clearfix">
+              <div class="page desc">
+                {{ post.desc === "" ? "暂无简介" : post.desc }}
+              </div>
+            </div>
             <div>
               <div class="article-ext">
                 <span class="article-ext-info">作者：Terwer</span>

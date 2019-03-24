@@ -16,7 +16,7 @@
         </if>
         <choose>
             <when test="isHot!=null and isHot==1">
-                ORDER BY hits DESC,modified,created DESC DESC
+                ORDER BY hits DESC,modified,created DESC
             </when>
             <otherwise>
                 ORDER BY modified DESC,created DESC
