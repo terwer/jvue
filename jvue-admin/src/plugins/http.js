@@ -136,7 +136,9 @@ export function post(url, params = {}) {
     params = Object.assign(params, {
       tokenString: serverConfig.tokenString
     });
-    Axios.post(url, params).then(
+    Axios.post(url, params, {
+      withCredentials: false
+    }).then(
       response => {
         resolve(response.data);
       },

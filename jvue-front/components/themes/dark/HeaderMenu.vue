@@ -97,18 +97,24 @@ export default {
         },
         {
           id: 6,
+          name: "笔记",
+          link: "/note-dark",
+          icon: "fa fa-pencil"
+        },
+        {
+          id: 7,
           name: "关于",
           link: "/about-dark",
           icon: "fa fa-user"
         },
         {
-          id: 7,
+          id: 8,
           name: "登录",
           link: "/auth/login",
           icon: "fa fa-sign-in"
         },
         {
-          id: 8,
+          id: 9,
           name: "注册",
           link: "/auth/register",
           icon: "fa fa-camera-retro"

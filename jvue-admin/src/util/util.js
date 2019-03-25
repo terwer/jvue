@@ -15,6 +15,25 @@ const STATIC = {
  * 通用工具类
  */
 
+function typeToString(type) {
+  let typeStr = "";
+  switch (type) {
+    case "note":
+      typeStr = "笔记";
+      break;
+    case "essay":
+      typeStr = "随笔";
+      break;
+    case "page":
+      typeStr = "页面";
+      break;
+    default:
+      typeStr = "文章";
+      break;
+  }
+  return typeStr;
+}
+
 /**
  * 标签转字符串
  * @param tags
@@ -45,6 +64,7 @@ function stringToTags(str) {
 
 export default {
   STATIC,
+  typeToString,
   tagsToString,
   stringToTags
 };

@@ -37,46 +37,33 @@
 </template>
 
 <script>
-import { getLogger } from "../util/logger";
 import HeaderTime from "../components/themes/dark/HeaderTime";
 import Header from "../components/themes/dark/Header";
 import Body from "../components/themes/dark/Body";
 import Footer from "../components/themes/dark/Footer";
 import FriendLink from "../components/themes/dark/FriendLink";
-const logger = getLogger("pages/index");
 
 export default {
   components: { HeaderTime, Header, Body, Footer, FriendLink },
+  data() {
+    return {
+      postListArray: []
+    };
+  },
   async asyncData({ $axios }) {
     const siteConfigResult = await $axios.$post("/site/config/list");
     const siteConfigObj =
       siteConfigResult.status === 1 ? siteConfigResult.data : {};
 
     const postsResult = await $axios.$post("/blog/post/list", {
+      postType: "note",
       postStatus: "publish",
       pageNum: 1,
       pageSize: 10
     });
     const postListArray = postsResult.status === 1 ? postsResult.data.list : [];
-    logger.info("fetch siteConfig and postList finish");
 
     return { siteConfigObj, postListArray };
-  },
-  head() {
-    return {
-      title: this.siteConfigObj.webname + " - " + this.siteConfigObj.webslogen,
-      meta: [
-        {
-          name: "keywords",
-          content: this.siteConfigObj.keywords
-        },
-        {
-          hid: "description",
-          name: "description",
-          content: this.siteConfigObj.description
-        }
-      ]
-    };
   }
 };
 </script>

@@ -4,7 +4,14 @@ import com.github.pagehelper.PageInfo;
 import com.terwergreen.jvueserver.exception.RestException;
 import com.terwergreen.jvueserver.model.Post;
 import com.terwergreen.jvueserver.service.PostService;
-import com.terwergreen.jvueserver.util.*;
+import com.terwergreen.jvueserver.util.Constants;
+import com.terwergreen.jvueserver.util.HtmlUtil;
+import com.terwergreen.jvueserver.util.ImageUtil;
+import com.terwergreen.jvueserver.util.MarkdownUtil;
+import com.terwergreen.jvueserver.util.PostStatusEnum;
+import com.terwergreen.jvueserver.util.PostTypeEmum;
+import com.terwergreen.jvueserver.util.RestResponse;
+import com.terwergreen.jvueserver.util.RestResponseStates;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -55,7 +62,8 @@ public class PostApi extends BaseApi {
     public RestResponse getPostList(@RequestParam(required = false) Integer pageNum,
                                     @RequestParam(required = false) Integer pageSize,
                                     @RequestParam(required = false) Integer isHot,
-                                    @RequestParam(required = false) String postStatus
+                                    @RequestParam(required = false) String postStatus,
+                                    @RequestParam(required = false) String postType
     ) throws RestException {
         if (pageNum == null) {
             pageNum = Constants.DEFAULT_PAGE_NUM;
@@ -66,7 +74,11 @@ public class PostApi extends BaseApi {
         RestResponse restResponse = new RestResponse();
         try {
             Map<String, Object> paramMap = new HashMap<>();
-            paramMap.put("postType", PostTypeEmum.POST_TYPE_POST.getName());
+            if (StringUtils.isEmpty(postType)) {
+                paramMap.put("postType", PostTypeEmum.POST_TYPE_POST.getName());
+            } else {
+                paramMap.put("postType", postType);
+            }
             if (null != isHot && isHot == 1) {
                 paramMap.put("isHot", isHot);
                 pageSize = 5;
