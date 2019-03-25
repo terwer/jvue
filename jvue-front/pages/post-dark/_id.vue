@@ -15,52 +15,69 @@
                     <Header />
                   </el-header>
                   <el-main class="el-main-dark">
-                    <div id="post" class="post-dark">
-                      <!-- 导航 -->
-                      <el-breadcrumb separator="/">
-                        <el-breadcrumb-item
-                          v-for="item in items"
-                          :key="item.text"
-                          :to="item.to"
-                        >
-                          {{ item.text }}
-                        </el-breadcrumb-item>
-                      </el-breadcrumb>
+                    <el-row>
+                      <el-col :xs="24" :xl="18">
+                        <div id="post" class="post-dark">
+                          <!-- 导航 -->
+                          <el-breadcrumb separator="/">
+                            <el-breadcrumb-item
+                              v-for="item in items"
+                              :key="item.text"
+                              :to="item.to"
+                            >
+                              {{ item.text }}
+                            </el-breadcrumb-item>
+                          </el-breadcrumb>
 
-                      <!-- 文章标题 -->
-                      <div id="postTitle">
-                        <nuxt-link
-                          :to="
-                            postObj.name === ''
-                              ? '/post-dark/' + postObj.id + '.html'
-                              : '/post-dark/' + postObj.name + '.html'
-                          "
-                        >
-                          <h1>
-                            {{ postObj.title }}
+                          <!-- 文章标题 -->
+                          <div id="postTitle">
+                            <nuxt-link
+                              :to="
+                                postObj.name === ''
+                                  ? '/post-dark/' + postObj.id + '.html'
+                                  : '/post-dark/' + postObj.name + '.html'
+                              "
+                            >
+                              <h1>
+                                {{ postObj.title }}
+                              </h1>
+                            </nuxt-link>
+                          </div>
+
+                          <!-- 文章详情 -->
+                          <div
+                            id="postContent"
+                            v-highlight
+                            v-html="postObj.content"
+                          ></div>
+
+                          <h1
+                            v-if="errorMessage !== ''"
+                            class="error-message-dark"
+                          >
+                            {{ errorMessage }}
                           </h1>
-                        </nuxt-link>
-                      </div>
 
-                      <!-- 文章详情 -->
-                      <div
-                        id="postContent"
-                        v-highlight
-                        v-html="postObj.content"
-                      ></div>
-
-                      <h1 v-if="errorMessage !== ''" class="error-message-dark">
-                        {{ errorMessage }}
-                      </h1>
-
-                      <div class="copy">
-                        <p>作者：Terwer</p>
-                        <p>首发：远方的灯塔</p>
-                        <p>
-                          原创内容，转载请注明出处！
-                        </p>
-                      </div>
-                    </div>
+                          <div class="copy">
+                            <p>作者：Terwer</p>
+                            <p>首发：远方的灯塔</p>
+                            <p>
+                              原创内容，转载请注明出处！
+                            </p>
+                          </div>
+                        </div>
+                      </el-col>
+                      <el-col :xs="0" :xl="6">
+                        <div id="postMenu">
+                          <div>
+                            <p>文章目录</p>
+                          </div>
+                          <div id="postMenuWapper">
+                            <p>目录加载中...</p>
+                          </div>
+                        </div>
+                      </el-col>
+                    </el-row>
                   </el-main>
                 </el-container>
               </el-main>
@@ -86,12 +103,15 @@
 /* eslint nuxt/no-globals-in-created: 0 */ // --> OFF
 /* eslint vue/no-v-html: 0 */ // --> OFF
 /* eslint no-useless-escape: 0 */ // --> OFF
+/* eslint no-new: 0 */ // --> OFF
+import Catalog from "progress-catalog";
 import { getLogger } from "../../util/logger";
 import HeaderTime from "../../components/themes/dark/HeaderTime";
 import Header from "../../components/themes/dark/Header";
 import Footer from "../../components/themes/dark/Footer";
 import FriendLink from "../../components/themes/dark/FriendLink";
 import { inBrowser } from "../../util/dom";
+// 引入
 
 const logger = getLogger("pages/post");
 
@@ -166,6 +186,14 @@ export default {
       postId: this.postObj.id,
       hits: ++this.postObj.hits
     });
+
+    // 文章目录
+    new Catalog({
+      contentEl: "postContent",
+      catalogEl: "postMenuWapper",
+      selector: ["h1", "h2", "h3", "h4", "h5", "h6"],
+      cool: true
+    });
   },
   created() {
     if (inBrowser && window.MathJax) {
@@ -189,6 +217,24 @@ export default {
 @import "../common.css";
 @import "../dark.css";
 @import "../../plugins/lib/vue-hljs/vs2015.css";
+@import "../../node_modules/progress-catalog/src/progress-catalog.css";
+
+#postMenu {
+  margin-top: 20px;
+  position: fixed;
+  p {
+    color: #f3f3f3;
+  }
+  .cl-wrapper li > .cl-link {
+    max-width: 350px;
+    padding: 0 10px;
+  }
+  .cl-wrapper li > .cl-link:hover {
+    color: #ffcb6b;
+    background-color: #181818;
+  }
+}
+
 .post-dark {
   margin: 20px;
   a {

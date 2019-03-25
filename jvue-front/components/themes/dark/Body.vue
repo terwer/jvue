@@ -24,6 +24,10 @@ export default {
   name: "Body",
   components: { Aside, PostList },
   props: {
+    type: {
+      type: String,
+      default: "post"
+    },
     postList: {
       type: Array,
       default: () => []
@@ -44,6 +48,7 @@ export default {
       this.showNores = false;
       this.loadText = "加载中...";
       const postsResult = await this.$axios.$post("/blog/post/list", {
+        postType: this.type,
         postStatus: "publish",
         pageNum: ++this.currentPage,
         pageSize: this.pageSize

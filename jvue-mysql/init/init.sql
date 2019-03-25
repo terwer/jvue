@@ -75,11 +75,11 @@ CREATE TABLE `options` (
 
 CREATE TABLE `posts` (
     `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '文章ID',
-    `name` varchar(100) DEFAULT NULL COMMENT '文章别名',
+    `name` varchar(255) DEFAULT NULL COMMENT '文章别名',
     `title` varchar(255) NOT NULL,
     `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
-    `content` text COMMENT '文章内容',
+    `content` longtext COMMENT '文章内容',
     `author_id` int(11) DEFAULT NULL COMMENT '作者',
     `hits` int(11) NOT NULL DEFAULT '0' COMMENT '浏览数',
     `tags` varchar(255) DEFAULT NULL COMMENT '标签',
