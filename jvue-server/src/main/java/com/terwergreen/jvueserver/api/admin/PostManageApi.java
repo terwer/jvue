@@ -63,7 +63,6 @@ public class PostManageApi {
         RestResponse restResponse = new RestResponse();
         try {
             Map<String, Object> paramMap = new HashMap<>();
-            paramMap.put("postType", PostTypeEmum.POST_TYPE_POST.getName());
             if (StringUtils.isNotEmpty(postStatus)) {
                 paramMap.put("postStatus", postStatus);
             }

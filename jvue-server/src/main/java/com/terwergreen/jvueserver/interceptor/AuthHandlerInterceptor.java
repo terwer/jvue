@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,17 +26,11 @@ import java.util.Map;
  **/
 public class AuthHandlerInterceptor implements HandlerInterceptor {
     private static final Logger logger = LogManager.getLogger(AuthHandlerInterceptor.class);
-    // This is to be replaced with a list of domains allowed to access the server
-    // You can include more than one origin here
-    // private final List<String> allowedOrigins = Arrays.asList("http://127.0.0.1:3001", "http://localhost:3001", "http://www.terwergreen.com");
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) {
         logger.info(request.getRequestURI());
         // Access-Control-Allow-Origin
-        // String origin = request.getHeader("Origin");
-        // String accessAllowedOrigins = allowedOrigins.contains(origin) ? origin : "";
-        // response.setHeader("Access-Control-Allow-Origin", accessAllowedOrigins);
         response.setHeader("Access-Control-Allow-Origin", "*");
 
         // Access-Control-Max-Age
