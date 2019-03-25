@@ -15,7 +15,7 @@
                     <Header />
                   </el-header>
                   <el-main class="el-main-dark">
-                    <Body :post-list="postListArray" />
+                    <Body type="note" :post-list="postListArray" />
                   </el-main>
                 </el-container>
               </el-main>
