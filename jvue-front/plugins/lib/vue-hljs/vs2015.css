@@ -1,9 +1,9 @@
 code{
-  font-family: "dejavu sans mono","Fira Code",Menlo,Monaco,Consolas,"Courier New",monospace;
+  font-family: dejavu sans mono,Fira Code,Microsoft Yahei,Menlo,Monaco,Consolas,Courier New,monospace;
   color: #D69D85;
 }
 .hljs {
-  font-family: "dejavu sans mono","Fira Code",Menlo,Monaco,Consolas,"Courier New",monospace;
+  font-family: dejavu sans mono,Fira Code,Microsoft Yahei,Menlo,Monaco,Consolas,Courier New,monospace;
   display: block;
   overflow-x: auto;
   padding: .5em;

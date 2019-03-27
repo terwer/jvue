@@ -1,17 +1,18 @@
 code{
-  font-family: "dejavu sans mono","Fira Code",Menlo,Monaco,Consolas,"Courier New",monospace;
-  color: red;
+  font-family: dejavu sans mono,Fira Code,Microsoft Yahei,Consolas,Courier New,monospace,Menlo,Monaco;
+  font-size: 14px;  color: red;
 }
 .hljs {
-    font-family: "dejavu sans mono","Fira Code",Menlo,Monaco,Consolas,"Courier New",monospace;
-    display: block;
-    overflow-x: auto;
-    padding: .5em;
-    line-height: 1.6;
-    color: black;
-    background-color: #f5f5f5!important;
-    border: 1px solid #ccc!important;
-    border-radius: 3px!important;
+  font-family: dejavu sans mono,Fira Code,Microsoft Yahei,Consolas,Courier New,monospace,Menlo,Monaco;
+  font-size: 14px;
+  display: block;
+  overflow-x: auto;
+  padding: .5em;
+  line-height: 1.6;
+  color: black;
+  background-color: #f5f5f5!important;
+  border: 1px solid #ccc!important;
+  border-radius: 3px!important;
 }
 
 .hljs-comment, .hljs-quote, .hljs-variable {
