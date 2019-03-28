@@ -280,6 +280,13 @@ export default {
     line-height: 1.5;
     margin: 10px 0;
   }
+  h3 {
+    color: #b8d7a3;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 10px 0;
+  }
   p {
     // 图片自适应
     img {
