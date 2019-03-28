@@ -282,7 +282,28 @@ export default {
   }
   h3 {
     color: #b8d7a3;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 10px 0;
+  }
+  h4 {
+    color: #409eff;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 10px 0;
+  }
+  h5 {
+    color: #629755;
     font-size: 14px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 10px 0;
+  }
+  h6 {
+    color: #ff5370;
+    font-size: 12px;
     font-weight: bold;
     line-height: 1.5;
     margin: 10px 0;
