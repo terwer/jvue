@@ -68,8 +68,7 @@ services:
       - "username=scott"
       - "password=123456"
     volumes:
-      - ./data/oracle/setup:/home/oracle/setup
-      - ./data/oracle/oradata:/u01/app/oracle/oradata
+      - ./data/oracle:/u01/app/oracle
     restart: always
   jvue-server:
     privileged: true
