@@ -16,6 +16,16 @@
 # 重启并重建镜像启动守护线程
 # docker-compose --log-level INFO up -d --build --force-recreate jvue-front
 
+# oracle doc
+#  DB_SID
+#  This parameter changes the ORACLE_SID of the database. The default value is set to ORCLCDB.
+#  To connect from outside the container using SQL*Plus,
+#  $ sqlplus sys/Oradoc_db1@ORCLCDB as sysdba
+#  Changing default password for SYS user
+#  alter user sys identified by <new-password>;
+#  The database alert log can be viewed with
+#  $ docker logs <Oracle-DB>
+
 version: '3'
 services:
   jvue-nginx:
