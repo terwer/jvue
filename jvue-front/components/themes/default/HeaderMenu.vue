@@ -56,7 +56,7 @@ export default {
           link: "/cat/essay",
           icon: "fa fa-pencil"
         },
-        {
+        /* {
           id: 3,
           name: "技巧",
           link: "/cat/skill",
@@ -94,6 +94,7 @@ export default {
           ],
           link: "/cat/special"
         },
+        */
         {
           id: 6,
           name: "关于",

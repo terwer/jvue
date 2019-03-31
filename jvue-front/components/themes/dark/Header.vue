@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <el-col :xs="24" :sm="3" :md="3">
+    <el-col :xs="24" :md="5" :xl="3">
       <div class="img-wrap">
         <nuxt-link to="/" class="float-left">
           <div class="img-align-middle">
@@ -14,7 +14,7 @@
         </nuxt-link>
       </div>
     </el-col>
-    <el-col :xs="0" :sm="15" :md="15">
+    <el-col :xs="0" :md="13" :xl="15">
       <div class="grid-content bg-purple-light">
         <HeaderMenu />
       </div>

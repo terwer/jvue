@@ -98,10 +98,12 @@ export default {
   padding: 0;
   margin-top: 15px;
   float: left;
+  font-weight: bold;
+  color: #212121 !important;
 }
 
 .read-more:hover {
-  color: #212121;
+  color: #409eff;
 }
 
 .image {
