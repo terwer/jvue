@@ -55,6 +55,7 @@ services:
       - ./jvue-mysql/init:/docker-entrypoint-initdb.d/
     restart: always
   jvue-oracle:
+    privileged: true
     image: jvue/oracle:12.2.0.1
     container_name: jvue-oracle
     build:
@@ -67,6 +68,7 @@ services:
       - "username=scott"
       - "password=123456"
     volumes:
+      - ./data/oracle/setup:/home/oracle/setup
       - ./data/oracle/oradata:/u01/app/oracle/oradata
     restart: always
   jvue-server:
