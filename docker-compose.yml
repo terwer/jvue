@@ -63,11 +63,8 @@ services:
       dockerfile: ./jvue-oracle/Dockerfile
     ports:
       - "1521:1521"
-    environment:
-      - "sid=orcl"
-      - "username=scott"
-      - "password=123456"
     volumes:
+      - ./data/oracle/setup/log:/home/oracle/setup/log
       - ./data/oracle:/u01/app/oracle
     restart: always
   jvue-server:
