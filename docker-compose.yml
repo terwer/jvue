@@ -64,7 +64,6 @@ services:
     ports:
       - "1521:1521"
     volumes:
-      - ./data/oracle/setup/log:/home/oracle/setup/log
       - ./data/oracle:/u01/app/oracle
     restart: always
   jvue-server:
