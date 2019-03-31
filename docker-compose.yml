@@ -73,6 +73,7 @@ services:
       dockerfile: ./jvue-oracle/Dockerfile
     ports:
       - "1521:1521"
+      - "5500:5500"
     volumes:
       - ./data/oracle:/u01/app/oracle
     restart: always
