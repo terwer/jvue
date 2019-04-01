@@ -4,7 +4,7 @@
 #依赖的镜像
 FROM maven:3.6.0-jdk-8-alpine
 #镜像创建者的信息
-MAINTAINER terwer "csyouwei@gmail.com"
+MAINTAINER terwer cbgtyw@gmail.com"
 # 设置编码
 ENV LANG C.UTF-8
 # 设置时区

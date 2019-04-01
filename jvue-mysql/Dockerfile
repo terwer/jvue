@@ -16,7 +16,7 @@
 #依赖的镜像
 FROM mysql/mysql-server:5.7.24
 #镜像创建者的信息
-MAINTAINER terwer "csyouwei@gmail.com"
+MAINTAINER terwer "cbgtyw@gmail.com"
 # 设置编码
 ENV LANG C.UTF-8
 # 设置时区
