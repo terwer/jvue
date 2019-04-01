@@ -21,7 +21,12 @@
     </el-col>
     <el-col :xs="24" :sm="24" :md="6">
       <div class="search s-dark">
-        <el-input v-model="s" placeholder="请输入关键字" clearable>
+        <el-input
+          v-model="s"
+          placeholder="请输入关键字"
+          clearable
+          @keyup.enter.native="doSearch"
+        >
           <el-button
             slot="append"
             class="s-dark-btn"
