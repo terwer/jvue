@@ -1,8 +1,26 @@
 <template>
   <div>
+    <el-input
+      class="top-search"
+      v-model="s"
+      placeholder="请输入关键字"
+      clearable
+      @keyup.enter.native="doSearch"
+    >
+      <el-button
+        slot="append"
+        class="s-dark-btn"
+        type="primary"
+        icon="el-icon-search"
+        @click="doSearch"
+      >
+        搜索
+      </el-button>
+    </el-input>
     <el-table :data="articleDatas" border stripe style="width: 100%">
       <el-table-column prop="id" label="id" width="60"></el-table-column>
       <el-table-column
+        width="618"
         prop="title"
         label="标题"
         show-overflow-tooltip
@@ -90,6 +108,7 @@
   export default {
   data: function () {
     return {
+      s: "",
       articleDatas: [],
       total: 0,
       pageSize: 10,
@@ -97,6 +116,9 @@
     };
   },
   methods: {
+    doSearch() {
+      this.init(this.$route.query.page);
+    },
     handlePreview(id){
       window.open(serverConfig.frontUrl + "post-dark/" + id + ".html", "_blank");
     },
@@ -157,7 +179,8 @@
     init (page) {
       this.$api.article.getArticles({
         pageNum: page || 1,
-        pageSize: 5
+        pageSize: 10,
+        search: this.s
       }).then(data => {
         this.initArticleDatas(data.data.list);
         this.total = data.data.total;
@@ -197,6 +220,9 @@
 </style>
 
 <style scoped>
+.top-search {
+  margin-bottom: 20px;
+}
 .el-table {
   border: 1px solid #e6ebf5;
 }

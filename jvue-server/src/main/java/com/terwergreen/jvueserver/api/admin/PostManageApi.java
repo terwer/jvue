@@ -47,12 +47,14 @@ public class PostManageApi {
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "pageNum", value = "页码"),
             @ApiImplicitParam(name = "pageSize", value = "每页展示的数目"),
-            @ApiImplicitParam(name = "postStatus", value = "状态")
+            @ApiImplicitParam(name = "postStatus", value = "状态"),
+            @ApiImplicitParam(name = "search", value = "搜索关键字")
     })
     @PostMapping("list")
     public RestResponse getPostList(@RequestParam(required = false) Integer pageNum,
                                     @RequestParam(required = false) Integer pageSize,
-                                    @RequestParam(required = false) String postStatus
+                                    @RequestParam(required = false) String postStatus,
+                                    @RequestParam(required = false) String search
     ) throws RestException {
         if (pageNum == null) {
             pageNum = Constants.DEFAULT_PAGE_NUM;
@@ -65,6 +67,9 @@ public class PostManageApi {
             Map<String, Object> paramMap = new HashMap<>();
             if (StringUtils.isNotEmpty(postStatus)) {
                 paramMap.put("postStatus", postStatus);
+            }
+            if (StringUtils.isNotEmpty(search)) {
+                paramMap.put("search", search);
             }
             PageInfo<Post> posts = postService.getPostsByPage(pageNum, pageSize, paramMap);
 

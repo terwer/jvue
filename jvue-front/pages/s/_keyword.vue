@@ -15,7 +15,7 @@
                     <Header />
                   </el-header>
                   <el-main>
-                    <Body :type="post" :post-list="postListArray" />
+                    <Body :keyword="keyword" :post-list="postListArray" />
                   </el-main>
                 </el-container>
               </el-main>
@@ -37,31 +37,31 @@
 </template>
 
 <script>
-import { getLogger } from "../util/logger";
-import HeaderTime from "../components/themes/default/HeaderTime";
-import Header from "../components/themes/default/Header";
-import Body from "../components/themes/default/Body";
-import Footer from "../components/themes/default/Footer";
-import FriendLink from "../components/themes/default/FriendLink";
-const logger = getLogger("pages/index");
+import { getLogger } from "../../util/logger";
+import HeaderTime from "../../components/themes/default/HeaderTime";
+import Header from "../../components/themes/default/Header";
+import Body from "../../components/themes/default/Body";
+import Footer from "../../components/themes/default/Footer";
+import FriendLink from "../../components/themes/default/FriendLink";
+
+const logger = getLogger("pages/post");
 
 export default {
-  name: "Index",
   components: { HeaderTime, Header, Body, Footer, FriendLink },
+  data() {
+    return {
+      keyword: this.$route.params.keyword
+        ? this.$route.params.keyword.replace(/\.[^/.]+$/, "")
+        : "",
+      postListArray: []
+    };
+  },
   async asyncData({ $axios }) {
     const siteConfigResult = await $axios.$post("/site/config/list");
-    const postsResult = await $axios.$post("/blog/post/list", {
-      postType: "post",
-      postStatus: "publish",
-      pageNum: 1,
-      pageSize: 10
-    });
     const siteConfigObj =
       siteConfigResult.status === 1 ? siteConfigResult.data : {};
-    const postListArray = postsResult.status === 1 ? postsResult.data.list : [];
     logger.info("fetch siteConfig and postList finish");
-
-    return { siteConfigObj, postListArray };
+    return { siteConfigObj };
   },
   head() {
     return {
@@ -78,11 +78,21 @@ export default {
         }
       ]
     };
+  },
+  async mounted() {
+    const postsResult = await this.$axios.$post("/blog/post/list", {
+      postStatus: "publish",
+      search: this.keyword
+    });
+
+    this.postListArray = postsResult.status === 1 ? postsResult.data.list : [];
   }
 };
 </script>
 
 <style lang="scss">
-@import "./common.css";
-@import "./default.css";
+@import "../common.css";
+@import "../default.css";
 </style>
+
+<style scoped></style>

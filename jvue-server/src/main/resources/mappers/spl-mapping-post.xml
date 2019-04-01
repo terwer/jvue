@@ -14,6 +14,12 @@
         <if test="postStatus!=null">
             AND status=#{postStatus}
         </if>
+        <if test="search!=null and search!=''">
+            AND (
+                title LIKE concat(concat('%', #{search}), '%') OR
+                content LIKE concat(concat('%', #{search}), '%')
+            )
+        </if>
         <choose>
             <when test="isHot!=null and isHot==1">
                 ORDER BY hits DESC,modified,created DESC

@@ -15,7 +15,7 @@
                     <Header />
                   </el-header>
                   <el-main class="el-main-dark">
-                    <Body :post-list="postListArray" />
+                    <Body :type="post" :post-list="postListArray" />
                   </el-main>
                 </el-container>
               </el-main>
@@ -53,6 +53,7 @@ export default {
       siteConfigResult.status === 1 ? siteConfigResult.data : {};
 
     const postsResult = await $axios.$post("/blog/post/list", {
+      postType: "post",
       postStatus: "publish",
       pageNum: 1,
       pageSize: 10

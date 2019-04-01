@@ -27,14 +27,20 @@
                       </div>
                       <h3>网站简介</h3>
                       <div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span style="font-size: 24px">远</span
-                        >方的灯塔是关注与分享互联网及服务端开发技术的个人博客，致力于Java后端开发及服务端技术、软件架构、微服务技术分享。同时也记录个人的一路点滴，所蕴含的包括前端、后端、数据库等知识，欢迎关注。
+                        <span style="font-size: 24px;margin-left: 40px;">
+                          远
+                        </span>
+                        <span>
+                          方的灯塔是关注与分享互联网及服务端开发技术的个人博客，致力于Java后端开发及服务端技术、软件架构、微服务技术分享。同时也记录个人的一路点滴，所蕴含的包括前端、后端、数据库等知识，欢迎关注。
+                        </span>
                       </div>
                       <div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span style="font-size: 24px">人</span
-                        >生在世，有些事情，有些选择，是不需要理由的。年轻就该去探索，去尝试。人生最大的悲哀不是失败，而是甘于现状，因为他一开始就失败了。
+                        <span style="font-size: 24px;margin-left: 40px;">
+                          人
+                        </span>
+                        <span>
+                          生在世，有些事情，有些选择，是不需要理由的。年轻就该去探索，去尝试。人生最大的悲哀不是失败，而是甘于现状，因为他一开始就失败了。
+                        </span>
                       </div>
                       <h3>作者简历</h3>
                       <div>
