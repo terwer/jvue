@@ -28,6 +28,10 @@ export default {
       type: String,
       default: "post"
     },
+    keyword: {
+      type: String,
+      default: ""
+    },
     postList: {
       type: Array,
       default: () => []
@@ -43,6 +47,11 @@ export default {
       postListArray: this.postList
     };
   },
+  watch: {
+    postList() {
+      this.postListArray = this.postList;
+    }
+  },
   methods: {
     async loadmore() {
       this.showNores = false;
@@ -50,6 +59,7 @@ export default {
       const postsResult = await this.$axios.$post("/blog/post/list", {
         postType: this.type,
         postStatus: "publish",
+        search: this.keyword,
         pageNum: ++this.currentPage,
         pageSize: this.pageSize
       });

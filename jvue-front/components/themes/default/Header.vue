@@ -60,7 +60,7 @@ export default {
   methods: {
     doSearch() {
       logger.info("this.searchLink=>" + this.searchLink);
-      // this.$router.push({ path: this.searchLink });
+      this.$router.push({ path: this.searchLink });
       // this.$router.go(this.searchLink);
     }
   }

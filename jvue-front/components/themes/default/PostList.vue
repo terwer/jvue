@@ -103,13 +103,14 @@ export default {
 }
 
 .read-more:hover {
-  color: #409eff;
+  color: #409eff !important;
 }
 
 .image {
   width: 100%;
   max-height: 150px;
   display: block;
+  padding: 0 20px 0 0;
 }
 
 .clearfix:before,

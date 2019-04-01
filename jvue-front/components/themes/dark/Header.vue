@@ -50,18 +50,18 @@ export default {
   data() {
     return {
       s: "",
-      searchLink: "/s/"
+      searchLink: "/s-dark/"
     };
   },
   watch: {
     s() {
-      this.searchLink = "/s/" + this.s;
+      this.searchLink = "/s-dark/" + this.s;
     }
   },
   methods: {
     doSearch() {
       logger.info("this.searchLink=>" + this.searchLink);
-      // this.$router.push({ path: this.searchLink });
+      this.$router.push({ path: this.searchLink });
       // this.$router.go(this.searchLink);
     }
   }
