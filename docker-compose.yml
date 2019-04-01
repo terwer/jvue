@@ -66,7 +66,7 @@ services:
     restart: always
   jvue-oracle:
     privileged: true
-    image: jvue/oracle:12.2.0.1
+    image: jvue/oracle:oracle-xe-11g
     container_name: jvue-oracle
     build:
       context: ./
