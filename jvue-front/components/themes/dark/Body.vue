@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :xs="24" :md="16">
-      <PostList :post-list="postListArray" />
+      <PostList :keyword="keyword" :post-list="postListArray" />
       <p v-if="showNores" class="nores">~ 我是有底线滴 ~</p>
       <div id="pagination">
         <div class="loadmore-dark">

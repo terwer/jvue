@@ -15,11 +15,7 @@
                     <Header />
                   </el-header>
                   <el-main>
-                    <Body
-                      :keyword="keyword"
-                      type="post"
-                      :post-list="postListArray"
-                    />
+                    <Body :keyword="keyword" :post-list="postListArray" />
                   </el-main>
                 </el-container>
               </el-main>
@@ -85,7 +81,6 @@ export default {
   },
   async mounted() {
     const postsResult = await this.$axios.$post("/blog/post/list", {
-      postType: "post",
       postStatus: "publish",
       search: this.keyword
     });

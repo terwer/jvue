@@ -77,9 +77,7 @@ public class PostApi extends BaseApi {
         RestResponse restResponse = new RestResponse();
         try {
             Map<String, Object> paramMap = new HashMap<>();
-            if (StringUtils.isEmpty(postType)) {
-                paramMap.put("postType", PostTypeEmum.POST_TYPE_POST.getName());
-            } else {
+            if (StringUtils.isNotEmpty(postType)) {
                 paramMap.put("postType", postType);
             }
             if (null != isHot && isHot == 1) {

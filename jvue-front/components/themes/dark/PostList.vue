@@ -3,6 +3,9 @@
     <div v-if="postList.length > 0">
       <el-card v-for="post in postList" :key="post.postId" class="post-item">
         <el-row>
+          <el-col v-if="keyword !== ''" class="s-keyword-default" :spans="24">
+            关键字： {{ keyword }}
+          </el-col>
           <el-col
             v-if="!isMobile && post.thumbnails.length > 0"
             :xs="24"
@@ -65,6 +68,10 @@ import { inBrowser } from "../../../util/dom";
 export default {
   name: "PostList",
   props: {
+    keyword: {
+      type: String,
+      default: ""
+    },
     postList: {
       type: Array,
       default: () => []
@@ -148,5 +155,9 @@ h2 {
   .article-ext-info {
     margin-right: 1.25rem;
   }
+}
+
+.s-keyword-default {
+  color: #fff;
 }
 </style>
