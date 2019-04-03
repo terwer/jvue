@@ -328,6 +328,41 @@ export default {
   color: #ff5370;
   line-height: 1.6;
 }
+
+/* 顺序列表 */
+.post-dark {
+  ul,
+  ol {
+    li {
+      color: #f3f3f3;
+      code {
+        font-size: 16px;
+      }
+      p {
+        code {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  blockquote {
+    color: #67c23a;
+    background-color: #181818;
+    border: solid 1px;
+    border-radius: 4px;
+    padding: 0 10px;
+    margin: 10px 0;
+    code {
+      font-size: 16px;
+    }
+    p {
+      code {
+        font-size: 16px;
+      }
+    }
+  }
+}
 </style>
 
 <style lang="scss" scoped></style>

@@ -233,4 +233,38 @@ export default {
   color: #000000;
   line-height: 1.6;
 }
+
+/* 顺序列表 */
+.post-default {
+  ul,
+  ol {
+    li {
+      code {
+        font-size: 16px;
+      }
+      p {
+        code {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  blockquote {
+    color: black;
+    background: #f5f5f5 !important;
+    padding: 0 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc !important;
+    border-radius: 3px !important;
+    code {
+      font-size: 16px;
+    }
+    p {
+      code {
+        font-size: 16px;
+      }
+    }
+  }
+}
 </style>
