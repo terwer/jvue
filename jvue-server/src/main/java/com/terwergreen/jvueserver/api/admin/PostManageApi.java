@@ -5,7 +5,7 @@ import com.terwergreen.jvueserver.exception.RestException;
 import com.terwergreen.jvueserver.model.Post;
 import com.terwergreen.jvueserver.service.PostService;
 import com.terwergreen.jvueserver.util.Constants;
-import com.terwergreen.jvueserver.util.PostTypeEmum;
+import com.terwergreen.jvueserver.util.PostStatusEnum;
 import com.terwergreen.jvueserver.util.RestResponse;
 import com.terwergreen.jvueserver.util.RestResponseStates;
 import io.swagger.annotations.ApiImplicitParam;
@@ -15,7 +15,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -171,9 +175,13 @@ public class PostManageApi {
      * @param postId 文章ID
      * @return 结果
      */
-    @PostMapping("/trash/{postId}")
-    public RestResponse trashArticle(@PathVariable Integer postId) {
-        return RestResponse.fail();
+    @PostMapping("/trash")
+    public RestResponse trashArticle(Integer postId) {
+        if (postService.updatePostStatus(postId, PostStatusEnum.POST_STATUS_TRASH)) {
+            return RestResponse.ok("文章移到回收站成功");
+        } else {
+            return RestResponse.fail();
+        }
     }
 
     /**
@@ -182,12 +190,12 @@ public class PostManageApi {
      * @param postId 文章id
      * @return {@see RestResponse.ok()}
      */
-    @PostMapping("/del/{postId}")
-    public RestResponse deleteArticle(@PathVariable Integer postId) {
-//        if (articlesService.deleteArticle(id)) {
-//            return RestResponse.ok("删除文章成功");
-//        } else {
-        return RestResponse.fail();
-//        }
+    @PostMapping("/remove")
+    public RestResponse deleteArticle(Integer postId) {
+        if (postService.deletePostById(postId)) {
+            return RestResponse.ok("文章删除成功");
+        } else {
+            return RestResponse.fail();
+        }
     }
 }

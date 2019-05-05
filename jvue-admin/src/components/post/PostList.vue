@@ -73,7 +73,7 @@
           <el-button
             size="small"
             type="danger"
-            :disabled="!scope.row.showDelete"
+            :disabled="scope.row.showDelete"
             @click="handleDelete(scope.row.id)"
           >
             删除
@@ -81,7 +81,7 @@
           <el-button
             size="small"
             type="warning"
-            :disabled="!scope.row.showTrash"
+            :disabled="scope.row.showTrash"
             @click="handleTrash(scope.row.id)"
           >
             移到回收站
@@ -153,16 +153,19 @@
         let item = articles[key];
         const article = {
           id: item.id,
-          title: item.title,
+          title: item.title + item.status,
           publish: this.$dayjs(item.created).format('YYYY-MM-DD HH:mm:ss'),
           modified: this.$dayjs(item.modified).format('YYYY-MM-DD HH:mm:ss'),
           category: item.category || this.$util.STATIC.DEFAULT_CATEGORY,
           tags:item.tags || this.$util.STATIC.DEFAULT_TAG,
           typeText:this.$util.typeToString(item.type),
           status: item.status,
-          showDelete:item.status === this.$util.STATIC.STATUS_DRAFT,
-          showTrash:item.status === this.$util.STATIC.STATUS_PUBLISH
-        }
+          statusText: item.status === this.$util.STATIC.STATUS_TRASH?
+            '回收站':
+            (this.$util.STATIC.STATUS_DRAFT?'草稿':'已发布'),
+          showDelete:item.status !== this.$util.STATIC.STATUS_TRASH,
+          showTrash:item.status === this.$util.STATIC.STATUS_TRASH
+        };
         // console.log(article);
         this.articleDatas.push(article);
       }

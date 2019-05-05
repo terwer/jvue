@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.terwergreen.jvueserver.core.CommonDAO;
 import com.terwergreen.jvueserver.model.Post;
 import com.terwergreen.jvueserver.service.PostService;
+import com.terwergreen.jvueserver.util.PostStatusEnum;
 import com.terwergreen.jvueserver.util.PostTypeEmum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -89,6 +90,24 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public boolean deletePostById(Integer postId) {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("postId", postId);
+        int count = commonDAO.update("deletePostByMap", paramMap);
+        if (count > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updatePostStatus(Integer postId, PostStatusEnum status) {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("postId", postId);
+        paramMap.put("status", status.getName());
+        int count = commonDAO.update("updatePostByMap", paramMap);
+        if (count > 0) {
+            return true;
+        }
         return false;
     }
 

@@ -7,6 +7,7 @@ const STATIC = {
   DEFAULT_TAG: "默认标签",
   STATUS_PUBLISH: "publish",
   STATUS_DRAFT: "draft",
+  STATUS_TRASH: "trash",
   META_CATEGORY: "category",
   META_TAG: "tag"
 };

@@ -2,6 +2,7 @@ package com.terwergreen.jvueserver.service;
 
 import com.github.pagehelper.PageInfo;
 import com.terwergreen.jvueserver.model.Post;
+import com.terwergreen.jvueserver.util.PostStatusEnum;
 
 import java.util.List;
 import java.util.Map;
@@ -60,6 +61,7 @@ public interface PostService {
 
     /**
      * 添加或者更新文章
+     *
      * @return 结果
      */
     Post savePost(Post post);
@@ -73,9 +75,19 @@ public interface PostService {
     boolean deletePostById(Integer postId);
 
     /**
+     * 更新文章状态
+     *
+     * @param postId 文章ID
+     * @param status 状态
+     * @return 结果
+     */
+    boolean updatePostStatus(Integer postId, PostStatusEnum status);
+
+    /**
      * 更新文章浏览时
+     *
      * @param articleId 文章ID
-     * @param hits 浏览时
+     * @param hits      浏览时
      * @return 结果
      */
     boolean updatePostHits(Integer articleId, Integer hits);

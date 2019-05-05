@@ -126,7 +126,14 @@
         <if test="hits!=null and hits!=''">
             hits = #{hits},
         </if>
+        <if test="status!=null and status!=''">
+            status = #{status},
+        </if>
         modified=current_timestamp
         WHERE id=#{postId}
     </update>
+    <!-- 删除文章 -->
+    <delete id="deletePostByMap" parameterType="java.util.Map">
+        DELETE FROM posts WHERE id=#{postId}
+    </delete>
 </mapper>

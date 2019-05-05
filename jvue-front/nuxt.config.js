@@ -30,9 +30,12 @@ module.exports = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    "~/plugins/element-ui",
-    "~/plugins/font-awesome",
     "~/plugins/axios",
+    "~plugins/element-ui",
+    {
+      src: "@/plugins/font-awesome",
+      ssr: false // 只在客户端打包
+    },
     {
       src: "~/plugins/vue-uweb",
       ssr: false // 只在客户端打包
