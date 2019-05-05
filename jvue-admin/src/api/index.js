@@ -51,6 +51,12 @@ const article = {
   },
   saveArticle(params) {
     return post("/admin/post/save", params);
+  },
+  deleteArticle(params){
+    return post("/admin/post/remove", params);
+  },
+  trashArticle(params){
+    return post("/admin/post/trash", params);
   }
 };
 

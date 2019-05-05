@@ -4,6 +4,6 @@ import locale from "element-ui/lib/locale/lang/zh-CN";
 import "element-ui/lib/theme-chalk/index.css";
 
 Vue.use(Element, { locale });
-console.log("Register element-ui success");
+// console.log("Register element-ui success");
 
 export default {};

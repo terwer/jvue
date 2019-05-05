@@ -73,7 +73,7 @@
           <el-button
             size="small"
             type="danger"
-            :disabled="scope.row.showDelete"
+            :disabled="!scope.row.showDelete"
             @click="handleDelete(scope.row.id)"
           >
             删除
@@ -81,7 +81,7 @@
           <el-button
             size="small"
             type="warning"
-            :disabled="scope.row.showTrash"
+            :disabled="!scope.row.showTrash"
             @click="handleTrash(scope.row.id)"
           >
             移到回收站
@@ -150,28 +150,41 @@
     initArticleDatas (articles) {
       this.articleDatas = [];
       for (let key in articles) {
-        let data = articles[key];
-        let article = {
-          id: data.id,
-          title: data.title,
-          publish: this.$dayjs(data.created).format('YYYY-MM-DD HH:mm:ss'),
-          modified: this.$dayjs(data.modified).format('YYYY-MM-DD HH:mm:ss'),
-          category: data.category || this.$util.STATIC.DEFAULT_CATEGORY,
-          tags:data.tags || this.$util.STATIC.DEFAULT_TAG,
-          typeText:this.$util.typeToString(data.type),
-          status:data.status,
-          statusText:this.$util.STATIC.STATUS_PUBLISH === data.status ? '已发布' : '回收站',
-          showTrash:data.status !== this.$util.STATIC.STATUS_PUBLISH,
-          showDelete:data.status !== this.$util.STATIC.STATUS_DRAFT
-        };
+        let item = articles[key];
+        const article = {
+          id: item.id,
+          title: item.title,
+          publish: this.$dayjs(item.created).format('YYYY-MM-DD HH:mm:ss'),
+          modified: this.$dayjs(item.modified).format('YYYY-MM-DD HH:mm:ss'),
+          category: item.category || this.$util.STATIC.DEFAULT_CATEGORY,
+          tags:item.tags || this.$util.STATIC.DEFAULT_TAG,
+          typeText:this.$util.typeToString(item.type),
+          status: item.status,
+          showDelete:item.status === this.$util.STATIC.STATUS_DRAFT,
+          showTrash:item.status === this.$util.STATIC.STATUS_PUBLISH
+        }
+        // console.log(article);
         this.articleDatas.push(article);
       }
     },
     deleteArticle (id) {
-      this.$api.article.deleteArticle(id).then(() => {
+      this.$api.article.deleteArticle({
+        postId:id
+      }).then(() => {
         this.$message({
           type: 'success',
           message: '删除成功!'
+        });
+        this.init(this.$route.query.page);
+      });
+    },
+    trashArticle(id){
+      this.$api.article.trashArticle({
+        postId:id
+      }).then(()=>{
+        this.$message({
+          type: 'success',
+          message: '移到回收站成功!'
         });
         this.init(this.$route.query.page);
       });
