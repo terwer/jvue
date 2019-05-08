@@ -1,6 +1,48 @@
+# 构建docker-compose项目
+# docker-compose --log-level INFO build
+# docker-compose --log-level INFO build jvue-front
+
+# 重启并清理以及重建容器
+# docker-compose --log-level INFO up --force-recreate --remove-orphans
+# docker-compose --log-level INFO up --force-recreate jvue-front
+
+# 重启并重建镜像
+# docker-compose --log-level INFO up --build --force-recreate --remove-orphans
+# docker-compose --log-level INFO up --build --force-recreate jvue-front
+
+# 启动守护线程
+# docker-compose --log-level INFO up -d
+
+# 重启并重建镜像启动守护线程
+# docker-compose --log-level INFO up -d --build --force-recreate jvue-front
+
+# oracle doc
+# DB_SID
+# This parameter changes the ORACLE_SID of the database. The default value is set to ORCLCDB.
+# To connect from outside the container using SQL*Plus,
+# $ sqlplus sys/Oradoc_db1@ORCLCDB as sysdba
+# Changing default password for SYS user
+# alter user sys identified by <new-password>;
+# The database alert log can be viewed with
+# $ docker logs <Oracle-DB>
+
 version: '3'
 services:
+  jvue-nginx:
+    privileged: true
+    image: jvue/nginx:1.15.9
+    container_name: jvue-nginx
+    build:
+      context: ./
+      dockerfile: ./jvue-nginx/Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./jvue-nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./data/nginx/log:/var/log/nginx
+    restart: always
   jvue-mysql:
+    privileged: true
     image: jvue/mysql:5.7.24
     container_name: jvue-mysql
     build:
@@ -17,9 +59,26 @@ services:
       - "MYSQL_USER=test"
       - "MYSQL_PASSWORD=123456"
     volumes:
+      - ./data/mysql/db:/var/db
+      - ./data/mysql/log:/var/log
+      - ./jvue-mysql/my.cnf:/etc/my.cnf
       - ./jvue-mysql/init:/docker-entrypoint-initdb.d/
     restart: always
+  jvue-oracle:
+    privileged: true
+    image: jvue/oracle:oracle-xe-11g
+    container_name: jvue-oracle
+    build:
+      context: ./
+      dockerfile: ./jvue-oracle/Dockerfile
+    ports:
+      - "1521:1521"
+      - "5500:5500"
+    volumes:
+      - ./data/oracle:/u01/app/oracle
+    restart: always
   jvue-server:
+    privileged: true
     image: jvue/server:4.0.0
     container_name: jvue-server
     build:
@@ -35,6 +94,7 @@ services:
       - ./data/server/logs:/logs
     restart: always
   jvue-front:
+    privileged: true
     container_name: jvue-front
     image: jvue/front:4.0.0
     build:
@@ -46,6 +106,7 @@ services:
       - npm_config_unsafe_perm=true
     restart: always
   jvue-admin:
+    privileged: true
     container_name: jvue-admin
     image: jvue/admin:4.0.0
     build:
@@ -55,16 +116,4 @@ services:
       - "3001:3001"
     environment:
       - npm_config_unsafe_perm=true
-    restart: always
-  jvue-nginx:
-    image: jvue/nginx:1.15.9
-    container_name: jvue-nginx
-    build:
-      context: ./
-      dockerfile: ./jvue-nginx/Dockerfile
-    ports:
-      - "80:80"
-    volumes:
-      - ./jvue-nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./data/nginx/log:/var/log/nginx
     restart: always
