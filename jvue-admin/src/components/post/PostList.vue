@@ -153,7 +153,7 @@
         let item = articles[key];
         const article = {
           id: item.id,
-          title: item.title + item.status,
+          title: item.title,
           publish: this.$dayjs(item.created).format('YYYY-MM-DD HH:mm:ss'),
           modified: this.$dayjs(item.modified).format('YYYY-MM-DD HH:mm:ss'),
           category: item.category || this.$util.STATIC.DEFAULT_CATEGORY,

@@ -29,7 +29,6 @@
 version: '3'
 services:
   jvue-nginx:
-    privileged: true
     image: jvue/nginx:1.15.9
     container_name: jvue-nginx
     build:
@@ -42,7 +41,6 @@ services:
       - ./data/nginx/log:/var/log/nginx
     restart: always
   jvue-mysql:
-    privileged: true
     image: jvue/mysql:5.7.24
     container_name: jvue-mysql
     build:
@@ -65,7 +63,6 @@ services:
       - ./jvue-mysql/init:/docker-entrypoint-initdb.d/
     restart: always
   jvue-oracle:
-    privileged: true
     image: jvue/oracle:oracle-xe-11g
     container_name: jvue-oracle
     build:
@@ -78,7 +75,6 @@ services:
       - ./data/oracle:/u01/app/oracle
     restart: always
   jvue-server:
-    privileged: true
     image: jvue/server:4.0.0
     container_name: jvue-server
     build:
@@ -94,7 +90,6 @@ services:
       - ./data/server/logs:/logs
     restart: always
   jvue-front:
-    privileged: true
     container_name: jvue-front
     image: jvue/front:4.0.0
     build:
@@ -106,7 +101,6 @@ services:
       - npm_config_unsafe_perm=true
     restart: always
   jvue-admin:
-    privileged: true
     container_name: jvue-admin
     image: jvue/admin:4.0.0
     build:

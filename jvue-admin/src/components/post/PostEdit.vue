@@ -22,6 +22,22 @@
         <el-col :xs="24" :sm="8" :md="8" :lg="8">
           <div class="panel">
             <div class="panel-content">
+              <el-form-item label="类型">
+                <el-select
+                  v-model="article.type"
+                  filterable
+                  placeholder="请选择文章类型"
+                  value=""
+                >
+                  <el-option
+                    v-for="type in types"
+                    :key="type.value"
+                    :label="type.label"
+                    :value="type.value"
+                  >
+                  </el-option>
+                </el-select>
+              </el-form-item>
               <el-form-item label="标签">
                 <el-select
                   v-model="article.tags"
@@ -104,6 +120,7 @@ export default {
           { required: true, message: "文章内容不能为空", trigger: "blur" }
         ]
       },
+      types: [],
       tags: [],
       categories: [],
       isFullScreen: false
@@ -121,6 +138,7 @@ export default {
         // 如果没有id则表示新增文章,不用清空文章信息
         this.article.id = "";
         this.article.title = "";
+        this.article.type = "post";
         this.article.tags = this.$util.stringToTags("");
         this.article.category = "";
         this.article.content = "";
@@ -130,10 +148,41 @@ export default {
     initArticle(data) {
       this.article.id = data.id;
       this.article.title = data.title;
+      this.article.type = data.type;
       this.article.tags = this.$util.stringToTags(data.tags);
       this.article.category = data.category;
       this.article.content = data.content;
       this.article.status = data.status;
+    },
+    getTypes(){
+      this.types = [
+         {
+          value:'post',
+          label:'post'
+        },
+         {
+          value:'post2',
+          label:'post2'
+        }
+      ];
+      
+      var t = [
+        {
+          value:'post',
+          label:'文章'
+        },
+         {
+          value:'note',
+          label:'笔记'
+        }, {
+          value:'essay',
+          label:'随笔'
+        },
+         {
+          value:'page',
+          label:'页面'
+        }
+      ];
     },
     getTags() {
       this.$api.article.getAllTags().then(data => {
@@ -202,6 +251,7 @@ export default {
     },
     init() {
       this.getArticle();
+      this.getTypes();
       this.getTags();
       this.getCategories();
     }

@@ -4,8 +4,8 @@
     <!-- 获取文章列表 -->
     <select id="selectPosts" resultType="com.terwergreen.jvueserver.model.Post">
         SELECT id,name,title,created,modified,content,author_id as authorId
-                ,hits,tags,category,status,type,allow_comment as allowComment
-                ,comment_count as commentCount
+        ,hits,tags,category,status,type,allow_comment as allowComment
+        ,comment_count as commentCount
         FROM posts
         WHERE 1=1
         <if test="postType!=null">
@@ -16,8 +16,8 @@
         </if>
         <if test="search!=null and search!=''">
             AND (
-                title LIKE concat(concat('%', #{search}), '%') OR
-                content LIKE concat(concat('%', #{search}), '%')
+            title LIKE concat(concat('%', #{search}), '%') OR
+            content LIKE concat(concat('%', #{search}), '%')
             )
         </if>
         <choose>
@@ -31,69 +31,97 @@
     </select>
     <!-- 根据别名查文章 -->
     <select id="getPostBySlug" resultType="com.terwergreen.jvueserver.model.Post">
-        SELECT id,name,title,created,modified,content,author_id as authorId
-                ,hits,tags,category,status,type,allow_comment as allowComment
-                ,comment_count as commentCount
+        SELECT id
+             , name
+             , title
+             , created
+             , modified
+             , content
+             , author_id     as authorId
+             , hits
+             , tags
+             , category
+             , status
+             , type
+             , allow_comment as allowComment
+             , comment_count as commentCount
         FROM posts
-        WHERE name=#{postSlug}
+        WHERE name = #{postSlug}
     </select>
     <!-- 根据ID查文章 -->
     <select id="getPostById" resultType="com.terwergreen.jvueserver.model.Post">
-        SELECT id,name,title,created,modified,content,author_id as authorId
-                ,hits,tags,category,status,type,allow_comment as allowComment
-                ,comment_count as commentCount
+        SELECT id
+             , name
+             , title
+             , created
+             , modified
+             , content
+             , author_id     as authorId
+             , hits
+             , tags
+             , category
+             , status
+             , type
+             , allow_comment as allowComment
+             , comment_count as commentCount
         FROM posts
-        WHERE id=#{postId}
+        WHERE id = #{postId}
     </select>
     <!-- 新增文章 -->
     <insert id="insertPost" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="com.terwergreen.jvueserver.model.Post">
         INSERT INTO posts(
-            created
-            ,modified
+        created
+        ,modified
+        ,type
+        ,author_id
+        <if test="title!=null and title!=''">
+            ,title
+        </if>
+        <if test="content!=null and content!=''">
+            ,content
+        </if>
+        <if test="type!=null and type!=''">
             ,type
-            ,author_id
-            <if test="title!=null and title!=''">
-                ,title
-            </if>
-            <if test="content!=null and content!=''">
-                ,content
-            </if>
-            <if test="tags!=null and tags!=''">
-                ,tags
-            </if>
-            <if test="category!=null and category!=''">
-                ,category
-            </if>
-            <if test="status!=null and status!=''">
-                ,status
-            </if>
-            <if test="allowComment!=null and allowComment!=''">
-                ,allow_comment
-            </if>
+        </if>
+        <if test="tags!=null and tags!=''">
+            ,tags
+        </if>
+        <if test="category!=null and category!=''">
+            ,category
+        </if>
+        <if test="status!=null and status!=''">
+            ,status
+        </if>
+        <if test="allowComment!=null and allowComment!=''">
+            ,allow_comment
+        </if>
         )
         VALUES(
-            current_timestamp
-            ,current_timestamp
+        current_timestamp
+        ,current_timestamp
+        ,#{type}
+        ,#{authorId}
+        <if test="title!=null and title!=''">
+            ,#{title}
+        </if>
+        <if test="content!=null and content!=''">
+            ,#{content}
+        </if>
+        <if test="type!=null and type!=''">
             ,#{type}
-            ,#{authorId}
-            <if test="title!=null and title!=''">
-                ,#{title}
-            </if>
-            <if test="content!=null and content!=''">
-                ,#{content}
-            </if>
-            <if test="tags!=null and tags!=''">
-                 ,#{tags}
-            </if>
-            <if test="category!=null and category!=''">
-                ,#{category}
-            </if>
-            <if test="status!=null and status!=''">
-                ,#{status}
-            </if>
-            <if test="allowComment!=null and allowComment!=''">
-                ,#{allowComment}
-            </if>
+        </if>
+        <if test="tags!=null and tags!=''">
+            ,#{tags}
+        </if>
+        <if test="category!=null and category!=''">
+            ,#{category}
+        </if>
+        <if test="status!=null and status!=''">
+            ,#{status}
+        </if>
+        <if test="allowComment!=null and allowComment!=''">
+            ,#{allowComment}
+        </if>
         )
     </insert>
     <!-- 更新文章 -->
@@ -104,6 +132,9 @@
         </if>
         <if test="content!=null and content!=''">
             content = #{content},
+        </if>
+        <if test="type!=null and type!=''">
+            type = #{type},
         </if>
         <if test="tags!=null and tags!=''">
             tags = #{tags},
@@ -134,6 +165,8 @@
     </update>
     <!-- 删除文章 -->
     <delete id="deletePostByMap" parameterType="java.util.Map">
-        DELETE FROM posts WHERE id=#{postId}
+        DELETE
+        FROM posts
+        WHERE id = #{postId}
     </delete>
 </mapper>
