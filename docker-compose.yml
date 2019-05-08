@@ -59,9 +59,6 @@ services:
       - "MYSQL_USER=test"
       - "MYSQL_PASSWORD=123456"
     volumes:
-      - ./data/mysql/db:/var/db
-      - ./data/mysql/log:/var/log
-      - ./jvue-mysql/my.cnf:/etc/my.cnf
       - ./jvue-mysql/init:/docker-entrypoint-initdb.d/
     restart: always
   jvue-oracle:
@@ -74,8 +71,6 @@ services:
     ports:
       - "1521:1521"
       - "5500:5500"
-    volumes:
-      - ./data/oracle:/u01/app/oracle
     restart: always
   jvue-server:
     privileged: true
