@@ -26,8 +26,8 @@
                   {{
                     post.title === ""
                       ? "暂无标题"
-                      : post.title.length > 20
-                      ? post.title.substring(0, 20)
+                      : post.title.length > 36
+                      ? post.title.substring(0, 36)
                       : post.title
                   }}
                 </h2>
@@ -66,5 +66,12 @@ export default {
 <style scoped>
 .has-image-title {
   margin: 0;
+}
+.image {
+  width: 100%;
+  max-height: 150px;
+  display: block;
+  padding: 0 20px 0 0;
+  min-height: 75px;
 }
 </style>

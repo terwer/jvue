@@ -32,10 +32,7 @@ module.exports = {
    */
   plugins: [
     "~/plugins/axios",
-    {
-      src: "~plugins/element-ui",
-      ssr: false
-    },
+    "~plugins/element-ui",
     {
       src: "@/plugins/font-awesome",
       ssr: false // 只在客户端打包
@@ -62,7 +59,10 @@ module.exports = {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: "http://www.terwergreen.com/api"
+    baseURL:
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:8081/api"
+        : "http://www.terwergreen.com/api"
   },
 
   /*

@@ -80,9 +80,6 @@
         <if test="content!=null and content!=''">
             ,content
         </if>
-        <if test="type!=null and type!=''">
-            ,type
-        </if>
         <if test="tags!=null and tags!=''">
             ,tags
         </if>
@@ -106,9 +103,6 @@
         </if>
         <if test="content!=null and content!=''">
             ,#{content}
-        </if>
-        <if test="type!=null and type!=''">
-            ,#{type}
         </if>
         <if test="tags!=null and tags!=''">
             ,#{tags}
