@@ -33,7 +33,7 @@ mvn -v && mvn compile && mvn exec:java
 
 notice:You can run ``yarn build-ssr-dev`` in development mode to show error logs
 
-2、Run java mavem build
+2、Run java maven build
 
 ```bash
 mvn clean package -DskipTests
