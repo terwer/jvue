@@ -13,7 +13,7 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --ignore-pattern !.eslintrc.js --fix ."
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "dayjs": "^1.8.11",
     "element-ui": "^2.8.2",
     "highlight.js": "^9.15.6",
