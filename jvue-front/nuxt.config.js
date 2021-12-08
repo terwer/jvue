@@ -59,7 +59,8 @@ module.exports = {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL:"http://www.terwergreen.com/api"
+    // baseURL:"http://www.terwergreen.com/api"
+    baseURL: "http://localhost:8081/api"
   },
 
   /*
