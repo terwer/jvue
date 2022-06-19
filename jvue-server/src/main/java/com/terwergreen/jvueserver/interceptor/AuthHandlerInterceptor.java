@@ -44,37 +44,39 @@ public class AuthHandlerInterceptor implements HandlerInterceptor {
 
         // 兼容入参为RequestBody时候的预请求
         if (request.getMethod().equals(HttpMethod.OPTIONS.name())) {
-            // response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             return true;
         }
 
         // 校验token
-        Object tokenString = request.getParameter("tokenString");
-        if (!StringUtils.isEmpty(tokenString) && !tokenString.toString().trim().isEmpty()) {
-            logger.info("token:" + EncryptAndDecryptUtil.decrypt(tokenString.toString()));
-            JSONObject jsonObject = JSON.parseObject(EncryptAndDecryptUtil.decrypt(tokenString.toString()));
-            if (!StringUtils.isEmpty(jsonObject)) {
-                request.getSession().setAttribute("admin.loginId", jsonObject.getIntValue("loginId"));
-                request.getSession().setAttribute("admin.loginName", jsonObject.getString("loginName"));
-                request.getSession().setAttribute("admin.role", jsonObject.getString("role"));
-                return true;
-            }
-        }
-        //tokenString错误，返回错误信息
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json; charset=utf-8");
-        try (PrintWriter out = response.getWriter()) {
-            Map<String, Object> map = new HashMap<>(3);
-            map.put("status", RestResponseStates.SERVER_ERROR.getValue());
-            Map dataMap = new HashMap();
-            dataMap.put("code", 10001);
-            map.put("data", dataMap);
-            map.put("msg", "tokenString为空或错误");
-            out.append(JSON.toJSONString(map));
-            logger.error("tokenString错误");
-        } catch (IOException e) {
-            logger.error(e);
-        }
-        return false;
+        // 暂时取消token校验
+        return true;
+//        Object tokenString = request.getParameter("tokenString");
+//        if (!StringUtils.isEmpty(tokenString) && !tokenString.toString().trim().isEmpty()) {
+//            logger.info("token:" + EncryptAndDecryptUtil.decrypt(tokenString.toString()));
+//            JSONObject jsonObject = JSON.parseObject(EncryptAndDecryptUtil.decrypt(tokenString.toString()));
+//            if (!StringUtils.isEmpty(jsonObject)) {
+//                request.getSession().setAttribute("admin.loginId", jsonObject.getIntValue("loginId"));
+//                request.getSession().setAttribute("admin.loginName", jsonObject.getString("loginName"));
+//                request.getSession().setAttribute("admin.role", jsonObject.getString("role"));
+//                return true;
+//            }
+//        }
+//        //tokenString错误，返回错误信息
+//        response.setCharacterEncoding("UTF-8");
+//        response.setContentType("application/json; charset=utf-8");
+//        try (PrintWriter out = response.getWriter()) {
+//            Map<String, Object> map = new HashMap<>(3);
+//            map.put("status", RestResponseStates.SERVER_ERROR.getValue());
+//            Map dataMap = new HashMap();
+//            dataMap.put("code", 10001);
+//            map.put("data", dataMap);
+//            map.put("msg", "tokenString为空或错误");
+//            out.append(JSON.toJSONString(map));
+//            logger.error("tokenString错误");
+//        } catch (IOException e) {
+//            logger.error(e);
+//        }
+//        return false;
     }
 }

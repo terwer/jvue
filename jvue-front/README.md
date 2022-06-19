@@ -4,19 +4,32 @@
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
-$ npm install
+$ yarn
 
 # serve with hot reload at localhost:3000
-$ npm run dev
+$ yarn dev
 
 # build for production and launch server
-$ npm run build
-$ npm start
+$ yarn build
+$ yarn start
 
 # generate static project
-$ npm run generate
+$ yarn generate
+```
+
+## notice
+
+node-sass version policy
+
+[https://github.com/sass/node-sass#node-version-support-policy](https://github.com/sass/node-sass#node-version-support-policy)
+
+so,this project must use **node 14**
+
+```bash
+sudo npm install -g n
+sudo n 14
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).

@@ -23,7 +23,7 @@ With Docker,Vue,Vue CLI 3,webpack,Java and Spring Boot
 
 # Important Changes in JVue 4
 
-Use [Docker](https://docs.docker.com/develop/dev-best-practices/) for deploy
+Using [Docker](https://docs.docker.com/develop/dev-best-practices/) for deploy
 
 # Install
 The instructions assume that you have already installed [Docker](https://docs.docker.com/installation/) and [Docker Compose](https://docs.docker.com/compose/install/). 
@@ -40,24 +40,37 @@ yum install docker
 curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 ```
 
-See https://docs.docker.com/compose/reference/up/
+See [https://docs.docker.com/compose/reference/up/](https://docs.docker.com/compose/reference/up/)
 
 ## run jvue
-```bash
-docker compose up --build
-```
 
-or
-
+### via docker(for production)
 ```bash
 docker compose up -d --build
 ```
 
-# Check
+### custom(for dev)
+1. mysql
 
-```bash
-docker compose ps
-```
+   ```bash
+   docker compose -f docker-compose-mysql.yml
+   ```
+
+2. Jvue-server
+
+   ```bash
+   cd /Users/terwer/Documents/myworks/jvue/jvue-server/src/main/java/com/terwergreen/jvueserver
+   # then run JVueServerApplication `main` function
+   # that's all
+   ```
+
+3. Jvue-front
+
+   ```bash
+   cd /Users/terwer/Documents/myworks/jvue/jvue-front
+   yarn
+   yarn dev
+   ```
 
 # Structure
 

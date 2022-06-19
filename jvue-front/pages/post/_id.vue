@@ -97,20 +97,6 @@ const logger = getLogger("pages/post");
 
 export default {
   components: { HeaderTime, Header, Footer, FriendLink },
-  data() {
-    return {
-      id: this.$route.params.id.replace(/\.[^/.]+$/, ""),
-      items: [
-        {
-          text: "首页",
-          to: { path: "/" }
-        },
-        {
-          text: "文章"
-        }
-      ]
-    };
-  },
   async asyncData(context) {
     const siteConfigResult = await context.$axios.$post("/site/config/list");
     const siteConfigObj =
@@ -135,6 +121,20 @@ export default {
     logger.info("fetch siteConfig and post finish");
 
     return { siteConfigObj, postObj, errorMessage };
+  },
+  data() {
+    return {
+      id: this.$route.params.id.replace(/\.[^/.]+$/, ""),
+      items: [
+        {
+          text: "首页",
+          to: { path: "/" }
+        },
+        {
+          text: "文章"
+        }
+      ]
+    };
   },
   head() {
     return {
@@ -166,7 +166,10 @@ export default {
       // 高亮数学公式
       MathJax.Hub.Config({
         tex2jax: {
-          inlineMath: [["$", "$"], ["\(", "\)"]]
+          inlineMath: [
+            ["$", "$"],
+            ["\(", "\)"]
+          ]
         }
       });
 

@@ -1,5 +1,7 @@
 const pkg = require("./package");
 
+const development = process.env.NODE_ENV !== "production";
+
 module.exports = {
   debug: true,
   mode: "universal",
@@ -59,8 +61,7 @@ module.exports = {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    // baseURL:"http://www.terwergreen.com/api"
-    baseURL: "http://localhost:8081/api"
+    baseURL: development ? "http://localhost/api" : "http://localhost/api"
   },
 
   /*

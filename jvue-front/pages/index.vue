@@ -15,7 +15,7 @@
                     <Header />
                   </el-header>
                   <el-main>
-                    <Body :type="post" :post-list="postListArray" />
+                    <Body :type="postType" :post-list="postListArray" />
                   </el-main>
                 </el-container>
               </el-main>
@@ -49,9 +49,10 @@ export default {
   name: "Index",
   components: { HeaderTime, Header, Body, Footer, FriendLink },
   async asyncData({ $axios }) {
+    const postType = "post";
     const siteConfigResult = await $axios.$post("/site/config/list");
     const postsResult = await $axios.$post("/blog/post/list", {
-      postType: "post",
+      postType,
       postStatus: "publish",
       pageNum: 1,
       pageSize: 10
@@ -61,7 +62,7 @@ export default {
     const postListArray = postsResult.status === 1 ? postsResult.data.list : [];
     logger.info("fetch siteConfig and postList finish");
 
-    return { siteConfigObj, postListArray };
+    return { siteConfigObj, postType, postListArray };
   },
   head() {
     return {

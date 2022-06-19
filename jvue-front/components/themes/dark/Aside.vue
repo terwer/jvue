@@ -15,20 +15,22 @@
               <nuxt-link
                 class="aside-link-dark"
                 :to="
-                  post.name === '' || post.name === 'null' || post.name === null
-                    ? '/post-dark/' + post.id + '.html'
-                    : '/post-dark/' + post.name + '.html'
+                  post.postSlug === '' ||
+                  post.postSlug === 'null' ||
+                  post.postSlug === null
+                    ? '/post/' + post.postId + '.html'
+                    : '/post/' + post.postSlug + '.html'
                 "
               >
                 <h2
                   :class="post.thumbnails.length > 0 ? 'has-image-title' : ''"
                 >
                   {{
-                    post.title === ""
+                    post.postTitle === ""
                       ? "暂无标题"
-                      : post.title.length > 36
-                      ? post.title.substring(0, 36)
-                      : post.title
+                      : post.postTitle.length > 36
+                      ? post.postTitle.substring(0, 36)
+                      : post.postTitle
                   }}
                 </h2>
               </nuxt-link>
@@ -54,7 +56,10 @@ export default {
   },
   async mounted() {
     const postsResult = await this.$axios.$post("/blog/post/list", {
+      postType: "post",
       postStatus: "publish",
+      pageNum: 1,
+      pageSize: 10,
       isHot: 1
     });
     this.postList = postsResult.status === 1 ? postsResult.data.list || [] : [];

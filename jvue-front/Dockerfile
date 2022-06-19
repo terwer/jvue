@@ -1,7 +1,6 @@
 #依赖的镜像
 FROM node:10.15.3-alpine
 
-
 # 工作目录
 WORKDIR /app
 
