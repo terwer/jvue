@@ -947,13 +947,13 @@ const calendar = {
       gzYear: gzY,
       gzMonth: gzM,
       gzDay: gzD,
-      isToday: isToday,
-      isLeap: isLeap,
-      nWeek: nWeek,
+      isToday,
+      isLeap,
+      nWeek,
       ncWeek: "\u661f\u671f" + cWeek,
-      isTerm: isTerm,
-      Term: Term,
-      astro: astro
+      isTerm,
+      Term,
+      astro
     };
   },
 

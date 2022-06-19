@@ -48,6 +48,13 @@ const logger = getLogger("pages/post");
 
 export default {
   components: { HeaderTime, Header, Body, Footer, FriendLink },
+  async asyncData({ $axios }) {
+    const siteConfigResult = await $axios.$post("/site/config/list");
+    const siteConfigObj =
+      siteConfigResult.status === 1 ? siteConfigResult.data : {};
+    logger.info("fetch siteConfig and postList finish");
+    return { siteConfigObj };
+  },
   data() {
     return {
       keyword: this.$route.params.keyword
@@ -55,13 +62,6 @@ export default {
         : "",
       postListArray: []
     };
-  },
-  async asyncData({ $axios }) {
-    const siteConfigResult = await $axios.$post("/site/config/list");
-    const siteConfigObj =
-      siteConfigResult.status === 1 ? siteConfigResult.data : {};
-    logger.info("fetch siteConfig and postList finish");
-    return { siteConfigObj };
   },
   head() {
     return {

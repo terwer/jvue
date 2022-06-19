@@ -45,11 +45,6 @@ import FriendLink from "../components/themes/dark/FriendLink";
 
 export default {
   components: { HeaderTime, Header, Body, Footer, FriendLink },
-  data() {
-    return {
-      postListArray: []
-    };
-  },
   async asyncData({ $axios }) {
     const siteConfigResult = await $axios.$post("/site/config/list");
     const siteConfigObj =
@@ -64,6 +59,11 @@ export default {
     const postListArray = postsResult.status === 1 ? postsResult.data.list : [];
 
     return { siteConfigObj, postListArray };
+  },
+  data() {
+    return {
+      postListArray: []
+    };
   }
 };
 </script>

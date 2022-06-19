@@ -47,14 +47,6 @@ const logger = getLogger("pages/index");
 
 export default {
   components: { HeaderTime, Header, Body, Footer, FriendLink },
-  data() {
-    return {
-      keyword: this.$route.params.keyword
-        ? this.$route.params.keyword.replace(/\.[^/.]+$/, "")
-        : "",
-      postListArray: []
-    };
-  },
   async asyncData({ $axios }) {
     const siteConfigResult = await $axios.$post("/site/config/list");
     const siteConfigObj =
@@ -62,13 +54,13 @@ export default {
     logger.info("fetch siteConfig finish");
     return { siteConfigObj };
   },
-  async mounted() {
-    const postsResult = await this.$axios.$post("/blog/post/list", {
-      postStatus: "publish",
-      search: this.keyword
-    });
-
-    this.postListArray = postsResult.status === 1 ? postsResult.data.list : [];
+  data() {
+    return {
+      keyword: this.$route.params.keyword
+        ? this.$route.params.keyword.replace(/\.[^/.]+$/, "")
+        : "",
+      postListArray: []
+    };
   },
   head() {
     return {
@@ -85,6 +77,14 @@ export default {
         }
       ]
     };
+  },
+  async mounted() {
+    const postsResult = await this.$axios.$post("/blog/post/list", {
+      postStatus: "publish",
+      search: this.keyword
+    });
+
+    this.postListArray = postsResult.status === 1 ? postsResult.data.list : [];
   }
 };
 </script>

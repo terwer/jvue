@@ -1,4 +1,6 @@
-USE testbugucms;
+grant all privileges on * to terwer@'%' identified by '123456';
+flush privileges;
+USE bugucms4;
 
 -- ------------------------------
 -- Database
@@ -12,7 +14,6 @@ USE testbugucms;
 -- CREATE USER 'test'@'%' IDENTIFIED BY '123456'; #远程登录
 -- CREATE USER 'prod'@'localhost' IDENTIFIED BY '123456'; #本地登录
 -- CREATE USER 'prod'@'%' IDENTIFIED BY '123456'; #远程登录
--- grant all privileges on * to test@'%' identified by '123456';
 -- REVOKE ALL PRIVILEGES ON `testbugucms`.* FROM 'test'@'%';
 -- GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER ON `testbugucms`.* TO 'test'@'%';
 -- grant all privileges on bugucms.* to prod@'%' identified by "123456"

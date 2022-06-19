@@ -20,7 +20,7 @@ export default function({ $axios, redirect }) {
     let params = config.data || {};
     // tokenString校验
     params = Object.assign(params, {
-      tokenString: tokenString
+      tokenString
     });
     logger.info("params=>");
     console.log(params || {});
