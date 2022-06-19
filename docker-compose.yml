@@ -12,6 +12,8 @@ services:
       dockerfile: ./jvue-nginx/Dockerfile
     ports:
       - "80:80"
+    environment:
+      - HOST=0.0.0.0
     volumes:
       - ./jvue-nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./data/nginx/log:/var/log/nginx
@@ -25,6 +27,7 @@ services:
     ports:
       - "3306:3306"
     environment:
+      - HOST=0.0.0.0
       # 最好使用此设定时区，其它静像也可以使用,也可以用"TZ=Asia/Shanghai"
       - "TZ=CST-8"
       - "MYSQL_ROOT_PASSWORD=123456"
@@ -46,6 +49,8 @@ services:
       dockerfile: ./jvue-server/Dockerfile
     ports:
       - "8002:8002"
+    environment:
+      - HOST=0.0.0.0
     working_dir: /app
     command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker -DskipTests
     volumes:
@@ -62,5 +67,6 @@ services:
     ports:
       - "3000:3000"
     environment:
+      - HOST=0.0.0.0
       - npm_config_unsafe_perm=true
     restart: "no"
