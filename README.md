@@ -21,7 +21,7 @@
 Next light-weight,responsive project
 With Docker,Vue,Vue CLI 3,webpack,Java and Spring Boot
 
-# Important Changes in Jvue 4
+# Important Changes in JVue 4
 
 Use [Docker](https://docs.docker.com/develop/dev-best-practices/) for deploy
 
@@ -31,11 +31,11 @@ The instructions assume that you have already installed [Docker](https://docs.do
 # Run
 
 ```bash
-docker-compose up
+docker compose -f docker-compose-mysql.yml up --build
 ```
 
 ```bash
-docker-compose up -d
+docker compose up -f docker-compose-mysql.yml -d --build
 ```
 
 See https://docs.docker.com/compose/reference/up/
@@ -43,7 +43,7 @@ See https://docs.docker.com/compose/reference/up/
 # Check
 
 ```bash
-docker-compose ps
+docker compose ps
 ```
 
 # Structure
@@ -55,4 +55,4 @@ Have fun and enjoy!
 
 You can contribute simplely by create a pull request for me
 
-For detailed explanation on how things work, please visit [author's blog](http://www.terwergreen.com).
+For detailed explanation on how things work, please visit [author's blog](https://terwergreen.com).
