@@ -1,21 +1,25 @@
 <template>
   <el-container>
-    <el-main>
+    <el-main class="el-container-dark">
       <el-row>
         <el-col :xs="0" :md="2">&nbsp;</el-col>
         <el-col :xs="24" :md="20">
-          <el-main>
+          <el-main class="el-main-dark">
             <el-container>
-              <el-main>
+              <el-main class="el-main-dark">
                 <el-container>
-                  <el-header>
+                  <el-header class="el-header-dark">
                     <HeaderTime />
                   </el-header>
-                  <el-header>
+                  <el-header class="el-header-dark">
                     <Header />
                   </el-header>
-                  <el-main>
-                    <Body :type="post" :post-list="postListArray" />
+                  <el-main class="el-main-dark">
+                    <Body
+                      type="post"
+                      :post-list="postListArray"
+                      :keyword="siteConfigObj.keywords"
+                    />
                   </el-main>
                 </el-container>
               </el-main>
@@ -38,28 +42,31 @@
 
 <script>
 import { getLogger } from "../util/logger";
-import HeaderTime from "../components/themes/default/HeaderTime";
-import Header from "../components/themes/default/Header";
-import Body from "../components/themes/default/Body";
-import Footer from "../components/themes/default/Footer";
-import FriendLink from "../components/themes/default/FriendLink";
+import HeaderTime from "../components/themes/dark/HeaderTime";
+import Header from "../components/themes/dark/Header";
+import Body from "../components/themes/dark/Body";
+import Footer from "../components/themes/dark/Footer";
+import FriendLink from "../components/themes/dark/FriendLink";
+// import { inBrowser } from "@/util/dom";
 const logger = getLogger("pages/index");
 
 export default {
-  name: "Index",
   components: { HeaderTime, Header, Body, Footer, FriendLink },
   async asyncData({ $axios }) {
     const siteConfigResult = await $axios.$post("/site/config/list");
+    const siteConfigObj = siteConfigResult.data;
+    logger.info("site_config_list=>");
+    logger.info(siteConfigResult);
+
     const postsResult = await $axios.$post("/blog/post/list", {
       postType: "post",
       postStatus: "publish",
       pageNum: 1,
       pageSize: 10
     });
-    const siteConfigObj =
-      siteConfigResult.status === 1 ? siteConfigResult.data : {};
-    const postListArray = postsResult.status === 1 ? postsResult.data.list : [];
-    logger.info("fetch siteConfig and postList finish");
+    logger.info("blog_post_list=>");
+    logger.info(postsResult);
+    const postListArray = []; // postsResult.status === 1 ? postsResult.data.list : [];
 
     return { siteConfigObj, postListArray };
   },
@@ -84,5 +91,5 @@ export default {
 
 <style lang="scss">
 @import "./common.css";
-@import "./default.css";
+@import "./dark.css";
 </style>

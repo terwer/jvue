@@ -34,5 +34,6 @@ export default function({ $axios, redirect }) {
       console.error("500");
       // redirect("/sorry");
     }
+    console.error("axios error=>", error);
   });
 }

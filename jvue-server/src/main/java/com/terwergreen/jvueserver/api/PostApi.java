@@ -105,7 +105,7 @@ public class PostApi extends BaseApi {
             for (Post post : list) {
                 this.transformPreView(post);
             }
-            resultMap.put("total", posts.getTotal());
+            resultMap.put("count", posts.getTotal());
             resultMap.put("list", list);
 
             restResponse.setData(resultMap);

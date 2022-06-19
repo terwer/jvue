@@ -1,20 +1,20 @@
 <template>
   <el-container>
-    <el-main class="el-container-dark">
+    <el-main>
       <el-row>
         <el-col :xs="0" :md="2">&nbsp;</el-col>
         <el-col :xs="24" :md="20">
-          <el-main class="el-main-dark">
+          <el-main>
             <el-container>
-              <el-main class="el-main-dark">
+              <el-main>
                 <el-container>
-                  <el-header class="el-header-dark">
+                  <el-header>
                     <HeaderTime />
                   </el-header>
-                  <el-header class="el-header-dark">
+                  <el-header>
                     <Header />
                   </el-header>
-                  <el-main class="el-main-dark">
+                  <el-main>
                     <Body :keyword="keyword" :post-list="postListArray" />
                   </el-main>
                 </el-container>
@@ -38,12 +38,13 @@
 
 <script>
 import { getLogger } from "../../util/logger";
-import HeaderTime from "../../components/themes/dark/HeaderTime";
-import Header from "../../components/themes/dark/Header";
-import Body from "../../components/themes/dark/Body";
-import Footer from "../../components/themes/dark/Footer";
-import FriendLink from "../../components/themes/dark/FriendLink";
-const logger = getLogger("pages/index");
+import HeaderTime from "../../components/themes/default/HeaderTime";
+import Header from "../../components/themes/default/Header";
+import Body from "../../components/themes/default/Body";
+import Footer from "../../components/themes/default/Footer";
+import FriendLink from "../../components/themes/default/FriendLink";
+
+const logger = getLogger("pages/post");
 
 export default {
   components: { HeaderTime, Header, Body, Footer, FriendLink },
@@ -51,7 +52,7 @@ export default {
     const siteConfigResult = await $axios.$post("/site/config/list");
     const siteConfigObj =
       siteConfigResult.status === 1 ? siteConfigResult.data : {};
-    logger.info("fetch siteConfig finish");
+    logger.info("fetch siteConfig and postList finish");
     return { siteConfigObj };
   },
   data() {
@@ -91,7 +92,7 @@ export default {
 
 <style lang="scss">
 @import "../common.css";
-@import "../dark.css";
+@import "../default.css";
 </style>
 
 <style scoped></style>
