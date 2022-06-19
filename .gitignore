@@ -32,3 +32,4 @@ docker-compose.prod.yml
 /data/
 src/main/resources/static/
 src/main/resources/templates/
+jvue-server-log/
