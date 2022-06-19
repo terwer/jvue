@@ -1,12 +1,11 @@
 #依赖的镜像
 FROM node:10.15.3-alpine
 
-
 # 工作目录
 WORKDIR /app
 
 # 安装依赖
-COPY ./bugucms-web/package.json ./
+COPY ./jvue-front/package.json ./
 
 # 因为被墙，单独安装
 ENV SASS_BINARY_SITE https://npm.taobao.org/mirrors/node-sass
@@ -17,7 +16,7 @@ RUN npm config set registry https://registry.npm.taobao.org && \
     npm install --save-dev node-sass sass-loader && \
     npm install
 
-COPY ./bugucms-web .
+COPY ./jvue-front .
 
 # 注意这个一定要要在npm install后面，否则devDependencies的包无法安装
 ENV HOST 0.0.0.0
