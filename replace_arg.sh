@@ -5,7 +5,10 @@ replaceArg() {
   search=$1
   replace=$2
   if [[ $search != "" && $replace != "" ]]; then
+    # mac
     sed -i "_bak" "s/$search/$replace/gi" $filename
+    # linux
+    # sed -i "s/$search/$replace/gi" $filename
   fi
 }
 
