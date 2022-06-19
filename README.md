@@ -40,15 +40,18 @@ yum install docker
 curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 ```
 
-```bash
-docker compose -f docker-compose-mysql.yml up --build
-```
-
-```bash
-docker compose up -f docker-compose-mysql.yml -d --build
-```
-
 See https://docs.docker.com/compose/reference/up/
+
+## run jvue
+```bash
+docker compose up --build
+```
+
+or
+
+```bash
+docker compose up -d --build
+```
 
 # Check
 

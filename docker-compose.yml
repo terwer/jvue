@@ -59,16 +59,6 @@ services:
     volumes:
       - ./jvue-mysql/init:/docker-entrypoint-initdb.d/
     restart: always
-#  jvue-oracle:
-#    image: jvue/oracle:oracle-xe-11g
-#    container_name: jvue-oracle
-#    build:
-#      context: ./
-#      dockerfile: ./jvue-oracle/Dockerfile
-#    ports:
-#      - "1521:1521"
-#      - "5500:5500"
-#    restart: always
   jvue-server:
     image: jvue/server:4.0.0
     container_name: jvue-server
