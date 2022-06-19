@@ -30,6 +30,16 @@ The instructions assume that you have already installed [Docker](https://docs.do
 
 # Run
 
+## install docker
+```
+yum install docker
+```
+
+## install docker-compose
+```
+curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+```
+
 ```bash
 docker compose -f docker-compose-mysql.yml up --build
 ```

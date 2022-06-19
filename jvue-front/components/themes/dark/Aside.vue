@@ -26,8 +26,8 @@
                   {{
                     post.title === ""
                       ? "暂无标题"
-                      : post.title.length > 20
-                      ? post.title.substring(0, 20)
+                      : post.title.length > 36
+                      ? post.title.substring(0, 36)
                       : post.title
                   }}
                 </h2>
@@ -82,6 +82,7 @@ h2 {
   max-height: 150px;
   display: block;
   padding: 0 20px 0 0;
+  min-height: 75px;
 }
 .post-item {
   margin-bottom: 10px;

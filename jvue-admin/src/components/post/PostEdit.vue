@@ -154,33 +154,23 @@ export default {
       this.article.content = data.content;
       this.article.status = data.status;
     },
-    getTypes(){
+    getTypes() {
       this.types = [
-         {
-          value:'post',
-          label:'post'
-        },
-         {
-          value:'post2',
-          label:'post2'
-        }
-      ];
-      
-      var t = [
         {
-          value:'post',
-          label:'文章'
+          value: "post",
+          label: "文章"
         },
-         {
-          value:'note',
-          label:'笔记'
-        }, {
-          value:'essay',
-          label:'随笔'
+        {
+          value: "note",
+          label: "笔记"
         },
-         {
-          value:'page',
-          label:'页面'
+        {
+          value: "essay",
+          label: "随笔"
+        },
+        {
+          value: "page",
+          label: "页面"
         }
       ];
     },
