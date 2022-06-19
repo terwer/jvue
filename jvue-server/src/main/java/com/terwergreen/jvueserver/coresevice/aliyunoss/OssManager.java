@@ -21,10 +21,10 @@ import java.nio.charset.StandardCharsets;
 public class OssManager {
     private static final Logger logger = LoggerFactory.getLogger(OssManager.class);
 
-    private static final String ENDPOINT = "http://oss-cn-qingdao.aliyuncs.com";
-    private static final String ACCESS_KEY = "I2qcXHrK0sU1cM26";
-    private static final String ACCESS_SECRET = "APQh3jSW1reSJcgAPY7pqVKFOPVJM4";
-    private static final String BUCKET_NAME = "terwer";
+    private static final String ENDPOINT = "${ALIYUN_OSS_ENDPOINT}";
+    private static final String ACCESS_KEY = "${ALIYUN_OSS_ACCESS_KEY}";
+    private static final String ACCESS_SECRET = "${ALIYUN_OSS_ACCESS_SECRET}";
+    private static final String BUCKET_NAME = "${ALIYUN_OSS_BUCKET_NAME}";
 
     private static OSS client = null;
 
