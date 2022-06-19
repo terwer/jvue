@@ -33,3 +33,4 @@ docker-compose.prod.yml
 src/main/resources/static/
 src/main/resources/templates/
 jvue-server-log/
+application-rds.properties_bak
