@@ -23,12 +23,11 @@ $ yarn generate
 
 node-sass version policy
 
-https://github.com/sass/node-sass#node-version-support-policy
+[https://github.com/sass/node-sass#node-version-support-policy](https://github.com/sass/node-sass#node-version-support-policy)
 
 so,this project must use **node 14**
 
-```
-
+```bash
 sudo npm install -g n
 sudo n 14
 ```

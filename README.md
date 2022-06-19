@@ -43,20 +43,32 @@ curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.0/docker-c
 See https://docs.docker.com/compose/reference/up/
 
 ## run jvue
+
+### via docker(for production)
 ```bash
 docker compose up --build
 ```
 
-or
+### custom(for dev)
+1、mysql
 
-```bash
-docker compose up -d --build
+```
+docker compose -f docker-compose-mysql.yml
 ```
 
-# Check
+2、jvue-server
 
-```bash
-docker compose ps
+```
+cd /Users/terwer/Documents/myworks/jvue/jvue-server/src/main/java/com/terwergreen/jvueserver
+# then run JVueServerApplication `main` function
+# that's all
+```
+
+3、jvue-front
+```
+cd /Users/terwer/Documents/myworks/jvue/jvue-front
+yarn
+yarn dev
 ```
 
 # Structure
