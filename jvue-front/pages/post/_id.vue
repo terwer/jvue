@@ -1,66 +1,83 @@
 <template>
   <el-container>
-    <el-main>
+    <el-main class="el-container-dark">
       <el-row>
         <el-col :xs="0" :md="2">&nbsp;</el-col>
         <el-col :xs="24" :md="20">
-          <el-main>
+          <el-main class="el-main-dark">
             <el-container>
-              <el-main>
+              <el-main class="el-main-dark">
                 <el-container>
-                  <el-header>
+                  <el-header class="el-header-dark">
                     <HeaderTime />
                   </el-header>
-                  <el-header>
+                  <el-header class="el-header-dark">
                     <Header />
                   </el-header>
-                  <el-main>
-                    <div id="post" class="post-default">
-                      <!-- 导航 -->
-                      <el-breadcrumb separator="/">
-                        <el-breadcrumb-item
-                          v-for="item in items"
-                          :key="item.text"
-                          :to="item.to"
-                        >
-                          {{ item.text }}
-                        </el-breadcrumb-item>
-                      </el-breadcrumb>
+                  <el-main class="el-main-dark">
+                    <el-row>
+                      <el-col :xs="24" :xl="18">
+                        <div id="post" class="post-dark">
+                          <!-- 导航 -->
+                          <el-breadcrumb separator="/">
+                            <el-breadcrumb-item
+                              v-for="item in items"
+                              :key="item.text"
+                              :to="item.to"
+                            >
+                              {{ item.text }}
+                            </el-breadcrumb-item>
+                          </el-breadcrumb>
 
-                      <!-- 文章标题 -->
-                      <div id="postTitle">
-                        <nuxt-link
-                          :to="
-                            postObj.name === ''
-                              ? '/post/' + postObj.id + '.html'
-                              : '/post/' + postObj.name + '.html'
-                          "
-                        >
-                          <h1>
-                            {{ postObj.title }}
+                          <!-- 文章标题 -->
+                          <div id="postTitle">
+                            <nuxt-link
+                              :to="
+                                postObj.postSlug === ''
+                                  ? '/post/' + postObj.postId + '.html'
+                                  : '/post/' + postObj.postSlug + '.html'
+                              "
+                            >
+                              <h1>
+                                {{ postObj.postTitle }}
+                              </h1>
+                            </nuxt-link>
+                          </div>
+
+                          <!-- 文章详情 -->
+                          <div
+                            id="postContent"
+                            v-highlight
+                            v-html="postObj.postContent"
+                          ></div>
+
+                          <h1
+                            v-if="errorMessage !== ''"
+                            class="error-message-dark"
+                          >
+                            {{ errorMessage }}
                           </h1>
-                        </nuxt-link>
-                      </div>
 
-                      <!-- 文章详情 -->
-                      <div
-                        id="postContent"
-                        v-highlight
-                        v-html="postObj.content"
-                      ></div>
-
-                      <h1 v-if="errorMessage !== ''" class="error-message">
-                        {{ errorMessage }}
-                      </h1>
-
-                      <div class="copy">
-                        <p>作者：Terwer</p>
-                        <p>首发：远方的灯塔</p>
-                        <p>
-                          原创内容，转载请注明出处！
-                        </p>
-                      </div>
-                    </div>
+                          <div class="copy">
+                            <p>作者：Terwer</p>
+                            <p>首发：远方的灯塔</p>
+                            <p>
+                              原创内容，转载请注明出处！
+                            </p>
+                          </div>
+                        </div>
+                      </el-col>
+                      <el-col :xs="0" :xl="6">
+                        <div id="postMenu">
+                          <div>
+                            <p>文章目录</p>
+                          </div>
+                          <div id="postMenuWapper">
+                            <p>目录加载中...</p>
+                          </div>
+                        </div>
+                      </el-col>
+                    </el-row>
                   </el-main>
                 </el-container>
               </el-main>
@@ -86,28 +103,29 @@
 /* eslint nuxt/no-globals-in-created: 0 */ // --> OFF
 /* eslint vue/no-v-html: 0 */ // --> OFF
 /* eslint no-useless-escape: 0 */ // --> OFF
+/* eslint no-new: 0 */ // --> OFF
+import Catalog from "progress-catalog";
 import { getLogger } from "../../util/logger";
-import HeaderTime from "../../components/themes/default/HeaderTime";
-import Header from "../../components/themes/default/Header";
-import Footer from "../../components/themes/default/Footer";
-import FriendLink from "../../components/themes/default/FriendLink";
+import HeaderTime from "../../components/themes/dark/HeaderTime";
+import Header from "../../components/themes/dark/Header";
+import Footer from "../../components/themes/dark/Footer";
+import FriendLink from "../../components/themes/dark/FriendLink";
 import { inBrowser } from "../../util/dom";
+// 引入
 
 const logger = getLogger("pages/post");
 
 export default {
   components: { HeaderTime, Header, Footer, FriendLink },
-  async asyncData(context) {
+  asyncData: async function(context) {
     const siteConfigResult = await context.$axios.$post("/site/config/list");
     const siteConfigObj =
       siteConfigResult.status === 1 ? siteConfigResult.data : {};
 
     const id = context.route.params.id.replace(/\.[^/.]+$/, "");
-    const postParams = {
-      postSlug: id
-    };
+    const postParams = {};
     const postResult = await context.$axios.$post(
-      "/blog/post/detail",
+      "/blog/post/detail/" + id,
       postParams
     );
     let postObj = {};
@@ -117,8 +135,6 @@ export default {
     } else {
       errorMessage = postResult.msg;
     }
-
-    logger.info("fetch siteConfig and post finish");
 
     return { siteConfigObj, postObj, errorMessage };
   },
@@ -138,10 +154,7 @@ export default {
   },
   head() {
     return {
-      title:
-        this.errorMessage === ""
-          ? this.postObj.title + " - " + this.siteConfigObj.webname
-          : this.errorMessage,
+      title: this.postObj.postTitle + "-" + this.siteConfigObj.webname,
       meta: [
         {
           name: "keywords",
@@ -149,8 +162,7 @@ export default {
         },
         {
           hid: "description",
-          name: "description",
-          content: this.siteConfigObj.description
+          content: this.siteConfigObj.postDesc
         }
       ],
       script: [
@@ -160,6 +172,21 @@ export default {
         }
       ]
     };
+  },
+  async mounted() {
+    // 更新文章浏览数
+    await this.$axios.$post("/blog/post/updateHits", {
+      postId: this.postObj.id,
+      hits: ++this.postObj.hits
+    });
+
+    // 文章目录
+    new Catalog({
+      contentEl: "postContent",
+      catalogEl: "postMenuWapper",
+      selector: ["h1", "h2", "h3", "h4", "h5", "h6"],
+      cool: true
+    });
   },
   created() {
     if (inBrowser && window.MathJax) {
@@ -184,41 +211,95 @@ export default {
 
 <style lang="scss">
 @import "../common.css";
-@import "../default.css";
-@import "../../plugins/lib/vue-hljs/vs.css";
-</style>
+@import "../../plugins/lib/vue-hljs/vs2015.css";
+@import "../dark.css";
+@import "../../node_modules/progress-catalog/src/progress-catalog.css";
 
-<style lang="scss">
-.post-default {
-  margin: 20px;
+#postMenu {
+  margin-top: 20px;
+  position: fixed;
+  p {
+    color: #f3f3f3;
+  }
+  .cl-wrapper li > .cl-link {
+    max-width: 350px;
+    padding: 0 10px;
+  }
+  .cl-wrapper li > .cl-link:hover {
+    color: #ffcb6b;
+    background-color: #181818;
+  }
 }
-.post-default #postTitle {
+
+.post-dark {
+  margin: 20px;
   a {
-    color: #000;
+    color: #409eff;
     line-height: 1.5;
     text-decoration: none;
   }
   a:hover {
-    color: red;
+    color: #ffcb6b;
   }
+  p {
+    color: #f3f3f3;
+  }
+}
+.post-dark #postTitle {
   h1 {
+    color: #409eff;
+    line-height: 1.5;
+    text-decoration: none;
     border-bottom: 1px solid #ddd;
-    font-size: 14px;
+    font-size: 28px;
     font-weight: bold;
     margin: 20px 0 10px;
     padding-bottom: 5px;
   }
+  h1:hover {
+    color: #c792ea;
+  }
 }
 
-.post-default #postContent {
+.post-dark #postContent {
   h1 {
+    color: #c792ea;
     font-size: 28px;
     font-weight: bold;
     line-height: 1.5;
     margin: 10px 0;
   }
   h2 {
+    color: #ffcb6b;
     font-size: 21px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 10px 0;
+  }
+  h3 {
+    color: #b8d7a3;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 10px 0;
+  }
+  h4 {
+    color: #409eff;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 10px 0;
+  }
+  h5 {
+    color: #629755;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 10px 0;
+  }
+  h6 {
+    color: #ff5370;
+    font-size: 12px;
     font-weight: bold;
     line-height: 1.5;
     margin: 10px 0;
@@ -230,18 +311,26 @@ export default {
     }
   }
 }
-.error-message {
+
+.post-dark {
+  .copy p {
+    color: #ffcb6b;
+  }
+}
+
+.error-message-dark {
   font-size: 48px;
   text-align: center;
-  color: #000000;
+  color: #ff5370;
   line-height: 1.6;
 }
 
 /* 顺序列表 */
-.post-default {
+.post-dark {
   ul,
   ol {
     li {
+      color: #f3f3f3;
       code {
         font-size: 16px;
       }
@@ -254,12 +343,12 @@ export default {
   }
 
   blockquote {
-    color: black;
-    background: #f5f5f5 !important;
+    color: #67c23a;
+    background-color: #181818;
+    border: solid 1px;
+    border-radius: 4px;
     padding: 0 10px;
     margin: 10px 0;
-    border: 1px solid #ccc !important;
-    border-radius: 3px !important;
     code {
       font-size: 16px;
     }
@@ -271,3 +360,5 @@ export default {
   }
 }
 </style>
+
+<style lang="scss" scoped></style>

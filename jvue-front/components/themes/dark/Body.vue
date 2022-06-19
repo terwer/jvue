@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <el-col :xs="24" :md="16">
+    <el-col :xs="24" :md="24">
       <PostList :keyword="keyword" :post-list="postListArray" />
       <p v-if="showNores" class="nores">~ 我是有底线滴 ~</p>
       <div id="pagination">
@@ -11,23 +11,21 @@
         </div>
       </div>
     </el-col>
+    <!--
     <el-col :xs="24" :md="8">
       <Aside />
     </el-col>
+    -->
   </el-row>
 </template>
 
 <script>
 import PostList from "./PostList";
-import Aside from "./Aside";
+// import Aside from "./Aside";
 export default {
   name: "Body",
-  components: { Aside, PostList },
+  components: { PostList },
   props: {
-    type: {
-      type: String,
-      default: "post"
-    },
     keyword: {
       type: String,
       default: ""

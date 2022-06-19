@@ -1,21 +1,21 @@
 <template>
   <el-container>
-    <el-main>
+    <el-main class="el-container-dark">
       <el-row>
         <el-col :xs="0" :md="2">&nbsp;</el-col>
         <el-col :xs="24" :md="20">
-          <el-main>
+          <el-main class="el-main-dark">
             <el-container>
-              <el-main>
+              <el-main class="el-main-dark">
                 <el-container>
-                  <el-header>
+                  <el-header class="el-header-dark">
                     <HeaderTime />
                   </el-header>
-                  <el-header>
+                  <el-header class="el-header-dark">
                     <Header />
                   </el-header>
-                  <el-main>
-                    <div class="about">
+                  <el-main class="el-main-dark">
+                    <div class="about about-dark">
                       <div class="visit">
                         谢谢您，您是第
                         <img
@@ -44,7 +44,7 @@
                       </div>
                       <h3>作者简历</h3>
                       <div>
-                        2014年7月1日毕业于湖北省长江大学软件工程，在CRM客户关系管理、电子商务、互联网金融、互联网K12教育等领域有丰富的工作经验。
+                        2014年7月1日毕业于湖北省长江大学软件工程，在电子商务、互联网金融、教育、企业级开发等领域有丰富的工作经验。
                       </div>
                       <div>
                         专注于项目架构、性能优化、算法研究。在Web开发领域有深入研究，精通Java，目前专注于服务端开发。业余时间喜欢探索移动互联网。
@@ -73,10 +73,10 @@
 
 <script>
 import { getLogger } from "../util/logger";
-import HeaderTime from "../components/themes/default/HeaderTime";
-import Header from "../components/themes/default/Header";
-import Footer from "../components/themes/default/Footer";
-import FriendLink from "../components/themes/default/FriendLink";
+import HeaderTime from "../components/themes/dark/HeaderTime";
+import Header from "../components/themes/dark/Header";
+import Footer from "../components/themes/dark/Footer";
+import FriendLink from "../components/themes/dark/FriendLink";
 const logger = getLogger("pages/index");
 
 export default {
@@ -109,9 +109,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "./common.css";
-@import "./default.css";
+@import "./dark.css";
 </style>
 
 <style lang="scss" scoped>
@@ -120,5 +120,6 @@ export default {
 }
 .about {
   margin: 40px 20px 20px 20px;
+  color: #f3f3f3;
 }
 </style>

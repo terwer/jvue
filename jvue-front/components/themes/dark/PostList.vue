@@ -1,11 +1,14 @@
 <template>
   <div id="postList">
     <div v-if="postList.length > 0">
+      <el-row>
+        <el-col v-if="keyword !== ''" class="s-keyword-default" :spans="24">
+          关键字： {{ keyword }}
+        </el-col>
+      </el-row>
+
       <el-card v-for="post in postList" :key="post.postId" class="post-item">
         <el-row>
-          <el-col v-if="keyword !== ''" class="s-keyword-default" :spans="24">
-            关键字： {{ keyword }}
-          </el-col>
           <el-col
             v-if="!isMobile && post.thumbnails.length > 0"
             :xs="24"
@@ -17,37 +20,49 @@
             <div class="post-list-title-dark">
               <nuxt-link
                 :to="
-                  post.name === '' || post.name === 'null' || post.name === null
-                    ? '/post-dark/' + post.id + '.html'
-                    : '/post-dark/' + post.name + '.html'
+                  post.postSlug === '' ||
+                  post.postSlug === 'null' ||
+                  post.postSlug === null
+                    ? '/post/' + post.postId + '.html'
+                    : '/post/' + post.postSlug + '.html'
                 "
               >
-                <h2>{{ post.title === "" ? "暂无标题" : post.title }}</h2>
+                <h2>
+                  {{ post.postTitle === "" ? "暂无标题" : post.postTitle }}
+                </h2>
               </nuxt-link>
             </div>
           </el-col>
           <el-col :span="24">
             <div class="bottom clearfix">
               <div class="page desc">
-                {{ post.desc === "" ? "暂无简介" : post.desc }}
+                {{
+                  post.postDesc === ""
+                    ? "暂无简介"
+                    : post.postDesc.replace(keyword, "hahahahaha")
+                }}
               </div>
             </div>
             <div>
               <div class="article-ext">
                 <span class="article-ext-info">作者：Terwer</span>
+                <!--
                 <span class="article-ext-info" :title="post.viewCount">
-                  阅读数：{{ post.hits }}
+                  阅读数：{{ post.viewCount }}
                 </span>
+                -->
                 <span class="article-ext-info" :title="post.commentCount">
                   评论数：{{ post.commentCount }}
                 </span>
               </div>
-              <div class="time">发布于 {{ post.created }}</div>
+              <div class="time">发布于 {{ post.postDate }}</div>
               <nuxt-link
                 :to="
-                  post.name === '' || post.name === 'null' || post.name === null
-                    ? '/post-dark/' + post.id + '.html'
-                    : '/post-dark/' + post.name + '.html'
+                  post.postSlug === '' ||
+                  post.postSlug === 'null' ||
+                  post.postSlug === null
+                    ? '/post/' + post.postId + '.html'
+                    : '/post/' + post.postSlug + '.html'
                 "
               >
                 <el-button type="text" class="read-more-dark"
@@ -159,5 +174,6 @@ h2 {
 
 .s-keyword-default {
   color: #fff;
+  padding: 0 16px;
 }
 </style>

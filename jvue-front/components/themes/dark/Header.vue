@@ -55,16 +55,25 @@ export default {
   data() {
     return {
       s: "",
-      searchLink: "/s-dark/"
+      searchLink: "/s/"
     };
   },
   watch: {
     s() {
-      this.searchLink = "/s-dark/" + this.s;
+      this.searchLink = "/s/" + this.s;
+    }
+  },
+  mounted() {
+    if (window.localStorage) {
+      this.s = localStorage.s_keyword;
+      localStorage.s_keyword = "";
     }
   },
   methods: {
     doSearch() {
+      if (window.localStorage) {
+        localStorage.s_keyword = this.s;
+      }
       logger.info("this.searchLink=>" + this.searchLink);
       this.$router.push({ path: this.searchLink });
       // this.$router.go(this.searchLink);

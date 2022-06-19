@@ -9,22 +9,20 @@ import qs from "qs";
 import { getLogger } from "../util/logger";
 const logger = getLogger("plugins/axios");
 
-const tokenString =
-  "r6o-glNUVnFxMyEUBHGK9i4vriKCfpvnHXv0Rsc6zx2ZWtLArXsAF6mE36ZrLqCbrT95cnrOD_TM0-qOIkcLBQ";
-
 export default function({ $axios, redirect }) {
   $axios.onRequest(config => {
     const url = config.baseURL + config.url;
     logger.info("url=>" + url);
 
-    let params = config.data || {};
-    // tokenString校验
-    params = Object.assign(params, {
-      tokenString
+    const headers = config.headers || {};
+    config.headers = Object.assign(headers, {
+      "content-type": "application/x-www-form-urlencoded"
     });
-    logger.info("params=>");
-    console.log(params || {});
+    logger.info("headers=>" + qs.stringify(config.headers));
+
+    const params = config.data || {};
     config.data = qs.stringify(params);
+    logger.info("params=>" + config.data);
   });
 
   $axios.onError(error => {

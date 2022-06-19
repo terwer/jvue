@@ -101,7 +101,6 @@
               rel="external nofollow"
               target="_blank"
             >
-              {{ siteConfig.beianinfo }}
             </a>
             <!-- cnzz统计 -->
             <span id="cnzz_stat_icon_4445524">
@@ -119,6 +118,12 @@
                 />
               </a>
             </span>
+
+            <span>
+              <a href="https://beian.miit.gov.cn/" target="_blank">
+                {{ siteConfig.beianinfo }}
+              </a>
+            </span>
           </div>
           <div class="page">
             Copyright © 2011-{{ nowYear }}
@@ -129,7 +134,7 @@
             All Rights Reserved
           </div>
           <!-- 运行信息 -->
-          <div class="page">博客已稳定运行： 2年303天22时22分48秒<br /></div>
+          <div class="page">博客已稳定运行： 10年303天22时22分48秒<br /></div>
           <div class="page">
             运行环境：docker、jdk_1.8_201、maven_3.6.0<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

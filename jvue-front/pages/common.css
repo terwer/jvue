@@ -3,7 +3,7 @@
 * 注意：每个主题都要引用这个样式
 */
 body {
-  font-family: dejavu sans mono,Fira Code,Microsoft Yahei,Consolas,Courier New,monospace,Menlo,Monaco !important;
+  font-family: "PT Sans", "-apple-system", "Liberation Mono", monospace, dejavu sans mono,Fira Code,Microsoft Yahei,Consolas,Courier New,monospace,Menlo,Monaco !important;
   color: #666 !important;
 }
 body,

@@ -12,14 +12,14 @@
  * css名称必须有default关键字
  */
 .el-container-dark{
-  background-color: #181818;
+  background-color: #181818 !important;
   padding: 0 !important;
 }
 .el-main-dark{
-  background-color: #212121;
+  background-color: #212121 !important;
 }
 .el-header-dark{
-  background-color: #212121;
+  background-color: #212121 !important;
 }
 .el-menu-dark {
   background-color: #212121 !important;;
@@ -52,12 +52,39 @@
 .about-dark{
   border: solid 1px #f3f3f3;
   border-radius: 4px;
-  padding: 10px;
+  padding: 20px 16px;
 }
 .post-dark{
   border: solid 1px #f3f3f3;
   border-radius: 4px;
-  padding: 10px;
+  padding: 20px 16px;
+}
+/*
+.post-dark pre code{
+  background-color: unset !important;
+  color: #ffffff !important;
+}
+*/
+.post-dark pre code {
+  /*color: #2c2c3e;*/
+  font-family: "SF Mono", monospace;
+  font-size: 0.9rem;
+}
+.md-fences,
+code,
+tt {
+  background-color: #2c2c3e;
+  color: #00CECA;
+  font-family: "SF Mono", monospace;
+  border-radius: 5px;
+  padding: 2px 4px;
+}
+
+.hljs-string, .hljs-title, .hljs-section, .hljs-attribute, .hljs-literal, .hljs-template-tag, .hljs-template-variable, .hljs-type, .hljs-addition{
+  color: red;
+}
+.hljs-keyword, .hljs-selector-tag, .hljs-built_in, .hljs-name, .hljs-tag{
+  color: #09d25b;
 }
 .post-dark .el-breadcrumb__inner a,
 .post-dark .el-breadcrumb__inner.is-link {

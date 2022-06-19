@@ -35,6 +35,13 @@
         </div>
       </el-menu-item>
     </template>
+    <li class="el-menu-item">
+      <div>
+        <a href="http://www.terwergreen.com/admin">
+          <i class="fa fa-sign-in"></i>登录
+        </a>
+      </div>
+    </li>
   </el-menu>
 </template>
 
@@ -47,14 +54,14 @@ export default {
       menuList: [
         {
           id: 1,
-          name: "首页",
+          name: "文章",
           link: "/",
           icon: "fa fa-home"
         },
         {
           id: 2,
           name: "随笔",
-          link: "/cat/essay",
+          link: "/essay",
           icon: "fa fa-pencil"
         },
         /* {
@@ -75,51 +82,55 @@ export default {
           icon: "fa fa-paper-plane",
           children: [
             {
-              id: 100,
-              name: "专题一",
-              link: "/java-se",
+              id: 101,
+              name: "Java",
+              link: "/java%20se",
               icon: "fa fa-file-text"
             },
             {
               id: 102,
-              name: "专题二",
-              link: "/spring-boot",
+              name: "Spring Boot",
+              link: "/spring%20boot",
               icon: "fa fa-file-text"
             },
             {
               id: 103,
-              name: "专题三",
-              link: "/spring-cloud",
+              name: "Spring Cloud",
+              link: "/spring%20cloud",
               icon: "fa fa-file-text"
             }
           ],
-          link: "/cat/special"
+          link: "/s"
         },
         */
         {
           id: 6,
           name: "笔记",
-          link: "/note-dark",
+          link: "/note",
           icon: "fa fa-pencil"
         },
+
         {
           id: 7,
           name: "关于",
-          link: "/about-dark",
+          link: "/about",
           icon: "fa fa-user"
-        },
+        }
+        /*
         {
           id: 8,
           name: "登录",
-          link: "/auth/login",
+          link: "/m",
           icon: "fa fa-sign-in"
-        },
+        }
+        /*
         {
           id: 9,
           name: "注册",
-          link: "/auth/register",
+          link: "/admin",
           icon: "fa fa-camera-retro"
         }
+        */
       ]
     };
   },

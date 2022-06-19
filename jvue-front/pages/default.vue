@@ -3,10 +3,10 @@
     <div>
       <logo />
       <h1 class="title">
-        jvue-front
+        bugucms-web
       </h1>
       <h2 class="subtitle">
-        Front module for jvue 4.0.0
+        Front module for bugucms 4.0.0
       </h2>
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green"
