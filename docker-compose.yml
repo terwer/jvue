@@ -53,8 +53,8 @@ services:
       - "TZ=CST-8"
       - "MYSQL_ROOT_PASSWORD=123456"
       - "MYSQL_ROOT_HOST=%"
-      - "MYSQL_DATABASE=testbugucms"
-      - "MYSQL_USER=test"
+      - "MYSQL_DATABASE=bugucms"
+      - "MYSQL_USER=terwer"
       - "MYSQL_PASSWORD=123456"
     volumes:
       - ./jvue-mysql/init:/docker-entrypoint-initdb.d/

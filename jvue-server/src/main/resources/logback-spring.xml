@@ -8,7 +8,7 @@
         <property name="logFilePath" value="${catalina.base}/logs" />
     </springProfile>
     <springProfile name="docker">
-        <property name="logFilePath" value="jvue-server/logs" />
+        <property name="logFilePath" value="jvue-server-log/logs" />
     </springProfile>
 
     <property name="log.context.name" value="JVueApplication" />
