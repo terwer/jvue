@@ -4,18 +4,18 @@
 
 version: '3'
 services:
-  jvue-nginx:
-    image: jvue/nginx:1.15.9
-    container_name: jvue-nginx
-    build:
-      context: ./
-      dockerfile: ./jvue-nginx/Dockerfile
-    ports:
-      - "80:80"
-    volumes:
-      - ./jvue-nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./data/nginx/log:/var/log/nginx
-    restart: "no"
+#  jvue-nginx:
+#    image: jvue/nginx:1.15.9
+#    container_name: jvue-nginx
+#    build:
+#      context: ./
+#      dockerfile: ./jvue-nginx/Dockerfile
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - ./jvue-nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+#      - ./data/nginx/log:/var/log/nginx
+#    restart: "no"
   jvue-server:
     image: jvue/server:4.0.1
     container_name: jvue-server
