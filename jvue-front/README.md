@@ -4,6 +4,13 @@
 
 ## Build Setup
 
+注意：必须使用node14
+
+```
+sudo n 14
+npm i -g yarn
+```
+
 ```bash
 # install dependencies
 $ yarn
