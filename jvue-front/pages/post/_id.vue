@@ -224,9 +224,10 @@ export default {
     margin: 10px 0;
   }
   p {
+    line-height: 32px;
     // 图片自适应
     img {
-      max-width: 100% !important;
+      max-width: 25% !important;
     }
   }
 }
@@ -251,6 +252,10 @@ export default {
         }
       }
     }
+  }
+
+  pre {
+    margin: 1rem 0px !important;
   }
 
   blockquote {
