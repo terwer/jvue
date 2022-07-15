@@ -42,7 +42,9 @@
                   评论数：{{ post.commentCount }}
                 </span>
               </div>
-              <div class="time">发布于 {{ post.created }}</div>
+              <div class="time">
+                发布于 {{ new Date(post.created).toLocaleString() }}
+              </div>
               <nuxt-link
                 :to="
                   post.name === '' || post.name === 'null' || post.name === null

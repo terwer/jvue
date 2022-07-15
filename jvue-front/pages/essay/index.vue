@@ -1,23 +1,23 @@
 <template>
   <el-container>
-    <el-main class="el-container-dark">
+    <el-main class="el-container">
       <el-row>
         <el-col :xs="0" :md="2">&nbsp;</el-col>
         <el-col :xs="24" :md="20">
-          <el-main class="el-main-dark">
+          <el-main class="el-main">
             <el-container>
-              <el-main class="el-main-dark">
+              <el-main class="el-main">
                 <el-container>
-                  <el-header class="el-header-dark">
+                  <el-header class="el-header">
                     <HeaderTime />
                   </el-header>
-                  <el-header class="el-header-dark">
+                  <el-header class="el-header">
                     <Header />
                   </el-header>
-                  <el-main class="el-main-dark">
+                  <el-main class="el-main">
                     <el-row>
                       <el-col :xs="24" :xl="18">
-                        <div id="essay" class="essay-dark">
+                        <div id="essay" class="essay">
                           <!-- 正文开始 -->
                           <div class="lay-blog">
                             <div class="container-wrap">
@@ -120,10 +120,10 @@
 </template>
 
 <script>
-import FriendLink from "../../components/themes/dark/FriendLink";
-import HeaderTime from "@/components/themes/dark/HeaderTime";
-import Header from "@/components/themes/dark/Header";
-import Footer from "@/components/themes/dark/Footer";
+import FriendLink from "../../components/themes/default/FriendLink";
+import HeaderTime from "@/components/themes/default/HeaderTime";
+import Header from "@/components/themes/default/Header";
+import Footer from "@/components/themes/default/Footer";
 
 export default {
   name: "Essay",
@@ -207,10 +207,10 @@ export default {
 
 <style lang="scss">
 @import "../common.css";
-@import "../dark.css";
+@import "../default.css";
 @import "../essay.css";
 
-.essay-dark {
+.essay {
   color: #ffffff;
 }
 .read-more a {
