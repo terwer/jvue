@@ -63,7 +63,7 @@ module.exports = {
     // See https://github.com/nuxt-community/axios-module#options
     baseURL: development
       ? "http://localhost:8002/api"
-      : "http://v4.terwergreen.com/api"
+      : "https://v4.terwergreen.com/api"
   },
 
   /*
