@@ -19,7 +19,7 @@
                       <div class="visit">
                         谢谢您，您是第
                         <img
-                          src="http://www.cutercounter.com/hit.php?id=gvvnqcod&nd=6&style=47"
+                          src="https://www.cutercounter.com/hit.php?id=gvvnqcod&nd=6&style=47"
                           border="0"
                           alt="访客数"
                         />

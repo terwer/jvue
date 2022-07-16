@@ -99,7 +99,7 @@
           <!-- 备案信息 -->
           <div class="page">
             <a
-              href="http://www.miitbeian.gov.cn/"
+              href="https://beian.miit.gov.cn"
               rel="external nofollow"
               target="_blank"
             >
@@ -116,7 +116,7 @@
                   border="0"
                   hspace="0"
                   vspace="0"
-                  src="http://icon.cnzz.com/img/pic.gif"
+                  src="https://icon.cnzz.com/img/pic.gif"
                   alt="cnzz"
                 />
               </a>
