@@ -7,13 +7,13 @@
       <div class="text-left">
         <ul class="footerbottom">
           <li>
-            <a href="http://www.terwergreen.com" target="_blank">远方的灯塔</a>
+            <a href="/" target="_blank">远方的灯塔</a>
           </li>
           <li>
             <a href="https://www.pengjiandry.com/" target="_blank">彭涧</a>
           </li>
           <li>
-            <a href="http://lusongsong.com/" target="_blank">卢松松博客</a>
+            <a href="https://lusongsong.com/" target="_blank">卢松松博客</a>
           </li>
           <li>
             <a href="/guestbook.html">申请友链</a>
