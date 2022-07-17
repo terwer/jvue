@@ -9,4 +9,17 @@ package com.terwergreen.jvueserver.constant;
  **/
 public class JVueConstants {
     public static final String CONSTANT_XMLRPC_NAME = "/xmlrpc";
+
+    /**
+     * 标签
+     */
+    public static final String META_TYPE_TAG = "tag";
+    /**
+     * 分类
+     */
+    public static final String META_TYPE_CATEGORY = "category";
+    /**
+     * 计数
+     */
+    public static final String META_TYPE_COUNTER = "counter";
 }

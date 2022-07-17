@@ -32,10 +32,19 @@ public class MetaServiceImpl implements MetaService {
 //    }
 
     @Override
+    public Meta getMetaSingle(String type) {
+        type = verifyType(type);
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("type", type);
+        Meta meta = (Meta) commonDAO.querySingleByMap("selectMeta", paramMap);
+        return meta;
+    }
+
+    @Override
     public List<Meta> getMetaList(String type) {
         type = verifyType(type);
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("type",type);
+        paramMap.put("type", type);
         List<Meta> metaList = commonDAO.queryListByMap("selectMeta", paramMap);
         return metaList;
     }
@@ -47,7 +56,22 @@ public class MetaServiceImpl implements MetaService {
 
     @Override
     public boolean saveMeta(String name, String type) {
-        return false;
+        type = verifyType(type);
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("name", name);
+        paramMap.put("type", type);
+        Object result = commonDAO.insertByObject("saveMeta", paramMap);
+        return result != null;
+    }
+
+    @Override
+    public boolean updateMetaSingle(String name, String type) {
+        type = verifyType(type);
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("name", name);
+        paramMap.put("type", type);
+        int result = commonDAO.updateByObject("updateMetaSingle", paramMap);
+        return result > 0;
     }
 
     @Override
@@ -66,7 +90,9 @@ public class MetaServiceImpl implements MetaService {
      * @return 结果
      */
     private String verifyType(String type) {
-        if (MetaEnum.META_ENUM_CATEGORY.getName().equals(type) || MetaEnum.META_ENUM_TAG.getName().equals(type)) {
+        if (MetaEnum.META_ENUM_CATEGORY.getName().equals(type)
+                || MetaEnum.META_ENUM_TAG.getName().equals(type)
+                || MetaEnum.META_ENUM_COUNTER.getName().equals(type)) {
             return type;
         }
         throw new TipException("传输的属性类型不合法");

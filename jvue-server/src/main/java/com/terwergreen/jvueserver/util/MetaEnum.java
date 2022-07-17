@@ -1,5 +1,7 @@
 package com.terwergreen.jvueserver.util;
 
+import com.terwergreen.jvueserver.constant.JVueConstants;
+
 /**
  * 属性枚举
  *
@@ -11,8 +13,9 @@ public enum MetaEnum {
     /**
      * 属性枚举
      */
-    META_ENUM_CATEGORY("category", 1),
-    META_ENUM_TAG("tag", 1);
+    META_ENUM_CATEGORY(JVueConstants.META_TYPE_CATEGORY, 1),
+    META_ENUM_TAG(JVueConstants.META_TYPE_TAG, 1),
+    META_ENUM_COUNTER(JVueConstants.META_TYPE_COUNTER, 1);
 
     // 成员变量
     private String name;
