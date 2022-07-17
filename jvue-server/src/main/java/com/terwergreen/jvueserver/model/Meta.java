@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 属性(分类和标签) Model
+ * 属性(分类和标签以及其他自定义类型) Model
  *
  * @author Terwer
  * @version 1.0

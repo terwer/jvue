@@ -4,4 +4,10 @@
     <select id="selectMeta" parameterType="java.util.Map" resultType="com.terwergreen.jvueserver.model.Meta">
         select m.name,m.type from metas m where m.type = #{type}
     </select>
+    <insert id="saveMeta" parameterType="java.util.Map">
+        insert into metas(name,type) values(#{name},#{type})
+    </insert>
+    <update id="updateMetaSingle" parameterType="java.util.Map">
+        update metas set name=#{name} where type=#{type}
+    </update>
 </mapper>
