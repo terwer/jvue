@@ -7,6 +7,7 @@ import com.terwergreen.jvueserver.model.Post;
 import com.terwergreen.jvueserver.service.PostService;
 import com.terwergreen.jvueserver.util.PostStatusEnum;
 import com.terwergreen.jvueserver.util.PostTypeEmum;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -81,8 +83,15 @@ public class PostServiceImpl implements PostService {
         if (null != post.getId() && post.getId() > 0) {
             commonDAO.updateByObject("updatePost", post);
         } else {
-            post.setAuthorId(1);
-            post.setType(PostTypeEmum.POST_TYPE_POST.getName());
+            if (null == post.getAuthorId()) {
+                post.setAuthorId(1);
+            }
+            if (StringUtils.isEmpty(post.getType())) {
+                post.setType(PostTypeEmum.POST_TYPE_POST.getName());
+            }
+            if (StringUtils.isEmpty(post.getTitle())) {
+                post.setTitle(new Date().toString());
+            }
             commonDAO.insertByObject("insertPost", post);
         }
         return post;

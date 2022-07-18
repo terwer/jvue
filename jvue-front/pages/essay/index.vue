@@ -37,20 +37,22 @@
                                   </form>
 
                                   <div class="item-btn">
-                                    <button
+                                    <el-button
                                       id="item-btn"
-                                      class="layui-btn layui-btn-normal"
+                                      slot="append"
+                                      type="primary"
+                                      size="small"
                                       @click="publishEssay"
                                     >
                                       提交
-                                    </button>
+                                    </el-button>
                                   </div>
 
                                   <div id="LAY-msg-box">
                                     <div class="info-box">
                                       <div
                                         v-for="timeline in postListArray"
-                                        :key="timeline.postId"
+                                        :key="timeline.id"
                                         class="info-item"
                                       >
                                         <img
@@ -59,23 +61,36 @@
                                           alt=""
                                         />
                                         <div class="info-text">
-                                          <h4>{{ timeline.postDate }}</h4>
+                                          <h4>
+                                            {{
+                                              new Date(
+                                                timeline.created
+                                              ).toLocaleString()
+                                            }}
+                                          </h4>
                                           <div class="title count">
                                             <span class="name">倚楼听雨</span>
                                           </div>
                                           <div
                                             class="info-intr"
-                                            v-html="timeline.postContent"
+                                            v-html="timeline.desc"
                                           ></div>
                                           <div class="read-more">
                                             <span
                                               v-if="
-                                                timeline.postContent &&
-                                                  timeline.postContent.length >=
-                                                    50
+                                                timeline.desc &&
+                                                  timeline.desc.length >= 50
                                               "
                                             >
-                                              <a target="_blank">阅读全文</a>
+                                              <nuxt-link
+                                                :to="
+                                                  '/post/' +
+                                                    timeline.id +
+                                                    '.html'
+                                                "
+                                              >
+                                                <h2>阅读全文</h2>
+                                              </nuxt-link>
                                             </span>
                                           </div>
                                         </div>
@@ -108,12 +123,14 @@
         <el-col :xs="0" :md="2">&nbsp;</el-col>
       </el-row>
       <el-row>
-        <el-col>
+        <el-col :xs="0" :md="2">&nbsp;</el-col>
+        <el-col :xs="24" :md="20">
           <el-footer>
-            <Footer :site-config="siteConfigObj" />
             <FriendLink />
+            <Footer :site-config="siteConfigObj" />
           </el-footer>
         </el-col>
+        <el-col :xs="0" :md="2">&nbsp;</el-col>
       </el-row>
     </el-main>
   </el-container>
@@ -124,6 +141,7 @@ import FriendLink from "../../components/themes/default/FriendLink";
 import HeaderTime from "@/components/themes/default/HeaderTime";
 import Header from "@/components/themes/default/Header";
 import Footer from "@/components/themes/default/Footer";
+import { inBrowser } from "@/util/dom";
 
 export default {
   name: "Essay",
@@ -198,8 +216,27 @@ export default {
     },
     async publishEssay() {
       console.log("start publish essay:" + this.newEssay);
-      const result = await this.loadmore();
-      console.log("result=>", result);
+      const result = await this.$axios.$post("admin/post/save", {
+        title: new Date().toLocaleDateString(),
+        type: "essay",
+        status: "publish",
+        content: this.newEssay
+      });
+      const ret = result.status === 1;
+      console.log("ret=>", ret);
+
+      await this.loadmore();
+
+      this.$message({
+        message: "随笔发布成功",
+        type: "success"
+      });
+
+      setTimeout(function() {
+        if (inBrowser) {
+          window.location.reload();
+        }
+      }, 1000);
     }
   }
 };
@@ -211,10 +248,15 @@ export default {
 @import "../essay.css";
 
 .essay {
-  color: #ffffff;
+  color: #333333;
 }
 .read-more a {
   color: #1e9fff;
+  cursor: pointer;
+  h2 {
+    font-size: 14px;
+    padding-left: 10px;
+  }
 }
 .load-more {
   color: #ffb800;

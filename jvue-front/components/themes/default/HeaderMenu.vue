@@ -51,6 +51,18 @@ export default {
           icon: "fa fa-home"
         },
         {
+          id: 1,
+          name: "笔记",
+          link: "/note",
+          icon: "fa fa-pencil"
+        },
+        {
+          id: 1,
+          name: "随笔",
+          link: "/essay",
+          icon: "fa fa-bolt"
+        },
+        {
           id: 2,
           name: "关于",
           link: "/about",
