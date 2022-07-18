@@ -18,7 +18,11 @@
                     <div class="about">
                       <div class="visit">
                         谢谢您，您是第
-                        <img src="/api/tool/counter" border="0" alt="访客数" />
+                        <img
+                          src="https://v4.terwergreen.com:8002/api/tool/counter"
+                          border="0"
+                          alt="访客数"
+                        />
                         位访客。
                       </div>
                       <h3>网站简介</h3>
@@ -113,6 +117,9 @@ export default {
 <style lang="scss" scoped>
 .visit {
   font-size: 24px;
+  img {
+    vertical-align: text-top;
+  }
 }
 .about {
   margin: 40px 20px 20px 20px;
