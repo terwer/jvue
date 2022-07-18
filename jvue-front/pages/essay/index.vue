@@ -216,7 +216,7 @@ export default {
     },
     async publishEssay() {
       if (this.newEssay.trim() === "") {
-        this.$message.error("随便内容不能为空哦~");
+        this.$message.error("随笔内容不能为空哦~");
         return;
       }
 
