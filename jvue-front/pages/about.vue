@@ -18,11 +18,7 @@
                     <div class="about">
                       <div class="visit">
                         谢谢您，您是第
-                        <img
-                          src="https://v4.terwergreen.com:8002/api/tool/counter"
-                          border="0"
-                          alt="访客数"
-                        />
+                        <img v-bind:src="message" border="0" alt="访客数" />
                         位访客。
                       </div>
                       <h3>网站简介</h3>
@@ -49,7 +45,7 @@
                       <div>
                         专注于项目架构、性能优化、算法研究。在Web开发领域有深入研究，精通Java，目前专注于服务端开发。业余时间喜欢探索移动互联网。
                       </div>
-                      <div>作者邮箱：youweics@sina.com</div>
+                      <div>作者邮箱：youweics@163.com</div>
                     </div>
                   </el-main>
                 </el-container>
@@ -60,12 +56,14 @@
         <el-col :xs="0" :md="2">&nbsp;</el-col>
       </el-row>
       <el-row>
-        <el-col>
+        <el-col :xs="0" :md="2">&nbsp;</el-col>
+        <el-col :xs="24" :md="20">
           <el-footer>
-            <Footer :site-config="siteConfigObj" />
             <FriendLink />
+            <Footer :site-config="siteConfigObj" />
           </el-footer>
         </el-col>
+        <el-col :xs="0" :md="2">&nbsp;</el-col>
       </el-row>
     </el-main>
   </el-container>
@@ -89,6 +87,13 @@ export default {
     logger.info("fetch siteConfig finish");
 
     return { siteConfigObj };
+  },
+  data() {
+    return {
+      message:
+        "https://v4.terwergreen.com:8002/api/tool/counter?t=" +
+        new Date().getTime()
+    };
   },
   head() {
     return {

@@ -1,66 +1,32 @@
 <template>
   <el-row id="footer">
-    <el-col :xs="24" :md="5">
-      <div class="dingyue">
-        <div class="footertit">
-          <h2>订阅本站</h2>
-        </div>
-        <div class="dyform">
-          <form class="wpm_form" method="post">
-            <input
-              class="wpm_hiddenfield"
-              name="wpm_form"
-              type="hidden"
-              value="1"
-            />
-            <div class="page wpm_prepend">
-              订阅本站获取每周更新邮件提醒，不错过任何一篇文章！更有精彩福利放送哦~
+    <el-main class="footer-main">
+      <el-row>
+        <el-col>
+          <div class="guanzhu">
+            <div class="footertit">
+              <h2>关注&amp;交流</h2>
             </div>
-            <div class="wpm_email">
-              <label class="wpm_emaillabel" for="wpm_email">邮箱：</label>
-              <input
-                id="wpm_email"
-                class="wpm_emailinput"
-                name="wpm_email"
-                placeholder="请输入您的邮箱地址"
-                type="text"
-                value=""
-              />
-            </div>
-            <div class="wpm_submit">
-              <div class="wpm_submit">
-                <button ref="submit" class="btn wpm_submitbtn">订阅</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </el-col>
-    <el-col :xs="24" :md="5">
-      <div class="guanzhu">
-        <div class="footertit">
-          <h2>关注&amp;交流</h2>
-        </div>
-        <div class="ewm">
-          <div>
-            <div>
-              <div class="page">
-                技术之路，路漫漫其修远兮，吾将上下而求索。
-              </div>
-              <div class="page">
-                欢迎关注公众号"架构设计漫谈"，一起分享技术，探讨人生。
-              </div>
-              <div class="page ewmimg">
-                <img src="../../../assets/mp-qrcode.png" alt="Terwer" />
+            <div class="ewm">
+              <div>
+                <div>
+                  <div class="page">
+                    技术之路，路漫漫其修远兮，吾将上下而求索。
+                  </div>
+                  <div class="page">
+                    欢迎关注公众号"架构设计漫谈"，一起分享技术，探讨人生。
+                  </div>
+                  <div class="page ewmimg">
+                    <img src="../../../assets/mp-qrcode.png" alt="Terwer" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </el-col>
-    <el-col :xs="24" :md="14">
-      <el-row class="contact">
-        <el-col :xs="24" :md="12">
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col>
           <div class="footertit">
             <h2>联系作者</h2>
           </div>
@@ -72,7 +38,7 @@
             Github：https://github.com/terwer
           </div>
           <div class="page">
-            邮箱：youweics@sina.com
+            邮箱：youweics@163.com
           </div>
           <div class="page">
             微信：15986685029（hiterwer）
@@ -81,7 +47,9 @@
             QQ：1035136784（倚楼听雨）
           </div>
         </el-col>
-        <el-col :xs="24" :md="12">
+      </el-row>
+      <el-row>
+        <el-col>
           <div class="footertit">
             <h2>更多信息</h2>
           </div>
@@ -96,8 +64,15 @@
               />
             </a>
           </div>
-          <!-- 备案信息 -->
+          <!-- 运行信息 -->
+          <div class="page">博客已稳定运行： 2年303天22时22分48秒<br /></div>
           <div class="page">
+            运行环境：docker、jdk_1.8_201、maven_3.6.0<br />
+            Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE<br />
+            node14.20.0、vue_2.6.9、nuxt_2.4.0
+          </div>
+          <!-- 备案信息 -->
+          <div class="page copyright">
             <a
               href="https://beian.miit.gov.cn"
               rel="external nofollow"
@@ -122,7 +97,7 @@
               </a>
             </span>
           </div>
-          <div class="page">
+          <div class="page copyright">
             Copyright © 2011-{{ nowYear }}
             <a :href="siteConfig.weburl" target="_blank">
               {{ siteConfig.webname }}
@@ -130,16 +105,9 @@
             <span class="next-line"></span>
             All Rights Reserved
           </div>
-          <!-- 运行信息 -->
-          <div class="page">博客已稳定运行： 2年303天22时22分48秒<br /></div>
-          <div class="page">
-            运行环境：docker、jdk_1.8_201、maven_3.6.0<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vue_2.6.9、nuxt_2.4.0
-          </div>
         </el-col>
       </el-row>
-    </el-col>
+    </el-main>
   </el-row>
 </template>
 
@@ -162,34 +130,43 @@ export default {
 
 <style scoped lang="scss">
 a {
-  color: #c3e88d;
+  color: #00a4ff;
   text-decoration: none;
 }
 #footer {
   padding: 0;
-  background: #2e3033;
-  color: rgba(255, 255, 255, 0.42);
+  background: #ffffff;
+  color: #333333;
+  // background: #2e3033;
+  //color: rgba(255, 255, 255, 0.42);
   margin-top: 10px;
+  .footer-main {
+    padding: 0 !important;
+    text-align: center;
+  }
 }
 .dingyue {
-  padding: 0 20px;
+  //padding: 0 20px;
 }
 .guanzhu {
-  padding: 0 20px;
+  //padding: 0 20px;
 }
 .contact {
-  padding: 0 20px;
+  //padding: 0 20px;
 }
 #footer .page {
   line-height: 30px;
   font-size: 14px;
+}
+#footer .copyright {
+  text-align: center;
 }
 .footertop {
   padding-bottom: 30px;
 }
 .footertit h2 {
   font-size: 18px;
-  color: #fff;
+  color: #333333;
   margin-bottom: 20px;
   margin-top: 20px;
 }
@@ -200,40 +177,9 @@ a {
   margin-top: 10px;
 }
 .ewmimg img {
-  width: 100%;
+  width: 25%;
   height: auto;
   display: block;
-  margin-bottom: 10px;
-}
-.wpm_emaillabel {
-  display: none;
-}
-.wpm_emailinput {
-  border: 1px solid #f1f1f1;
-  background: #f6f6f6;
-  color: #a3a9b0;
-  padding: 10px;
-  margin-bottom: 20px;
-  display: block;
-  width: 100%;
-  min-height: 30px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  margin-top: 20px;
-}
-.wpm_submit .wpm_submitbtn {
-  width: 100%;
-  padding: 10px;
-  min-height: 30px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  background: #00a4ff;
-  color: #fff;
-  border-color: #00a4ff;
-}
-.wpm_submit .wpm_submitbtn:hover {
-  color: #fff;
+  margin: auto;
 }
 </style>
