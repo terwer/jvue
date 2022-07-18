@@ -25,12 +25,14 @@
         <el-col :xs="0" :md="2">&nbsp;</el-col>
       </el-row>
       <el-row>
-        <el-col>
+        <el-col :xs="0" :md="2">&nbsp;</el-col>
+        <el-col :xs="24" :md="20">
           <el-footer>
-            <Footer :site-config="siteConfigObj" />
             <FriendLink />
+            <Footer :site-config="siteConfigObj" />
           </el-footer>
         </el-col>
+        <el-col :xs="0" :md="2">&nbsp;</el-col>
       </el-row>
     </el-main>
   </el-container>
