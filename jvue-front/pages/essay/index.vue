@@ -192,7 +192,7 @@ export default {
       this.showNores = false;
       this.loadText = "加载中...";
       const postsResult = await this.$axios.$post("/blog/post/list", {
-        postType: this.type,
+        postType: "essay",
         postStatus: "publish",
         search: this.keyword,
         pageNum: ++this.currentPage,
