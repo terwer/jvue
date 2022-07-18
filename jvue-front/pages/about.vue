@@ -18,11 +18,7 @@
                     <div class="about">
                       <div class="visit">
                         谢谢您，您是第
-                        <img
-                          src="https://www.cutercounter.com/hit.php?id=gvvnqcod&nd=6&style=47"
-                          border="0"
-                          alt="访客数"
-                        />
+                        <img src="/api/tool/counter" border="0" alt="访客数" />
                         位访客。
                       </div>
                       <h3>网站简介</h3>
