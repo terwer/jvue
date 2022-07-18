@@ -18,7 +18,7 @@
                     <div class="about">
                       <div class="visit">
                         谢谢您，您是第
-                        <img v-bind:src="message" border="0" alt="访客数" />
+                        <img :src="message" border="0" alt="访客数" />
                         位访客。
                       </div>
                       <h3>网站简介</h3>
@@ -47,6 +47,8 @@
                       </div>
                       <div>作者邮箱：youweics@163.com</div>
                     </div>
+
+                    <Artalk />
                   </el-main>
                 </el-container>
               </el-main>
@@ -75,11 +77,12 @@ import HeaderTime from "../components/themes/default/HeaderTime";
 import Header from "../components/themes/default/Header";
 import Footer from "../components/themes/default/Footer";
 import FriendLink from "../components/themes/default/FriendLink";
+import Artalk from "../components/themes/default/Artalk";
 const logger = getLogger("pages/index");
 
 export default {
   name: "About",
-  components: { HeaderTime, Header, Footer, FriendLink },
+  components: { HeaderTime, Header, Footer, FriendLink, Artalk },
   async asyncData({ $axios }) {
     const siteConfigResult = await $axios.$post("/site/config/list");
     const siteConfigObj =

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
+    "artalk": "^2.3.4",
     "cross-env": "^5.2.0",
     "element-ui": "2.4.11",
     "express": "^4.16.4",
