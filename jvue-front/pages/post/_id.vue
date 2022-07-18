@@ -60,6 +60,8 @@
                           原创内容，转载请注明出处！
                         </p>
                       </div>
+
+                      <Artalk />
                     </div>
                   </el-main>
                 </el-container>
@@ -91,12 +93,13 @@ import HeaderTime from "../../components/themes/default/HeaderTime";
 import Header from "../../components/themes/default/Header";
 import Footer from "../../components/themes/default/Footer";
 import FriendLink from "../../components/themes/default/FriendLink";
+import Artalk from "../../components/themes/default/Artalk";
 import { inBrowser } from "../../util/dom";
 
 const logger = getLogger("pages/post");
 
 export default {
-  components: { HeaderTime, Header, Footer, FriendLink },
+  components: { HeaderTime, Header, Footer, FriendLink, Artalk },
   async asyncData(context) {
     const siteConfigResult = await context.$axios.$post("/site/config/list");
     const siteConfigObj =

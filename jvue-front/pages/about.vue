@@ -18,11 +18,7 @@
                     <div class="about">
                       <div class="visit">
                         谢谢您，您是第
-                        <img
-                          src="https://www.cutercounter.com/hit.php?id=gvvnqcod&nd=6&style=47"
-                          border="0"
-                          alt="访客数"
-                        />
+                        <img :src="message" border="0" alt="访客数" />
                         位访客。
                       </div>
                       <h3>网站简介</h3>
@@ -49,8 +45,10 @@
                       <div>
                         专注于项目架构、性能优化、算法研究。在Web开发领域有深入研究，精通Java，目前专注于服务端开发。业余时间喜欢探索移动互联网。
                       </div>
-                      <div>作者邮箱：youweics@sina.com</div>
+                      <div>作者邮箱：youweics@163.com</div>
                     </div>
+
+                    <Artalk />
                   </el-main>
                 </el-container>
               </el-main>
@@ -60,12 +58,14 @@
         <el-col :xs="0" :md="2">&nbsp;</el-col>
       </el-row>
       <el-row>
-        <el-col>
+        <el-col :xs="0" :md="2">&nbsp;</el-col>
+        <el-col :xs="24" :md="20">
           <el-footer>
-            <Footer :site-config="siteConfigObj" />
             <FriendLink />
+            <Footer :site-config="siteConfigObj" />
           </el-footer>
         </el-col>
+        <el-col :xs="0" :md="2">&nbsp;</el-col>
       </el-row>
     </el-main>
   </el-container>
@@ -77,11 +77,12 @@ import HeaderTime from "../components/themes/default/HeaderTime";
 import Header from "../components/themes/default/Header";
 import Footer from "../components/themes/default/Footer";
 import FriendLink from "../components/themes/default/FriendLink";
+import Artalk from "../components/themes/default/Artalk";
 const logger = getLogger("pages/index");
 
 export default {
   name: "About",
-  components: { HeaderTime, Header, Footer, FriendLink },
+  components: { HeaderTime, Header, Footer, FriendLink, Artalk },
   async asyncData({ $axios }) {
     const siteConfigResult = await $axios.$post("/site/config/list");
     const siteConfigObj =
@@ -89,6 +90,13 @@ export default {
     logger.info("fetch siteConfig finish");
 
     return { siteConfigObj };
+  },
+  data() {
+    return {
+      message:
+        "https://v4.terwergreen.com:8002/api/tool/counter?t=" +
+        new Date().getTime()
+    };
   },
   head() {
     return {
@@ -117,6 +125,9 @@ export default {
 <style lang="scss" scoped>
 .visit {
   font-size: 24px;
+  img {
+    vertical-align: text-top;
+  }
 }
 .about {
   margin: 40px 20px 20px 20px;

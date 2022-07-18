@@ -87,9 +87,11 @@ public class VerificationCode {
             //获得一个随机红蓝绿的配合颜色
             graphics2D.setColor(new Color(red, green, blue));
             //把该数字用画笔在画布画出，并指定数字的坐标
-            graphics2D.drawString(randomNumber, 20 * i + 5, (height / 2) + 10);
-            //把该数字加到缓存字符串中。用于等会生成验证码字符串set到session中用于校对
-            sb.append(randomNumber);
+            if (null != randomNumber) {
+                graphics2D.drawString(randomNumber, 20 * i + 5, (height / 2) + 10);
+                //把该数字加到缓存字符串中。用于等会生成验证码字符串set到session中用于校对
+                sb.append(randomNumber);
+            }
         }
         // 清除内存的图片
         bufferedImage.flush();
