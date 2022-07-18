@@ -215,6 +215,11 @@ export default {
       }
     },
     async publishEssay() {
+      if (this.newEssay.trim() === "") {
+        this.$message.error("随便内容不能为空哦~");
+        return;
+      }
+
       console.log("start publish essay:" + this.newEssay);
       const result = await this.$axios.$post("admin/post/save", {
         title: new Date().toLocaleDateString(),
