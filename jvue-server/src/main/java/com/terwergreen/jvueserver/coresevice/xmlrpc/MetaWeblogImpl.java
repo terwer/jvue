@@ -265,4 +265,22 @@ public class MetaWeblogImpl implements IMetaWeblog {
         logger.info("urlData = {}", urlData);
         return urlData;
     }
+
+    @Override
+    public boolean deletePost(String appKey, String postid, String username, String password, boolean publish) throws XmlRpcException {
+        // logger.info("metaWeblog.editPost -> postid: {}, post: {}", postid, JSON.toJSONString(post));
+        logger.info("metaWeblog.editPost -> postid: {}", postid);
+
+        Map<String, Object> rtnResult = isValid(username, password);
+
+        boolean flag = false;
+        try {
+            flag = getPostService().deletePostById(Integer.valueOf(postid));
+            logger.info("flag = {}", flag);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new XmlRpcException(500, e.getMessage());
+        }
+        return flag;
+    }
 }
