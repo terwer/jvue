@@ -1,11 +1,11 @@
 code{
-  font-family: dejavu sans mono,Fira Code,Microsoft Yahei,Menlo,Monaco,Consolas,Courier New,monospace;
+  font-family: "LXGW WenKai","Wenquanyi Micro Hei","Wenquanyi Micro Hei Mono","Microsoft YaHei", "PT Sans", "-apple-system", "Liberation Mono", monospace, dejavu sans mono,Fira Code,Microsoft Yahei,Consolas,Courier New,monospace,Menlo,Monaco !important;
   color: #D69D85;
-  font-size: 12px;
+  font-size: 14px;
 }
 .hljs {
-  font-family: dejavu sans mono,Fira Code,Microsoft Yahei,Menlo,Monaco,Consolas,Courier New,monospace;
-  font-size: 12px;
+  font-family: "LXGW WenKai","Wenquanyi Micro Hei","Wenquanyi Micro Hei Mono","Microsoft YaHei", "PT Sans", "-apple-system", "Liberation Mono", monospace, dejavu sans mono,Fira Code,Microsoft Yahei,Consolas,Courier New,monospace,Menlo,Monaco !important;
+  font-size: 14px;
   display: block;
   overflow-x: auto;
   padding: .5em;
