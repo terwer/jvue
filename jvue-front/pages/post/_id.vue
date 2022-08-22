@@ -40,6 +40,7 @@
                             {{ postObj.title }}
                           </h1>
                         </nuxt-link>
+                        <input type="hidden" :value="postObj.id" />
                       </div>
 
                       <!-- 文章详情 -->
@@ -55,7 +56,7 @@
 
                       <div class="copy">
                         <p>作者：Terwer</p>
-                        <p>首发：远方的灯塔</p>
+                        <p>首发：{{ siteConfigObj.webname }}</p>
                         <p>
                           原创内容，转载请注明出处！
                         </p>
@@ -150,12 +151,12 @@ export default {
       meta: [
         {
           name: "keywords",
-          content: this.siteConfigObj.keywords
+          content: this.postObj.tags
         },
         {
           hid: "description",
           name: "description",
-          content: this.siteConfigObj.description
+          content: this.postObj.desc
         }
       ],
       script: [
@@ -208,7 +209,7 @@ export default {
   }
   h1 {
     border-bottom: 1px solid #ddd;
-    font-size: 14px;
+    font-size: 28px;
     font-weight: bold;
     margin: 20px 0 10px;
     padding-bottom: 5px;
@@ -221,6 +222,7 @@ export default {
     font-weight: bold;
     line-height: 1.5;
     margin: 10px 0;
+    display: none;
   }
   h2 {
     font-size: 21px;
