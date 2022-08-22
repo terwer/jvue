@@ -24,6 +24,7 @@
               >
                 <h2>{{ post.title === "" ? "暂无标题" : post.title }}</h2>
               </nuxt-link>
+              <input type="hidden" :value="post.id" />
             </div>
           </el-col>
           <el-col :span="24">

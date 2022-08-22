@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,7 +59,8 @@ public class PostApi extends BaseApi {
             @ApiImplicitParam(name = "isHot", value = "是否热门，1热门，不传或者0全部"),
             @ApiImplicitParam(name = "postStatus", value = "状态"),
             @ApiImplicitParam(name = "postType", value = "文章类型"),
-            @ApiImplicitParam(name = "search", value = "搜索关键字")
+            @ApiImplicitParam(name = "search", value = "搜索关键字"),
+            @ApiImplicitParam(name = "tags", value = "标签")
     })
     @PostMapping("/list")
     public RestResponse getPostList(@RequestParam(required = false) Integer pageNum,
@@ -66,7 +68,8 @@ public class PostApi extends BaseApi {
                                     @RequestParam(required = false) Integer isHot,
                                     @RequestParam(required = false) String postStatus,
                                     @RequestParam(required = false) String postType,
-                                    @RequestParam(required = false) String search
+                                    @RequestParam(required = false) String search,
+                                    @RequestParam(required = false) String tags
     ) throws RestException {
         if (pageNum == null) {
             pageNum = Constants.DEFAULT_PAGE_NUM;
@@ -89,6 +92,10 @@ public class PostApi extends BaseApi {
             }
             if (StringUtils.isNotEmpty(search)) {
                 paramMap.put("search", search);
+            }
+            if (StringUtils.isNotEmpty(tags)) {
+                String[] tagArray = tags.split(",");
+                paramMap.put("tagArray", tagArray);
             }
             PageInfo<Post> posts = postService.getPostsByPage(pageNum, pageSize, paramMap);
 
@@ -204,10 +211,18 @@ public class PostApi extends BaseApi {
      * @param post 文章实体类
      */
     private void transformContent(Post post) {
+        // markdown转换为html
         String rawContent = post.getContent();
         String html = MarkdownUtil.md2html(rawContent);
         post.setContent(html);
         post.setRawContent(rawContent);
+
+        // 截取摘要
+        String filteredHtml = HtmlUtil.parseHtml(html, Constants.MAX_PREVIEW_LENGTH);
+        post.setDesc(filteredHtml);
+        // 解析图片
+        List<String> thumbnails = ImageUtil.getImgSrc(html);
+        post.setThumbnails(thumbnails);
     }
 
     /**

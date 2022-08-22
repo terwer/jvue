@@ -20,6 +20,13 @@
             content LIKE concat(concat('%', #{search}), '%')
             )
         </if>
+        <if test="tagArray != null and tagArray != ''">
+            AND (
+            <foreach collection="tagArray" open="" close="" item="tag" separator="or" index="index">
+                find_in_set(#{tag},tags)
+            </foreach>
+            )
+        </if>
         <choose>
             <when test="isHot!=null and isHot==1">
                 ORDER BY hits DESC,modified,created DESC
@@ -68,7 +75,8 @@
         WHERE id = #{postId}
     </select>
     <!-- 新增文章 -->
-    <insert id="insertPost" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="com.terwergreen.jvueserver.model.Post">
+    <insert id="insertPost" useGeneratedKeys="true" keyProperty="id" keyColumn="id"
+            parameterType="com.terwergreen.jvueserver.model.Post">
         INSERT INTO posts(
         created
         ,modified
