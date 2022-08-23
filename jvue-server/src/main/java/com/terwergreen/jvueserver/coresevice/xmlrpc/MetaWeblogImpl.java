@@ -8,21 +8,18 @@ import com.terwergreen.jvueserver.model.Post;
 import com.terwergreen.jvueserver.model.SiteConfig;
 import com.terwergreen.jvueserver.service.PostService;
 import com.terwergreen.jvueserver.service.UsersService;
-import com.terwergreen.jvueserver.util.ReflectUtil;
 import com.terwergreen.jvueserver.util.SpringBeanUtils;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.common.XmlRpcNotAuthorizedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * metaWeblogApi的具体实现
@@ -37,6 +34,7 @@ public class MetaWeblogImpl implements IMetaWeblog {
     private CommonService commonService;
     private Object userService;
     private PostService postService;
+    private SiteConfig siteConfig;
 
     public CommonService getCommonService() {
         if (commonService == null) {
@@ -61,6 +59,7 @@ public class MetaWeblogImpl implements IMetaWeblog {
     }
 
     public MetaWeblogImpl() {
+        siteConfig = getCommonService().getSiteConfig();
         logger.info("容器中注册MetaWeblogImpl");
     }
 
@@ -78,11 +77,10 @@ public class MetaWeblogImpl implements IMetaWeblog {
         return rtnResult;
     }
 
+    @Override
     public List<Map<String, Object>> getUsersBlogs(String appKey, String username, String password) throws XmlRpcException {
         logger.info("[blogger.getUsersBlogs] -> appKey: {}, username: {}, password: {}", appKey, username, password);
         isValid(username, password);
-
-        SiteConfig siteConfig = getCommonService().getSiteConfig();
 
         List<Map<String, Object>> usersBlogs = new ArrayList<>();
         Map<String, Object> blogInfo = new HashMap<>();
@@ -185,25 +183,33 @@ public class MetaWeblogImpl implements IMetaWeblog {
         try {
 
             Post postObj = getPostService().getPostById(Integer.valueOf(postid));
-
             // ==========
             // 数据转换开始
-            // ArticleCategory ac = getCategory(postJson.getJSONArray("categories"));
-            // article.setCategory(ac);
-            post.put("title", postObj.getTitle());
-            post.put("description", postObj.getContent());
-            // article.setKeywords(postJson.getString("mt_keywords"));
-            post.put("wp_slug", postObj.getName());
-            post.put("post_status", postObj.getStatus());
-            post.put("dateCreated", postObj.getCreated());
-            // post page essay note
-            post.put("post", postObj.getType());
+            post = transformPost(postObj);
             // 数据转换结束
             // ==========
         } catch (Exception e) {
             e.printStackTrace();
             throw new XmlRpcException(500, e.getMessage());
         }
+
+        return post;
+    }
+
+    private Map<String, Object> transformPost(Post postObj) {
+        Map<String, Object> post = new HashMap<>();
+
+        // post.put("categories", postObj.getCategory());
+        post.put("postid", postObj.getId());
+        post.put("title", postObj.getTitle());
+        post.put("description", postObj.getContent());
+        post.put("mt_keywords", postObj.getTags());
+        post.put("wp_slug", postObj.getName());
+        post.put("post_status", postObj.getStatus());
+        post.put("dateCreated", postObj.getCreated());
+        post.put("permalink", siteConfig.getWeburl() + "/post/" + postObj.getId() + ".html");
+        // post page essay note
+        post.put("post", postObj.getType());
 
         return post;
     }
@@ -219,12 +225,27 @@ public class MetaWeblogImpl implements IMetaWeblog {
     public List<Map<String, Object>> getRecentPosts(String blogid, String username, String password, int numberOfPosts) throws XmlRpcException {
         logger.info("metaWeblog.getRecentPosts -> blogid: {}, numberOfPosts: {}", blogid, numberOfPosts);
 
-//        Object bean = SpringBeanUtils.getBean("com.terwergreen.plugins.blog.service.impl.PostServiceImpl");
-//        Map pramMap = new HashMap();
-//        Object posts = ReflectUtil.invoke(bean, "getRecentPosts", new Class[]{Map.class}, new Object[]{pramMap});
-//        System.out.println("posts = " + posts);
+        List<Map<String, Object>> posts = new ArrayList<>();
 
-        return null;
+        try {
+            Map<String, Object> paraMap = new HashMap<>();
+            paraMap.put("pageSize", numberOfPosts);
+            List<Post> postList = getPostService().getRecentPosts(paraMap);
+
+            for (Post postObj : postList) {
+                // ==========
+                // 数据转换开始
+                Map<String, Object> post = transformPost(postObj);
+                posts.add(post);
+                // 数据转换结束
+                // ==========
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new XmlRpcException(500, e.getMessage());
+        }
+
+        return posts;
     }
 
     @Override

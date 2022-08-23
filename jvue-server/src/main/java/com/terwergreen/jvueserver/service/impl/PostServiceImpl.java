@@ -36,7 +36,12 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Post> getRecentPosts(Map<String, Object> paraMap) {
-        return null;
+        Map<String, Object> newParamMap = new HashMap<>();
+        newParamMap.put("postType", PostTypeEmum.POST_TYPE_POST.getName());
+
+        Integer pageSize = (Integer) paraMap.getOrDefault("pageSize", 10);
+        PageInfo<Post> pageList = getPostsByPage(1, pageSize, newParamMap);
+        return pageList.getList();
     }
 
     @Override
