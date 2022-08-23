@@ -9,8 +9,8 @@
   <a href="https://docs.docker.com/compose"><img src="https://img.shields.io/badge/docker_compose-1.23.2-brightgreen.svg" alt="Docker-compose version"></a>
   <a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html"><img src="https://img.shields.io/badge/jdk-1.8.0_191-orange.svg" alt="Java logo"></a>
   <a href="http://maven.apache.org/"><img src="https://img.shields.io/badge/maven-3.6.0-blue.svg" alt="Maven logo"></a>
-  <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/node-v10.15.3-green.svg" alt="Node Version"></a>
-  <a href="https://www.npmjs.com/"><img src="https://img.shields.io/badge/npm-v6.4.1-blue.svg" alt="npm Version"></a>
+  <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/node-v14.20.0-green.svg" alt="Node Version"></a>
+  <a href="https://www.npmjs.com/"><img src="https://img.shields.io/badge/npm-v6.14.7-blue.svg" alt="npm Version"></a>
   <a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/badge/vue-2.6.6-brightgreen.svg" alt="Vue version"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
 </p>
@@ -19,7 +19,7 @@
 
 ## jvue
 Next light-weight,responsive project
-With Docker,Vue,Vue CLI 3,webpack,Java and Spring Boot
+With Docker,Vue2,Vue CLI 3,webpack4,Java8 and Spring Boot5
 
 # Important Changes in JVue 4
 
@@ -45,6 +45,7 @@ See [https://docs.docker.com/compose/reference/up/](https://docs.docker.com/comp
 ## run jvue
 
 ### via docker(for production)
+
 ```bash
 docker compose up -d --build
 ```
@@ -52,25 +53,45 @@ docker compose up -d --build
 ### custom(for dev)
 1. mysql
 
-   ```bash
-   docker compose -f docker-compose-mysql.yml
-   ```
+```bash
+docker compose -f docker-compose-mysql.yml
+```
 
 2. Jvue-server
 
-   ```bash
-   cd /Users/terwer/Documents/myworks/jvue/jvue-server/src/main/java/com/terwergreen/jvueserver
-   # then run JVueServerApplication `main` function
-   # that's all
-   ```
+```bash
+cd ./jvue-server/src/main/java/com/terwergreen/jvueserver
+# then run JVueServerApplication `main` function
+# that's all
+```
 
 3. Jvue-front
 
-   ```bash
-   cd /Users/terwer/Documents/myworks/jvue/jvue-front
-   yarn
-   yarn dev
-   ```
+```bash
+cd ./jvue-front
+yarn
+yarn dev
+```
+
+### vercel
+
+1. config
+
+```
+vercel pull
+```
+
+2. build
+
+```
+vercel build
+```
+
+3. start(not work)
+
+```
+vercel dev
+```
 
 # Structure
 
