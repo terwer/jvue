@@ -43,6 +43,18 @@
                         <input type="hidden" :value="postObj.id" />
                       </div>
 
+                      <div v-if="postObj.tagArray">
+                        <NuxtLink
+                          v-for="tagItem in postObj.tagArray"
+                          :key="tagItem.tag"
+                          :to="'/tag/' + tagItem.tag"
+                        >
+                          <el-tag :type="tagItem.color" class="post-tag">
+                            {{ tagItem.tag }}
+                          </el-tag>
+                        </NuxtLink>
+                      </div>
+
                       <!-- 文章详情 -->
                       <div
                         id="postContent"
@@ -123,6 +135,25 @@ export default {
     } else {
       errorMessage = postResult.msg;
     }
+
+    const colors = ["success", "info", "warning", "danger"];
+
+    const tagArr = [];
+    if (postObj.tags && postObj.tags !== "") {
+      const tags = postObj.tags.split(",");
+      tags.forEach(item => {
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+        tagArr.push({
+          tag: item,
+          color: randomColor
+        });
+      });
+    }
+
+    Object.assign(postObj, {
+      tagArray: tagArr
+    });
 
     logger.info("fetch siteConfig and post finish");
 
@@ -214,6 +245,11 @@ export default {
     margin: 20px 0 10px;
     padding-bottom: 5px;
   }
+}
+
+.post-default .post-tag {
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 .post-default #postContent {

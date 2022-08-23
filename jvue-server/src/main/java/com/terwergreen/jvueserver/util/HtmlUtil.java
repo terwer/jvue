@@ -14,17 +14,17 @@ public class HtmlUtil {
          * "<.*?"表示<尖括号后的所有字符，此方法可以去掉残缺的标签，及后面的内容
          * " "，若有多种此种字符，可用同一方法去除
          */
+        html = html.replaceAll("<iframe.*src=\"/widgets/publisher.*</iframe>", "");
+        html = html.replaceAll("<iframe.*src=\"/widgets/sy-post-publisher.*</iframe>", "");
+        html = html.replaceAll("<iframe.*/widgets/Note*\\sAttrs.*/iframe>", "");
+        html = html.replaceAll("<h1.*/h1>", "");
+
         html = html.replaceAll("<.*?>", "");
         html = html.replaceAll("<.*?", "");
         html = html.replaceAll("\\n", "");
         html = html.replaceAll("&quot;", "");
         html = html.replaceAll(" ", "");
 
-        html = html.replaceAll("<iframe.*src=\"/widgets/publisher.*</iframe>", "");
-        html = html.replaceAll("<iframe.*src=\"/widgets/sy-post-publisher.*</iframe>", "");
-        html = html.replaceAll("<iframe.*/widgets/Note*\\sAttrs.*/iframe>", "");
-        html = html.replaceAll("<h1.*/h1>", "");
-        
         return (html);
     }
 
