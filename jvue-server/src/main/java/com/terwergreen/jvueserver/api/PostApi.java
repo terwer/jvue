@@ -85,7 +85,6 @@ public class PostApi extends BaseApi {
             }
             if (null != isHot && isHot == 1) {
                 paramMap.put("isHot", isHot);
-                pageSize = 5;
             }
             if (StringUtils.isNotEmpty(postStatus)) {
                 paramMap.put("postStatus", postStatus);
