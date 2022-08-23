@@ -234,7 +234,7 @@ export default {
     line-height: 32px;
     // 图片自适应
     img {
-      max-width: 25% !important;
+      max-width: 62% !important;
     }
   }
 }
