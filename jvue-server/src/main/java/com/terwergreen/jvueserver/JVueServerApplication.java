@@ -1,6 +1,7 @@
 package com.terwergreen.jvueserver;
 
 import com.terwergreen.jvueserver.constant.JVueConstants;
+import com.terwergreen.jvueserver.coresevice.xmlrpc.MyXmlRpcServlet;
 import com.terwergreen.jvueserver.util.SpringBeanUtils;
 import org.apache.xmlrpc.webserver.XmlRpcServlet;
 import org.springframework.boot.SpringApplication;
@@ -9,6 +10,9 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * @author terwer
+ */
 @SpringBootApplication
 public class JVueServerApplication {
 
@@ -21,11 +25,15 @@ public class JVueServerApplication {
         SpringBeanUtils.setContext(applicationContext);
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    /**
+     * 注册Xmlrpc
+     */
     @Bean
     public ServletRegistrationBean registerServlet() {
+        XmlRpcServlet xmlRpcServlet = new MyXmlRpcServlet();
+
         return new ServletRegistrationBean(
-                new XmlRpcServlet(),
+                xmlRpcServlet,
                 JVueConstants.CONSTANT_XMLRPC_NAME // xml-rpc访问接口
         );
     }
