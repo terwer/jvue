@@ -113,6 +113,15 @@ import { inBrowser } from "../../util/dom";
 
 const logger = getLogger("pages/post");
 
+// 更新浏览量
+const updateHits = async (axiosObj, postId, hits) => {
+  const postParams = {
+    postId,
+    hits
+  };
+  await axiosObj.$post("/blog/post/updateHits", postParams);
+};
+
 export default {
   components: { HeaderTime, Header, Footer, FriendLink, Artalk },
   async asyncData(context) {
@@ -154,6 +163,9 @@ export default {
     Object.assign(postObj, {
       tagArray: tagArr
     });
+
+    // 更新浏览量
+    await updateHits(context.$axios, postObj.id, ++postObj.hits);
 
     logger.info("fetch siteConfig and post finish");
 
