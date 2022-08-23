@@ -37,3 +37,4 @@ application-rds.properties_bak
 
 # mac
 .DS_Store
+.vercel
