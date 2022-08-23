@@ -58,7 +58,7 @@ export default {
       postStatus: "publish",
       postType: "post",
       pageNum: 1,
-      pageSize: 15
+      pageSize: 25
     });
     this.postList = postsResult.status === 1 ? postsResult.data.list || [] : [];
     logger.info("fetch aside postList finish");
