@@ -19,6 +19,12 @@ public class HtmlUtil {
         html = html.replaceAll("\\n", "");
         html = html.replaceAll("&quot;", "");
         html = html.replaceAll(" ", "");
+
+        html = html.replaceAll("<iframe.*src=\"/widgets/publisher.*</iframe>", "");
+        html = html.replaceAll("<iframe.*src=\"/widgets/sy-post-publisher.*</iframe>", "");
+        html = html.replaceAll("<iframe.*/widgets/Note*\\sAttrs.*/iframe>", "");
+        html = html.replaceAll("<h1.*/h1>", "");
+        
         return (html);
     }
 
