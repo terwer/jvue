@@ -81,16 +81,15 @@
               {{ siteConfig.beianinfo }}
             </a>
             <!-- 百度统计 -->
-            <script>
-              var _hmt = _hmt || [];
-              (function() {
-                var hm = document.createElement("script");
-                hm.src =
-                  "https://hm.baidu.com/hm.js?8cf152054e4b32b33cbc68fef515bbb5";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-              })();
-            </script>
+            <a
+              href="https://tongji.baidu.com/main/overview/10000454757/overview/index?siteId=18319812"
+              target="_blank"
+              ><img
+                src="https://tongji.baidu.com/sc-web/image/icon/13.gif"
+                style="vertical-align: middle;height: 14px;margin-top: -1px;"
+              />
+              百度统计</a
+            >
           </div>
           <div class="page copyright">
             Copyright © 2011-{{ nowYear }}

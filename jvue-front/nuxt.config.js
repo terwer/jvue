@@ -39,12 +39,16 @@ module.exports = {
       src: "@/plugins/font-awesome",
       ssr: false // 只在客户端打包
     },
+    // {
+    //   src: "~/plugins/vue-uweb",
+    //   ssr: false // 只在客户端打包
+    // },
     {
-      src: "~/plugins/vue-uweb",
+      src: "~/plugins/vue-hljs",
       ssr: false // 只在客户端打包
     },
     {
-      src: "~/plugins/vue-hljs",
+      src: "~/plugins/baidu-tongji",
       ssr: false // 只在客户端打包
     }
   ],
