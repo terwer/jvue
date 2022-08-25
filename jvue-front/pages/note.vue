@@ -66,6 +66,23 @@ export default {
     return {
       postListArray: []
     };
+  },
+  head() {
+    return {
+      title: "学习笔记" + " - " + this.siteConfigObj.webname,
+      meta: [
+        {
+          name: "keywords",
+          content: "归档,笔记,总结,大纲"
+        },
+        {
+          hid: "description",
+          name: "description",
+          content:
+            "这里是归档和总结各种学习笔记的地方。内容为更加条理化、系统化。"
+        }
+      ]
+    };
   }
 };
 </script>
