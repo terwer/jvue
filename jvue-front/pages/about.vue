@@ -104,12 +104,13 @@ export default {
       meta: [
         {
           name: "keywords",
-          content: this.siteConfigObj.keywords
+          content: "关于,作者,选择,尝试"
         },
         {
           hid: "description",
           name: "description",
-          content: this.siteConfigObj.description
+          content:
+            "人生在世，有些事情，有些选择，是不需要理由的。年轻就该去探索，去尝试。人生最大的悲哀不是失败，而是甘于现状，因为他一开始就失败了。"
         }
       ]
     };

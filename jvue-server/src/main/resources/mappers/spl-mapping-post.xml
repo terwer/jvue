@@ -32,7 +32,7 @@
                 ORDER BY hits DESC,modified,created DESC
             </when>
             <otherwise>
-                ORDER BY modified DESC,created DESC
+                ORDER BY created DESC
             </otherwise>
         </choose>
     </select>
