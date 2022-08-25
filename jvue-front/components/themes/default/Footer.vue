@@ -80,22 +80,17 @@
             >
               {{ siteConfig.beianinfo }}
             </a>
-            <!-- cnzz统计 -->
-            <span id="cnzz_stat_icon_4445524">
-              <a
-                href="https://www.cnzz.com/stat/website.php?web_id=4445524"
-                target="_blank"
-                title="站长统计"
-              >
-                <img
-                  border="0"
-                  hspace="0"
-                  vspace="0"
-                  src="https://icon.cnzz.com/img/pic.gif"
-                  alt="cnzz"
-                />
-              </a>
-            </span>
+            <!-- 百度统计 -->
+            <script>
+              var _hmt = _hmt || [];
+              (function() {
+                var hm = document.createElement("script");
+                hm.src =
+                  "https://hm.baidu.com/hm.js?8cf152054e4b32b33cbc68fef515bbb5";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+              })();
+            </script>
           </div>
           <div class="page copyright">
             Copyright © 2011-{{ nowYear }}
