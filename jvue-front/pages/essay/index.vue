@@ -173,16 +173,17 @@ export default {
   },
   head() {
     return {
-      title: this.siteConfigObj.webname + " - " + this.siteConfigObj.webslogen,
+      title: "心情随笔" + " - " + this.siteConfigObj.webname,
       meta: [
         {
           name: "keywords",
-          content: this.siteConfigObj.keywords
+          content: "心情,随笔,说说,微博"
         },
         {
           hid: "description",
           name: "description",
-          content: this.siteConfigObj.description
+          content:
+            "这里是记录心路历程的地方，IDEA、头脑风暴、小想法都来自于这里。记录心情点滴，享受快乐生活。"
         }
       ]
     };
