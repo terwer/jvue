@@ -5,6 +5,7 @@ const development = process.env.NODE_ENV !== "production";
 module.exports = {
   debug: true,
   mode: "universal",
+  telemetry: false,
 
   /*
    ** Headers of the page
@@ -39,10 +40,6 @@ module.exports = {
       src: "@/plugins/font-awesome",
       ssr: false // 只在客户端打包
     },
-    // {
-    //   src: "~/plugins/vue-uweb",
-    //   ssr: false // 只在客户端打包
-    // },
     {
       src: "~/plugins/vue-hljs",
       ssr: false // 只在客户端打包

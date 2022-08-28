@@ -6,8 +6,8 @@
  *2019/3/21 12:02
  **/
 import Vue from "vue";
-import vueHljs from "vue-hljs";
 import { getLogger } from "../util/logger";
+import vueHljs from "./lib/vue-hljs/main";
 const logger = getLogger("plugins/vue-hljs");
 
 Vue.use(vueHljs);

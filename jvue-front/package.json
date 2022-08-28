@@ -18,10 +18,8 @@
     "element-ui": "2.4.11",
     "express": "^4.16.4",
     "font-awesome": "^4.7.0",
-    "nuxt": "^2.4.0",
-    "progress-catalog": "^1.0.7",
-    "vue-hljs": "^1.1.2",
-    "vue-uweb": "^0.2.1"
+    "highlight.js": "^11.6.0",
+    "nuxt": "^2.15.8"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.8",
@@ -41,11 +39,11 @@
     "eslint-plugin-promise": ">=4.0.1",
     "eslint-plugin-standard": ">=4.0.0",
     "eslint-plugin-vue": "^7.0.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^6.0.1",
     "nodemon": "^1.18.9",
     "prettier": "^1.16.4",
     "qs": "^6.6.0",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^10.3.1"
   },
   "config": {
     "nuxt": {
