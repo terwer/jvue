@@ -51,7 +51,7 @@ docker compose up -d --build
 ```
 
 ### custom(for dev)
-1. mysql
+~~1. mysql~~
 
 ```bash
 docker compose -f docker-compose-mysql.yml
@@ -65,12 +65,18 @@ cd ./jvue-server/src/main/java/com/terwergreen/jvueserver
 # that's all
 ```
 
-3. Jvue-front
+~~3. Jvue-front~~
 
 ```bash
 cd ./jvue-front
 yarn
 yarn dev
+```
+
+### Test docker(for dev)
+
+```bash
+docker compose -f docker-compose.yml up --build
 ```
 
 ### vercel
