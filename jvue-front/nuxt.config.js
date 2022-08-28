@@ -5,6 +5,7 @@ const development = process.env.NODE_ENV !== "production";
 module.exports = {
   debug: true,
   mode: "universal",
+  telemetry: false,
 
   /*
    ** Headers of the page

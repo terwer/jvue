@@ -67,9 +67,9 @@
           <!-- 运行信息 -->
           <div class="page">博客已稳定运行： 2年303天22时22分48秒<br /></div>
           <div class="page">
-            运行环境：docker、jdk_1.8_201、maven_3.6.0<br />
+            运行环境：docker、jdk_1.8_291、maven_3.6.0<br />
             Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE<br />
-            node14.20.0、vue_2.6.9、nuxt_2.4.0
+            node16.17.0、vue_2.6.9、nuxt_2.15.8
           </div>
           <!-- 备案信息 -->
           <div class="page copyright">
