@@ -18,9 +18,8 @@
     "element-ui": "2.4.11",
     "express": "^4.16.4",
     "font-awesome": "^4.7.0",
-    "nuxt": "^2.4.0",
-    "progress-catalog": "^1.0.7",
-    "vue-hljs": "^1.1.2"
+    "highlight.js": "^11.6.0",
+    "nuxt": "^2.4.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.8",

@@ -310,7 +310,7 @@ export default {
   }
 
   pre {
-    margin: 1rem 0px !important;
+    //margin: 1rem 0px !important;
   }
 
   blockquote {
