@@ -4,10 +4,9 @@
 
 ## Build Setup
 
-注意：必须使用node14
+注意：已经兼容node16
 
 ```
-sudo n 14
 npm i -g yarn
 ```
 
@@ -32,11 +31,6 @@ node-sass version policy
 
 [https://github.com/sass/node-sass#node-version-support-policy](https://github.com/sass/node-sass#node-version-support-policy)
 
-so,this project must use **node 14**
-
-```bash
-sudo npm install -g n
-sudo n 14
-```
+this project support **node 16**
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
