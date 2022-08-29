@@ -38,9 +38,11 @@ public class PostServiceImpl implements PostService {
     public List<Post> getRecentPosts(Map<String, Object> paraMap) {
         Map<String, Object> newParamMap = new HashMap<>();
         newParamMap.put("postType", PostTypeEmum.POST_TYPE_POST.getName());
+        newParamMap.put("search", paraMap.getOrDefault("search",""));
 
         Integer pageSize = (Integer) paraMap.getOrDefault("pageSize", 10);
-        PageInfo<Post> pageList = getPostsByPage(1, pageSize, newParamMap);
+        Integer pageNum = (Integer) paraMap.getOrDefault("pageNum", 1);
+        PageInfo<Post> pageList = getPostsByPage(pageNum, pageSize, newParamMap);
         return pageList.getList();
     }
 

@@ -223,6 +223,11 @@ public class MetaWeblogImpl implements IMetaWeblog {
 
     @Override
     public List<Map<String, Object>> getRecentPosts(String blogid, String username, String password, int numberOfPosts) throws XmlRpcException {
+        return this.getRecentPosts(blogid, username, password, numberOfPosts, 1, "");
+    }
+
+    @Override
+    public List<Map<String, Object>> getRecentPosts(String blogid, String username, String password, int numberOfPosts, int page, String keyword) throws XmlRpcException {
         logger.info("metaWeblog.getRecentPosts -> blogid: {}, numberOfPosts: {}", blogid, numberOfPosts);
 
         List<Map<String, Object>> posts = new ArrayList<>();
@@ -230,6 +235,8 @@ public class MetaWeblogImpl implements IMetaWeblog {
         try {
             Map<String, Object> paraMap = new HashMap<>();
             paraMap.put("pageSize", numberOfPosts);
+            paraMap.put("pageNum", page);
+            paraMap.put("search", keyword);
             List<Post> postList = getPostService().getRecentPosts(paraMap);
 
             for (Post postObj : postList) {
