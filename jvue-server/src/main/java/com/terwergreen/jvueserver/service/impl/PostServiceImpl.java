@@ -45,7 +45,7 @@ public class PostServiceImpl implements PostService {
             String[] tagArray = new String[]{search};
             newParamMap.put("tagArray", tagArray);
         }
-        
+
         Integer pageSize = (Integer) paraMap.getOrDefault("pageSize", 10);
         Integer pageNum = (Integer) paraMap.getOrDefault("pageNum", 1);
         PageInfo<Post> pageList = getPostsByPage(pageNum, pageSize, newParamMap);
