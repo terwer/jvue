@@ -21,43 +21,46 @@
 Next light-weight,responsive project
 With Docker,Vue2,Vue CLI 3,webpack4,Java8 and Spring Boot5
 
-# Important Changes in JVue 4
+## Important Changes in JVue 4
 
 Using [Docker](https://docs.docker.com/develop/dev-best-practices/) for deploy
 
-# Install
+## Install
 The instructions assume that you have already installed [Docker](https://docs.docker.com/installation/) and [Docker Compose](https://docs.docker.com/compose/install/). 
 
-# Run
+## Run
 
-## install docker
+### install docker
 ```
 yum install docker
 ```
 
-## install docker-compose
+### install docker-compose
 ```
 curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 ```
 
 See [https://docs.docker.com/compose/reference/up/](https://docs.docker.com/compose/reference/up/)
 
-## run jvue
+## Run jvue
 
-### via docker(for production)
+### docker(for dev)
+
+```bash
+docker compose up --build
+```
+
+### docker(for production)
 
 ```bash
 docker compose up -d --build
 ```
 
-### custom(for dev)
-~~1. mysql~~
+### dev
 
-```bash
-docker compose -f docker-compose-mysql.yml
-```
+1. jvue-mysql
 
-2. Jvue-server
+2. jvue-server
 
 ```bash
 cd ./jvue-server/src/main/java/com/terwergreen/jvueserver
@@ -65,38 +68,17 @@ cd ./jvue-server/src/main/java/com/terwergreen/jvueserver
 # that's all
 ```
 
-~~3. Jvue-front~~
+3. jvue-front
 
 ```bash
 cd ./jvue-front
 yarn
 yarn dev
 ```
-
-### Test docker(for dev)
+or somplely
 
 ```bash
-docker compose -f docker-compose.yml up --build
-```
-
-### vercel
-
-1. config
-
-```
-vercel pull
-```
-
-2. build
-
-```
-vercel build
-```
-
-3. start(not work)
-
-```
-vercel dev
+./dev.sh
 ```
 
 # Structure
@@ -108,4 +90,4 @@ Have fun and enjoy!
 
 You can contribute simplely by create a pull request for me
 
-For detailed explanation on how things work, please visit [author's blog](https://terwergreen.com).
+For detailed explanation on how things work, please visit [author's blog](https://blog.terwergreen.com).

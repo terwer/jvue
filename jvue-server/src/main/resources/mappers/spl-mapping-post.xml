@@ -21,7 +21,7 @@
             )
         </if>
         <if test="tagArray != null and tagArray != ''">
-            AND (
+            OR (
             <foreach collection="tagArray" open="" close="" item="tag" separator="or" index="index">
                 find_in_set(#{tag},tags)
             </foreach>

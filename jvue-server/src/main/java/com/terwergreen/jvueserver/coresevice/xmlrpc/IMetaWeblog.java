@@ -85,6 +85,20 @@ public interface IMetaWeblog {
     List<Map<String, Object>> getRecentPosts(String blogid, String username, String password, int numberOfPosts) throws XmlRpcException;
 
     /**
+     * 获取最近的文章列表：metaWeblog.getRecentPosts
+     *
+     * @param blogid        blogid
+     * @param username      用户名
+     * @param password      密码
+     * @param numberOfPosts 数目
+     * @param page          页码
+     * @param keyword       关键字
+     * @return 文章列表
+     * @throws XmlRpcException 异常
+     */
+    List<Map<String, Object>> getRecentPosts(String blogid, String username, String password, int numberOfPosts, int page, String keyword) throws XmlRpcException;
+
+    /**
      * 上传媒体对象：metaWeblog.newMediaObject
      *
      * @param blogid   blogid
