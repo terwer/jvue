@@ -1,4 +1,4 @@
-FROM artalk/artalk-go:2.1
+FROM artalk/artalk-go:2.8.3
 #镜像创建者的信息
 LABEL maintainer="terwer<youweics@163.com>"
 
