@@ -86,7 +86,7 @@ yarn config set registry https://registry.npmmirror.com/ --global  && \
     yarn config set selenium_cdnurl https://cdn.npmmirror.com/binaries/selenium --global  && \
     yarn config set node_inspector_cdnurl https://cdn.npmmirror.com/binaries/node-inspector --global
 yarn
-yarn dev
+ARTALK_SERVER_URL=https://v4.terwergreen.com:8003 yarn dev
 ```
 or simplely dev front project without step2
 
