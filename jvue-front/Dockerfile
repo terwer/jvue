@@ -1,11 +1,17 @@
 # 依赖的镜像
-FROM node:14-alpine
+FROM node:18-alpine3.18
 
 # 工作目录
 WORKDIR /app
 
 # 安装依赖
 COPY ./jvue-front/package.json ./
+
+#python
+RUN apk add --no-cache --virtual .gyp \
+        python3 \
+        make \
+        g++
 
 # yarn 已经有了，没必要重复安装
 RUN yarn config set registry https://registry.npmmirror.com/ --global  && \
@@ -20,6 +26,8 @@ RUN yarn config set registry https://registry.npmmirror.com/ --global  && \
     yarn config set node_inspector_cdnurl https://cdn.npmmirror.com/binaries/node-inspector --global
 
 RUN yarn
+
+RUN apk del .gyp
 
 RUN yarn build
 

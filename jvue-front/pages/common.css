@@ -2,8 +2,12 @@
 * 所有主题公共样式
 * 注意：每个主题都要引用这个样式
 */
+:root {
+  --g-font-family: "Open Sans", "LXGW WenKai", "JetBrains Mono", "-apple-system",
+  "Microsoft YaHei", "Times New Roman", "方正北魏楷书_GBK";
+}
 body {
-  font-family: "LXGW WenKai","Wenquanyi Micro Hei","Wenquanyi Micro Hei Mono","Microsoft YaHei", "PT Sans", "-apple-system", "Liberation Mono", monospace, dejavu sans mono,Fira Code,Microsoft Yahei,Consolas,Courier New,monospace,Menlo,Monaco !important;
+  font-family: var(--g-font-family) !important;
   color: #666 !important;
 }
 body,

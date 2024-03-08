@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# sudo n 14
+# sudo n 18
 
 cd jvue-server
 ./mvnw clean spring-boot:run -Dspring-boot.run.profiles=dev -DskipTests &

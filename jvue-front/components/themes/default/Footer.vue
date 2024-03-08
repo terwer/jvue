@@ -34,7 +34,6 @@
             如果您有相关合作事宜，可以通过以下方式联系我，我会在收到消息后第一时间回复处理！
           </div>
           <div class="page">
-            <br />
             Github：https://github.com/terwer
           </div>
           <div class="page">
@@ -52,17 +51,6 @@
         <el-col>
           <div class="footertit">
             <h2>更多信息</h2>
-          </div>
-          <div class="page">
-            <a
-              href="https://v.yunaq.com/certificate?domain=www.anquan.org&amp;from=label&amp;code=90040"
-              target="_blank"
-            >
-              <img
-                alt="anquan"
-                src="https://aqyzmedia.yunaq.com/labels/label_sm_90040.png"
-              />
-            </a>
           </div>
           <!-- 运行信息 -->
           <div class="page">博客已稳定运行： 2年303天22时22分48秒<br /></div>
@@ -136,7 +124,7 @@ a {
   margin-top: 10px;
   .footer-main {
     padding: 0 !important;
-    text-align: center;
+    //text-align: center;
   }
 }
 .dingyue {
@@ -174,6 +162,6 @@ a {
   width: 25%;
   height: auto;
   display: block;
-  margin: auto;
+  //margin: auto;
 }
 </style>

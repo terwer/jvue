@@ -1,5 +1,17 @@
 <template>
   <el-row>
+    <el-col :xs="24" :md="24">
+      <PostList :keyword="keyword" :post-list="postListArray" />
+      <p v-if="showNores" class="nores">~ 我是有底线滴 ~</p>
+      <div id="pagination">
+        <div class="loadmore-default">
+          <a id="btn-loadmore" href="javascript:void(0);" @click="loadmore">
+            {{ loadText }}
+          </a>
+        </div>
+      </div>
+    </el-col>
+    <!--
     <el-col :xs="24" :md="16">
       <PostList :keyword="keyword" :post-list="postListArray" />
       <p v-if="showNores" class="nores">~ 我是有底线滴 ~</p>
@@ -14,15 +26,16 @@
     <el-col :xs="24" :md="8">
       <Aside />
     </el-col>
+    -->
   </el-row>
 </template>
 
 <script>
 import PostList from "./PostList";
-import Aside from "./Aside";
+
 export default {
   name: "Body",
-  components: { Aside, PostList },
+  components: { PostList },
   props: {
     type: {
       type: String,
@@ -51,6 +64,9 @@ export default {
     postList() {
       this.postListArray = this.postList;
     }
+  },
+  mounted() {
+    this.loadmore();
   },
   methods: {
     async loadmore() {
@@ -88,6 +104,7 @@ export default {
   color: #999;
   text-align: center;
 }
+
 #pagination {
   padding: 10px;
 }
