@@ -1,6 +1,9 @@
 const pkg = require("./package");
 
-const development = process.env.NODE_ENV !== "production";
+// 后端接口地址
+const JVUE_SERVER_URL =
+  process.env.JVUE_SERVER_URL ?? "http://localhost:8008/api";
+console.log("JVUE_SERVER_URL =>", JVUE_SERVER_URL);
 
 module.exports = {
   debug: true,
@@ -62,8 +65,7 @@ module.exports = {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: "http://localhost:8008/api"
-    // baseURL: development ? "http://localhost:8008/api" : "http://localhost/api"
+    baseURL: JVUE_SERVER_URL
   },
 
   /*
