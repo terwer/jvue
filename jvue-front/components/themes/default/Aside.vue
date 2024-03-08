@@ -40,8 +40,8 @@
   </div>
 </template>
 <script>
-import { getLogger } from "../../../util/logger";
-import { inBrowser } from "../../../util/dom";
+import { getLogger } from "~/util/logger";
+import { inBrowser } from "~/util/dom";
 const logger = getLogger("components/themes/default/Aside");
 
 export default {

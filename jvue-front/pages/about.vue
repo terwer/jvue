@@ -27,7 +27,8 @@
                           远
                         </span>
                         <span>
-                          方的灯塔是关注与分享互联网及服务端开发技术的个人博客，致力于Java后端开发及服务端技术、软件架构、微服务技术分享。同时也记录个人的一路点滴，所蕴含的包括前端、后端、数据库等知识，欢迎关注。
+                          方的灯塔致力于Java技术栈、后端开发、软件架构、微服务、AI
+                          大模型、自然语言处理等相关技术分享。同时也记录个人的一路点滴，欢迎关注。
                         </span>
                       </div>
                       <div>
@@ -40,10 +41,12 @@
                       </div>
                       <h3>作者简历</h3>
                       <div>
-                        2014年7月1日毕业于湖北省长江大学软件工程，在CRM客户关系管理、电子商务、互联网金融、互联网K12教育等领域有丰富的工作经验。
-                      </div>
-                      <div>
-                        专注于项目架构、性能优化、算法研究。在Web开发领域有深入研究，精通Java，目前专注于服务端开发。业余时间喜欢探索移动互联网。
+                        <p>
+                          2014年7月1日毕业于湖北省长江大学软件工程，目前专注于服务端项目架构、人工智能、自然语言处理等领域的研究。
+                        </p>
+                        <p>
+                          在Web开发领域有深入研究，精通Java服务端开发、AI大模型、自然语言处理等技术。
+                        </p>
                       </div>
                       <div>作者邮箱：youweics@163.com</div>
                     </div>
@@ -78,6 +81,7 @@ import Header from "../components/themes/default/Header";
 import Footer from "../components/themes/default/Footer";
 import FriendLink from "../components/themes/default/FriendLink";
 import Artalk from "../components/themes/default/Artalk";
+
 const logger = getLogger("pages/index");
 
 export default {
@@ -92,10 +96,10 @@ export default {
     return { siteConfigObj };
   },
   data() {
+    const baseUrl = this.$axios.defaults.baseURL;
+
     return {
-      message:
-        "https://v4.terwergreen.com:8002/api/tool/counter?t=" +
-        new Date().getTime()
+      message: `${baseUrl}/tool/counter?t=${new Date().getTime()}`
     };
   },
   head() {
@@ -119,6 +123,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./webfont.css";
 @import "./common.css";
 @import "./default.css";
 </style>
@@ -126,10 +131,12 @@ export default {
 <style lang="scss" scoped>
 .visit {
   font-size: 24px;
+
   img {
     vertical-align: text-top;
   }
 }
+
 .about {
   margin: 40px 20px 20px 20px;
 }

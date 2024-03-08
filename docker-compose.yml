@@ -40,13 +40,15 @@ services:
       - ./jvue-mysql/init:/docker-entrypoint-initdb.d/
     restart: "no"
   jvue-server:
+    depends_on:
+      - jvue-mysql
     image: jvue/server:4.0.1
     container_name: jvue-server
     build:
       context: ./
       dockerfile: ./jvue-server/Dockerfile
     ports:
-      - "8002:8002"
+      - "8008:8008"
     working_dir: /app
     command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker -DskipTests
     volumes:
@@ -55,6 +57,8 @@ services:
       - ./data/server/logs:/logs
     restart: "no"
   jvue-front:
+    depends_on:
+      - jvue-server
     container_name: jvue-front
     image: jvue/front:4.0.1
     build:

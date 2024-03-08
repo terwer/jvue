@@ -188,6 +188,9 @@ export default {
       ]
     };
   },
+  mounted() {
+    this.loadmore();
+  },
   methods: {
     async loadmore() {
       this.showNores = false;
@@ -256,20 +259,25 @@ export default {
 .essay {
   color: #333333;
 }
+
 .read-more a {
   color: #1e9fff;
   cursor: pointer;
+
   h2 {
     font-size: 14px;
     padding-left: 10px;
   }
 }
+
 .load-more {
   color: #ffb800;
 }
+
 .loadmore-btn {
   cursor: pointer;
 }
+
 .like em {
   font-style: normal;
   font-size: 12px;

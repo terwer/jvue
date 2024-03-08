@@ -3,11 +3,11 @@
 ## vcode
 
 ```bash
-http://localhost:8002/api/tool/vcode
+http://localhost:8008/api/tool/vcode
 ```
 
 ## counter
 
 ```bash
-http://localhost:8002/api/tool/counter
+http://localhost:8008/api/tool/counter
 ```

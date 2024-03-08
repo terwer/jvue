@@ -86,6 +86,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./webfont.css";
 @import "./common.css";
 @import "./default.css";
 </style>

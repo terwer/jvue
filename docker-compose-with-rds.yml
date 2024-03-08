@@ -23,7 +23,7 @@ services:
       context: ./
       dockerfile: ./jvue-server/Dockerfile
     ports:
-      - "8002:8002"
+      - "8008:8008"
     working_dir: /app
     command: mvn clean spring-boot:run -Dspring-boot.run.profiles=rds -DskipTests
     volumes:
