@@ -103,4 +103,4 @@ Have fun and enjoy!
 
 You can contribute simplely by create a pull request for me
 
-For detailed explanation on how things work, please visit [author's blog](https://blog.terwergreen.com).
+For detailed explanation on how things work, please visit [author's blog](https://terwer.space).
