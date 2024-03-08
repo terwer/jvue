@@ -99,17 +99,21 @@
 </template>
 
 <script>
-/* eslint no-undef: 0 */ // --> OFF
-/* eslint nuxt/no-globals-in-created: 0 */ // --> OFF
-/* eslint vue/no-v-html: 0 */ // --> OFF
-/* eslint no-useless-escape: 0 */ // --> OFF
-import { getLogger } from "../../util/logger";
+/* eslint no-undef: 0 */
+// --> OFF
+/* eslint nuxt/no-globals-in-created: 0 */
+// --> OFF
+/* eslint vue/no-v-html: 0 */
+// --> OFF
+/* eslint no-useless-escape: 0 */
+// --> OFF
 import HeaderTime from "../../components/themes/default/HeaderTime";
 import Header from "../../components/themes/default/Header";
 import Footer from "../../components/themes/default/Footer";
 import FriendLink from "../../components/themes/default/FriendLink";
-import Artalk from "../../components/themes/default/Artalk";
-import { inBrowser } from "../../util/dom";
+import Artalk from "../../components/themes/default/Artalk.vue";
+import { getLogger } from "~/util/logger";
+import { inBrowser } from "~/util/dom";
 
 const logger = getLogger("pages/post");
 
@@ -241,15 +245,18 @@ export default {
 .post-default {
   margin: 20px;
 }
+
 .post-default #postTitle {
   a {
     color: #000;
     line-height: 1.5;
     text-decoration: none;
   }
+
   a:hover {
     color: red;
   }
+
   h1 {
     border-bottom: 1px solid #ddd;
     font-size: 28px;
@@ -272,12 +279,14 @@ export default {
     margin: 10px 0;
     display: none;
   }
+
   h2 {
     font-size: 21px;
     font-weight: bold;
     line-height: 1.5;
     margin: 10px 0;
   }
+
   p {
     line-height: 32px;
     // 图片自适应
@@ -286,6 +295,7 @@ export default {
     }
   }
 }
+
 .error-message {
   font-size: 48px;
   text-align: center;
@@ -301,6 +311,7 @@ export default {
       code {
         font-size: 16px;
       }
+
       p {
         code {
           font-size: 16px;
@@ -320,9 +331,11 @@ export default {
     margin: 10px 0;
     border: 1px solid #ccc !important;
     border-radius: 3px !important;
+
     code {
       font-size: 16px;
     }
+
     p {
       code {
         font-size: 16px;

@@ -3,12 +3,18 @@ const pkg = require("./package");
 // 后端接口地址
 const JVUE_SERVER_URL =
   process.env.JVUE_SERVER_URL ?? "http://localhost:8008/api";
+const ARTALK_SERVER_URL =
+  process.env.ARTALK_SERVER_URL ?? "http://localhost:23366";
 console.log("JVUE_SERVER_URL =>", JVUE_SERVER_URL);
+console.log("ARTALK_SERVER_URL =>", ARTALK_SERVER_URL);
 
 module.exports = {
   debug: true,
   mode: "universal",
   telemetry: false,
+  env: {
+    artalkServerUrl: ARTALK_SERVER_URL
+  },
 
   /*
    ** Headers of the page
@@ -20,7 +26,17 @@ module.exports = {
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { hid: "description", name: "description", content: pkg.description }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        href:
+          "https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.3.0/css/lightgallery.css",
+        rel: "stylesheet"
+      }
+    ],
+    script: [
+      { src: "https://cdnjs.cloudflare.com/ajax/libs/artalk/2.8.3/Artalk.js" }
+    ]
   },
 
   /*

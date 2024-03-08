@@ -42,15 +42,3 @@ services:
 #    environment:
 #      - npm_config_unsafe_perm=true
 #    restart: "no"
-  jvue-artalk:
-    image: jvue/artalk:2.8.3
-    container_name: jvue-artalk
-    build:
-      context: ./
-      dockerfile: ./jvue-artalk/Dockerfile
-    ports:
-      - 8005:23366
-    volumes:
-      - ./jvue-artalk/data:/data
-      - ./jvue-artalk/ssl/certs/v4.pem:/etc/ssl/certs/v4.pem
-      - ./jvue-artalk/ssl/certs/v4.key:/etc/ssl/certs/v4.key

@@ -80,7 +80,7 @@ import HeaderTime from "../components/themes/default/HeaderTime";
 import Header from "../components/themes/default/Header";
 import Footer from "../components/themes/default/Footer";
 import FriendLink from "../components/themes/default/FriendLink";
-import Artalk from "../components/themes/default/Artalk";
+import Artalk from "../components/themes/default/Artalk.vue";
 
 const logger = getLogger("pages/index");
 
