@@ -8,7 +8,6 @@
 
 <script>
 import "artalk/dist/Artalk.css";
-// import Artalk from "artalk";
 
 export default {
   mounted() {
@@ -46,7 +45,7 @@ export default {
           el: "#Comments",
           pageKey: "", // 页面链接
           pageTitle: "", // 页面标题
-          server: "https://v4.terwergreen.com:8005", // 后端地址
+          server: process.env.artalkServerUrl, // 后端地址
           site: "浅海拾贝"
         });
         console.log("Artalk初始化完成...");
