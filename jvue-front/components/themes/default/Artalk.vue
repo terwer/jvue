@@ -46,7 +46,7 @@ export default {
           pageKey: "", // 页面链接
           pageTitle: "", // 页面标题
           server: process.env.artalkServerUrl, // 后端地址
-          site: "浅海拾贝"
+          site: "JVue4博客"
         });
         console.log("Artalk初始化完成...");
       });
