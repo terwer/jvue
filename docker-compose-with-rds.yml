@@ -43,7 +43,7 @@ services:
 #      - npm_config_unsafe_perm=true
 #    restart: "no"
   jvue-artalk:
-    image: terwer/jvue-artalk:2.1
+    image: jvue/artalk:2.8.3
     container_name: jvue-artalk
     build:
       context: ./
