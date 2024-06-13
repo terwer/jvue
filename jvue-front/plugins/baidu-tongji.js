@@ -1,10 +1,9 @@
 // eslint-disable-next-line no-use-before-define,no-var
 var _hmt = _hmt || [];
 (function() {
-  const hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?8cf152054e4b32b33cbc68fef515bbb5";
-  hm.id = "baidu_tj";
-  const s = document.getElementsByTagName("script")[0];
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?128e63f03f80b29aa4381b8abef35daa";
+  var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();
 
