@@ -12,7 +12,7 @@ cd jvue-server
 ./mvnw clean spring-boot:run -Dspring-boot.run.profiles=dev -DskipTests &
 
 cd ../jvue-front
-ARTALK_SERVER_URL=https://v4.terwergreen.com:8003
+ARTALK_SERVER_URL=https://talk.terwergreen.com:8003
 yarn dev
 
 # 需要考虑优雅退出
