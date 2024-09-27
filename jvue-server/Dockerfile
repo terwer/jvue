@@ -2,7 +2,7 @@
 # docker build . -t jvue-server:4.2.0 --force-rm --no-cache
 
 # 依赖的镜像
-FROM maven:3.6.0-jdk-8-alpine
+FROM registry.cn-shenzhen.aliyuncs.com/terwer/dm:3.6.0-jdk-8-alpine
 
 #镜像创建者的信息
 MAINTAINER terwer cbgtyw@gmail.com"

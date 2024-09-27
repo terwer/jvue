@@ -94,6 +94,16 @@ or simplely dev front project without step2
 ./dev.sh
 ```
 
+## Using aliyun private image repo
+
+```bash
+docker pull maven:3.6.0-jdk-8-alpine
+docker images
+docker tag 28939accad54 registry.cn-shenzhen.aliyuncs.com/terwer/dm:3.6.0-jdk-8-alpine
+docker login --username=terwer@aliyun.com registry.cn-shenzhen.aliyuncs.com
+docker push registry.cn-shenzhen.aliyuncs.com/terwer/dm:3.6.0-jdk-8-alpine
+```
+
 # Structure
 
 It is a [docker-compose](https://docs.docker.com/compose) project        
