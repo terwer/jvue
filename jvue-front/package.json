@@ -16,7 +16,7 @@
     "artalk": "2.8.3",
     "cross-env": "^5.2.0",
     "element-ui": "2.4.11",
-    "express": "^4.16.4",
+    "express": "^4.19.2",
     "font-awesome": "^4.7.0",
     "highlight.js": "^11.6.0",
     "node-fetch-native": "^1.4.1",
